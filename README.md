@@ -1,13 +1,5 @@
-W4 Post List by Shazzad
+W4 Post List - WordPress Plugin
 =======================
-
-Welcome to the W4 Post List Github repository
-----------------------------------------------
-
-
-Installation
-------------
-
 
 About
 -----
