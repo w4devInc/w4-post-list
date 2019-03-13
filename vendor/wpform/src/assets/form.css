@@ -1,0 +1,356 @@
+/**
+* Shazzads Form CSS
+* @version: 1.0
+* @author: Shazzad Hossain Khan
+* @contact: sajib1223@gmail.com
+**/
+
+/* === Global === */
+.wf_hidden{
+	display:none;
+}
+.wf-field,
+.wf-field-wrap{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.wf-field-wrap .wf-image-preview{
+	width:auto;
+	max-width:100%;
+}
+.wf-field-desc-wrap, .wf-field-desc-after-wrap{
+	color:#999;
+	font-size:12px;
+}
+
+/* Fields */
+.wf .wf-field{
+	width:100%;
+}
+.wf .wf-field-type-number,
+.wf .wf-field-type-select{
+	height:auto !important;
+	line-height:normal !important;
+}
+.wf-field-wrap-type-html_input label{
+	display:inline;
+}
+.wf-field-wrap-type-radio,
+.wf-field-wrap-type-checkbox{
+	padding:.5rem 0;
+}
+.wf-field-wrap-type-checkbox label{
+	display:block;
+	margin-bottom:.25rem;
+}
+.wf-field-wrap-type-checkbox input{
+	margin-bottom:0;
+}
+.wf-field-type-radio, .wf-field-type-checkbox, .wf-fieldd{
+	width:auto;
+	border:none;
+	display:inline-block;
+}
+.wf-field-wrap-type-radio label{
+	margin-right:5px;
+	margin-bottom:2px;
+}
+.wf-field-wrap-type-radio label.inline{
+	display:inline;
+}
+/* Field - Repeater */
+.wf-field-wrap-type-repeater .wf_repetable,
+.wf-field-wrap-type-repeater .wf_repeater{
+	width:100%;
+}
+.wf-field-wrap-type-repeater .wf-field{
+	width:100%;
+}
+.wf-field-wrap-type-repeater .wf_repeater{
+	display:none;
+}
+.wf_repetable th,
+.wf_repetable td{
+	padding:5px;
+	text-align:left;
+}
+/* Field Required */
+.wf-fieldl .req{
+	color:red;
+	padding-left:3px;
+}
+.wf-field-type-select.ld,
+.wf-field-wrap-type-checkbox.ld{
+	background-image:url(images/spinner.gif) !important;
+	background-repeat:no-repeat !important;
+	background-position:center center !important;
+}
+.wf-field-wrap-type-checkbox.ld{
+	background-color:#ddd !important;
+}
+/* Button */
+.wf-field-wrap-type-submit input{
+	color:#fff;
+	padding:0 10px 4px;
+	display:inline-block;
+	border:1px solid #006799;
+	background-color:#0085ba;
+}
+
+.wf-field-wrap-type-submit input:hover{
+	cursor:pointer;
+	background-color:#006799;
+}
+.wf-field-wrap-type-submit .form_button {
+	transition:background 0.8s ease;
+	background-position:0px;
+}
+.wf-field-wrap-type-submit .form_button.ld, 
+.wf-field-wrap-type-submit .form_button.ld[disabled], 
+.wf-field-wrap-type-submit .form_button.ld:disabled {
+	cursor:wait;
+	box-shadow:none !important;
+	background-color:#73787b !important;
+	background-image:url(images/spinner.gif) !important;
+	background-repeat:no-repeat !important;
+	background-position:90px;
+}
+a.wf-field_ajax_action_btn.ld{
+	text-shadow:none !important;
+	box-shadow:none !important;
+	outline:none !important;
+	background-color:#f7f7f7 !important;
+	background-image:url(images/loading.gif) !important;
+	background-repeat:no-repeat !important;
+	background-position:center !important;
+	transition-property:none;
+}
+.add-new-h2.wf-field_ajax_action_btn.ld{
+	color:#00a0d2;
+	outline:none !important;
+	background-color:#00a0d2 !important;
+	background-image:url(images/spinner.gif) !important;
+	background-repeat:no-repeat !important;
+	background-position:center !important;
+	transition-property:none;
+}
+a.button.ld,
+a.button.ld:hover,
+a.button.ld:focus,
+a.button.ld:active,
+a.button.ld[disabled],
+button.button.ld:disabled,
+button.button.ld,
+button.button.ld:hover,
+button.button.ld:focus,
+button.button.ld:active,
+button.button.ld[disabled],
+button.button.ld:disabled,
+span.button.ld:disabled,
+span.button.ld,
+span.button.ld:hover,
+span.button.ld:focus,
+span.button.ld:active,
+span.button.ld[disabled],
+span.button.ld:disabled {
+	text-shadow:none !important;
+	color:#f7f7f7 !important;
+	box-shadow:none !important;
+	background-color:#f7f7f7 !important;
+	background-image:url(images/loading.gif) !important;
+	background-repeat:no-repeat !important;
+	background-position:center !important;
+	-moz-user-select:none; 
+	-khtml-user-select:none; 
+	-webkit-user-select:none; 
+	-o-user-select:none;
+	user-select:none;
+	transition-property:none;
+}
+
+
+/* Rounder Files & Button */
+.wf-field-type-text,
+.wf-field-type-email,
+.wf-field-type-number,
+.wf-field-type-password,
+.wf-field-type-url,
+.wf-field-type-textarea,
+.wf-field-type-select,
+.wf-field-wrap-type-submit input{
+	border-radius:3px;
+}
+
+/* Notices */
+div.wf_notes._note{
+	display:inline-block;
+	padding:4px 10px !important;
+	margin:0 0 0 10px !important;
+}
+div.wf_notes._note > p{
+	margin:0 !important;
+}
+
+.wf-field_image_btn, .wf-field_image_remove_btn {
+	margin-top:5px !important;
+}
+.wf-field-wrap-type-image_src .wf-image-preview{
+	margin:10px 0;
+}
+
+/* Default Form */
+.wf-default .wf-field-wrap {
+	margin-bottom:10px;
+	padding-right:10%;
+}
+.wf-default .wf-field_image_btn, .wf-default .wf-field_image_remove_btn {
+	height:auto;
+	font-size:12px;
+	padding:3px 8px;
+	line-height:normal;
+}
+.wf-default .wf-field-wrap-type-submit input{
+	font-size:13px;
+	line-height:26px;
+	padding:1px 10px;
+}
+
+/* Default Form */
+.wf-default .wf-field-wrap {
+	margin-bottom:10px;
+	padding-right:10%;
+}
+.wf-default .wf-field_image_btn, .wf-default .wf-field_image_remove_btn {
+	height:auto;
+	font-size:12px;
+	padding:3px 8px;
+	line-height:normal;
+}
+.wf-default .wf-field-wrap-type-submit input{
+	font-size:13px;
+	line-height:26px;
+	padding:1px 10px;
+}
+
+
+/* Basic Form */
+.wf-basic .wf-field-wrap{
+	width:auto;
+	padding:2rem;
+	overflow:hidden;
+	transition:background 0.5s ease;
+	border-bottom:1px solid #eee;
+}
+.wf-basic .wf-field-wrap-type-submit{
+	border-bottom:1px solid transparent;
+}
+.wf-basic .wf-field-wrap:hover{
+	background-color:#f9f9f9;
+}
+.wf-basic .wf-field-label-wrap{
+	padding:.5rem 0;
+}
+.wf-basic, .wf-basic .wf-fieldl{
+	font-size:1rem;
+}
+.wf-basic .wf-field-desc-wrap, .wf-basic .wf-field-desc-after-wrap {
+	line-height:16px;
+	line-height:normal;
+}
+.wf-basic .wf-form-title,
+.wf-basic .wf_field_group_title{
+	font-size:1.4rem;
+	line-height:normal;
+	padding:.75rem 1.75rem;
+}
+.wf-basic .wf-field-wrap + .wf_field_group_title{
+	margin-top:30px;
+}
+.wf-basic .wf-field-type-text,
+.wf-basic .wf-field-type-email,
+.wf-basic .wf-field-type-number,
+.wf-basic .wf-field-type-url,
+.wf-basic .wf-field-type-password,
+.wf-basic .wf-field-type-textarea,
+.wf-basic .wf-field-type-select{
+	font-size:1rem;
+	box-shadow:none;
+	border:1px solid #ddd;
+	padding:.5rem .75rem !important;
+}
+.wf-basic .wf-field-type-select{
+	margin-top:-4px;
+	padding:.46rem .75rem !important;
+}
+.wf-basic .wf-field-wrap-type-submit-bottom {
+	padding-top:1rem;
+	padding-bottom:1rem;
+}
+.wf-basic .wf-field-wrap-type-submit input{
+	padding:.5rem 1rem .5rem 1rem;
+}
+.wf-basic .wf-field-wrap.disabled{
+	color:#999 !important;
+	background-color:#f9f9f9;
+}
+.wf-basic .wf-field-wrap.disabled input{
+	color:#999 !important;
+}
+@media screen and (min-width:779px){
+	.wf-basic .wf-field-label-wrap, 
+	.wf-basic .wf-field-desc-wrap {
+		width:30%;
+		float:left;
+		clear:left;
+		line-height:normal;
+	}
+	.wf-basic .wf-field-desc-wrap {
+		font-size:12px;
+	}
+	.wf-basic .wf-field-input-wrap,
+	.wf-basic .wf-field-desc-after-wrap {
+		margin-left:35%;
+	}
+	.wf-basic .wf-field-wrap-type-submit {
+		padding-left:36%;
+	}
+
+	.wf-field-wrap_full .wf-field-label-wrap,
+	.wf-field-wrap_full .wf-field-desc-wrap{
+		width:auto;
+		float:none;
+		clear:none;
+	}
+	.wf-field-wrap_full .wf-field-input-wrap{
+		margin-left:0;
+	}
+	.wf-basic .wf-form-title {
+		padding-top:20px;
+	}
+}
+
+
+/* Inline Form */
+.wf-inline .wf-field-wrap, .wf-inline .wf-form-title{
+	padding-right:0;
+	display:inline-block;
+}
+.wf-inline .wf-field-wrap{
+	padding-left:10px;
+}
+
+@media screen and (max-width:780px){
+	.wf-field{
+		width:100%;
+	}
+	.wf-field-label-wrap, 
+	.wf-field-desc-wrap{
+		float:none;
+		width:auto;
+	}
+	.wf-field-wrap,
+	.wf-field-wrap-type-submit{
+		margin-left:0;
+	}
+}

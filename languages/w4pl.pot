@@ -1,0 +1,600 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: W4 Post List\n"
+"POT-Creation-Date: 2015-02-26 19:48+0600\n"
+"PO-Revision-Date: 2015-02-26 19:48+0600\n"
+"Last-Translator: Shazzad Hossain <sajib1223@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: D:\\server\\www\\envato\\wp-content\\plugins\\w4-post-"
+"list\n"
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:24
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:25
+msgid "Documentation"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:55
+msgid "Version"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:56
+msgid ""
+"This plugin lets you create a list of Posts (including pages & custom post "
+"type), Terms (category, tag & custom taxonomy) or Terms + Posts Combo "
+"template. Outputs are completely customizable using Shortcode & HTML"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:62
+msgid "Migration"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:64
+msgid ""
+"Old database table exists. Please import old lists and delete the table."
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:65
+msgid "Import"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:66
+msgid "Delete Table"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:72
+msgid "Usage"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:76
+#, php-format
+msgid ""
+"Use shortcode %s with the list id to show a list on post/page content area"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:77
+msgid "Ex:"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:81
+#, php-format
+msgid "Display list using %s function"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:85
+msgid "Plugin links"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:93
+msgid "Contact Author"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:98
+msgid "Plugin Updates"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:107
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:270
+msgid "Template"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:110
+msgid ""
+"Template is the output of a list. It can be designed with shortcode and "
+"HTML. Find few examples below."
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:113
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:121
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:129
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:145
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:153
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:168
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:176
+msgid "Example"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:113
+msgid "Simple Unordered Post List"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:121
+msgid ""
+"Post list having excerpt limited to 20 words, and using post class on post "
+"wrapper element"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:129
+msgid ""
+"Post list Group by Year (chose <em>Group By</em> option to Year while using "
+"this)."
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:145
+msgid "A Simple Unordered Category list"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:153
+msgid "Category Post list"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:168
+msgid "A Simple Unordered Users list"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:176
+msgid "Users Post list"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:193
+msgid "Available Shortcodes"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:196
+msgid "Details"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:238
+msgid "Old entries imported"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:241
+msgid "Old table deleted"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-docs.php:357
+msgid "Docs"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:137
+#, php-format
+msgid "List updated. Shortcode %s"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:140
+msgid "List updated."
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:142
+#, php-format
+msgid "List published. Shortcode %s"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:143
+msgid "List saved."
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:144
+#, php-format
+msgid "List submitted. Shortcode %s"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:145
+#, php-format
+msgid "List scheduled. Shortcode %s"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:159
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:248
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:255
+msgid "List Type"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/admin-lists.php:160
+msgid "Shortcode"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:86
+msgid "All Lists"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:88
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:90
+msgid "New List"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:89
+msgid "Edit List"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:91
+msgid "View List"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:92
+msgid "Search List"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:93
+msgid "No List found"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:94
+msgid "No List found in Trash"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:277
+msgid "Template Example"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:278
+msgid "Shortcodes"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:732
+msgid "Posts"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:733
+msgid "Terms"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:734
+msgid "Users"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:735
+msgid "Terms + Posts"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:736
+msgid "Users + Posts"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:802
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:840
+msgid "None"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:803
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-date_query.php:46
+msgid "Year"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:804
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-date_query.php:54
+msgid "Month"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:805
+msgid "Year Months"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:806
+msgid "Author"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:807
+msgid "Parent"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:808
+msgid "Custom field"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:830
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-terms.php:324
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:322
+msgid "ID"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:831
+msgid "Title"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:832
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-terms.php:325
+msgid "Name"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:833
+msgid "Publish Date"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:834
+msgid "Modified Date"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:835
+msgid "Menu Order"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:836
+msgid "Meta value"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:837
+msgid "Meta numeric value"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:838
+msgid "Comment Count"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:839
+msgid "Random"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/core.php:841
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:859
+msgid "Include posts"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-no-items.php:40
+msgid "displayed when no items found by this filter or pagination"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-date_query.php:62
+msgid "Day"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:40
+msgid "Posts: Meta Query"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:49
+msgid "Key"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:50
+msgid "Compare"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:51
+msgid "Value"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:52
+msgid "Action"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:107
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:143
+msgid "Remove"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:126
+msgid "+ Add"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:150
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-tax_query.php:177
+msgid "Relation"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:152
+msgid "OR"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts-meta_query.php:152
+msgid "AND"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:35
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:40
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:45
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:50
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:55
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:60
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:65
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:73
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:78
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:84
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:94
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:102
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:110
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:118
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:126
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:133
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:138
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:143
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:149
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:157
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:164
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:170
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:185
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:200
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:211
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:220
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:232
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:239
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:247
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:252
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:257
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:262
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:267
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:272
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:277
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:282
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:288
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:296
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:301
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:306
+msgid "Output"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:687
+msgid "Posted on"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:687
+msgid "by"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:695
+msgid "Published"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:702
+msgid "Updated"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:727
+msgid "Continue reading &raquo;"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:811
+msgid "Post type"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:824
+msgid "Post mime type"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:835
+msgid "Post status"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:838
+msgid "Any"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:839
+msgid "Publish"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:840
+msgid "Pending"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:841
+msgid "Future"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:842
+msgid "Inherit"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:850
+msgid "Search keywords"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:868
+msgid "Exclude posts"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:877
+msgid "Post parent"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:886
+msgid "Post author"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:896
+msgid "Exclude self"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:904
+msgid "Child of self"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:914
+msgid "Orderby"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:924
+msgid "Order"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:934
+msgid "Maximum items"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:945
+msgid "Offset"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:953
+msgid "Items per page"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:967
+msgid "Group by"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:979
+msgid "Group by Date"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:991
+msgid "Group by \"Custom field\" name"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-posts.php:1000
+msgid "Group Order"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-style.php:33
+msgid "Style"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-style.php:40
+msgid "CSS"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-style.php:51
+msgid "JavaScript"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-style.php:61
+msgid "HTML class name"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-terms.php:326
+msgid "Slug"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-terms.php:327
+msgid "Count"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-terms.php:328
+msgid "Include terms"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:323
+msgid "Username"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:324
+msgid "Nicename"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:325
+msgid "Email"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:326
+msgid "Registration time"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/helper-users.php:327
+msgid "Display name"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/postlist.php:393
+msgid "Previous"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/postlist.php:394
+msgid "Next"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/widget.php:16
+msgid "List your posts completely customized"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/widget.php:50
+msgid "Title:"
+msgstr ""
+
+#: D:\server\www\envato\wp-content\plugins\w4-post-list/inc/widget.php:55
+msgid "Select list:"
+msgstr ""

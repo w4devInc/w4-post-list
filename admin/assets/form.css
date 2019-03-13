@@ -1,0 +1,96 @@
+/*
+ * Form Styles
+ * @package W4 Post List
+ * @author Shazzad Hossain Khan
+ * @url http://w4dev.com/plugins/w4-post-list
+**/
+
+/* === Global === */
+.wf,.wffl{
+	color:#333;
+}
+
+/* box */
+.wb, .wffw, .wns, .wfft_text, .wfft_password, .wfft_textarea, .wfft_select{
+	border-width:1px;
+	border-style:solid;
+	border-color:#DDD;
+	padding:5px 10px;
+}
+.wffe, .wffd{
+	border-width:1px;
+	border-style:solid;
+	border-color:#BBB;
+	padding:2px 5px;
+}
+/* Margin tiny */
+.wmbt, .wfflw, .wffwt_checkbox label, .wffwt_radio label, .wn{
+	margin-bottom:2px;
+}
+.wmlt, .wfft_text, .wfft_submit, .wfft_password, .wfft_textarea, .wfft_select, .wffwt_checkbox label, .wffwt_radio label{
+	margin-left:2px;
+}
+.wmtt, .wn{
+	margin-top:2px;
+}
+
+/* Margin top bottom tiny */
+.wmtbt, .wffw, .wns, .wffe, .wffdw, .wffdw2{
+	margin-top:2px;
+	margin-bottom:5px;
+}
+
+/* Display block */
+.wdb, .wffwt_checkbox label, .wn{
+	display:block;
+}
+
+/* Desc */
+.wffdw, .wffdw2{
+	color:#999;
+	font-size:12px;
+}
+
+/* Required */
+.wffl .req{
+	color:red;
+	padding-left:3px;
+}
+/* Form */
+.wffw{
+	background-color:#F7FCFE;
+	border-color:#D1E5EE;
+}
+.wfft_text, .wfft_password, .wfft_textarea, .wfft_select{
+	}
+.wfft_text:focus, .wfft_password:focus, .wfft_textarea:focus, .wfft_select:focus{
+}
+.wffewt_checkbox input{
+	margin-bottom:0;
+}
+.wfft_radio, .wfft_checkbox, .wffd{
+	width:auto;
+	border:none;
+	display:inline-block;
+	}
+.wffewt_radio label{
+	margin-right:5px;
+	}
+.wffwt_checkbox label, .wn{
+	display:block;
+	}
+.wffe{
+	background-color:#FFEBE8;
+	}
+
+/* Notice */
+.csshide{
+	display:none;
+}
+
+/*Suggest*/
+.ui-autocomplete{padding:0;overflow:hidden;z-index:99999;background:#fff;border:1px solid #ccc;-moz-border-radius-bottomleft:3px;-khtml-border-bottom-left-radius:3px;-webkit-border-bottom-left-radius:3px;border-bottom-left-radius:3px;-moz-border-radius-bottomright:3px;-khtml-border-bottom-right-radius:3px;-webkit-border-bottom-right-radius:3px;border-bottom-right-radius:3px;list-style-position:outside;list-style:none;padding:0;margin:0}
+.ui-autocomplete li{margin:0;padding:5px 10px;cursor:pointer;display:block;font-size:1em;line-height:16px;overflow:hidden}
+.ui-autocomplete li:hover{background-color:#DDD;}
+.ui-helper-hidden-accessible{ display:none;}
+.ui-autocomplete{position:absolute;display: none;}
