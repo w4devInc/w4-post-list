@@ -127,10 +127,10 @@ $form_args = array(
 // let helper class extend/modify this class
 $fields = apply_filters('w4pl/list_edit_form_fields', $fields, $options);
 
-# W4PL_Plugin::d($fields);
+# W4PL_Utils::d($fields);
 
 // order by position
-uasort($fields, array('W4PL_Plugin', 'order_by_position'));
+uasort($fields, array('W4PL_Utils', 'order_by_position'));
 
 $output = w4pl_form_fields($fields, $options, $form_args);
 

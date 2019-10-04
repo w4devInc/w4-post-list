@@ -231,7 +231,7 @@ class W4PL_Admin_Page_Lists
 		}
 
 		if( empty($return) ){
-			$lt_options = W4PL_Plugin::list_type_options();
+			$lt_options = W4PL_Utils::list_type_options();
 			if( !empty($lt) && isset($lt_options[$lt]) )
 				$return = $lt_options[$lt];
 			else
@@ -257,7 +257,7 @@ class W4PL_Admin_Page_Lists
 
 	public static function news_meta_box()
 	{
-		W4PL_Plugin::plugin_news();
+		W4PL_Utils::plugin_news();
 	}
 }
 

@@ -195,7 +195,7 @@ class W4PL_Helper_Date_Query
 	public function pre_get_options($options)
 	{
 		if( !empty($options['date_query']) ){
-			$date_query = W4PL_Plugin::filter_multi_row_submit( $options['date_query'] );
+			$date_query = W4PL_Utils::filter_multi_row_submit( $options['date_query'] );
 			if( $date_query )
 			{ array_pop($date_query); }
 			$options['date_query'] = $date_query;

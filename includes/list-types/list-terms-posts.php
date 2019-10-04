@@ -10,6 +10,8 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_Interface_List
 {
 	function __construct($options = array())
 	{
+		parent::__construct($options);
+
 		$this->terms_args 		= array();
 		$this->terms_query 		= array();
 		$this->current_term 	= '';
@@ -37,7 +39,7 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_Interface_List
 	{
 		// let helper class extend/modify this class
 		do_action_ref_array( 'w4pl/parse_query_args', array( &$this ) );
-		#W4PL_Plugin::d($this->options['list_type']);
+		#W4PL_Utils::d($this->options['list_type']);
 
 		$template = $this->list_type_terms_template();
 		$this->template = trim($template);
@@ -90,6 +92,8 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_Interface_List
 		if( preg_match( "/\[nav(.*?)\]/", $template, $nav_match) ) {
 			$template_nav = $nav_match[0];
 		}
+
+		# print_r($this->terms_args);
 
 		$this->terms_query = new W4PL_Terms_Query( $this->terms_args );
 		$this->terms_query->query();
@@ -154,9 +158,9 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_Interface_List
 		// replace [nav]
 		// template will be empty if there's no results
 		if( !empty($template_nav) && !empty($template) ) {
-			if( isset($this->options['terms_max']) 
-				&& !empty($this->options['terms_max']) 
-				&& $this->options['terms_max'] < ($this->options['terms_limit'] * $paged) 
+			if( isset($this->options['terms_max'])
+				&& !empty($this->options['terms_max'])
+				&& $this->options['terms_max'] < ($this->options['terms_limit'] * $paged)
 			) {
 				$max_num_pages = $paged;
 			} else {

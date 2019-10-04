@@ -39,7 +39,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_Interface_List
 	{
 		// let helper class extend/modify this class
 		do_action_ref_array( 'w4pl/parse_query_args', array( &$this ) );
-		#W4PL_Plugin::d($this->options['list_type']);
+		#W4PL_Utils::d($this->options['list_type']);
 
 		$template = $this->list_type_posts_template();
 		$this->template = trim($template);
@@ -93,10 +93,10 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_Interface_List
 			$template_nav = $nav_match[0];
 		}
 
-		#W4PL_Plugin::d($this->posts_args);
+		#W4PL_Utils::d($this->posts_args);
 		// do query posts
 		$this->posts_query = new WP_Query( $this->posts_args );
-		#W4PL_Plugin::d($this->posts_query);
+		#W4PL_Utils::d($this->posts_query);
 
 		#echo '<pre>'; print_r($this->posts_query->request); echo '</pre>';
 
@@ -134,7 +134,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_Interface_List
 				// replace [groups]
 				$template = str_replace( $groups_match[0], $groups_loop, $template );
 			} else {
-				#W4PL_Plugin::d($posts_template);
+				#W4PL_Utils::d($posts_template);
 				$posts_loop = '';
 				// post loop
 				while ($this->posts_query->have_posts()) {

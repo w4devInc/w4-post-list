@@ -30,32 +30,32 @@ class W4PL_Helper_Terms
 	{
 		$_shortcodes = array(
 			'term_id' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_id'),
 				'desc' 		=> '<strong>Output</strong>: term id'
 			),
 			'term_name' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_name'),
 				'desc' 		=> '<strong>Output</strong>: term name'
 			),
 			'term_slug' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_slug'),
 				'desc' 		=> '<strong>Output</strong>: term slug'
 			),
 			'term_link' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_link'),
 				'desc' 		=> '<strong>Output</strong>: term page link'
 			),
 			'term_count' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_count'),
 				'desc' 		=> '<strong>Output</strong>: term posts count'
 			),
 			'term_content' => array(
-				'group' 	=> 'Term', 
+				'group' 	=> 'Term',
 				'callback' 	=> array('W4PL_Helper_Terms', 'term_content'),
 				'desc' 		=> '<strong>Output</strong>: term description'
 			)
@@ -103,10 +103,10 @@ class W4PL_Helper_Terms
 		if( isset($options['list_type']) && in_array($options['list_type'], array('terms', 'terms.posts') ) )
 		{
 			$options = wp_parse_args( $options, array(
-				'terms_taxonomy' 			=> 'category', 
-				'terms__in' 				=> '', 
-				'terms__not_in' 			=> '', 
-				'terms_parent__in' 			=> '', 
+				'terms_taxonomy' 			=> 'category',
+				'terms__in' 				=> '',
+				'terms__not_in' 			=> '',
+				'terms_parent__in' 			=> '',
 				'terms_name__like'			=> '',
 				'terms_slug__like'			=> '',
 				'terms_description__like'	=> '',
@@ -143,7 +143,7 @@ class W4PL_Helper_Terms
 			'name' 			=> 'w4pl[terms_taxonomy]',
 			'label' 		=> 'Taxonomy',
 			'type' 			=> 'radio',
-			'option'		=> W4PL_Plugin::taxonomies_options(),
+			'option'		=> W4PL_Utils::taxonomies_options(),
 			'input_class'	=> 'w4pl_onchange_lfr'
 		);
 		$fields['terms__in'] = array(
@@ -308,11 +308,10 @@ class W4PL_Helper_Terms
 
 			$paged = isset($_REQUEST['page'. $list->id]) ? $_REQUEST['page'. $list->id] : 1;
 
-			if( !empty($list->options['terms_limit']) ){
+			if (! empty($list->options['terms_limit'])) {
 				$list->terms_args['offset'] = (int) $list->options['terms_offset'] + ($paged - 1) * $list->options['terms_limit'];
 			}
-			if( isset($list->options['terms_max']) && !empty($list->options['terms_max']) && $list->options['terms_max'] < ($list->options['terms_limit'] * $paged) )
-			{
+			if (! empty($list->options['terms_max']) && !empty($list->options['terms_limit']) && $list->options['terms_max'] < ($list->options['terms_limit'] * $paged)) {
 				$list->terms_args['limit'] = $list->options['terms_max'] - ( $list->options['terms_limit'] * ($paged-1) );
 			}
 			// terms query var ends

@@ -10,6 +10,8 @@ class W4PL_List_Users extends W4PL_List implements W4PL_Interface_List
 {
 	function __construct($options = array())
 	{
+		parent::__construct($options);
+
 		$this->terms_args 		= array();
 		$this->terms_query 		= array();
 		$this->current_term 	= '';
@@ -37,7 +39,7 @@ class W4PL_List_Users extends W4PL_List implements W4PL_Interface_List
 	{
 		// let helper class extend/modify this class
 		do_action_ref_array( 'w4pl/parse_query_args', array( &$this ) );
-		#W4PL_Plugin::d($this->options['list_type']);
+		#W4PL_Utils::d($this->options['list_type']);
 
 		$template = $this->list_type_users_template();
 		$this->template = trim($template);
@@ -165,7 +167,7 @@ class W4PL_List_Users extends W4PL_List implements W4PL_Interface_List
 			$navigation = $this->navigation( $max_num_pages, $paged, shortcode_parse_atts($nav_match[1]) );
 			$template = str_replace( $nav_match[0], $navigation, $template );
 		}
-		
+
 		return $template;
 	}
 }

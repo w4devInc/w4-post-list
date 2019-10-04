@@ -43,7 +43,7 @@ class W4PL_List_Shortcode
 			// not showing error
 		}
 	}
-	
+
 	public function parse_shortcode_attrs($attrs)
 	{
 		if (isset ($attrs['options'])) {
@@ -54,7 +54,7 @@ class W4PL_List_Shortcode
 		} elseif (isset($attrs['slug'])) {
 			global $wpdb;
 			$post = $wpdb->get_row($wpdb->prepare(
-				"SELECT * FROM $wpdb->posts WHERE post_name = %s AND post_type = %s", 
+				"SELECT * FROM $wpdb->posts WHERE post_name = %s AND post_type = %s",
 				$attrs['slug'], w4pl()->plugin_slug()
 			));
 			if ($post) {
@@ -63,8 +63,8 @@ class W4PL_List_Shortcode
 			}
 		} elseif (isset ($attrs['title'])) {
 			global $wpdb;
-			$post = $wpdb->get_row( $wpdb->prepare( 
-				"SELECT * FROM $wpdb->posts WHERE post_title = %s AND post_type = %s", 
+			$post = $wpdb->get_row( $wpdb->prepare(
+				"SELECT * FROM $wpdb->posts WHERE post_title = %s AND post_type = %s",
 				$attrs['title'], w4pl()->plugin_slug()
 			));
 			if( $post ){
@@ -86,7 +86,7 @@ class W4PL_List_Shortcode
 				$options['id'] = $list_id;
 			}
 		}
-		
+
 		return $options;
 	}
 }
