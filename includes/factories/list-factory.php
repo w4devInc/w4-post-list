@@ -18,7 +18,9 @@ class W4PL_List_Factory
 			return;
 		}
 
-		$className = 'W4PL_List_'. str_replace(' ', '_', ucwords(preg_replace('[^a-zA-Z]', ' ', $options['list_type'])));
+		$className = 'W4PL_List_'. str_replace([' ', '.'], '_', ucwords(preg_replace('/[^a-zA-Z]/i', ' ', $options['list_type'])));
+
+
 		if (class_exists ($className)) {
 			return new $className($options);
 		} else {

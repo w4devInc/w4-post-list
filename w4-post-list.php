@@ -3,12 +3,12 @@
  * Plugin Name: W4 Post List
  * Plugin URI: http://w4dev.com/plugins/w4-post-list
  * Description: This plugin lets you create a list of - Posts, Terms, Users, Terms + Posts and Users + Posts. Outputs are completely customizable using Shortcode, HTML & CSS. Read documentation plugin usage.
- * Version: 2.3.2
+ * Version: 2.1.7
  * Author: Shazzad Hossain Khan
  * Author URI: http://w4dev.com/about
  * Text Domain: w4pl
  * Domain Path: /languages
- * Tested up to: 4.9.4
+ * Tested up to: 5.2.2
  * Requires at least: 4.0
  * Requires PHP: 5.3
 **/
@@ -30,9 +30,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ***/
 
-/* TODO */
-// include_once( dirname(__FILE__) . '/vendor/wpform/src/Autoloader.php' );
-
 
 /* Define current file as plugin file */
 if (! defined('W4PL_PLUGIN_FILE')) {
@@ -43,7 +40,7 @@ if (! defined('W4PL_PLUGIN_FILE')) {
 function w4pl() {
 	/* Require the main plug class */
 	if (! class_exists('W4_Post_List')) {
-		require plugin_dir_path(__FILE__) . 'includes/class.w4-post-list.php';
+		require plugin_dir_path(__FILE__) . 'includes/class-w4-post-list.php';
 	}
 
 	return W4_Post_List::instance();
@@ -54,4 +51,10 @@ function w4pl() {
 add_action('plugins_loaded', 'w4pl_load', 10);
 function w4pl_load() {
 	w4pl();
+}
+
+/* flush rewrite rules */
+register_activation_hook(W4PL_PLUGIN_FILE, 'w4pl_activated');
+function w4pl_activated() {
+	update_option('w4pl_flush_rules', time());
 }

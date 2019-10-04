@@ -225,7 +225,7 @@ class W4PL_List_Helper
 
 
 		// order by position
-		uasort($fields, array('W4PL_Plugin', 'order_by_position'));
+		uasort($fields, array('W4PL_Utils', 'order_by_position'));
 
 		# echo '<pre>'; print_r($fields); echo '</pre>';
 
@@ -599,8 +599,8 @@ class W4PL_List_Helper
 	public static function list_type_options()
 	{
 		$return = array(
-			'posts' 		=> __('Posts', 'w4pl') .' - <small>'. implode(', ', W4PL_Plugin::post_type_options()) .'</small>',
-			'terms' 		=> __('Terms', 'w4pl') .' - <small>'. implode(', ', W4PL_Plugin::taxonomies_options()) .'</small>',
+			'posts' 		=> __('Posts', 'w4pl') .' - <small>'. implode(', ', W4PL_Utils::post_type_options()) .'</small>',
+			'terms' 		=> __('Terms', 'w4pl') .' - <small>'. implode(', ', W4PL_Utils::taxonomies_options()) .'</small>',
 			'users' 		=> __('Users', 'w4pl'),
 			'terms.posts' 	=> __('Terms + Posts', 'w4pl'),
 			'users.posts' 	=> __('Users + Posts', 'w4pl')

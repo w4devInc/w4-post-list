@@ -2,7 +2,7 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 4.0
-Tested up to: 4.9.4
+Tested up to: 5.2.2
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,18 +12,18 @@ W4 Post List lets you create a list of posts, terms, users or a combined one. De
 
 == Description ==
 
-Display Posts (any custom post type), Terms (any custom taxonomy), Users (any role) on Content or Widget Areas by placing a shortcode. Select what to show and design how to show it. Using the plugin is really easy. You will find Tinymce button on post/page editor to quickly inset a list. Also, there's a separate page for creating or editing list. 
+Display Posts (any custom post type), Terms (any custom taxonomy), Users (any role) on Content or Widget Areas by placing a shortcode. Select what to show and design how to show it. Using the plugin is really easy. You will find Tinymce button on post/page editor to quickly inset a list. Also, there's a separate page for creating or editing list.
 
 = List Types =
-* Posts 
+* Posts
 * Terms
 * Users
 * Terms & Posts
 * Users & Posts
 
-Creating a list is just few steps. There are different sets option for different List Type, following options are available for List Type - `posts`. 
+Creating a list is just few steps. There are different sets option for different List Type, following options are available for List Type - `posts`.
 = Posts =
-* post type 
+* post type
 * post mime type
 * post status
 * post search keyword
@@ -59,12 +59,12 @@ Creating a list is just few steps. There are different sets option for different
 = Multi-Page Pagination by =
 * Next / Previous links
 * Numeric navigation flat - Ex: 1, 2, 3.
-* Numeric navigation showing in unordered list. 
+* Numeric navigation showing in unordered list.
 * Enable/Disable pagination by ajax
 
 
 = Creating Template =
-Templates are designed using Shortcodes. You can create a simple list just showing post title and linked to the post page, or you can display complex list using any of the information relating to post. Some of the available shortcodes are - 
+Templates are designed using Shortcodes. You can create a simple list just showing post title and linked to the post page, or you can display complex list using any of the information relating to post. Some of the available shortcodes are -
 
 * post thumbnail
 * post categories
@@ -122,6 +122,14 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 3. Preview 2
 
 == Changelog ==
+= 2.1.7 =
+* Fixed: Using 0 for Post author to restrict posts from current user wasn't working
+= 2.1.6 =
+* Fixed: Terms Posts, User Posts list were not working
+= 2.1.5 =
+* Fixed: Missing required files in upload.
+= 2.1.4 =
+* Fixed: Terms & Users list were not working.
 = 2.1.2 =
 * Fixed: Post title attribute on [title] template tag
 = 2.1.1 =
@@ -327,6 +335,14 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 
 
 == Upgrade Notice ==
+= 2.1.7 =
+* Fixed: Using 0 for Post author to restrict posts from current user wasn't working
+= 2.1.6 =
+* Fixed: Terms Posts, User Posts list were not working
+= 2.1.5 =
+* Fixed: Missing required files in upload.
+= 2.1.4 =
+* Fixed: Terms & Users list were not working.
 = 2.1.1 =
 * New: Query Posts by current user. Use 0 in the Post author field to indicate current user. Ex: 0,12,32 or just 0.
 = 2.1 =
