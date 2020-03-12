@@ -122,6 +122,8 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 3. Preview 2
 
 == Changelog ==
+= 2.1.8 =
+* New: Exclude author capability 
 = 2.1.7 =
 * Fixed: Using 0 for Post author to restrict posts from current user wasn't working
 = 2.1.6 =

@@ -86,9 +86,6 @@ Check all of the available shortcodes on [W4 Post List Plugin Page](http://w4dev
 * [List of Terms](http://w4dev.com/wp/w4-post-list-examples#example-5)
 
 
-Happy using this Plugin ? Please rate !!
-
-
 Installation
 ------------
 1. Upload zip to the `/wp-content/plugins/` directory
