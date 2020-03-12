@@ -11,14 +11,12 @@
 
 class W4PL_Utils
 {
-	// log created by addming action
-	function __construct(){}
-
-	// log created by addming action
+	// log created by admin action
 	public static function log($str = '')
 	{
 		do_action('w4pl/log', $str);
 	}
+
 	public static function cron_log($str = '')
 	{
 		if (self::is_cron()) {

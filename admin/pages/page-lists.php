@@ -74,7 +74,7 @@ class W4PL_Admin_Page_Lists
 
 	public function save_post( $post_ID, $post, $update )
 	{
-		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
 			return $post_ID ;
 
 		if( !isset($_POST['w4pl']) )
@@ -86,7 +86,7 @@ class W4PL_Admin_Page_Lists
 
 		$options = apply_filters( 'w4pl/pre_save_options', $options );
 		# self::p($options); die();
-		
+
 		update_post_meta( $post_ID, '_w4pl', $options );
 	}
 
@@ -137,9 +137,9 @@ class W4PL_Admin_Page_Lists
 	{
 		global $post_ID, $post;
 
-		$input_attr = sprintf( 
-			'<input value="[postlist id=%d]" type="text" size="20" onfocus="this.select();" onclick="this.select();" readonly="readonly />"', 
-			$post_ID 
+		$input_attr = sprintf(
+			'<input value="[postlist id=%d]" type="text" size="20" onfocus="this.select();" onclick="this.select();" readonly="readonly />"',
+			$post_ID
 		);
 
 		$messages[w4pl()->list_post_type()] = array(
@@ -182,9 +182,9 @@ class W4PL_Admin_Page_Lists
 			echo self::list_type_label($post_ID);
 		}
 		else if( 'shortcode' == $column_name ){
-			printf( 
-				'<input value="[postlist id=%d]" type="text" size="20" onfocus="this.select();" onclick="this.select();" readonly="readonly" />', 
-				$post_ID 
+			printf(
+				'<input value="[postlist id=%d]" type="text" size="20" onfocus="this.select();" onclick="this.select();" readonly="readonly" />',
+				$post_ID
 			);
 		}
 	}
@@ -237,7 +237,7 @@ class W4PL_Admin_Page_Lists
 			else
 				$return = '-';
 		}
-		
+
 		return $return;
 	}
 

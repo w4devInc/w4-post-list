@@ -2,7 +2,7 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 4.0
-Tested up to: 5.2.2
+Tested up to: 5.3.2
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -122,6 +122,8 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 3. Preview 2
 
 == Changelog ==
+= 2.1.8 =
+* New: Exclude author capability 
 = 2.1.7 =
 * Fixed: Using 0 for Post author to restrict posts from current user wasn't working
 = 2.1.6 =
