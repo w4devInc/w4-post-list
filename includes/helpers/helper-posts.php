@@ -187,6 +187,22 @@ class W4PL_Helper_Posts
 				'callback' 	=> array( 'W4PL_Helper_Posts', 'post_content' ),
 				'desc' 		=> '<strong>'. __( 'Output', 'w4pl' ) .'</strong>: post content'
 			 ),
+			'featured_image' => array(
+				'group' 	=> 'Post',
+				'code' 		=> '[featured_image size="" return=""]',
+				'callback' 	=> array( 'W4PL_Helper_Posts', 'featured_image' ),
+				'desc' 		=> '<strong>'. __( 'Output', 'w4pl' ) .'</strong>: ( text|number ) based on the rerurn attribute & only if the post has a featured image assigned
+				<br /><br /><strong>Attributes:</strong>
+				<br /><strong>return</strong> = ( id|src|html ),
+				<br />----"src" - will return src of the image,
+				<br />----"id" - will return id of the image,
+				<br />----by default it will return image html
+				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
+				<br /><strong>size</strong> = ( string ), image size
+				<br /><strong>width</strong> = ( number ), image width
+				<br /><strong>height</strong> = ( number ), image height
+				<br /><strong>placeholder</strong> = ( text ), default placeholder text if post doesnt have featured image'
+			 ),
 			'post_thumbnail' => array(
 				'group' 	=> 'Post',
 				'code' 		=> '[post_thumbnail size="" return=""]',
@@ -216,7 +232,7 @@ class W4PL_Helper_Posts
 				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
 				<br /><strong>width</strong> = ( number ), set image width attr ( image scaling, not resizing )
 				<br /><strong>height</strong> = ( number ), set image height attr ( image scaling, not resizing )
-				<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use <code>[post_thumbnail]</code> shortcode as fallback while post content dont have any images. '
+				<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use <code>[featured_image]</code> shortcode as fallback while post content dont have any images. '
 			 ),
 			'post_meta' => array(
 				'group' 	=> 'Post',
@@ -471,30 +487,29 @@ class W4PL_Helper_Posts
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		return $content;
 	}
-	public static function post_thumbnail( $attr, $cont )
+
+	public static function featured_image( $attr, $cont )
 	{
-		if ( isset( $attr['size'] ) )
-		{ $size = $attr['size']; }
+		if ( isset( $attr['size'] ) ) {
+			$size = $attr['size'];
+		} elseif ( isset( $attr['width'] ) ) {
+			if ( isset( $attr['height'] ) ) {
+				$height = $attr['height'];
+			} else {
+				$height = 9999;
+			}
 
-		elseif ( isset( $attr['width'] ) ) {
-			if ( isset( $attr['height'] ) )
-			{ $height = $attr['height']; }
-			else
-			{ $height = 9999; }
 			$size = array( $attr['width'], $height );
-		}
-
-		elseif ( isset( $attr['height'] ) )
-		{
-			if ( isset( $attr['width'] ) )
-			{ $width = $attr['width']; }
-			else
-			{ $width = 9999; }
+		} elseif ( isset( $attr['height'] ) ) {
+			if ( isset( $attr['width'] ) ) {
+				$width = $attr['width'];
+			} else {
+				$width = 9999;
+			}
 			$size = array( $width, $attr['height'] );
+		} else {
+			$size = 'post-thumbnail';
 		}
-		else
-		{ $size = 'post-thumbnail'; }
-
 
 		$post_id = get_the_ID();
 		$post_thumbnail_id = ( int ) get_post_thumbnail_id( $post_id );
@@ -520,6 +535,11 @@ class W4PL_Helper_Posts
 		return '';
 	}
 
+	public static function post_thumbnail( $attr, $cont )
+	{
+		return self::featured_image( $attr, $cont );
+	}
+
 
 	/**
 	 * Display Image From Post Content
@@ -536,37 +556,42 @@ class W4PL_Helper_Posts
 
 
 		$position = '';
-		if ( isset( $attr['position'] ) )
-		{ $position = $attr['position']; }
+		if ( isset( $attr['position'] ) ) {
+			$position = $attr['position'];
+		}
 
-		preg_match_all( "/<img[^>]*src\s*=\s*[\'\"]( [+:%\/\?~=&;\\\( \ ),._a-zA-Z0-9-]* )[\'\" ]?/i", $post->post_content, $images, PREG_SET_ORDER );
-		if ( !empty( $images ) )
-		{
+		preg_match_all( "/<img[^>]*src\s*=\s*[\'\"]([+:%\/\?~=&;\\\(\),._a-zA-Z0-9-]*)[\'\"]?/i", $post->post_content, $images, PREG_SET_ORDER );
+
+		if ( ! empty( $images ) ) {
 			$image = $position == 'last' ? array_pop( $images ) : array_shift( $images );
-			if ( ! isset( $image['1'] ) || empty( $image['1'] ) )
-			{ return $return; }
+
+			if ( ! isset( $image['1'] ) || empty( $image['1'] ) ) {
+				return $return;
+			}
 
 			$attrs = array( 'src' => $image['1'] );
-			foreach( array( 'width', 'height', 'class' ) as $a ) {
-				if ( isset( $attr[$a] ) )
-				{ $attrs[$a] = $attr[$a]; }
+			foreach( array( 'width', 'height', 'class' ) as $attribute ) {
+				if ( isset( $attr[ $attribute ] ) ) {
+					$attrs[ $attribute ] = $attr[ $attribute ];
+				}
 			}
 
 			$return = rtrim( "<img" );
-			foreach ( $attrs as $name => $value )
-			{ $return .= " $name=" . '"' . $value . '"'; }
+			foreach ( $attrs as $name => $value ) {
+				$return .= " $name=" . '"' . $value . '"';
+			}
 			$return .= ' />';
 		}
 
 		// if no images were found & use_fallback is set to true( bool )
-		elseif ( isset( $attr['use_fallback'] ) && !empty( $attr['use_fallback'] ) )
-		{
+		elseif ( isset( $attr['use_fallback'] ) && !empty( $attr['use_fallback'] ) ) {
 			// use post thumbnail as fallback, $attr is already similar for both methods
 			$return = self::post_thumbnail( $attr, $cont );
 
 			// @ attachment_thumbnail
-			if ( empty( $return ) )
-			{ $return = self::attachment_thumbnail( $attr, $cont ); }
+			if ( empty( $return ) ) {
+				$return = self::attachment_thumbnail( $attr, $cont );
+			}
 		}
 
 		return $return;
@@ -580,12 +605,15 @@ class W4PL_Helper_Posts
 			$attr = array();
 		}
 
-		if ( isset( $attr['key'] ) )
-		{ $meta_key = $attr['key']; }
-		elseif ( isset( $attr['meta_key'] ) )
-		{ $meta_key = $attr['meta_key']; }
-		if ( ! $meta_key )
-		{ return; }
+		if ( isset( $attr['key'] ) ) {
+			$meta_key = $attr['key'];
+		} elseif ( isset( $attr['meta_key'] ) ) {
+			$meta_key = $attr['meta_key'];
+		}
+
+		if ( empty( $meta_key ) ) {
+			return;
+		}
 
 		$single = ! ( isset( $attr ) && is_array( $attr ) && array_key_exists( 'multiple', $attr ) ?  ( bool ) $attr['multiple'] : false );
 
