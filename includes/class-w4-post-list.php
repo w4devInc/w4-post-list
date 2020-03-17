@@ -26,7 +26,7 @@ final class W4_Post_List
 	{
 		$this->plugin_name 		= 'W4 Post List';
 		$this->plugin_slug 		= 'w4pl';
-		$this->plugin_version 	= '2.1.8';
+		$this->plugin_version 	= '2.1.9';
 		$this->plugin_dir 		= plugin_dir_path( W4PL_PLUGIN_FILE );
 		$this->plugin_url 		= plugin_dir_url( W4PL_PLUGIN_FILE );
 		$this->plugin_basename 	= plugin_basename( W4PL_PLUGIN_FILE  );
