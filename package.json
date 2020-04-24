@@ -1,0 +1,27 @@
+{
+  "name": "w4-post-list",
+  "version": "2.1.9",
+  "description": "WordPress plugin",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shazzad/w4-post-list.git"
+  },
+  "author": "shazzad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shazzad/w4-post-list/issues"
+  },
+  "homepage": "https://github.com/shazzad/w4-post-list#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "7.1.3"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch": "^3.13.1"
+  }
+}

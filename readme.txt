@@ -117,13 +117,15 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 
 == Screenshots ==
 
-1. Config Panel
+1. Settings Panel
 2. Preview 1
 3. Preview 2
 
 == Changelog ==
+= 2.2.0 =
+* New: Add a list to content editor using Gutenberg block editor.
 = 2.1.8 =
-* New: Exclude author capability 
+* New: Exclude author capability
 = 2.1.7 =
 * Fixed: Using 0 for Post author to restrict posts from current user wasn't working
 = 2.1.6 =
@@ -337,6 +339,8 @@ If you find this plugin useful, please add your <a href="http://wordpress.org/su
 
 
 == Upgrade Notice ==
+= 2.2.0 =
+* New: Add a list to content editor using Gutenberg block editor.
 = 2.1.7 =
 * Fixed: Using 0 for Post author to restrict posts from current user wasn't working
 = 2.1.6 =
