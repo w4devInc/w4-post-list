@@ -42,7 +42,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_Interface_List
 		#W4PL_Utils::d($this->options['list_type']);
 
 		$template = $this->list_type_posts_template();
-		$this->template = trim($template);
+		$this->template = trim( $template );
 
 		// html
 		$this->html  = '';
@@ -54,7 +54,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_Interface_List
 
 
 		// let helper classes extend or modify this class
-		do_action_ref_array('w4pl/parse_html', array(&$this));
+		do_action_ref_array( 'w4pl/parse_html', array(&$this) );
 
 		// return the template
 		return "<!--W4PL_List_{$this->id}-->\n" . $this->html . "\n<!--END_W4PL_List_{$this->id}-->\n";
