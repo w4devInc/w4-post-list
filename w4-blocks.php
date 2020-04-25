@@ -18,11 +18,17 @@ function w4pl_register_block() {
     register_block_type(
 		'w4-post-list/postlist',
 		array(
+			'title' => __( 'W4 Post List', 'w4pl' ),
+			'description' => __( 'Display a list from w4 post list plugin.', 'w4pl' ),
+			'supports' 	=> array(
+				'align' => false,
+				'html' => false,
+			),
 	        'editor_script' => 'w4pl_block',
 			'attributes' => array(
 				'listId' => array(
 					'type' => 'string',
-					'default' => 0
+					'default' => '0'
 				),
 				'className' => array(
 					'type' => 'string',
@@ -39,6 +45,7 @@ function w4pl_register_block() {
 }
 add_action( 'init', 'w4pl_register_block' );
 
+
 function w4pl_render_block_postlist( $attributes ) {
 	if ( ! empty( $attributes['listId'] ) ) {
 		// include className if used
@@ -50,6 +57,6 @@ function w4pl_render_block_postlist( $attributes ) {
 
 		return $before . do_shortcode( '[postlist '. $attributes['listId'] .']' ) . $after;
 	} else {
-		return __( 'No list' );
+		return __( 'Missing list id', 'w4pl' );
 	}
 }

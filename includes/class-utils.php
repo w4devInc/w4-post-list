@@ -238,20 +238,19 @@ class W4PL_Utils
 	}
 
 	/* Retrive latest updates about Post List plugin */
-	public static function plugin_news($echo = true, $refresh = false)
-	{
+	public static function plugin_news( $echo = true, $refresh = false ) {
 		$transient = 'w4pl_plugin_news';
 		$transient_old = $transient . '_old';
 		$expiration = 7200;
 
 		$output = get_transient($transient);
 
-		if ($refresh || !$output || empty($output)) {
+		if ( $refresh || ! $output || empty( $output ) ) {
 			$request = wp_remote_request('http://w4dev.com/w4pl.txt');
 			$content = wp_remote_retrieve_body($request);
 
-			if(is_wp_error($content)) {
-				$output = get_option($transient_old);
+			if ( is_wp_error( $content ) ) {
+				$output = get_option( $transient_old );
 			} else {
 				$output = $content;
 				// Save last new forever if a newer is not available..
@@ -261,9 +260,9 @@ class W4PL_Utils
 			set_transient($transient, $output, $expiration);
 		}
 
-		$output = preg_replace('/[\n]/', '<br />', $output);
+		$output = preg_replace( '/[\n]/', '<br />', $output );
 
-		if (! $echo) {
+		if ( ! $echo ) {
 			return $output;
 		} else {
 			echo $output;

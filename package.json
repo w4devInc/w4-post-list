@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "build": "wp-scripts build",
+    "build:custom": "wp-scripts build --output-path=blocks --output-filename=w4-post-list.js"
   },
   "repository": {
     "type": "git",

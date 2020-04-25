@@ -25,19 +25,22 @@ abstract class W4PL_List
 
 		$return = '';
 
+		// the query parameter for pagination
+		$paged_qp = 'page'. $this->id;
 
-		$paged_qp = 'page'. $this->id; // the query parameter for pagination
-		$base = remove_query_arg($paged_qp, get_pagenum_link()) . '%_%'; // remove current lists query parameter from base, other lists qr will be kept
+		// remove current lists query parameter from base, other lists qr will be kept
+		$base = remove_query_arg($paged_qp, get_pagenum_link()) . '%_%';
+
 		// if base already have a query parameter, use &.
-		if( strpos($base, '?' ) )
-		{ $format = '&'. $paged_qp . '=%#%'; }
-		else
-		{ $format = '?'. $paged_qp . '=%#%'; }
-		
-		$base = str_replace('#038;', '&', $base);
+		if ( strpos( $base, '?' ) ) {
+			$format = '&'. $paged_qp . '=%#%';
+		} else {
+			$format = '?'. $paged_qp . '=%#%';
+		}
 
-		if( in_array( $nav_type, array('plain', 'list') ) )
-		{
+		$base = str_replace( '#038;', '&', $base );
+
+		if ( in_array( $nav_type, array( 'plain', 'list' ) ) ) {
 			$big = 10;
 			$pag_args = array(
 				'type' 		=> $nav_type,
@@ -53,36 +56,37 @@ abstract class W4PL_List
 			);
 
 			$return = paginate_links( $pag_args );
-		}
 
-		// default navigation
-		else
-		{
-			if( $paged == 2 )
+		} else {
+			// default navigation
+			if ( $paged == 2 ) {
 				$return .= '<a href="'. remove_query_arg( $paged_qp ) .'" class="prev page-numbers prev_text">'. $prev_text . '</a>';
-			elseif( $paged > 2 )
+			} elseif ( $paged > 2 ) {
 				$return .= '<a href="'. add_query_arg( $paged_qp, ($paged - 1) ) .'" class="prev page-numbers prev_text">'. $prev_text . '</a>';
-			if( $max_num_pages > $paged )
+			}
+
+			if ( $max_num_pages > $paged ) {
 				$return .= '<a href="'. add_query_arg( $paged_qp, ($paged + 1) ) .'" class="next page-numbers next_text">'. $next_text . '</a>';
+			}
 		}
 
-		if( !empty($return) )
-		{
+		if ( ! empty( $return ) ) {
 			$class = 'navigation';
 			$use_ajax = isset($attr['ajax']) ? (bool) $attr['ajax'] : false;
-			if( $use_ajax )
-			{
+
+			if ( $use_ajax ) {
 				$class .= ' ajax-navigation';
-				$this->js .= '(function($){$(document).ready(function(){$("#w4pl-list-'. $this->id 
-				. ' .navigation a.page-numbers").live("click", function(){var that = $(this), parent = $("#w4pl-list-'. $this->id 
+				$this->js .= '(function($){$(document).ready(function(){$("#w4pl-list-'. $this->id
+				. ' .navigation a.page-numbers").live("click", function(){var that = $(this), parent = $("#w4pl-list-'. $this->id
 				. '");parent.addClass("w4pl-loading");parent.load( that.attr("href") + " #" + parent.attr("id") + " .w4pl-inner", function(e){parent.removeClass("w4pl-loading");});return false;});});})(jQuery) ;';
 			}
 
 			$return = '<div class="'. $class .'">'. $return . '</div>';
 		}
-		
+
 		return $return;
 	}
+
 	public function init_posts_groups()
 	{
 		$groupby = $this->options['groupby'];
@@ -90,33 +94,29 @@ abstract class W4PL_List
 
 		// new @ 1.9.9.6
 		// allow group using modified date
-		if( in_array($groupby, array('year', 'month', 'yearmonth') ) && !in_array($this->options['groupby_time'], array('post_date', 'post_modified')) )
-		{ $groupby_time = 'post_date'; }
-		else
-		{ $groupby_time = $this->options['groupby_time']; }
+		if ( in_array( $groupby, array( 'year', 'month', 'yearmonth' ) ) && ! in_array( $this->options['groupby_time'], array( 'post_date', 'post_modified' ) ) ) {
+			$groupby_time = 'post_date';
+		} else {
+			$groupby_time = $this->options['groupby_time'];
+		}
 
 		// post parent
-		if( 'parent' == $groupby )
-		{
-			foreach( $this->posts_query->posts as $index => $post )
-			{
-				if( $post->post_parent )
-				{
+		if ( 'parent' == $groupby ) {
+			foreach ( $this->posts_query->posts as $index => $post ) {
+				if ( $post->post_parent ) {
 					$parent = get_post( $post->post_parent );
 					$group_id = $parent->ID;
-					if( !isset($this->groups[$group_id]) ){
-						$this->groups[$group_id] = array(
+					if ( ! isset( $this->groups[ $group_id ] ) ) {
+						$this->groups[ $group_id ] = array(
 							'id' 	=> $group_id,
 							'title' => $parent->post_title,
-							'url' 	=> get_permalink($parent->ID)
+							'url' 	=> get_permalink( $parent->ID )
 						);
 					}
-				}
-				else
-				{
+				} else {
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
-						$this->groups[$group_id] = array(
+					if ( ! isset( $this->groups[ $group_id] ) ) {
+						$this->groups[ $group_id ] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
 							'url' 	=> ''
@@ -124,36 +124,31 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
-					$this->groups[$group_id]['post_ids'] = array();
+				if ( ! isset( $this->groups[ $group_id ]['post_ids'] ) ) {
+					$this->groups[ $group_id ]['post_ids'] = array();
+				}
 
-				$this->groups[$group_id]['post_ids'][] = $post->ID;
+				$this->groups[ $group_id ]['post_ids'][] = $post->ID;
 			}
-		}
 
-		// terms
-		elseif( 0 === strpos($groupby, 'tax_') )
-		{
+		} elseif ( 0 === strpos($groupby, 'tax_') ) {
+			// terms
 			$tax = str_replace('tax_', '', $groupby);
-			foreach( $this->posts_query->posts as $index => $post )
-			{
-				if( $terms = get_the_terms($post, $tax) )
-				{
-					$term = array_shift($terms);
+			foreach ( $this->posts_query->posts as $index => $post ) {
+				if ( $terms = get_the_terms( $post, $tax ) ) {
+					$term = array_shift( $terms );
 					$group_id = $term->term_id;
-					if( !isset($this->groups[$group_id]) ){
-						$this->groups[$group_id] = array(
+					if ( ! isset( $this->groups[ $group_id ] ) ) {
+						$this->groups[ $group_id ] = array(
 							'id' 	=> $group_id,
 							'title' => $term->name,
-							'url' 	=> get_term_link($term)
+							'url' 	=> get_term_link( $term )
 						);
 					}
-				}
-				else
-				{
+				} else {
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
-						$this->groups[$group_id] = array(
+					if ( ! isset( $this->groups[ $group_id ] ) ) {
+						$this->groups[ $group_id ] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
 							'url' 	=> ''
@@ -161,22 +156,22 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
 			}
 		}
 
-		elseif( 'author' == $groupby )
+		elseif ( 'author' == $groupby )
 		{
-			foreach( $this->posts_query->posts as $index => $post )
+			foreach ( $this->posts_query->posts as $index => $post )
 			{
-				if( $post->post_author )
+				if ( $post->post_author )
 				{
 					$parent = get_userdata( $post->post_author );
 					$group_id = $parent->ID;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => $parent->display_name,
@@ -187,7 +182,7 @@ abstract class W4PL_List
 				else
 				{
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
@@ -196,7 +191,7 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
@@ -204,14 +199,14 @@ abstract class W4PL_List
 		}
 
 		// year
-		elseif( 'year' == $groupby )
+		elseif ( 'year' == $groupby )
 		{
-			foreach( $this->posts_query->posts as $index => $post )
+			foreach ( $this->posts_query->posts as $index => $post )
 			{
-				if( $year = mysql2date( 'Y', $post->{$groupby_time} ) )
+				if ( $year = mysql2date( 'Y', $post->{$groupby_time} ) )
 				{
 					$group_id = $year;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => $year,
@@ -222,7 +217,7 @@ abstract class W4PL_List
 				else
 				{
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
@@ -231,7 +226,7 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
@@ -240,17 +235,17 @@ abstract class W4PL_List
 
 
 		// month
-		elseif( 'month' == $groupby )
+		elseif ( 'month' == $groupby )
 		{
-			foreach( $this->posts_query->posts as $index => $post )
+			foreach ( $this->posts_query->posts as $index => $post )
 			{
 				$month = mysql2date( 'm', $post->{$groupby_time} );
 				$year = mysql2date( 'Y', $post->{$groupby_time} );
 
-				if( $month && $year )
+				if ( $month && $year )
 				{
 					$group_id = $month;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => mysql2date( 'F', $post->{$groupby_time} ),
@@ -261,7 +256,7 @@ abstract class W4PL_List
 				else
 				{
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
@@ -270,7 +265,7 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
@@ -278,17 +273,17 @@ abstract class W4PL_List
 		}
 
 		// month
-		elseif( 'yearmonth' == $groupby )
+		elseif ( 'yearmonth' == $groupby )
 		{
-			foreach( $this->posts_query->posts as $index => $post )
+			foreach ( $this->posts_query->posts as $index => $post )
 			{
 				$month = mysql2date( 'm', $post->{$groupby_time} );
 				$year = mysql2date( 'Y', $post->{$groupby_time} );
 
-				if( $year && $month )
+				if ( $year && $month )
 				{
 					$group_id = $year . '-' . $month;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => mysql2date( 'Y, F', $post->{$groupby_time} ),
@@ -299,7 +294,7 @@ abstract class W4PL_List
 				else
 				{
 					$group_id = 0;
-					if( !isset($this->groups[$group_id]) ){
+					if ( !isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
@@ -308,7 +303,7 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
@@ -317,15 +312,15 @@ abstract class W4PL_List
 
 
 		// meta_value
-		elseif( 'meta_value' == $groupby )
+		elseif ( 'meta_value' == $groupby )
 		{
 			$groupby_meta_key = $this->options['groupby_meta_key'];
-			foreach( $this->posts_query->posts as $index => $post )
+			foreach ( $this->posts_query->posts as $index => $post )
 			{
-				if( $value = get_post_meta($post->ID, $groupby_meta_key, true) )
+				if ( $value = get_post_meta($post->ID, $groupby_meta_key, true) )
 				{
 					$group_id = $value;
-					if( ! isset($this->groups[$group_id]) ){
+					if ( ! isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => $value,
@@ -336,7 +331,7 @@ abstract class W4PL_List
 				else
 				{
 					$group_id = 0;
-					if( ! isset($this->groups[$group_id]) ){
+					if ( ! isset($this->groups[$group_id]) ){
 						$this->groups[$group_id] = array(
 							'id' 	=> $group_id,
 							'title' => 'Unknown',
@@ -345,7 +340,7 @@ abstract class W4PL_List
 					}
 				}
 
-				if( !isset($this->groups[$group_id]['post_ids']) )
+				if ( !isset($this->groups[$group_id]['post_ids']) )
 					$this->groups[$group_id]['post_ids'] = array();
 
 				$this->groups[$group_id]['post_ids'][] = $post->ID;
@@ -354,13 +349,13 @@ abstract class W4PL_List
 
 		#print_r( $this->options['group_order'] );
 
-		if( isset($this->options['group_order']) && !empty($this->options['group_order']) )
+		if ( isset($this->options['group_order']) && !empty($this->options['group_order']) )
 		{
-			if( 'ASC' == $this->options['group_order'] )
+			if ( 'ASC' == $this->options['group_order'] )
 			{
 				uasort( $this->groups, array($this, 'cmp_asc') );
 			}
-			elseif( 'DESC' == $this->options['group_order'] )
+			elseif ( 'DESC' == $this->options['group_order'] )
 			{
 				uasort( $this->groups, array($this, 'cmp_desc') );
 			}
@@ -414,7 +409,7 @@ abstract class W4PL_List
 
 		$content = isset( $m[5] ) ? $m[5] : null;
 
-		if( !empty($callback) )
+		if ( !empty($callback) )
 			return $m[1] . call_user_func( $callback, $attr, $content, $this ) . $m[6];
 		else
 			return $m[1] . $content . $m[6];

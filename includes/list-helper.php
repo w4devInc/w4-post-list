@@ -411,11 +411,11 @@ class W4PL_List_Helper
 		die();
 	}
 
-	public static function list_options_print_scripts($options)
+	public static function list_options_print_scripts( $options )
 	{
-		$options = apply_filters('w4pl/pre_get_options', $options);
+		$options = apply_filters( 'w4pl/pre_get_options', $options );
 
-		wp_print_styles(array ('w4pl_form', 'w4pl_admin'));
+		wp_print_styles( array('w4pl_form', 'w4pl_admin' ) );
 		wp_print_scripts( 'w4pl_form' );
 
 		?><style type="text/css"><?php do_action( 'w4pl/admin_print_css' ); ?></style>
@@ -515,14 +515,12 @@ class W4PL_List_Helper
 	});
 
 	// Adjust form height
-	function w4pl_adjust_height()
-	{
+	function w4pl_adjust_height() {
 		var miHeight = $('.w4pl_active .w4pl_group_fields').outerHeight();
 		$('#w4pl_list_options').css('minHeight', miHeight);
 	}
 
-	function w4pl_get_form( data, showTab )
-	{
+	function w4pl_get_form( data, showTab )	{
 		/* onchange post type, refresh the form */
 		$('#publish').addClass('disabled');
 
@@ -536,8 +534,7 @@ class W4PL_List_Helper
 		$('#w4pl_list_options').append('<div id="w4pl_lo"></div>');
 		//return false;
 
-		$.post( ajaxurl, data, function(r)
-		{
+		$.post( ajaxurl, data, function(r) {
 			$('#w4pl_list_options').replaceWith(r);
 
 			$('#'+ showTab).addClass('w4pl_active');
@@ -614,11 +611,12 @@ class W4PL_List_Helper
 		global $wp_post_statuses;
 
 		$return = array();
-		foreach( $wp_post_types as $post_type => $post_type_object ){
-			if(	!$post_type_object->public )
+		foreach ( $wp_post_types as $post_type => $post_type_object ){
+			if ( ! $post_type_object->public ) {
 				continue;
+			}
 
-			$return[$post_type] = $post_type_object->labels->name;
+			$return[ $post_type ] = $post_type_object->labels->name;
 		}
 
 		return $return;
