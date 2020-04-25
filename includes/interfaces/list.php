@@ -7,10 +7,6 @@
  * @url http://w4dev.com
 **/
 
-interface W4PL_Interface_List
-{
+interface W4PL_Interface_List {
 	public function get_html();
 }
-
-
-?>

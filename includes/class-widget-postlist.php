@@ -9,7 +9,7 @@
 **/
 
 
-class W4PL_Widget extends WP_Widget
+class W4PL_Widget_Postlist extends WP_Widget
 {
 	function __construct()
 	{
@@ -59,7 +59,7 @@ class W4PL_Widget extends WP_Widget
 		?>
 		<p>
 			<strong><?php _e('Title:', 'w4pl'); ?></strong>
-            <br /><input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" 
+            <br /><input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text"
 			value="<?php echo $title; ?>" />
 		</p>
 		<p>

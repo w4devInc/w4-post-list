@@ -61,7 +61,7 @@ class W4PL_Helper_Date_Query
 		<div id="w4pl_date_query_value_clone" style="display:none;">
 			<div class="item">
 				<input type="text" class="wff wfft_text wffi_w4pl_date_query_value">
-				<a class="w4pl_date_query_value_add button" href="#">+</a> 
+				<a class="w4pl_date_query_value_add button" href="#">+</a>
 				<a class="w4pl_date_query_value_del button" href="#">-</a>
 			</div>
 		</div>';
@@ -81,6 +81,7 @@ class W4PL_Helper_Date_Query
 		));
 
 		$html .= '<p class="wffdw2">';
+		$html .= '<br />All dates should be used in Y-m-d format. ie: 2020-12-31';
 		$html .= '<br />For the value field, you can also use following shortcodes to apply dynamic value:';
 		$html .= '<br /><code>[w4pl_date day=+6 hour=-1 format="Y-m-d H:i:s"]</code> - for displaying datetime based on current time';
 		$html .= '<br /><code>[w4pl_time day=+6 hour=-1]</code> - for displaying timestamp based on current time';
@@ -113,15 +114,15 @@ class W4PL_Helper_Date_Query
 		extract( $data );
 
 		return '<tr class="wff_clone_item">'
-			. '<td class="column">' 
+			. '<td class="column">'
 			. w4pl_form_child_field_html( array(
 				'name' 			=> 'w4pl[date_query][column][]',
 				'type' 			=> 'select',
 				'option' 		=> array(
-					'post_date' 		=> 'post_date', 
-					'post_date_gmt' 	=> 'post_date_gmt', 
+					'post_date' 		=> 'post_date',
+					'post_date_gmt' 	=> 'post_date_gmt',
 					'post_modified' 	=> 'post_modified',
-					'post_modified_gmt' => 'post_modified_gmt', 
+					'post_modified_gmt' => 'post_modified_gmt',
 					'comment_date' 		=> 'comment_date',
 					'comment_date_gmt' 	=> 'comment_date_gmt',
 					'user_registered' 	=> 'user_registered'
@@ -129,21 +130,21 @@ class W4PL_Helper_Date_Query
 				'value' => $column
 			))
 			. '</td>'
-			. '<td class="key">' 
+			. '<td class="key">'
 			. w4pl_form_child_field_html( array(
 				'name' 			=> 'w4pl[date_query][key][]',
 				'type' 			=> 'select',
 				'option' 		=> array(
-					'after' 		=> 'after', 
-					'before' 		=> 'before', 
+					'after' 		=> 'after',
+					'before' 		=> 'before',
 					'year' 			=> 'year',
-					'month' 		=> 'month', 
+					'month' 		=> 'month',
 					'monthnum' 		=> 'monthnum',
 					'week' 			=> 'week',
-					'w' 			=> 'w', 
-					'dayofyear' 	=> 'dayofyear', 
+					'w' 			=> 'w',
+					'dayofyear' 	=> 'dayofyear',
 					'dayofweek' 	=> 'dayofweek',
-					'dayofweek_iso' => 'dayofweek_iso', 
+					'dayofweek_iso' => 'dayofweek_iso',
 					'hour' 			=> 'hour',
 					'minute' 		=> 'minute',
 					'second' 		=> 'second'
@@ -151,7 +152,7 @@ class W4PL_Helper_Date_Query
 				'value' => $key
 			))
 			. '</td>'
-			. '<td class="compare">' 
+			. '<td class="compare">'
 			. w4pl_form_child_field_html( array(
 				'name' 			=> 'w4pl[date_query][compare][]',
 				'input_class' 	=> 'w4pl_field_compare',
@@ -223,7 +224,7 @@ class W4PL_Helper_Date_Query
 
 					$dq[ $dq['key'] ] = $dq['value'];
 					unset($dq['key'], $dq['value']);
-					
+
 					$list->posts_args['date_query'][] = $dq;
 				}
 				$list->posts_args['date_query']['relation'] = $list->options['date_query_relation'];

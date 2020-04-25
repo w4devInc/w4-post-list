@@ -1,5 +1,5 @@
 /**
- * W4 Post List 
+ * W4 Post List
  * Admin CSS
 **/
 
@@ -141,9 +141,9 @@ border-bottom:1px solid #e1e1e1;
 }
 .w4pl_group_title{
 	margin:0;
-	
+
 	width:17%;
-	
+
 	font-size:13px;
 	padding:13px;
 	border-bottom:1px solid #e2dddb;
@@ -159,12 +159,12 @@ border-bottom:1px solid #e1e1e1;
 }
 .w4pl_group_fields{
 	display:none;
-	
+
 	position:absolute;
-	
+
 	left:17%;
 	top:0;
-	
+
 	width:83%;
 }
 .w4pl_group_fields_wrap{
@@ -203,9 +203,6 @@ body.rtl .wfflw, body.rtl .wffdw{
 body.rtl .wffewi_w4pl_css, .wffewi_w4pl_js{
 	margin-right:0 !important;
 }
-.wfft_textarea{
-	background-color:#f4f2f2 !important;
-}
 table.wff_clone_table td,
 table.wff_clone_table th{
 	padding-right:0;
@@ -218,5 +215,5 @@ table.wff_clone_table th:last-child{
 #w4pl_date_query_table .key,
 #w4pl_date_query_table .compare,
 #w4pl_date_query_table select{
-	width:80px;
+	width:100px;
 }
