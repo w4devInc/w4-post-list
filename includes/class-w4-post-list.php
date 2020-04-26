@@ -5,7 +5,7 @@ final class W4_Post_List
 {
 	protected $plugin_name;
 	protected $plugin_slug;
-	protected $plugin_version;
+	protected $plugin_version = '2.3.0';
 	protected $plugin_dir;
 	protected $plugin_url;
 	protected $plugin_basename;
@@ -26,7 +26,6 @@ final class W4_Post_List
 	{
 		$this->plugin_name 		= 'W4 Post List';
 		$this->plugin_slug 		= 'w4pl';
-		$this->plugin_version 	= '2.2.0';
 		$this->plugin_dir 		= plugin_dir_path( W4PL_PLUGIN_FILE );
 		$this->plugin_url 		= plugin_dir_url( W4PL_PLUGIN_FILE );
 		$this->plugin_basename 	= plugin_basename( W4PL_PLUGIN_FILE  );
@@ -181,9 +180,12 @@ final class W4_Post_List
 
 	public function register_scripts()
 	{
-		wp_register_style(  'w4pl_form', 				$this->plugin_url() . 'assets/form.css'  );
-		wp_register_script( 'w4pl_form', 				$this->plugin_url() . 'assets/form.js', array( 'jquery', 'jquery-ui-sortable' )  );
-		wp_register_style(  'w4pl_admin', 				$this->plugin_url() . 'assets/admin.css'  );
-		wp_register_style(  'w4pl-admin-documentation', $this->plugin_url() . 'assets/admin-documentation.css'  );
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['w4pl_debug'] ) ? '' : '.min';
+
+		wp_register_style(  'w4pl_form', 				$this->plugin_url() . 'assets/css/form'. $min .'.css'  );
+		wp_register_style(  'w4pl_admin', 				$this->plugin_url() . 'assets/css/admin'. $min .'.css'  );
+		wp_register_style(  'w4pl-admin-documentation', $this->plugin_url() . 'assets/css/admin-documentation'. $min .'.css'  );
+
+		wp_register_script( 'w4pl_form', 				$this->plugin_url() . 'assets/js/form'. $min .'.js', array( 'jquery', 'jquery-ui-sortable' )  );
 	}
 }

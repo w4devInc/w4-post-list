@@ -1,72 +1,77 @@
-# Copyright (C) 2020 Shazzad Hossain Khan
-# This file is distributed under the same license as the W4 Post List plugin.
+# Copyright 2010-2020 W4 Post List.
 msgid ""
 msgstr ""
-"Project-Id-Version: W4 Post List 2.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: W4 Post List\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
+"POT-Creation-Date: 2020-04-26 18:43:41+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-24T11:09:26+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
-"X-Domain: w4pl\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: W4 Post List <sajib1223@gmail.com>\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#. Plugin Name of the plugin
-#: includes/class-w4-post-list.php:167
-msgid "W4 Post List"
+#: admin/class-admin-lists-table-columns.php:36
+#: admin/views/list-edit-form.php:26 admin/views/list-edit-form.php:33
+#: includes/list-helper.php:121 includes/list-helper.php:128
+msgid "List Type"
 msgstr ""
 
-#. Plugin URI of the plugin
-msgid "http://w4dev.com/plugins/w4-post-list"
+#: admin/class-admin-lists-table-columns.php:37
+msgid "Shortcode"
 msgstr ""
 
-#. Description of the plugin
-msgid "This plugin lets you create a list of - Posts, Terms, Users, Terms + Posts and Users + Posts. Outputs are completely customizable using Shortcode, HTML & CSS. Read documentation plugin usage."
+#: admin/class-admin-lists-table-columns.php:109
+msgid "Unregistered"
 msgstr ""
 
-#. Author of the plugin
-msgid "Shazzad Hossain Khan"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "http://w4dev.com/about"
-msgstr ""
-
-#: admin/pages/page-docs.php:21
-#: admin/pages/page-docs.php:22
-msgid "Documentation"
-msgstr ""
-
-#: admin/pages/page-docs.php:70
-msgid "Docs"
-msgstr ""
-
-#: admin/pages/page-lists.php:30
+#: admin/class-admin-main.php:21
 msgid "Lists"
 msgstr ""
 
-#: admin/pages/page-lists.php:41
-#: admin/views/documentation-plugin-updates.php:2
-msgid "Plugin Updates"
+#: admin/class-admin-main.php:22
+msgid "Docs"
 msgstr ""
 
-#: admin/pages/page-lists.php:146
+#: admin/class-admin-main.php:36
+#. translators: %s: html input field to copy shortcode
 msgid "List updated. Shortcode %s"
 msgstr ""
 
-#: admin/pages/page-lists.php:151
+#: admin/class-admin-main.php:39
+msgid "List updated."
+msgstr ""
+
+#: admin/class-admin-main.php:42
+#. translators: %s: html input field to copy shortcode
 msgid "List published. Shortcode %s"
 msgstr ""
 
-#: admin/pages/page-lists.php:153
+#: admin/class-admin-main.php:43
+msgid "List saved."
+msgstr ""
+
+#: admin/class-admin-main.php:45
+#. translators: %s: html input field to copy shortcode
 msgid "List submitted. Shortcode %s"
 msgstr ""
 
-#: admin/pages/page-lists.php:154
+#: admin/class-admin-main.php:47
+#. translators: %s: html input field to copy shortcode
 msgid "List scheduled. Shortcode %s"
+msgstr ""
+
+#: admin/pages/class-admin-page-docs.php:20
+#: admin/pages/class-admin-page-docs.php:21
+msgid "Documentation"
+msgstr ""
+
+#: admin/pages/class-admin-page-docs.php:38
+#. translators: %s: current plugin version
+msgid "Documentation: Version - <strong>%s</strong>"
 msgstr ""
 
 #: admin/views/documentation-plugin-links.php:2
@@ -77,6 +82,10 @@ msgstr ""
 msgid "Contact Author"
 msgstr ""
 
+#: admin/views/documentation-plugin-updates.php:2
+msgid "Plugin Updates"
+msgstr ""
+
 #: admin/views/documentation-template-tags.php:2
 msgid "Template Tags"
 msgstr ""
@@ -85,14 +94,25 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: admin/views/documentation-template.php:2
-#: admin/views/list-edit-form.php:47
+#: admin/views/documentation-template.php:2 admin/views/list-edit-form.php:47
 #: includes/list-helper.php:142
 msgid "Template"
 msgstr ""
 
 #: admin/views/documentation-template.php:5
-msgid "Template renders output of a list. Template can be designed with templace tags and HTML. Find few examples below."
+msgid ""
+"Template renders output of a list. Template can be designed with templace "
+"tags and HTML. Find few examples below."
+msgstr ""
+
+#: admin/views/documentation-template.php:8
+#: admin/views/documentation-template.php:16
+#: admin/views/documentation-template.php:24
+#: admin/views/documentation-template.php:40
+#: admin/views/documentation-template.php:48
+#: admin/views/documentation-template.php:63
+#: admin/views/documentation-template.php:71
+msgid "Example"
 msgstr ""
 
 #: admin/views/documentation-template.php:8
@@ -100,11 +120,15 @@ msgid "Simple Unordered Post List"
 msgstr ""
 
 #: admin/views/documentation-template.php:16
-msgid "Post list having excerpt limited to 20 words, and using post class on post wrapper element"
+msgid ""
+"Post list having excerpt limited to 20 words, and using post class on post "
+"wrapper element"
 msgstr ""
 
 #: admin/views/documentation-template.php:24
-msgid "Post list Group by Year (chose <em>Group By</em> option to Year while using this)."
+msgid ""
+"Post list Group by Year (chose <em>Group By</em> option to Year while using "
+"this)."
 msgstr ""
 
 #: admin/views/documentation-template.php:40
@@ -127,62 +151,109 @@ msgstr ""
 msgid "Usage"
 msgstr ""
 
-#: admin/views/documentation-usage.php:6
+#: admin/views/documentation-usage.php:4
+msgid "Shortcode usage"
+msgstr ""
+
+#: admin/views/documentation-usage.php:9
+#. translators: %s: postlist wrapper in code html tag
 msgid "Use shortcode %s with the list id to show a list on post/page content area"
 msgstr ""
 
-#: admin/views/documentation-usage.php:7
+#: admin/views/documentation-usage.php:13
 msgid "Ex:"
 msgstr ""
 
-#: admin/views/documentation-usage.php:11
+#: admin/views/documentation-usage.php:16
+msgid "PHP function usage"
+msgstr ""
+
+#: admin/views/documentation-usage.php:21
+#. translators: %s: php function name
 msgid "Display list using %s function"
 msgstr ""
 
-#: admin/views/list-edit-form.php:26
-#: admin/views/list-edit-form.php:33
-#: includes/list-helper.php:121
-#: includes/list-helper.php:128
-msgid "List Type"
-msgstr ""
-
-#: admin/views/list-edit-form.php:54
-#: includes/list-helper.php:149
+#: admin/views/list-edit-form.php:54 includes/list-helper.php:149
 msgid "Template Example"
 msgstr ""
 
-#: admin/views/list-edit-form.php:55
-#: includes/list-helper.php:150
+#: admin/views/list-edit-form.php:55 includes/list-helper.php:150
 msgid "Shortcodes"
 msgstr ""
 
-#: includes/class-config.php:17
-#: includes/list-helper.php:602
+#: includes/abstracts/class-list.php:23
+msgid "Previous"
+msgstr ""
+
+#: includes/abstracts/class-list.php:24
+msgid "Next"
+msgstr ""
+
+#: includes/class-config.php:17 includes/list-helper.php:599
 msgid "Posts"
 msgstr ""
 
-#: includes/class-config.php:18
-#: includes/list-helper.php:603
+#: includes/class-config.php:18 includes/list-helper.php:600
 msgid "Terms"
 msgstr ""
 
-#: includes/class-config.php:19
-#: includes/list-helper.php:604
+#: includes/class-config.php:19 includes/list-helper.php:601
 msgid "Users"
 msgstr ""
 
-#: includes/class-config.php:20
-#: includes/list-helper.php:605
+#: includes/class-config.php:20 includes/list-helper.php:602
 msgid "Terms + Posts"
 msgstr ""
 
-#: includes/class-config.php:21
-#: includes/list-helper.php:606
+#: includes/class-config.php:21 includes/list-helper.php:603
 msgid "Users + Posts"
 msgstr ""
 
-#: includes/class-utils.php:195
-#: includes/helpers/helper-terms.php:325
+#. Plugin Name of the plugin/theme
+msgid "W4 Post List"
+msgstr ""
+
+#: includes/class-post-types.php:23
+msgid "All Lists"
+msgstr ""
+
+#: includes/class-post-types.php:25 includes/class-post-types.php:27
+msgid "New List"
+msgstr ""
+
+#: includes/class-post-types.php:26
+msgid "Edit List"
+msgstr ""
+
+#: includes/class-post-types.php:28
+msgid "View List"
+msgstr ""
+
+#: includes/class-post-types.php:29
+msgid "Search List"
+msgstr ""
+
+#: includes/class-post-types.php:30
+msgid "No list found"
+msgstr ""
+
+#: includes/class-post-types.php:31
+msgid "No lists found in Trash"
+msgstr ""
+
+#: includes/class-utils.php:37
+msgid "Yes"
+msgstr ""
+
+#: includes/class-utils.php:38
+msgid "No"
+msgstr ""
+
+#: includes/class-utils.php:50
+msgid "Unauthorized Request"
+msgstr ""
+
+#: includes/class-utils.php:195 includes/helpers/helper-terms.php:325
 #: includes/helpers/helper-users.php:336
 msgid "ID"
 msgstr ""
@@ -191,8 +262,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/class-utils.php:197
-#: includes/helpers/helper-terms.php:326
+#: includes/class-utils.php:197 includes/helpers/helper-terms.php:326
 msgid "Name"
 msgstr ""
 
@@ -224,13 +294,11 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/class-utils.php:205
-#: includes/class-utils.php:215
+#: includes/class-utils.php:205 includes/class-utils.php:215
 msgid "None"
 msgstr ""
 
-#: includes/class-utils.php:206
-#: includes/helpers/helper-posts.php:972
+#: includes/class-utils.php:206 includes/helpers/helper-posts.php:972
 msgid "Include posts"
 msgstr ""
 
@@ -258,33 +326,16 @@ msgstr ""
 msgid "Custom field"
 msgstr ""
 
-#: includes/class-w4-post-list.php:168
-msgid "All Lists"
+#: includes/class-widget-postlist.php:18
+msgid "Display lists created with W4 Post List"
 msgstr ""
 
-#: includes/class-w4-post-list.php:170
-#: includes/class-w4-post-list.php:172
-msgid "New List"
+#: includes/class-widget-postlist.php:61
+msgid "Title:"
 msgstr ""
 
-#: includes/class-w4-post-list.php:171
-msgid "Edit List"
-msgstr ""
-
-#: includes/class-w4-post-list.php:173
-msgid "View List"
-msgstr ""
-
-#: includes/class-w4-post-list.php:174
-msgid "Search List"
-msgstr ""
-
-#: includes/class-w4-post-list.php:175
-msgid "No list found"
-msgstr ""
-
-#: includes/class-w4-post-list.php:176
-msgid "No lists found in Trash"
+#: includes/class-widget-postlist.php:66
+msgid "Select list:"
 msgstr ""
 
 #: includes/helpers/helper-no-items.php:40
@@ -336,7 +387,7 @@ msgstr ""
 msgid "AND"
 msgstr ""
 
-#: includes/helpers/helper-posts-date_query.php:172
+#: includes/helpers/helper-posts-date_query.php:173
 #: includes/helpers/helper-posts-meta_query.php:107
 #: includes/helpers/helper-posts-meta_query.php:143
 msgid "Remove"
@@ -346,52 +397,29 @@ msgstr ""
 msgid "Posts: Meta Query"
 msgstr ""
 
-#: includes/helpers/helper-posts.php:34
-#: includes/helpers/helper-posts.php:39
-#: includes/helpers/helper-posts.php:44
-#: includes/helpers/helper-posts.php:49
-#: includes/helpers/helper-posts.php:54
-#: includes/helpers/helper-posts.php:59
-#: includes/helpers/helper-posts.php:64
-#: includes/helpers/helper-posts.php:69
-#: includes/helpers/helper-posts.php:74
-#: includes/helpers/helper-posts.php:79
-#: includes/helpers/helper-posts.php:84
-#: includes/helpers/helper-posts.php:92
-#: includes/helpers/helper-posts.php:97
-#: includes/helpers/helper-posts.php:102
-#: includes/helpers/helper-posts.php:108
-#: includes/helpers/helper-posts.php:118
-#: includes/helpers/helper-posts.php:126
-#: includes/helpers/helper-posts.php:134
-#: includes/helpers/helper-posts.php:142
-#: includes/helpers/helper-posts.php:150
-#: includes/helpers/helper-posts.php:157
-#: includes/helpers/helper-posts.php:162
-#: includes/helpers/helper-posts.php:167
-#: includes/helpers/helper-posts.php:173
-#: includes/helpers/helper-posts.php:181
-#: includes/helpers/helper-posts.php:188
-#: includes/helpers/helper-posts.php:194
-#: includes/helpers/helper-posts.php:210
-#: includes/helpers/helper-posts.php:226
-#: includes/helpers/helper-posts.php:241
-#: includes/helpers/helper-posts.php:252
-#: includes/helpers/helper-posts.php:260
-#: includes/helpers/helper-posts.php:270
-#: includes/helpers/helper-posts.php:287
-#: includes/helpers/helper-posts.php:294
-#: includes/helpers/helper-posts.php:302
-#: includes/helpers/helper-posts.php:307
-#: includes/helpers/helper-posts.php:312
-#: includes/helpers/helper-posts.php:317
-#: includes/helpers/helper-posts.php:322
-#: includes/helpers/helper-posts.php:327
-#: includes/helpers/helper-posts.php:332
-#: includes/helpers/helper-posts.php:337
-#: includes/helpers/helper-posts.php:343
-#: includes/helpers/helper-posts.php:351
-#: includes/helpers/helper-posts.php:356
+#: includes/helpers/helper-posts.php:34 includes/helpers/helper-posts.php:39
+#: includes/helpers/helper-posts.php:44 includes/helpers/helper-posts.php:49
+#: includes/helpers/helper-posts.php:54 includes/helpers/helper-posts.php:59
+#: includes/helpers/helper-posts.php:64 includes/helpers/helper-posts.php:69
+#: includes/helpers/helper-posts.php:74 includes/helpers/helper-posts.php:79
+#: includes/helpers/helper-posts.php:84 includes/helpers/helper-posts.php:92
+#: includes/helpers/helper-posts.php:97 includes/helpers/helper-posts.php:102
+#: includes/helpers/helper-posts.php:108 includes/helpers/helper-posts.php:118
+#: includes/helpers/helper-posts.php:126 includes/helpers/helper-posts.php:134
+#: includes/helpers/helper-posts.php:142 includes/helpers/helper-posts.php:150
+#: includes/helpers/helper-posts.php:157 includes/helpers/helper-posts.php:162
+#: includes/helpers/helper-posts.php:167 includes/helpers/helper-posts.php:173
+#: includes/helpers/helper-posts.php:181 includes/helpers/helper-posts.php:188
+#: includes/helpers/helper-posts.php:194 includes/helpers/helper-posts.php:210
+#: includes/helpers/helper-posts.php:226 includes/helpers/helper-posts.php:241
+#: includes/helpers/helper-posts.php:252 includes/helpers/helper-posts.php:260
+#: includes/helpers/helper-posts.php:270 includes/helpers/helper-posts.php:287
+#: includes/helpers/helper-posts.php:294 includes/helpers/helper-posts.php:302
+#: includes/helpers/helper-posts.php:307 includes/helpers/helper-posts.php:312
+#: includes/helpers/helper-posts.php:317 includes/helpers/helper-posts.php:322
+#: includes/helpers/helper-posts.php:327 includes/helpers/helper-posts.php:332
+#: includes/helpers/helper-posts.php:337 includes/helpers/helper-posts.php:343
+#: includes/helpers/helper-posts.php:351 includes/helpers/helper-posts.php:356
 #: includes/helpers/helper-posts.php:361
 msgid "Output"
 msgstr ""
@@ -560,14 +588,44 @@ msgstr ""
 msgid "Display name"
 msgstr ""
 
-#: includes/widget.php:18
-msgid "Display lists created with W4 Post List"
+#: w4-blocks.php:22
+msgid "Display a list from w4 post list plugin."
 msgstr ""
 
-#: includes/widget.php:61
-msgid "Title:"
+#: w4-blocks.php:60
+msgid "No list selected."
 msgstr ""
 
-#: includes/widget.php:66
-msgid "Select list:"
+#. Plugin URI of the plugin/theme
+msgid "http://w4dev.com/plugins/w4-post-list"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin lets you create a list of - Posts, Terms, Users, Terms + Posts "
+"and Users + Posts. Outputs are completely customizable using Shortcode, "
+"HTML & CSS. Read documentation plugin usage."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Shazzad Hossain Khan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://w4dev.com/about"
+msgstr ""
+
+#: includes/class-post-types.php:20
+msgctxt "post type general name"
+msgid "Lists"
+msgstr ""
+
+#: includes/class-post-types.php:21
+msgctxt "post type singular name"
+msgid "List"
+msgstr ""
+
+#: includes/class-post-types.php:24
+msgctxt "note item"
+msgid "Add New"
 msgstr ""

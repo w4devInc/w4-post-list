@@ -6,11 +6,11 @@ function w4pl_register_block() {
 	}
 
     // automatically load dependencies and version
-    $asset_file = include( w4pl()->plugin_dir() . 'build/index.asset.php');
+    $asset_file = include( w4pl()->plugin_dir() . 'assets/blocks/postlist.asset.php');
 
     wp_register_script(
         'w4pl_block',
-        w4pl()->plugin_url() . 'build/index.js',
+        w4pl()->plugin_url() . 'assets/blocks/postlist.js',
         $asset_file['dependencies'],
         $asset_file['version']
     );
@@ -57,6 +57,6 @@ function w4pl_render_block_postlist( $attributes ) {
 
 		return $before . do_shortcode( '[postlist '. $attributes['listId'] .']' ) . $after;
 	} else {
-		return __( 'Missing list id', 'w4pl' );
+		return __( 'No list selected.', 'w4pl' );
 	}
 }
