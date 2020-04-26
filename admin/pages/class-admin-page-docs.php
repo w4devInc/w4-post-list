@@ -31,7 +31,14 @@ class W4PL_Admin_Page_Docs {
 	public function admin_page() {
 		?>
 		<div class="wrap w4pl-documentation-wrap">
-			<h1><?php printf( __( 'Documentation: Version - <strong>%s</strong>', 'w4pl' ), w4pl()->plugin_version() ); ?></h1>
+			<h1>
+				<?php
+				printf(
+					/* translators: %s: current plugin version */
+					__( 'Documentation: Version - <strong>%s</strong>', 'w4pl' ),
+					w4pl()->plugin_version()
+				); ?>
+			</h1>
 			<!--<p class="description">As like id (<code>[postlist id=1]</code>), a list can also be called using slug or title.<br /><strong>Ex</strong>: <code>[postlist slug='my-list']</code>, <code>[postlist Title='My List']</code></p>-->
 			<div class="has-right-sidebar">
 

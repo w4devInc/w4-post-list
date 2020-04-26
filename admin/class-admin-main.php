@@ -29,18 +29,22 @@ class W4PL_Admin_Main {
 		$input_attr = sprintf(
 			'<input value="[postlist id=%d]" type="text" size="20" onfocus="this.select();" onclick="this.select();" readonly="readonly />"',
 			$post_ID
-		 );
+		);
 
 		$messages[ w4pl()->list_post_type() ] = array(
-			 1 => sprintf(  __( 'List updated. Shortcode %s', 'w4pl' ), $input_attr  ),
-			 2 => '',
-			 3 => '',
-			 4 => __( 'List updated.' ),
-			 5 => '',
-			 6 => sprintf(  __( 'List published. Shortcode %s', 'w4pl' ), $input_attr  ),
-			 7 => __( 'List saved.' ),
-			 8 => sprintf(  __( 'List submitted. Shortcode %s', 'w4pl' ), $input_attr  ),
-			 9 => sprintf(  __( 'List scheduled. Shortcode %s', 'w4pl' ), $input_attr  ),
+			/* translators: %s: html input field to copy shortcode */
+			1 => sprintf(  __( 'List updated. Shortcode %s', 'w4pl' ), $input_attr  ),
+			2 => '',
+			3 => '',
+			4 => __( 'List updated.', 'w4pl' ),
+			5 => '',
+			/* translators: %s: html input field to copy shortcode */
+			6 => sprintf(  __( 'List published. Shortcode %s', 'w4pl' ), $input_attr  ),
+			7 => __( 'List saved.', 'w4pl' ),
+			/* translators: %s: html input field to copy shortcode */
+			8 => sprintf(  __( 'List submitted. Shortcode %s', 'w4pl' ), $input_attr  ),
+			/* translators: %s: html input field to copy shortcode */
+			9 => sprintf(  __( 'List scheduled. Shortcode %s', 'w4pl' ), $input_attr  ),
 			10 => ''
 		);
 
