@@ -1,10 +1,5 @@
 # W4 Post List - WordPress Plugin
 
-W4 Post List lets you create a list of posts, terms, users or a combined one. Decorate output using shortcodes. It's just easy and fun.
-
-
-## Description
-
 Display Posts (or any custom post type), Terms (or any custom taxonomy), Users (any role) on Content or Widget Areas by placing a shortcode. Select what to show and design how to show it. Using the plugin is really easy. You will find Tinymce button on post/page editor to quickly inset a list. Also, there's a separate page for creating or editing list.
 
 ## List Types
