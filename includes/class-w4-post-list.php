@@ -1,157 +1,164 @@
 <?php
+/**
+ * Main plugin class
+ *
+ * @class W4_Post_List
+ * @package W4_Post_List
+ */
 
-/* Plugin main class */
-final class W4_Post_List
-{
-	protected $plugin_name;
-	protected $plugin_slug;
-	protected $plugin_version = '2.3.0';
-	protected $plugin_dir;
-	protected $plugin_url;
-	protected $plugin_basename;
-	protected $list_post_type;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-	protected static $_instance = null;
+/**
+ * Main plugin class
+ *
+ * @class W4_Post_List
+ */
+final class W4_Post_List {
 
-	public static function instance()
-	{
-		if ( is_null( self::$_instance  )  ) {
-			self::$_instance = new self();
+	/**
+	 * Plugin name
+	 *
+	 * @var string
+	 */
+	public $name = 'W4 Post List';
+
+	/**
+	 * Plugin version
+	 *
+	 * @var string
+	 */
+	public $version = '2.3.0';
+
+	/**
+	 * This will hold current class instance
+	 *
+	 * @var mixed
+	 */
+	protected static $instance = null;
+
+	/**
+	 * Get singleton instance
+	 *
+	 * @return object W4_Post_List instance
+	 */
+	public static function instance() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+		return self::$instance;
 	}
 
-	/* Private constructor, can not be called without instance */
-	private function __construct()
-	{
-		$this->plugin_name 		= 'W4 Post List';
-		$this->plugin_slug 		= 'w4pl';
-		$this->plugin_dir 		= plugin_dir_path( W4PL_PLUGIN_FILE );
-		$this->plugin_url 		= plugin_dir_url( W4PL_PLUGIN_FILE );
-		$this->plugin_basename 	= plugin_basename( W4PL_PLUGIN_FILE  );
-		$this->list_post_type 	= 'w4pl';
-
-		add_action( 'plugins_loaded', array( $this, 'load_plugin' ), 20 );
-	}
-
-	/* plugin information getters */
-	public function plugin_name()
-	{
-		return $this->plugin_name;
-	}
-	public function plugin_slug()
-	{
-		return $this->plugin_slug;
-	}
-	public function plugin_version()
-	{
-		return $this->plugin_version;
-	}
-	public function plugin_dir()
-	{
-		return $this->plugin_dir;
-	}
-	public function plugin_url()
-	{
-		return $this->plugin_url;
-	}
-	public function plugin_basename()
-	{
-		return $this->plugin_basename;
-	}
-	public function list_post_type()
-	{
-		return $this->list_post_type;
-	}
-
-	/*
-	 * Load plugin files, register callbacks, load translations
-	*/
-	public function load_plugin()
-	{
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		$this->define_constants();
 		$this->includes();
 		$this->initialize();
 		$this->init_hooks();
-		$this->load_plugin_textdomain();
 
 		do_action( 'w4pl/loaded' );
 	}
 
-	private function load_plugin_textdomain()
-	{
-		/*
-		if ( function_exists( 'determine_locale' ) ) {
-			$locale = determine_locale();
-		} else {
-			$locale = is_admin() ? get_user_locale() : get_locale();
-		}
-
-		$locale = apply_filters( 'plugin_locale', $locale, 'w4pl' );
-
-		unload_textdomain( 'w4pl' );
-		load_textdomain( 'w4pl', WP_LANG_DIR . '/w4-post-list/w4pl-' . $locale . '.mo' );
-		*/
-
-		load_plugin_textdomain( 'w4pl', false, basename( dirname( W4PL_PLUGIN_FILE ) ) . '/languages' );
+	/**
+	 * Define constants
+	 */
+	private function define_constants() {
+		define( 'W4PL_NAME', $this->name );
+		define( 'W4PL_VERSION', $this->version );
+		define( 'W4PL_DIR', plugin_dir_path( W4PL_PLUGIN_FILE ) );
+		define( 'W4PL_URL', plugin_dir_url( W4PL_PLUGIN_FILE ) );
+		define( 'W4PL_BASENAME', plugin_basename( W4PL_PLUGIN_FILE ) );
+		define( 'W4PL_SLUG', 'w4pl' );
 	}
 
-	private function includes()
-	{
+	/**
+	 * Include files
+	 */
+	private function includes() {
 		/* core */
-		include( $this->plugin_dir() . '/includes/functions-form.php' );
-		include( $this->plugin_dir() . '/includes/class-utils.php' );
-		include( $this->plugin_dir() . '/includes/class-config.php' );
-		include( $this->plugin_dir() . '/includes/class-post-types.php' );
-		include( $this->plugin_dir() . '/includes/class-list-templates.php' );
+		include W4PL_DIR . '/includes/functions.php';
+		include W4PL_DIR . '/includes/functions-form.php';
+		include W4PL_DIR . '/includes/class-utils.php';
+		include W4PL_DIR . '/includes/class-config.php';
+		include W4PL_DIR . '/includes/class-post-types.php';
+		include W4PL_DIR . '/includes/class-list-templates.php';
+		include W4PL_DIR . '/includes/class-list-helper.php';
+		include W4PL_DIR . '/includes/class-list-content.php';
 
-		// interface classes
-		foreach( glob( $this->plugin_dir() . 'includes/interfaces/*.php' ) as $file  ) {
-			include_once( $file  );
+		// interface classes.
+		foreach ( glob( W4PL_DIR . 'includes/interfaces/*.php' ) as $file ) {
+			include_once $file;
 		}
-		// abstract classes
-		foreach( glob( $this->plugin_dir() . 'includes/abstracts/*.php' ) as $file  ) {
-			include_once( $file  );
+		// abstract classes.
+		foreach ( glob( W4PL_DIR . 'includes/abstracts/*.php' ) as $file ) {
+			include_once $file;
 		}
-		// facade classes
-		foreach( glob( $this->plugin_dir() . 'includes/list-types/*.php' ) as $file  ) {
-			include_once( $file  );
+		// facade classes.
+		foreach ( glob( W4PL_DIR . 'includes/list-types/*.php' ) as $file ) {
+			include_once $file;
 		}
-		// factory classes
-		foreach( glob( $this->plugin_dir() . 'includes/factories/*.php' ) as $file  ) {
-			include_once( $file  );
+		// factory classes.
+		foreach ( glob( W4PL_DIR . 'includes/factories/*.php' ) as $file ) {
+			include_once $file;
 		}
-		// query classes
-		foreach( glob( $this->plugin_dir() . 'includes/queries/*.php' ) as $file  ) {
-			include_once( $file  );
+		// query classes.
+		foreach ( glob( W4PL_DIR . 'includes/queries/*.php' ) as $file ) {
+			include_once $file;
 		}
-		// query classes
-		foreach( glob( $this->plugin_dir() . 'includes/helpers/*.php' ) as $file  ) {
-			include_once( $file  );
+		// helper classes.
+		foreach ( glob( W4PL_DIR . 'includes/helpers/*.php' ) as $file ) {
+			include_once $file;
 		}
-
-		include( $this->plugin_dir() . '/includes/list-helper.php' );
-		#include( $this->plugin_dir() . '/includes/class-list-editor.php' );
+		// template tags.
+		foreach ( glob( W4PL_DIR . 'includes/template-tags/*.php' ) as $file ) {
+			include_once $file;
+		}
+		// shortcode classes.
+		foreach ( glob( W4PL_DIR . 'includes/shortcodes/*.php' ) as $file ) {
+			include_once $file;
+		}
 
 		if ( is_admin() ) {
-			include( $this->plugin_dir() . '/admin/class-admin-main.php' );
-			include( $this->plugin_dir() . '/admin/class-admin-lists-table-columns.php' );
-			include( $this->plugin_dir() . '/admin/class-admin-lists-metaboxes.php' );
+			include W4PL_DIR . '/admin/class-admin-main.php';
+			include W4PL_DIR . '/admin/class-admin-lists-table-columns.php';
+			include W4PL_DIR . '/admin/class-admin-lists-metaboxes.php';
+			include W4PL_DIR . '/admin/class-admin-list-editor.php';
 
 			/* Admin pages */
-			foreach( glob( $this->plugin_dir() . 'admin/pages/*.php' ) as $file  ) {
-				include_once( $file  );
+			foreach ( glob( W4PL_DIR . 'admin/pages/*.php' ) as $file ) {
+				include_once $file;
 			}
-		} else {
-			/* public features */
-			include( $this->plugin_dir() . '/public/class-frontend.php' );
-			include( $this->plugin_dir() . '/public/class-shortcode-postlist.php' );
 		}
 	}
 
-	private function initialize()
-	{
+	/**
+	 * Initialize the plugin.
+	 */
+	private function initialize() {
 		new W4PL_Post_Types();
 		new W4PL_List_Templates();
+		new W4PL_List_Content();
+
+		new W4PL_List_Shortcode();
+		new W4PL_Date_Shortcode();
+
+		new W4PL_List_Helper();
+		new W4PL_Helper_Posts();
+		new W4PL_Helper_Terms();
+		new W4PL_Helper_Users();
+		new W4PL_Helper_No_Items();
+		new W4PL_Helper_Date_Query();
+		new W4PL_Helper_Meta_Query();
+		new W4PL_Helper_Tax_Query();
+		new W4PL_Helper_Presets();
+		new W4PL_Helper_Style();
+
+		new W4PL_Post_Template_Tags();
+		new W4PL_Term_Template_Tags();
+		new W4PL_User_Template_Tags();
 
 		if ( is_admin() ) {
 			new W4PL_Admin_Main();
@@ -159,33 +166,45 @@ final class W4_Post_List
 			new W4PL_Admin_Lists_Metaboxes();
 
 			new W4PL_Admin_Page_Docs();
-		} else {
-			new W4PL_Frontend();
-			new W4PL_Shortcode_Postlist();
 		}
 	}
 
-	public function init_hooks()
-	{
-		add_action( 'widgets_init'							, array( $this, 'widget_init' ) );
-		add_action( 'wp_enqueue_scripts'					, array( $this, 'register_scripts' ), 2  );
-		add_action( 'admin_enqueue_scripts'					, array( $this, 'register_scripts' ), 2  );
+	/**
+	 * Init hooks
+	 */
+	public function init_hooks() {
+		add_action( 'init', array( $this, 'load_plugin_translations' ) );
+		add_action( 'widgets_init', array( $this, 'widget_init' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 2 );
 	}
 
-	public function widget_init()
-	{
-		include_once( $this->plugin_dir() . '/includes/class-widget-postlist.php' );
+	/**
+	 * Load plugin translation file
+	 */
+	public function load_plugin_translations() {
+		load_plugin_textdomain( 'w4-post-list', false, basename( dirname( W4PL_PLUGIN_FILE ) ) . '/languages' );
+	}
+
+	/**
+	 * Register widget
+	 */
+	public function widget_init() {
+		include_once W4PL_DIR . '/includes/class-widget-postlist.php';
 		register_widget( 'W4PL_Widget_Postlist' );
 	}
 
-	public function register_scripts()
-	{
+	/**
+	 * Register assets
+	 */
+	public function register_scripts() {
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['w4pl_debug'] ) ? '' : '.min';
 
-		wp_register_style(  'w4pl_form', 				$this->plugin_url() . 'assets/css/form'. $min .'.css'  );
-		wp_register_style(  'w4pl_admin', 				$this->plugin_url() . 'assets/css/admin'. $min .'.css'  );
-		wp_register_style(  'w4pl-admin-documentation', $this->plugin_url() . 'assets/css/admin-documentation'. $min .'.css'  );
+		wp_register_style( 'w4pl_form', W4PL_URL . 'assets/css/form' . $min . '.css', array(), W4PL_VERSION );
+		wp_register_style( 'w4pl_list_editor', W4PL_URL . 'assets/css/list-editor' . $min . '.css', array(), W4PL_VERSION );
+		wp_register_style( 'w4pl-admin-documentation', W4PL_URL . 'assets/css/admin-documentation' . $min . '.css', array(), W4PL_VERSION );
 
-		wp_register_script( 'w4pl_form', 				$this->plugin_url() . 'assets/js/form'. $min .'.js', array( 'jquery', 'jquery-ui-sortable' )  );
+		wp_register_script( 'w4pl_form', W4PL_URL . 'assets/js/form' . $min . '.js', array( 'jquery', 'jquery-ui-sortable' ), W4PL_VERSION, true );
+		wp_register_script( 'w4pl_list_editor', W4PL_URL . 'assets/js/list-editor' . $min . '.js', array( 'jquery', 'jquery-ui-sortable' ), W4PL_VERSION, true );
 	}
 }

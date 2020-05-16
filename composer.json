@@ -1,0 +1,8 @@
+{
+	"name": "w4-post-list",
+    "version": "2.3.0",
+	"description": "A WordPress Plugin for listing posts in some handy manner.",
+    "require": {
+        "appsero/client": "^1.1"
+    }
+}

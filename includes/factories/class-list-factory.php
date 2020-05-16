@@ -1,32 +1,36 @@
 <?php
 /**
  * List Factory Class
- * @package W4 Post List
- * @author Shazzad Hossain Khan
- * @url http://w4dev.com/plugins/w4-post-list
-**/
+ *
+ * @package W4_Post_List
+ */
 
-class W4PL_List_Factory
-{
-	public static function get_list($options)
-	{
-		if (! isset($options['id'])) {
-			throw new Exception('Invalid list id');
-			return;
-		} elseif (! isset($options['list_type'])) {
-			throw new Exception('Invalid list type');
-			return;
-		}
+/**
+ * List factory /**
+ */
+class W4PL_List_Factory {
 
-		$className = 'W4PL_List_'. str_replace([' ', '.'], '_', ucwords(preg_replace('/[^a-zA-Z]/i', ' ', $options['list_type'])));
-
-
-		if (class_exists ($className)) {
-			return new $className($options);
+	/**
+	 * Return list class
+	 *
+	 * @param  array $options List options.
+	 * @return mixed          Instance of W4PL_List or Exception.
+	 * @throws Exception      For invalid list type.
+	 */
+	public static function get_list( $options ) {
+		if ( ! isset( $options['id'] ) ) {
+			throw new Exception( __( 'Invalid list id', 'w4-post-list' ) );
+		} elseif ( ! isset( $options['list_type'] ) ) {
+			throw new Exception( __( 'Invalid list type', 'w4-post-list' ) );
 		} else {
-			throw new Exception('Invalid list type');
-			return;
+			$type_suffix = str_replace( array( ' ', '.' ), '_', ucwords( preg_replace( '/[^a-zA-Z]/i', ' ', $options['list_type'] ) ) );
+			$class_name  = 'W4PL_List_' . $type_suffix;
+
+			if ( class_exists( $class_name ) ) {
+				return new $class_name( $options );
+			} else {
+				throw new Exception( __( 'Invalid list type', 'w4-post-list' ) );
+			}
 		}
 	}
 }
-?>
