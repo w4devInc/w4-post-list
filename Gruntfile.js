@@ -128,10 +128,10 @@ module.exports = function(grunt) {
 						'assets/**',
 						'includes/**',
 						'languages/**',
-						'public/**',
 						'vendor/**',
 						'index.php',
-						'w4-blocks.php',
+            'blocks.php',
+						'appsero.php',
 						'w4-post-list.php',
 						'readme.txt'
 					],

@@ -104,8 +104,6 @@ table.widefat thead th {
   padding-top: 30px;
   padding-bottom: 30px;
   border-width: 0 0 1px 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-color: transparent;
   border-bottom: 1px solid #f3f3f3;
@@ -160,8 +158,6 @@ table.widefat thead th {
   padding: 13px;
   border-bottom: 1px solid #e2dddb;
   border-right: 1px solid #e2dddb;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-weight: normal;
   cursor: pointer;

@@ -18,8 +18,10 @@
   line-height: 1.5;
 }
 .w4pl-documentation-main {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 .w4pl-documentation-content {
   width: 65%;

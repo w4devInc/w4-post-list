@@ -5,7 +5,7 @@
   "main": "Gruntfile.js",
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build",
+	"build": "wp-scripts build src/block-postlist.js --output-path=assets/block --output-filename=build.js",
     "build:block": "wp-scripts build src/block-postlist.js --output-path=assets/block --output-filename=build.js"
   },
   "repository": {
