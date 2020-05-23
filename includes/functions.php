@@ -56,10 +56,10 @@ function w4pl_get_shortcodes() {
 					'desc' => __( 'Enable ajax.', 'w4-post-list' )
 				),
 				'prev_text' => array(
-					'desc' => __( 'Prev button text.', 'w4-post-list' )
+					'desc' => __( 'Text for previous button.', 'w4-post-list' )
 				),
 				'next_text' => array(
-					'desc' => __( 'Next button text.', 'w4-post-list' )
+					'desc' => __( 'Text for next button.', 'w4-post-list' )
 				)
 			),
 			'output' => __( 'Pagination section', 'w4-post-list' )

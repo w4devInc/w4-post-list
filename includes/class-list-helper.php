@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// TODO - move all methods to other class, and discard this file.
 /**
  * List helper
  */

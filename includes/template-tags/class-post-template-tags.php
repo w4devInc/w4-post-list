@@ -79,17 +79,17 @@ class W4PL_Post_Template_Tags {
 			'post_class'           => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_class' ),
-				'output'     => __( 'Post html classes', 'w4-post-list' ),
+				'output'     => __( 'HTML classes of post', 'w4-post-list' ),
 			),
 			'post_title'           => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_title' ),
 				'parameters' => array(
 					'wordlimit' => array(
-						'desc' => 'limit number of words to display',
+						'desc' => __( 'Limit number of words to display', 'w4-post-list' ),
 					),
 					'charlimit' => array(
-						'desc' => 'limit number of characters to display',
+						'desc' => __( 'Limit number of characters to display', 'w4-post-list' ),
 					)
 				)
 			),
@@ -112,7 +112,7 @@ class W4PL_Post_Template_Tags {
 				'group'    => 'Post',
 				'code'     => '[post_the_date format="' . get_option( 'date_format' ) . '" before="" after=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_the_date' ),
-				'output'     => 'Unique post date. Ignored on current item if previous post date and curent post date is same ( date formatted )',
+				'output'     => __( 'Unique post date. Ignored on current item if previous post date and curent post date is same ( date formatted )', 'w4-post-list' ),
 				'parameters' => array(
 					'format' => array(
 						'desc' => __( 'php datetime format', 'w4-post-list' )
@@ -129,7 +129,7 @@ class W4PL_Post_Template_Tags {
 				'group'    => 'Post',
 				'code'     => '[post_date format="' . get_option( 'date_format' ) . '"]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_date' ),
-				'output'     => 'post date ( date formatted )',
+				'output'     => __( 'Post date ( date formatted )', 'w4-post-list' ),
 				'parameters' => array(
 					'format' => array(
 						'desc' => __( 'php datetime format', 'w4-post-list' )
@@ -140,7 +140,7 @@ class W4PL_Post_Template_Tags {
 				'group'    => 'Post',
 				'code'     => '[post_time format="' . get_option( 'time_format' ) . '"]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_time' ),
-				'output'     => 'post date ( time formatted )',
+				'output'     => __( 'Post date ( time formatted )', 'w4-post-list' ),
 				'parameters' => array(
 					'format' => array(
 						'desc' => __( 'php datetime format', 'w4-post-list' )
@@ -151,93 +151,170 @@ class W4PL_Post_Template_Tags {
 				'group'    => 'Post',
 				'code'     => '[post_modified_date format="' . get_option( 'date_format' ) . '"]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_modified_date' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: post modified date ( date formatted )
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>format</strong> = php datetime format',
+				'output'     => __( 'Post modified date ( date formatted )', 'w4-post-list' ),
+				'parameters' => array(
+					'format' => array(
+						'desc' => __( 'php datetime format', 'w4-post-list' )
+					)
+				),
 			),
 			'post_modified_time'   => array(
 				'group'    => 'Post',
 				'code'     => '[post_modified_time format="' . get_option( 'time_format' ) . '"]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_modified_time' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: post modified date ( time formatted )
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>format</strong> = php datetime format',
+				'output'     => __( 'Post modified date ( time formatted )', 'w4-post-list' ),
+				'parameters' => array(
+					'format' => array(
+						'desc' => __( 'php datetime format', 'w4-post-list' )
+					)
+				),
 			),
 			'post_author_meta'     => array(
 				'group'    => 'Post',
 				'code'     => '[post_author_meta name=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_author_meta' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: post author meta value
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>name</strong> = ex: display_name, bio, user_email etc',
+				'output'     => __( 'Post author\'s meta', 'w4-post-list' ),
+				'parameters' => array(
+					'name' => array(
+						'desc' => __( 'name of the meta information', 'w4-post-list' ),
+						'choices' => array(
+							'admin_color',
+						    'aim',
+						    'comment_shortcuts',
+						    'description',
+						    'display_name',
+						    'first_name',
+						    'ID',
+						    'jabber',
+						    'last_name',
+						    'nickname',
+						    'plugins_last_view',
+						    'plugins_per_page',
+						    'rich_editing',
+						    'syntax_highlighting',
+						    'user_activation_key',
+						    'user_description',
+						    'user_email',
+						    'user_firstname',
+						    'user_lastname',
+						    'user_level',
+						    'user_login',
+						    'user_nicename',
+						    'user_pass',
+						    'user_registered',
+						    'user_status',
+						    'user_url',
+						    'yim'
+						)
+					)
+				),
 			),
 			'post_author_name'     => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_author_name' ),
-				'output'     => __( 'post author name', 'w4-post-list' ),
+				'output'     => __( 'Post author\'s name', 'w4-post-list' ),
 			),
 			'post_author_url'      => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_author_url' ),
-				'output'     => __( 'post author name url', 'w4-post-list' ),
+				'output'     => __( 'Post author\'s link', 'w4-post-list' ),
 			),
 			'post_author_email'    => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_author_email' ),
-				'output'     => __( 'post author email address', 'w4-post-list' ),
+				'output'     => __( 'Post author\'s email address', 'w4-post-list' ),
 			),
 			'post_author_avatar'   => array(
 				'group'    => 'Post',
 				'code'     => '[post_author_avatar size=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_author_avatar' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: post author avatar
-				<br /><br /><strong>attributes:</strong>
-				<br /><strong>size</strong> = ( number ), avatar image size',
+				'output'     => __( 'Post author\'s avatar', 'w4-post-list' ),
+				'parameters' => array(
+					'size' => array(
+						'desc' => __( 'avatar image size', 'w4-post-list' )
+					)
+				),
 			),
 			'post_excerpt'         => array(
 				'group'    => 'Post',
 				'code'     => '[post_excerpt wordlimit=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_excerpt' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: post excerpt/short description
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>wordlimit</strong> = ( number ), limit number of words to display',
+				'output'     => __( 'Post excerpt / short description', 'w4-post-list' ),
+				'parameters' => array(
+					'wordlimit' => array(
+						'desc' => __( 'Limit number of words to display', 'w4-post-list' )
+					),
+					'strip_shortcodes' => array(
+						'desc' => __( 'Remove shortcodes from exceprt text. use strip_shortcode="1" to enabled.', 'w4-post-list' )
+					)
+				),
 			),
 			'post_content'         => array(
 				'group'    => 'Post',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_content' ),
-				'output'     => __( 'post content', 'w4-post-list' ),
+				'output'     => __( 'Post content', 'w4-post-list' ),
 			),
 			'featured_image'       => array(
 				'group'    => 'Post',
 				'code'     => '[featured_image size="" return=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'featured_image' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: ( text|number ) based on the rerurn attribute & only if the post has a featured image assigned
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>return</strong> = ( id|src|html ),
-				<br />----"src" - will return src of the image,
-				<br />----"id" - will return id of the image,
-				<br />----by default it will return image html
-				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
-				<br /><strong>size</strong> = ( string ), image size
-				<br /><strong>width</strong> = ( number ), image width
-				<br /><strong>height</strong> = ( number ), image height
-				<br /><strong>placeholder</strong> = ( text ), default placeholder text if post doesnt have featured image',
+				'output'     => __( '( text or number ) based on the rerurn attribute & only if the post has a featured image assigned', 'w4-post-list' ),
+				'parameters' => array(
+					'output' => array(
+						'desc' => __( '"src" - will return src of the image, "id" - will return id of the image, by default it will return image html', 'w4-post-list' ),
+						'choices' => array(
+							'id',
+							'src',
+							'html'
+						)
+					),
+					'class' => array(
+						'desc' => __( '( string ), class name for the image ( &lt;img /&gt; ) tag', 'w4-post-list' )
+					),
+					'size' => array(
+						'desc' => __( '( string ), image size', 'w4-post-list' )
+					),
+					'width' => array(
+						'desc' => __( '( number ), image width', 'w4-post-list' )
+					),
+					'height' => array(
+						'desc' => __( '( number ), image height', 'w4-post-list' )
+					),
+					'placeholder' => array(
+						'desc' => __( '( text ), default placeholder text if post doesnt have featured image', 'w4-post-list' )
+					)
+				),
 			),
 			'post_thumbnail'       => array(
 				'group'    => 'Post',
 				'code'     => '[post_thumbnail size="" return=""]',
 				'callback' => array( 'W4PL_Post_Template_Tags', 'post_thumbnail' ),
-				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: ( text|number ) based on the rerurn attribute & only if the post has a thumbnail assigned
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>return</strong> = ( id|src|html ),
-				<br />----"src" - will return src of the image,
-				<br />----"id" - will return id of the image,
-				<br />----by default it will return image html
-				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
-				<br /><strong>size</strong> = ( string ), thumbnail size
-				<br /><strong>width</strong> = ( number ), thumbnail width
-				<br /><strong>height</strong> = ( number ), thumbnail height
-				<br /><strong>placeholder</strong> = ( text ), default placeholder text if post thumbnail no found',
+				'output'     => __( '( text or number ) based on the rerurn attribute & only if the post has a featured image assigned', 'w4-post-list' ),
+				'parameters' => array(
+					'output' => array(
+						'desc' => __( '"src" - will return src of the image, "id" - will return id of the image, by default it will return image html', 'w4-post-list' ),
+						'choices' => array(
+							'id',
+							'src',
+							'html'
+						)
+					),
+					'class' => array(
+						'desc' => __( '( string ), class name for the image ( &lt;img /&gt; ) tag', 'w4-post-list' )
+					),
+					'size' => array(
+						'desc' => __( '( string ), thumbnail size', 'w4-post-list' )
+					),
+					'width' => array(
+						'desc' => __( '( number ), thumbnail width', 'w4-post-list' )
+					),
+					'height' => array(
+						'desc' => __( '( number ), thumbnail height', 'w4-post-list' )
+					),
+					'placeholder' => array(
+						'desc' => __( '( text ), default placeholder text if post doesnt have thumbnail', 'w4-post-list' )
+					)
+				),
 			),
 			'post_image'           => array(
 				'group'    => 'Post',
@@ -246,7 +323,7 @@ class W4PL_Post_Template_Tags {
 				'desc'     => '<strong>' . __( 'Output', 'w4-post-list' ) . '</strong>: <strong>first</strong> or <strong>last</strong> image source ( src="" ) from post content
 				<br /><br /><strong>Attributes:</strong>
 				<br /><strong>position</strong> = ( first|last )
-				<br /><strong>return</strong> = ( text|number ),
+				<br /><strong>output</strong> = ( text|number ),
 				<br />----"src" - will return src of the image,
 				<br />----by default it will return image html
 				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
@@ -510,14 +587,21 @@ class W4PL_Post_Template_Tags {
 		if ( isset( $attr['size'] ) ) {
 			$size = $attr['size'];
 		}
+
 		return get_avatar( get_the_author_meta( 'user_email' ), $size );
 	}
 
 	public static function post_excerpt( $attr, $cont ) {
 		$post    = get_post();
 		$excerpt = $post->post_excerpt;
+
 		if ( '' == $excerpt ) {
-			$excerpt = $post->post_content; }
+			$excerpt = $post->post_content;
+		}
+
+		if ( isset( $attr['strip_shortcodes'] ) & '1' === $attr['strip_shortcodes'] ) {
+			$excerpt = strip_shortcodes( $excerpt );
+		}
 
 		if ( isset( $attr['wordlimit'] ) ) {
 			$wordlimit = (int) $attr['wordlimit'];
@@ -560,17 +644,23 @@ class W4PL_Post_Template_Tags {
 		$post_id           = get_the_ID();
 		$post_thumbnail_id = (int) get_post_thumbnail_id( $post_id );
 
+		// fallback.
+		if ( isset( $attr['return'] ) && ! isset( $attr['output'] ) ) {
+			$attr['output'] = $attr['return'];
+		}
+
 		if ( isset( $attr['output'] ) && 'id' == $attr['output'] ) {
-			return $post_thumbnail_id; } elseif ( isset( $attr['output'] ) && 'src' == $attr['output'] ) {
+			return $post_thumbnail_id;
+		} elseif ( isset( $attr['output'] ) && 'src' == $attr['output'] ) {
 			$img = wp_get_attachment_image_src( $post_thumbnail_id, $size );
 			return isset( $img[0] ) ? $img[0] : '';
-			} elseif ( $post_thumbnail_id ) {
-				return wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
-			} elseif ( ! empty( $attr['placeholder'] ) ) {
-				return $attr['placeholder'];
-			}
+		} elseif ( $post_thumbnail_id ) {
+			return wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
+		} elseif ( ! empty( $attr['placeholder'] ) ) {
+			return $attr['placeholder'];
+		}
 
-			return '';
+		return '';
 	}
 
 	public static function post_thumbnail( $attr, $cont ) {
@@ -582,8 +672,7 @@ class W4PL_Post_Template_Tags {
 	 * Display Image From Post Content
 	 *
 	 * @since 1.9.1
-	 **/
-
+	 */
 	public static function post_image( $attr, $cont ) {
 		 global $post;
 

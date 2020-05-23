@@ -63,7 +63,7 @@ Creating a list is just few steps. There are different sets option for different
 * Enable/Disable pagination by ajax
 
 
-= Creating Template =
+= To Create Template =
 Templates are designed using Shortcodes. You can create a simple list just showing post title and linked to the post page, or you can display complex list using any of the information relating to post. Some of the available shortcodes are -
 
 * post thumbnail
@@ -83,7 +83,7 @@ Check all of the available shortcodes on [W4 Post List Plugin Page](http://w4dev
 
 
 = Check Example =
-* [Football Team Showcase](http://w4dev.com/wp/w4-post-list#w4pl-list-07081c7dd0982d2f4a7de78ce2398e8b)
+* [Football Teams Showcase](http://w4dev.com/wp/w4-post-list#w4pl-list-07081c7dd0982d2f4a7de78ce2398e8b)
 * [Posts in Table](http://w4dev.com/wp/w4-post-list#w4pl-list-a4aad4240af859f0fb3c8b2bfaf56806)
 * [Simple Posts List](http://w4dev.com/wp/w4-post-list-examples#example-1)
 * [Media List](http://w4dev.com/wp/w4-post-list-examples#example-2)
@@ -96,14 +96,14 @@ Check all of the available shortcodes on [W4 Post List Plugin Page](http://w4dev
 * Serbian by [Ogi Djuraskovic](http://firstsiteguide.com/)
 
 
-Happy using this Plugin ? Please rate !!
+Are you happy using this plugin? If so, please post your rating.
 
 
 == Installation ==
 
-1. Upload zip to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Find W4 post list menu under Posts Menu. Create / manage your list from there.
+1. Upload zip file to the `/wp-content/plugins/` directory
+2. Activate the plugin through the `Plugins` menu in WordPress
+3. You will find W4 post list menu below Posts Menu. Create / manage your list from there.
 
 
 == Frequently Asked Questions ==
@@ -123,11 +123,14 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 = 2.2.0 =
 * New: Add a list to content editor using Gutenberg block editor.
 
-[See changelog for all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
+[See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
-= 2.2.0 =
-* New: Add a list to content editor using Gutenberg block editor.
+= 2.4.0 =
+* New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
+* Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
+= 2.3.0 =
+* Improvement: Codebase has been upgraded to follow WordPress coding standards.
 
 == Privacy Policy ==
 W4 Post List uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.

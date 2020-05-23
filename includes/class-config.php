@@ -227,28 +227,25 @@ class W4PL_Config {
 	}
 
 	public static function tax_query_field_options() {
-		$return = array(
+		return array(
 			'term_id' => 'Term id',
 			'name'    => 'Name',
 			'slug'    => 'Slug',
 		);
-		return $return;
 	}
 
 	public static function terms_orderby_options() {
-		 $return = array(
+		 return array(
 			 'term_id' => __( 'ID', 'w4-post-list' ),
 			 'name'    => __( 'Name', 'w4-post-list' ),
 			 'slug'    => __( 'Slug', 'w4-post-list' ),
 			 'count'   => __( 'Count', 'w4-post-list' ),
 			 'custom'  => __( 'Include terms', 'w4-post-list' ),
 		 );
-
-		 return $return;
 	}
 
 	public static function users_orderby_options() {
-		$return = array(
+		return array(
 			'ID'              => __( 'ID', 'w4-post-list' ),
 			'user_login'      => __( 'Username', 'w4-post-list' ),
 			'user_nicename'   => __( 'Nicename', 'w4-post-list' ),
@@ -256,7 +253,5 @@ class W4PL_Config {
 			'user_registered' => __( 'Registration time', 'w4-post-list' ),
 			'display_name'    => __( 'Display name', 'w4-post-list' ),
 		);
-
-		return $return;
 	}
 }

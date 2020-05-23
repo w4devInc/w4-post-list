@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// TODO - move the filter to other class, and discard this file.
+
 class W4PL_List_Content {
 
 	function __construct() {

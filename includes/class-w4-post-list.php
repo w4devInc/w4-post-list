@@ -47,6 +47,7 @@ final class W4_Post_List {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
+
 		return self::$instance;
 	}
 
@@ -195,16 +196,46 @@ final class W4_Post_List {
 	}
 
 	/**
-	 * Register assets
+	 * Register stylesheets / javascripts
 	 */
 	public function register_scripts() {
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['w4pl_debug'] ) ? '' : '.min';
+		$min = '';
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$min = '.min';
+		}
 
-		wp_register_style( 'w4pl_form', W4PL_URL . 'assets/css/form' . $min . '.css', array(), W4PL_VERSION );
-		wp_register_style( 'w4pl_list_editor', W4PL_URL . 'assets/css/list-editor' . $min . '.css', array(), W4PL_VERSION );
-		wp_register_style( 'w4pl-admin-documentation', W4PL_URL . 'assets/css/admin-documentation' . $min . '.css', array(), W4PL_VERSION );
+		wp_register_style(
+			'w4pl_form',
+			W4PL_URL . 'assets/css/form' . $min . '.css',
+			array(),
+			W4PL_VERSION
+		);
+		wp_register_style(
+			'w4pl_list_editor',
+			W4PL_URL . 'assets/css/list-editor' . $min . '.css',
+			array(),
+			W4PL_VERSION
+		);
+		wp_register_style(
+			'w4pl-admin-documentation',
+			W4PL_URL . 'assets/css/admin-documentation' . $min . '.css',
+			array(),
+			W4PL_VERSION
+		);
 
-		wp_register_script( 'w4pl_form', W4PL_URL . 'assets/js/form' . $min . '.js', array( 'jquery', 'jquery-ui-sortable' ), W4PL_VERSION, true );
-		wp_register_script( 'w4pl_list_editor', W4PL_URL . 'assets/js/list-editor' . $min . '.js', array( 'jquery', 'jquery-ui-sortable' ), W4PL_VERSION, true );
+		wp_register_script(
+			'w4pl_form',
+			W4PL_URL . 'assets/js/form' . $min . '.js',
+			array( 'jquery', 'jquery-ui-sortable' ),
+			W4PL_VERSION,
+			true
+		);
+		wp_register_script(
+			'w4pl_list_editor',
+			W4PL_URL . 'assets/js/list-editor' . $min . '.js',
+			array( 'jquery', 'jquery-ui-sortable' ),
+			W4PL_VERSION,
+			true
+		);
 	}
 }
