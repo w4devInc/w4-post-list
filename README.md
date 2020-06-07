@@ -68,17 +68,15 @@ Templates are designed using Shortcodes. You can create a simple list just showi
 * media thumbnail
 
 
-Check all of the available shortcodes on [W4 Post List Plugin Page](http://w4dev.com/plugins/w4-post-list).
+Check all of the [available shortcodes](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/) here.
 
 
 ### Check Example
-* [Football Team Showcase](http://w4dev.com/wp/w4-post-list#w4pl-list-07081c7dd0982d2f4a7de78ce2398e8b)
-* [Posts in Table](http://w4dev.com/wp/w4-post-list#w4pl-list-a4aad4240af859f0fb3c8b2bfaf56806)
-* [Simple Posts List](http://w4dev.com/wp/w4-post-list-examples#example-1)
-* [Media List](http://w4dev.com/wp/w4-post-list-examples#example-2)
-* [Year/Month Archive](http://w4dev.com/wp/w4-post-list-examples#example-3)
-* [List of Categories](http://w4dev.com/wp/w4-post-list-examples#example-4)
-* [List of Terms](http://w4dev.com/wp/w4-post-list-examples#example-5)
+* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples#example-1)
+* [Media List](https://w4dev.com/wp/w4-post-list-examples#example-2)
+* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples#example-3)
+* [List of Categories](https://w4dev.com/wp/w4-post-list-examples#example-4)
+* [List of Terms](https://w4dev.com/wp/w4-post-list-examples#example-5)
 
 
 ## Installation
