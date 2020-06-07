@@ -1,8 +1,18 @@
 {
 	"name": "w4-post-list",
-    "version": "2.3.1",
+	"version": "2.3.3",
 	"description": "A WordPress Plugin for listing posts in some handy manner.",
-    "require": {
-        "appsero/client": "^1.1"
-    }
+	"require": {
+		"appsero/client": "^1.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/w4devInc/w4-post-list.git"
+	},
+	"author": "shazzad",
+	"license": "GPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/w4devInc/w4-post-list/issues"
+	},
+	"homepage": "https://github.com/w4devInc/w4-post-list#readme"
 }

@@ -120,13 +120,24 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.3.3 =
+* Fix: Using 0 (zero) for current author posts were not working.
+= 2.3.2 =
+* Fix: `strip_shortcodes` attribute of [post_excerpt] template tag were not working.
+= 2.3.1 =
+* New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
+* Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
 = 2.2.0 =
 * New: Add a list to content editor using Gutenberg block editor.
 
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
-= 2.4.0 =
+= 2.3.3 =
+* Fix: Using 0 (zero) for current author posts were not working.
+= 2.3.2 =
+* Fix: `strip_shortcodes` attribute of [post_excerpt] template tag were not working.
+= 2.3.1 =
 * New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
 * Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
 = 2.3.0 =

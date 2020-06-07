@@ -379,9 +379,10 @@ class W4PL_Helper_Posts {
 				}
 
 				if ( ! empty( $list->options[ $option_name ] ) ) {
+
 					$opt = wp_parse_id_list( $list->options[ $option_name ] );
 					foreach ( $opt as $k => $v ) {
-						if ( '0' === $v && get_current_user_id() ) {
+						if ( 0 === $v && get_current_user_id() ) {
 							$opt[ $k ] = get_current_user_id();
 						}
 					}
@@ -391,7 +392,7 @@ class W4PL_Helper_Posts {
 
 					// if nothing matches, query no posts
 					if ( count( $opt ) === 1 && $opt[0] === 0 && $option_name === 'author__in' ) {
-						$list->posts_args['p'] = -1;
+						$list->posts_args['post__in'] = array( 0 );
 					} else {
 						$list->posts_args[ $option_name ] = $opt;
 					}

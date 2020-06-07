@@ -599,7 +599,7 @@ class W4PL_Post_Template_Tags {
 			$excerpt = $post->post_content;
 		}
 
-		if ( isset( $attr['strip_shortcodes'] ) & '1' === $attr['strip_shortcodes'] ) {
+		if ( isset( $attr['strip_shortcodes'] ) && '1' === $attr['strip_shortcodes'] ) {
 			$excerpt = strip_shortcodes( $excerpt );
 		}
 

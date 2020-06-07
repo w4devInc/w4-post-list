@@ -49,25 +49,25 @@ module.exports = function(grunt) {
 		less: {
 			dist: {
 				files: [{
-                    expand: true,
-                    cwd: '<%= meta.dev.less %>',
-                    src: ['*.less'],
-                    dest: '<%= meta.prod.css %>',
-                    ext: '.css',
-                }]
+          expand: true,
+          cwd: '<%= meta.dev.less %>',
+          src: ['*.less'],
+          dest: '<%= meta.prod.css %>',
+          ext: '.css',
+        }]
 			}
 		},
-        postcss: {
-            options: {
-                map: false,
-                processors: [
-					require('autoprefixer')({browsers: 'last 2 versions'}),
-                ]
-            },
-		    dist: {
-		    	src: '<%= meta.prod.css %>/*.css'
-		    }
-        },
+    postcss: {
+      options: {
+        map: false,
+        processors: [
+          require('autoprefixer')({browsers: 'last 2 versions'}),
+        ]
+      },
+      dist: {
+      	src: '<%= meta.prod.css %>/*.css'
+      }
+    },
 		watch: {
 			less: {
 				files: ['<%= meta.dev.less %>/*.less'],
@@ -105,8 +105,8 @@ module.exports = function(grunt) {
 							pattern: 'Version: ' + grunt.getPluginVersion(),
 							replacement: 'Version: <%= pkgJson.version %>'
 						}, {
-							pattern: 'plugin_version = \'' + grunt.getPluginVersion() + '\'',
-							replacement: 'plugin_version = \'<%= pkgJson.version %>\''
+							pattern: 'version = \'' + grunt.getPluginVersion() + '\'',
+							replacement: 'version = \'<%= pkgJson.version %>\''
 						}
 					]
 				}
