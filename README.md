@@ -72,11 +72,11 @@ Check all of the [available shortcodes](https://w4dev.com/docs/w4-post-list/faqs
 
 
 ### Check Example
-* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples#example-1)
-* [Media List](https://w4dev.com/wp/w4-post-list-examples#example-2)
-* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples#example-3)
-* [List of Categories](https://w4dev.com/wp/w4-post-list-examples#example-4)
-* [List of Terms](https://w4dev.com/wp/w4-post-list-examples#example-5)
+* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples/#example-1)
+* [Media List](https://w4dev.com/wp/w4-post-list-examples/#example-2)
+* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples/#example-3)
+* [List of Categories](https://w4dev.com/wp/w4-post-list-examples/#example-4)
+* [List of Terms](https://w4dev.com/wp/w4-post-list-examples/#example-5)
 
 
 ## Installation
