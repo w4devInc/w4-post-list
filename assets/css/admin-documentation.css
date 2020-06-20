@@ -1,82 +1,67 @@
+/*
+ * Admin doc styles
+ *
+ * @package W4_Post_List
+ */
 .w4pl-documentation-wrap h1 {
-    margin: .2em 200px 0 0;
-    padding: 0;
-    color: #32373c;
-    line-height: 1.2em;
-    font-size: 2.8em;
-    font-weight: 400;
+  margin: 0.2em 200px 0 0;
+  padding: 0;
+  color: #32373c;
+  line-height: 1.2em;
+  font-size: 2.8em;
+  font-weight: 400;
 }
 .w4pl-documentation-wrap h2 {
-    margin: 1.25em 0 .6em;
-    margin-top: 1.25em;
-    font-size: 2em;
-    line-height: 1.5;
+  margin: 1.25em 0 0.6em;
+  margin-top: 1.25em;
+  font-size: 2em;
+  line-height: 1.5;
 }
-#shortcode_hint{
-	background-color:#fff;
+.w4pl-documentation-main {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
-#shortcode_hint th, 
-#shortcode_hint td{
-	padding-top:10px;
-	padding-bottom:10px;
-	border-bottom:1px solid #D3D3D3;
+.w4pl-documentation-content {
+  width: 65%;
 }
-#shortcode_hint th{
-	background-color:#f9f9f9;
+.w4pl-documentation-sidebar {
+  width: 30%;
 }
-#shortcode_hint thead .tag_name{
-	padding-right:10px;
+#wpbody code {
+  background: none;
+  font-size: 12px;
 }
-#shortcode_hint thead .tag_desc{
-padding-left:10px;
+pre {
+  padding: 10px;
+  border: 1px solid #DDD;
+  background-color: #fff;
 }
-#shortcode_hint .tag_name{
-	text-align: right;
-	width: 100px;
+pre code {
+  padding-left: 0;
 }
-#shortcode_hint .tag_desc{
-	text-align: left;
-	font-size:12px;
-	line-height: 1.3em;
-	padding-left:10px;
+.has-right-sidebar #post-body-content {
+  margin-right: 320px;
 }
-#wpbody code{
-	background:none;
-	font-size:12px;
-} 
-pre{
-	padding:10px;
-	border:1px solid #DDD;
-	background-color:#fff;
-} 
-pre code{
-	padding-left:0;
-} 
-.has-right-sidebar #post-body-content{
-	margin-right:320px;
+.inner-sidebar {
+  width: 301px;
 }
-.inner-sidebar{
-	width:301px;
+.w4pl-template-tags {
+  background-color: #fff;
 }
-
-#wpbody h7{
-	font-size:13px;
-	line-height:14px!important;
-	padding:8px 12px!important;
-	margin:0!important;
-	font-weight:bold;
-	background-color:#666;
-	border:1px solid #444;color:#FFF;
+.w4pl-template-tags th,
+.w4pl-template-tags td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D3D3D3;
 }
-#wpbody h2 + pre{
-	margin-top:0;
+.w4pl-template-tags .col-description {
+  text-align: left;
+  padding-left: 10px;
 }
-hr{
-	margin:20px 0!important;
-}
-#poststuff h3{
-	border-bottom:1px solid #DDD;
-}
-#wpbody .about-text code{
-	font-size:19px;
+.w4pl-template-tags .col-name {
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
 }
