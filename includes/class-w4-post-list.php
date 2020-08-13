@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.3.3';
+	public $version = '2.3.4';
 
 	/**
 	 * This will hold current class instance
@@ -199,9 +199,9 @@ final class W4_Post_List {
 	 * Register stylesheets / javascripts
 	 */
 	public function register_scripts() {
-		$min = '';
+		$min = '.min';
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$min = '.min';
+			$min = '';
 		}
 
 		wp_register_style(

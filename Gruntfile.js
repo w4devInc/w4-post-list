@@ -130,7 +130,7 @@ module.exports = function(grunt) {
 						'languages/**',
 						'vendor/**',
 						'index.php',
-            'blocks.php',
+                        'blocks.php',
 						'appsero.php',
 						'w4-post-list.php',
 						'readme.txt'

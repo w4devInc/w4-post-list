@@ -141,6 +141,15 @@ function w4pl_tracker_data( $data ) {
 	return $data;
 }
 add_filter( 'w4-post-list_tracker_data', 'w4pl_tracker_data' );
+
+function w4pl_appsero_test() {
+	$insights = w4pl_appsero_insights_instance();
+	if ( ! is_null( $insights ) ) {
+		add_filter( 'option_' . dirname( W4PL_BASENAME ) . '_tracking_last_send', '__return_false' );
+		$insights->send_tracking_data();
+	}
+}
+add_action( 'admin_init', 'w4pl_appsero_test' );
 */
 
 /**
@@ -165,7 +174,32 @@ function w4pl_filter_appsero_request( $args, $url ) {
 			if ( isset( $args['body']['first_name'] ) ) {
 				$args['body']['last_name'] = 'Doe';
 			}
+			if ( isset( $args['body']['ip_address'] ) ) {
+				$args['body']['ip_address'] = '192.168.' . rand(0, 255). '.' . rand(0, 255);
+			}
+
+			if ( isset( $args['body']['extra'] ) ) {
+				$extra = sprintf(
+					'%d, %s',
+					$args['body']['extra']['ListCount'],
+					$args['body']['extra']['Editor']
+				);
+
+				foreach ( array( 'Elementor', 'VisualComposer' ) as $param ) {
+					if ( 'Active' === $args['body']['extra'][ $param ] ) {
+						$extra .= ', ' . $param;
+					}
+				}
+
+				$args['body']['site'] = sprintf(
+					'%s - %s',
+					substr( $args['body']['site'], 0, 30 ),
+					$extra
+				);
+			}
 		}
+
+		# echo '<pre>'; print_r( $args['body'] ); exit;
 	}
 
 	return $args;
