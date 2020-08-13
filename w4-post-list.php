@@ -3,12 +3,12 @@
  * Plugin Name: W4 Post List
  * Plugin URI: http://w4dev.com/plugins/w4-post-list
  * Description: This plugin lets you create a list of - Posts, Terms, Users, Terms + Posts and Users + Posts. Outputs are completely customizable using Shortcode, HTML & CSS. Read documentation plugin usage.
- * Version: 2.3.3
+ * Version: 2.3.4
  * Author: Shazzad Hossain Khan
- * Author URI: http://w4dev.com/about
+ * Author URI: https://shazzad.me
  * Text Domain: w4-post-list
  * Domain Path: /languages
- * Tested up to: 5.3.2
+ * Tested up to: 5.4.2
  * Requires at least: 4.0
  * Requires PHP: 5.3
  *

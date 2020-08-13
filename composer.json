@@ -1,9 +1,9 @@
 {
-	"name": "w4-post-list",
-	"version": "2.3.3",
+	"name": "w4devinc/w4-post-list",
+	"version": "2.3.4",
 	"description": "A WordPress Plugin for listing posts in some handy manner.",
 	"require": {
-		"appsero/client": "^1.1"
+		"appsero/client": "dev-develop"
 	},
 	"repository": {
 		"type": "git",

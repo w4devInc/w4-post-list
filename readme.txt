@@ -2,10 +2,10 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 4.0
-Tested up to: 5.3.2
+Tested up to: 5.4.2
 Requires PHP: 5.3
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 W4 Post List lets you create a list of posts, terms, users or a combined one. Decorate output using shortcodes. It's just easy and fun.
 
@@ -83,15 +83,11 @@ Check all of the [available shortcodes](https://w4dev.com/docs/w4-post-list/faqs
 
 
 = Check Example =
-* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples#example-1)
-* [Media List](https://w4dev.com/wp/w4-post-list-examples#example-2)
-* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples#example-3)
-* [List of Categories](https://w4dev.com/wp/w4-post-list-examples#example-4)
-* [List of Terms](https://w4dev.com/wp/w4-post-list-examples#example-5)
-
-
-= Translations =
-* Serbian by [Ogi Djuraskovic](http://firstsiteguide.com/)
+* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples/#example-1)
+* [Media List](https://w4dev.com/wp/w4-post-list-examples/#example-2)
+* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples/#example-3)
+* [List of Categories](https://w4dev.com/wp/w4-post-list-examples/#example-4)
+* [List of Terms](https://w4dev.com/wp/w4-post-list-examples/#example-5)
 
 
 == Installation ==
@@ -115,6 +111,9 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.3.4 =
+* Fix: Replace depreciated jQuery method live.
+* Updated: Appsero client library updated to 1.1.11.
 = 2.3.3 =
 * Fix: Using 0 (zero) for current author posts were not working.
 = 2.3.2 =
@@ -128,6 +127,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.3.4 =
+* Updated plugin to make it compatible with WordPress 5.5. WordPress 5.5 has updated jQuery version to 1.12.4 and removed jQuery migrate that was used to support depreciated jquery functions.
 = 2.3.3 =
 * Fix: Using 0 (zero) for current author posts were not working.
 = 2.3.2 =

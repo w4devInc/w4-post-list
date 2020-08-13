@@ -7,8 +7,6 @@
 (function($) {
 
 	$(document).on('w4pl/form_loaded', function(el){
-		//console.log('w4pl/form_loaded');
-		//$('#w4pl_list_options').css('minHeight', $('.w4pl_group_fields.w4pl_active').outerHeight() );
 		w4pl_adjust_height();
 		$('#w4pl_orderby').trigger('change');
 	});
@@ -17,23 +15,23 @@
 		$(document).trigger( 'w4pl/form_loaded', $('#w4pl_list_options') );
 	});
 
-	$('.w4pl_field_compare').live('change', function(){
-		if( $.inArray( $(this).val(), ['IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN']) != -1 ){
+	$( document.body ).on( 'change', '.w4pl_field_compare', function(){
+		if ( -1 !== $.inArray( $(this).val(), ['IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN'] ) ){
 			//console.log($(this).val());
 			$(this)
 				.parent('td').next('td').children('.item').show()
 				.children('.button').show();
-		}
-		else {
+		} else {
 			$(this)
 				.parent('td').next('td').children('.item').hide()
 				.children('.button').hide();
+
 			$(this)
 				.parent('td').next('td').find('.item:first').show();
 		}
 	});
 
-	$('.w4pl_clone_parent').live('click', function(e){
+	$( document.body ).on( 'click', '.w4pl_clone_parent', function(e){
 		var clone = $(this).parent('.wpce_parent_item').clone();
 		var that = $(this);
 		that.parent('.wpce_parent_item').after( clone );
@@ -41,14 +39,13 @@
 		return false;
 	});
 
-	$('.w4pl_remove_parent').live('click', function(e){
+	$( document.body ).on( 'click', '.w4pl_remove_parent', function(e){
 		var that = $(this);
-		console.log(that.parent('.wpce_parent_item').siblings().length);
-		if( that.parent('.wpce_parent_item').siblings().length == 0 ){
+
+		if ( that.parent('.wpce_parent_item').siblings().length == 0 ){
 			that.hide();
 			return false;
-		}
-		else{
+		} else {
 			$('.w4pl_remove_parent').show();
 		}
 		that.parent('.wpce_parent_item').remove();
@@ -57,19 +54,21 @@
 
 
 	/* onchange post type, refresh the form */
-	$('.w4pl_onchange_lfr').live('change', function(){
-		var id = $(this).parents('.w4pl_field_group').attr('id');
+	$( document.body ).on( 'change', '.w4pl_onchange_lfr', function(){
+		var id = $(this).parents( '.w4pl_field_group' ).attr('id');
 		// console.log( id );
 		w4pl_get_form( null, id );
 	});
+
 	/* onclick button, display hidden elements */
-	$('.w4pl_toggler').live('click', function(){
+	$( document.body ).on( 'click', '.w4pl_toggler', function(){
 		$( $(this).data('target') ).toggle();
 		w4pl_adjust_height();
 		return false;
 	});
+
 	/* onchange orderby, toggle meta input */
-	$('#w4pl_orderby').live('change', function(){
+	$( document.body ).on( 'change', '#w4pl_orderby', function(){
 		if( 'meta_value' == $(this).val() || 'meta_value_num' == $(this).val() ){
 			$('#orderby_meta_key_wrap').show();
 		}
@@ -78,7 +77,7 @@
 		}
 	});
 	/* show/hide group options */
-	$('.w4pl_group_title').live('click', function()
+	$( document.body ).on( 'click', '.w4pl_group_title', function()
 	{
 		$('#w4pl_list_options').height('auto');
 		$('.w4pl_field_group').removeClass('w4pl_active');
@@ -90,7 +89,7 @@
 		return false;
 	});
 	/* put selected element code at pointer */
-	$('#w4pl_template_buttons a').live('click', function(e){
+	$( document.body ).on( 'click', '#w4pl_template_buttons a', function(e){
 		insertAtCaret( 'w4pl_template', $(this).data('code') );
 		return false;
 	});
@@ -169,13 +168,13 @@
 
 
 	$(document).ready(function(){
-		$('#w4pl_meta_query_add_btn').live('click', function(){
+		$( document.body ).on( 'click', '#w4pl_meta_query_add_btn', function(){
 			var h = $( $('#w4pl_meta_query_clone tbody').html() );
 			h.appendTo( '#w4pl_meta_query_table tbody' );
 			reindex_meta_query();
 			return false;
 		});
-		$('.w4pl_meta_query_remove_btn').live('click', function(){
+		$( document.body ).on( 'click', '.w4pl_meta_query_remove_btn', function(){
 			$(this).parents('tr').remove();
 			reindex_meta_query();
 			return false;
@@ -198,7 +197,7 @@
 			});
 		}
 
-		$('.w4pl_meta_query_value_add').live('click', function(){
+		$( document.body ).on( 'click', '.w4pl_meta_query_value_add', function(){
 			$('.w4pl_meta_query_value_del').show();
 
 			var td = $(this).parent('.item').parent('td');
@@ -208,7 +207,7 @@
 			reindex_value(td);
 			return false;
 		});
-		$('.w4pl_meta_query_value_del').live('click', function(){
+		$( document.body ).on( 'click', '.w4pl_meta_query_value_del', function(){
 			$('.w4pl_meta_query_value_del').show();
 
 			var td = $(this).parent('.item').parent('td');
@@ -224,7 +223,7 @@
 			return false;
 		});
 
-		$('.w4pl_meta_query_compare').live('change', function(){
+		$( document.body ).on( 'change', '.w4pl_meta_query_compare', function(){
 			if( $.inArray( $(this).val(), ['IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN']) != -1 ){
 				//console.log($(this).val());
 				$(this)
@@ -261,14 +260,14 @@
 	});
 
 	$(document).ready(function(){
-		$('#w4pl_tax_query_add_btn').live('click', function(){
+		$( document.body ).on( 'click', '#w4pl_tax_query_add_btn', function(){
 			var h = $( $('#w4pl_tax_query_clone tbody').html() );
 			h.appendTo( '#w4pl_tax_query_table tbody' );
 			reindex_tax_query();
 			return false;
 		});
 
-		$('.w4pl_tax_query_remove_btn').live('click',function(){
+		$( document.body ).on( 'click', '.w4pl_tax_query_remove_btn', function(){
 			$(this).parents('tr').remove();
 			reindex_tax_query();
 			return false;
@@ -297,7 +296,7 @@
 			});
 		}
 
-		$('.w4pl_tax_query_value_add').live('click', function(){
+		$( document.body ).on( 'click', '.w4pl_tax_query_value_add', function(){
 			$('.w4pl_tax_query_value_del').show();
 
 			var td = $(this).parent('.item').parent('td');
@@ -307,7 +306,7 @@
 			reindex_value(td);
 			return false;
 		});
-		$('.w4pl_tax_query_value_del').live('click', function(){
+		$( document.body ).on( 'click', '.w4pl_tax_query_value_del', function(){
 			$('.w4pl_tax_query_value_del').show();
 
 			var td = $(this).parent('.item').parent('td');
@@ -323,7 +322,7 @@
 			return false;
 		});
 
-		$('.w4pl_tax_query_operator').live('change', function(){
+		$( document.body ).on( 'change', '.w4pl_tax_query_operator', function(){
 
             if( $.inArray( $(this).val(), ['IN', 'NOT IN']) != -1 ){
 				console.log($(this).val());
