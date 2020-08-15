@@ -86,13 +86,15 @@ class W4PL_Admin_Lists_Table_Columns {
 	 */
 	public function list_type_label( $post_ID ) {
 		// this is really odd to get information like this.
-		$options       = get_post_meta( $post_ID, '_w4pl', true );
+		$options = get_post_meta( $post_ID, '_w4pl', true );
+		if ( empty( $options ) ) {
+			$options = array();
+		}
+
 		$options['id'] = $post_ID;
 		$options       = apply_filters( 'w4pl/pre_get_options', $options );
 
 		$lt = $options['list_type'];
-
-		global $wp_post_types;
 
 		$return = '';
 

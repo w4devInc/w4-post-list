@@ -36,7 +36,7 @@ class W4PL_Admin_Lists_Metaboxes {
 	/**
 	 * Get list edit form html template through ajax
 	 */
-	public static function list_edit_form_html_ajax() {
+	public function list_edit_form_html_ajax() {
 		if ( isset( $_POST['w4pl'] ) ) {
 			$options = stripslashes_deep( $_POST['w4pl'] );
 			if ( is_object( $options ) ) {
