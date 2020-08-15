@@ -1,12 +1,13 @@
 {
   "name": "w4-post-list",
-  "version": "2.3.4",
+  "version": "2.3.7",
   "description": "A WordPress Plugin for listing posts in some handy manner.",
   "main": "Gruntfile.js",
   "scripts": {
-    "start": "wp-scripts start",
-	"build": "wp-scripts build src/block-postlist.js --output-path=assets/block --output-filename=build.js",
-    "build:block": "wp-scripts build src/block-postlist.js --output-path=assets/block --output-filename=build.js"
+    "deploy-svn": "grunt deploy",
+    "start-block": "wp-scripts start",
+    "build-block": "wp-scripts build src/block-postlist.js --output-path=assets/block --output-filename=build.js",
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",

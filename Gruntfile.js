@@ -144,7 +144,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'update-version', [ 'string-replace' ] );
 	grunt.registerTask( 'css', [ 'clean:css', 'less:dist', 'postcss:dist' ] );
 	grunt.registerTask( 'assets', [ 'css', 'cssmin:main', 'uglify:main' ] );
-
 	grunt.registerTask( 'build', [ 'makepot', 'update-version', 'assets' ] );
 	grunt.registerTask( 'deploy', [ 'clean:trunk', 'build', 'copy:svn' ] );
 };

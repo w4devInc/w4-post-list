@@ -1,11 +1,12 @@
 === W4 Post List ===
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
-Requires at least: 4.0
-Tested up to: 5.4.2
-Requires PHP: 5.3
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 5.2
+Tested up to: 5.5
+Requires PHP: 5.6
+Stable tag: 2.3.6
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 W4 Post List lets you create a list of posts, terms, users or a combined one. Decorate output using shortcodes. It's just easy and fun.
 
@@ -111,6 +112,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.3.5 =
+* Updated: WordPress version compatibility meta.
 = 2.3.4 =
 * Fix: Replace depreciated jQuery method live.
 * Updated: Appsero client library updated to 1.1.11.
