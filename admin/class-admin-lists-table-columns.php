@@ -2,7 +2,7 @@
 /**
  * Admin list table custom columns
  *
- * @class W4PL_Admin_Lists_Table
+ * @class W4PL_Admin_Lists_Table_Columns
  * @package W4_Post_List
  */
 

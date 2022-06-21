@@ -227,6 +227,12 @@ class W4PL_Helper_Date_Query {
 						$dq['value'] = array_map( 'trim', $dq['value'] );
 					}
 
+					if ( is_array( $dq['value'] ) ) {
+						$dq['value'] = array_map( 'do_shortcode', $dq['value'] );
+					} elseif ( ! empty( $dq['value'] ) ){
+						$dq['value'] = do_shortcode( $dq['value'] );
+					}
+
 					$dq[ $dq['key'] ] = $dq['value'];
 					unset( $dq['key'], $dq['value'] );
 
@@ -235,6 +241,8 @@ class W4PL_Helper_Date_Query {
 
 				$list->posts_args['date_query']['relation'] = $list->options['date_query_relation'];
 			}
+
+			# W4PL_Utils::d($list->posts_args['date_query']);
 		}
 	}
 }

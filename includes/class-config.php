@@ -236,11 +236,12 @@ class W4PL_Config {
 
 	public static function terms_orderby_options() {
 		 return array(
-			 'term_id' => __( 'ID', 'w4-post-list' ),
-			 'name'    => __( 'Name', 'w4-post-list' ),
-			 'slug'    => __( 'Slug', 'w4-post-list' ),
-			 'count'   => __( 'Count', 'w4-post-list' ),
-			 'custom'  => __( 'Include terms', 'w4-post-list' ),
+			 'term_id'    => __( 'ID', 'w4-post-list' ),
+			 'name'       => __( 'Name', 'w4-post-list' ),
+			 'slug'       => __( 'Slug', 'w4-post-list' ),
+			 'count'      => __( 'Count', 'w4-post-list' ),
+			 'term_order' => __( 'Term order', 'w4-post-list' ),
+			 'custom'     => __( 'Include terms', 'w4-post-list' ),
 		 );
 	}
 

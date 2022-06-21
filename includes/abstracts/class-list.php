@@ -91,6 +91,8 @@ abstract class W4PL_List {
 			$return = paginate_links( $pag_args );
 
 		} else {
+			$paged = (int) $paged;
+
 			// default navigation.
 			if ( 2 === $paged ) {
 				$return .= '<a href="' . remove_query_arg( $paged_qp ) . '" class="prev page-numbers prev_text">' . $prev_text . '</a>';
@@ -109,9 +111,18 @@ abstract class W4PL_List {
 
 			if ( $use_ajax ) {
 				$class    .= ' ajax-navigation';
-				$this->js .= '(function($){$(document).ready(function(){$("#w4pl-list-' . $this->id
-				. ' .navigation a.page-numbers").live("click", function(){var that = $(this), parent = $("#w4pl-list-' . $this->id
-				. '");parent.addClass("w4pl-loading");parent.load( that.attr("href") + " #" + parent.attr("id") + " .w4pl-inner", function(e){parent.removeClass("w4pl-loading");});return false;});});})(jQuery) ;';
+				$this->js .= ';(function($){
+					$(document).ready(function(){
+						$(document.body).on("click", "#w4pl-list-' . $this->id . ' .navigation a.page-numbers", function(){
+							var that = $(this), parent = $("#w4pl-list-' . $this->id . '");
+							parent.addClass("w4pl-loading");
+							parent.load( that.attr("href") + " #" + parent.attr("id") + " .w4pl-inner", function(e){
+								parent.removeClass("w4pl-loading");
+							});
+							return false;
+						});
+					});
+				})(jQuery);';
 			}
 
 			$return = '<div class="' . $class . '">' . $return . '</div>';

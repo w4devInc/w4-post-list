@@ -88,9 +88,12 @@ class W4PL_Terms_Query extends W4PL_Query {
 				$term_id__in = implode( ',', array_map('absint', $this->get('term_id__in') ) );
 				$this->_order .= " ORDER BY FIELD( TB.term_id, $term_id__in )";
 			} else {
-				if ( 'term_id' == $orderby ) {
+				if ( in_array( $orderby, array( 'term_id', 'name', 'slug', 'term_group', 'term_order' ) ) ) {
 					$orderby = "TB.{$orderby}";
+				} elseif ( in_array( $orderby, array( 'parent', 'count' ) ) ) {
+					$orderby = "TT1.{$orderby}";
 				}
+				
 				$this->_order .= " ORDER BY {$orderby} $order";
 			}
 		}
