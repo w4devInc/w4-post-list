@@ -2,7 +2,7 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 5.8
-Tested up to: 5.8
+Tested up to: 6.0
 Requires PHP: 5.7
 Stable tag: 2.4.0
 License: GPLv3
@@ -112,6 +112,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.4.2 =
+* Updated: WP Version compatibility.
 = 2.4.1 =
 * New: Added search and select option for list block.
 = 2.4.0 =
@@ -137,6 +139,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.4.2 =
+* Updated: WP Version compatibility.
 = 2.4.1 =
 * Improvement: Added search feature for list block which avoids loading 100 lists on load.
 = 2.3.4 =

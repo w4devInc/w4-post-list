@@ -126,31 +126,6 @@ function w4pl_insights_extra() {
 	return $extra;
 }
 
-/**
- * Filter tracker data to exclude email & name
- *
- * @param  array $data [description]
- */
-// This won't work as this filter was not used on deactivation call.
-/*
-function w4pl_tracker_data( $data ) {
-	$data['admin_email'] = 'anonymous@example.com';
-	$data['first_name']  = 'John';
-	$data['last_name']   = 'Doe';
-
-	return $data;
-}
-add_filter( 'w4-post-list_tracker_data', 'w4pl_tracker_data' );
-
-function w4pl_appsero_test() {
-	$insights = w4pl_appsero_insights_instance();
-	if ( ! is_null( $insights ) ) {
-		add_filter( 'option_' . dirname( W4PL_BASENAME ) . '_tracking_last_send', '__return_false' );
-		$insights->send_tracking_data();
-	}
-}
-add_action( 'admin_init', 'w4pl_appsero_test' );
-*/
 
 /**
  * We don't need admin name & email, better exclude them.
