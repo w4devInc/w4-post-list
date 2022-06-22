@@ -2,7 +2,7 @@
 /**
  * Admin list table custom columns
  *
- * @class W4PL_Admin_Lists_Table
+ * @class W4PL_Admin_Lists_Metaboxes
  * @package W4_Post_List
  */
 
@@ -26,7 +26,6 @@ class W4PL_Admin_Lists_Metaboxes {
 	 * Constructor
 	 */
 	public function __construct() {
-
 		// load list options template from posted data.
 		add_action( 'wp_ajax_w4pl_list_edit_form_html', array( $this, 'list_edit_form_html_ajax' ) );
 		add_action( 'add_meta_boxes_' . W4PL_Config::LIST_POST_TYPE, array( $this, 'add_meta_boxes' ), 20 );

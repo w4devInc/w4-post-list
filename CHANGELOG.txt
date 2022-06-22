@@ -1,5 +1,4 @@
 == Changelog ==
-
 = 2.2.0 =
 * New: Add a list to content editor using Gutenberg block editor.
 = 2.1.8 =

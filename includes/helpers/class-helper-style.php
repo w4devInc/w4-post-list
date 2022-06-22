@@ -49,9 +49,9 @@ class W4PL_Helper_Style {
 			'label'       => __( 'CSS', 'w4-post-list' ),
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
-			'desc2'       => 'this css loads just before the list template on front-end (not in the HEAD tag, in BODY as inline css).
-								<br />to apply css just for current list, use <code>#w4pl-list-' . $post_data['id'] . '</code> as parent selector, or
-								<br />use <code>#w4pl-list-[listid]</code>, where you can port the style from one list to another by just copying',
+			'desc2'       => 'this css rules is placed inline just before the list is place at front-end (not in the HEAD tag).
+								<br />to apply css just for current list, use <code>#w4pl-list-' . $post_data['id'] . '</code> as parent selector.
+								<br />Alternatively, you can use <code>#w4pl-list-[listid]</code> to dynamically this selector.',
 		);
 		$fields['js']                       = array(
 			'position'    => '172',
@@ -105,15 +105,16 @@ class W4PL_Helper_Style {
 	 * @param  array $options List options.
 	 */
 	public function pre_get_options( $options ) {
-		$field_types = array(
+		$field_names = array(
 			'class',
 			'js',
 			'css',
 		);
 
-		foreach ( $field_types as $field_type ) {
-			if ( ! isset( $options[ $field_type ] ) ) {
-				  $options[ $field_type ] = '';
+		// Generate default values.
+		foreach ( $field_names as $field_name ) {
+			if ( ! isset( $options[ $field_name ] ) ) {
+				  $options[ $field_name ] = '';
 			}
 		}
 

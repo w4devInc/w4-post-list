@@ -1,4 +1,5 @@
 <?php
+
 /**
  * List terms & posts
  *
@@ -76,7 +77,7 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_List_Interface {
 	 * Terms & posts template
 	 */
 	public function list_type_terms_template() {
-		$paged = isset( $_REQUEST[ 'page' . $this->id ] ) ? $_REQUEST[ 'page' . $this->id ] : 1;
+		$paged = isset( $_REQUEST['page' . $this->id] ) ? $_REQUEST['page' . $this->id] : 1;
 		// create attern based on available tags
 		$pattern = $this->get_shortcode_regex();
 		// main template
@@ -107,10 +108,10 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_List_Interface {
 			$template_nav = $nav_match[0];
 		}
 
-		// print_r($this->terms_args);
-
 		$this->terms_query = new W4PL_Terms_Query( $this->terms_args );
 		$this->terms_query->query();
+
+		# W4PL_Utils::p( $this->terms_query );
 
 		if ( empty( $terms_match ) || ! $this->terms_query->get_results() ) {
 			$template = '';
@@ -125,18 +126,18 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_List_Interface {
 				// term posts
 				if ( in_array( $this->options['list_type'], array( 'terms.posts' ) ) ) {
 					$this->posts_args['paged']          = 1;
-					$this->posts_args['posts_per_page'] = isset( $this->options['limit'] ) && $this->options['limit'] ? (int) $this->options['limit'] : -1;
-					$this->posts_args['tax_query']      = array(
+					$this->posts_args['posts_per_page'] = isset( $this->options['limit'] ) && $this->options['limit'] ? ( int ) $this->options['limit'] : -1;
+					$this->posts_args['tax_query']      = array( 
 						'relation' => 'OR',
-						array(
+						array( 
 							'taxonomy' => $this->options['terms_taxonomy'],
 							'field'    => 'term_id',
 							'terms'    => $this->current_term->term_id,
-						),
-					);
+						 ),
+					 );
 					$this->posts_query                  = new WP_Query( $this->posts_args );
 
-					// echo '<pre>'; print_r($this->posts_args); echo '</pre>';
+					// echo '<pre>'; print_r( $this->posts_args ); echo '</pre>';
 
 					// post loop
 					if ( $this->posts_query->have_posts() ) {
@@ -148,7 +149,6 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_List_Interface {
 
 					// reset postdata back to normal.
 					wp_reset_postdata();
-
 				} // end term posts
 
 				// replace [posts]
@@ -166,10 +166,11 @@ class W4PL_List_Terms_Posts extends W4PL_List implements W4PL_List_Interface {
 		// replace [nav]
 		// template will be empty if there's no results
 		if ( ! empty( $template_nav ) && ! empty( $template ) ) {
-			if ( isset( $this->options['terms_max'] )
+			if ( 
+				isset( $this->options['terms_max'] )
 				&& ! empty( $this->options['terms_max'] )
 				&& $this->options['terms_max'] < ( $this->options['terms_limit'] * $paged )
-			) {
+			 ) {
 				$max_num_pages = $paged;
 			} else {
 				$max_num_pages = $this->terms_query->max_num_pages;

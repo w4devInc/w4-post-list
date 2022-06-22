@@ -12,7 +12,7 @@
 		<?php
 		printf(
 			/* translators: %s: postlist wrapper in code html tag */
-			esc_html__( 'Shortcode %s van be used to display a list by list id, slug or title on post/page content area', 'w4-post-list' ),
+			esc_html__( 'Shortcode %s can be used to display a list by list id, slug or title on post/page content area', 'w4-post-list' ),
 			'<code>postlist</code>'
 		);
 		?>
@@ -38,7 +38,5 @@
 			);
 			?>
 	</p>
-	<pre>&lt;?php
-echo do_shortcode( '[postlist id="1"]' );
-?&gt;</pre>
+	<pre>&lt;?php echo do_shortcode( '[postlist id="1"]' ); ?&gt;</pre>
 </div><!--postbox-->

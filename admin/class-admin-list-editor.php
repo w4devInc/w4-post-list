@@ -36,14 +36,16 @@ class W4PL_List_Editor {
 	 */
 	public function render_form() {
 		$options = $this->options;
-		include dirname( __FILE__ ) . '/views/html-list-edit-form.php';
+		include __DIR__ . '/views/html-list-edit-form.php';
 	}
 
 	/**
 	 * Enqueue js & css scripts
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( array( 'w4pl_form', 'w4pl_list_editor' ) );
+		wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+		
+		wp_enqueue_script( array( 'w4pl_form',  'w4pl_list_editor' ) );
 		wp_enqueue_style( array( 'w4pl_form', 'w4pl_list_editor' ) );
 	}
 

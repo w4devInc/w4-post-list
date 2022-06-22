@@ -1,13 +1,13 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	'use strict';
 
 	var w4plVersion = '';
 
-	require('matchdep').filterDev('grunt-*').forEach( grunt.loadNpmTasks );
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.getPluginVersion = function() {
+	grunt.getPluginVersion = function () {
 		var p = 'w4-post-list.php';
-		if ( w4plVersion == '' && grunt.file.exists(p) ) {
+		if (w4plVersion == '' && grunt.file.exists(p)) {
 			var source = grunt.file.read(p);
 			var found = source.match(/Version:\s(.*)/);
 			w4plVersion = found[1];
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 	};
 
 	grunt.initConfig({
-		pkgJson: grunt.file.readJSON( 'package.json' ),
+		pkgJson: grunt.file.readJSON('package.json'),
 		meta: {
 			dev: {
 				less: 'src/less'
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 						'Project-Id-Version': 'W4 Post List',
 						'language': 'en_US',
 						'plural-forms': 'nplurals=2; plural=(n != 1);',
-						'x-generator' : 'grunt-wp-i18n'
+						'x-generator': 'grunt-wp-i18n'
 					}
 				}
 			}
@@ -49,25 +49,25 @@ module.exports = function(grunt) {
 		less: {
 			dist: {
 				files: [{
-          expand: true,
-          cwd: '<%= meta.dev.less %>',
-          src: ['*.less'],
-          dest: '<%= meta.prod.css %>',
-          ext: '.css',
-        }]
+					expand: true,
+					cwd: '<%= meta.dev.less %>',
+					src: ['*.less'],
+					dest: '<%= meta.prod.css %>',
+					ext: '.css',
+				}]
 			}
 		},
-    postcss: {
-      options: {
-        map: false,
-        processors: [
-          require('autoprefixer')({browsers: 'last 2 versions'}),
-        ]
-      },
-      dist: {
-      	src: '<%= meta.prod.css %>/*.css'
-      }
-    },
+		postcss: {
+			options: {
+				map: false,
+				processors: [
+					require('autoprefixer')({ browsers: 'last 2 versions' }),
+				]
+			},
+			dist: {
+				src: '<%= meta.prod.css %>/*.css'
+			}
+		},
 		watch: {
 			less: {
 				files: ['<%= meta.dev.less %>/*.less'],
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
 		'string-replace': {
 			inline: {
 				files: {
-				'./': ['w4-post-list.php', 'includes/class-w4-post-list.php']
+					'./': ['w4-post-list.php', 'includes/class-w4-post-list.php']
 				},
 				options: {
 					replacements: [
@@ -112,13 +112,32 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		compress: {
+			plugin: {
+				options: {
+					archive: '../w4-post-list.v<%= pkgJson.version %>.zip'
+				},
+				files: [
+					{ src: 'admin/**', dest: 'w4-post-list/' },
+					{ src: 'assets/**', dest: 'w4-post-list/' },
+					{ src: 'includes/**', dest: 'w4-post-list/' },
+					{ src: 'languages/**', dest: 'w4-post-list/' },
+					{ src: 'vendor/**', dest: 'w4-post-list/' },
+					{ src: 'index.php', dest: 'w4-post-list/' },
+					{ src: 'blocks.php', dest: 'w4-post-list/' },
+					{ src: 'appsero.php', dest: 'w4-post-list/' },
+					{ src: 'w4-post-list.php', dest: 'w4-post-list/' },
+					{ src: 'readme.txt', dest: 'w4-post-list/' }
+				]
+			}
+		},
 		clean: {
 			options: {
 				force: true
-		    },
-			trunk: [ '../SVN-w4-post-list/trunk/*' ],
-			css: [ '<%= meta.prod.css %>/*.css' ],
-	  	},
+			},
+			trunk: ['../SVN-w4-post-list/trunk/*'],
+			css: ['<%= meta.prod.css %>/*.css'],
+		},
 		copy: {
 			svn: {
 				files: [{
@@ -130,7 +149,7 @@ module.exports = function(grunt) {
 						'languages/**',
 						'vendor/**',
 						'index.php',
-                        'blocks.php',
+						'blocks.php',
 						'appsero.php',
 						'w4-post-list.php',
 						'readme.txt'
@@ -141,9 +160,10 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask( 'update-version', [ 'string-replace' ] );
-	grunt.registerTask( 'css', [ 'clean:css', 'less:dist', 'postcss:dist' ] );
-	grunt.registerTask( 'assets', [ 'css', 'cssmin:main', 'uglify:main' ] );
-	grunt.registerTask( 'build', [ 'makepot', 'update-version', 'assets' ] );
-	grunt.registerTask( 'deploy', [ 'clean:trunk', 'build', 'copy:svn' ] );
+	grunt.registerTask('update-version', ['string-replace']);
+	grunt.registerTask('css', ['clean:css', 'less:dist', 'postcss:dist']);
+	grunt.registerTask('assets', ['css', 'cssmin:main', 'uglify:main']);
+	grunt.registerTask('build', ['makepot', 'update-version', 'assets']);
+	grunt.registerTask('zip', ['compress:plugin']);
+	grunt.registerTask('deploy', ['clean:trunk', 'build', 'copy:svn']);
 };
