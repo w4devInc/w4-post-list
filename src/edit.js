@@ -91,7 +91,7 @@ export default class Edit extends Component {
 							/>
 						</PanelRow>
 						<PanelRow>
-							<p>{__('Or', 'w4-post-list')} <a target="_blank" href="post-new.php?post_type=w4pl">{__('Create a new one', 'w4-post-list')}</a></p>
+							<p>{__('Or', 'w4-post-list')} <a target="_blank" href="post-new.php?post_type=w4pl">{__('Create a new list', 'w4-post-list')}</a></p>
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
