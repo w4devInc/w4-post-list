@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-11 23:30:10+00:00\n"
+"POT-Creation-Date: 2023-03-11 23:44:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -587,7 +587,7 @@ msgid "Field"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:54
-#: includes/template-tags/class-post-template-tags.php:52
+#: includes/template-tags/class-post-template-tags.php:55
 msgid "Post type"
 msgstr ""
 
@@ -596,7 +596,7 @@ msgid "Post mime type"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:78
-#: includes/template-tags/class-post-template-tags.php:62
+#: includes/template-tags/class-post-template-tags.php:65
 msgid "Post status"
 msgstr ""
 
@@ -712,60 +712,59 @@ msgstr ""
 msgid "HTML class name"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:37
-#: includes/template-tags/class-post-template-tags.php:42
-#: includes/template-tags/class-post-template-tags.php:47
+#: includes/template-tags/class-post-template-tags.php:40
+#: includes/template-tags/class-post-template-tags.php:45
+#: includes/template-tags/class-post-template-tags.php:50
 msgid "Post id"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:57
+#: includes/template-tags/class-post-template-tags.php:60
 msgid "Post type label"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:67
+#: includes/template-tags/class-post-template-tags.php:70
 msgid "Post status label"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:72
+#: includes/template-tags/class-post-template-tags.php:75
 msgid "Post number, starting from 1"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:77
+#: includes/template-tags/class-post-template-tags.php:80
 msgid "Post permalink"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:82
+#: includes/template-tags/class-post-template-tags.php:85
 msgid "HTML classes of post"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:89
+#: includes/template-tags/class-post-template-tags.php:92
 #: includes/template-tags/class-post-template-tags.php:245
 msgid "Limit number of words to display"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:92
+#: includes/template-tags/class-post-template-tags.php:95
 msgid "Limit number of characters to display"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:99
+#: includes/template-tags/class-post-template-tags.php:102
 msgid "Post name"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:104
+#: includes/template-tags/class-post-template-tags.php:107
 msgid "Post comment form permalink"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:109
+#: includes/template-tags/class-post-template-tags.php:112
 msgid "Number of approved comments"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:115
+#: includes/template-tags/class-post-template-tags.php:118
 msgid ""
 "Unique post date. Ignored on current item if previous post date and curent "
 "post date is same ( date formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:118
 #: includes/template-tags/class-post-template-tags.php:121
 #: includes/template-tags/class-post-template-tags.php:124
 #: includes/template-tags/class-post-template-tags.php:135
@@ -928,23 +927,31 @@ msgstr ""
 msgid "group page link"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:914
+#: includes/template-tags/class-post-template-tags.php:949
+msgid "View %s"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:957
 msgid "Posted on"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:914
-msgid "by"
+#: includes/template-tags/class-post-template-tags.php:960
+msgid "by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:922
+#: includes/template-tags/class-post-template-tags.php:966
 msgid "Published"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:929
+#: includes/template-tags/class-post-template-tags.php:974
 msgid "Updated"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:954
+#: includes/template-tags/class-post-template-tags.php:984
+msgid "View all posts by %s"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:1004
 msgid "Continue reading &raquo;"
 msgstr ""
 
