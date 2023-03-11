@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 5.8
-Tested up to: 6.0
+Tested up to: 6.1.1
 Requires PHP: 5.7
-Stable tag: 2.4.0
+Stable tag: 2.4.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.4.3 =
+* Security: Escaped no items text from XSS injection.
 = 2.4.2 =
 * Updated: WP Version compatibility.
 = 2.4.1 =
@@ -139,6 +141,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.4.3 =
+* Security: Escaped no items text from XSS injection.
 = 2.4.2 =
 * Updated: WP Version compatibility.
 = 2.4.1 =

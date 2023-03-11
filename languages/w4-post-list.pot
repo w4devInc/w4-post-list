@@ -1,13 +1,13 @@
-# Copyright 2010-2022 W4 Post List.
+# Copyright 2010-2023 W4 Post List.
 msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2022-06-22 10:37:46+00:00\n"
+"POT-Creation-Date: 2023-03-11 23:30:10+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: W4 Post List <sajib1223@gmail.com>\n"
 "Language: en_US\n"
@@ -502,12 +502,14 @@ msgstr ""
 msgid "Pagination section"
 msgstr ""
 
-#: includes/helpers/class-helper-no-items.php:49
+#: includes/helpers/class-helper-no-items.php:52
 msgid "No items text"
 msgstr ""
 
-#: includes/helpers/class-helper-no-items.php:52
-msgid "Displayed when no items found by this filter or pagination"
+#: includes/helpers/class-helper-no-items.php:55
+msgid ""
+"Displayed when no items found by this filter or pagination. Allows html "
+"tags - a, br, em, strong, span, p, div."
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:44
