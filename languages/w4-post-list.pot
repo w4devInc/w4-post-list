@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-12 05:48:23+00:00\n"
+"POT-Creation-Date: 2023-03-12 23:03:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -411,31 +411,31 @@ msgstr ""
 msgid "Display name"
 msgstr ""
 
-#: includes/class-post-types.php:36
+#: includes/class-post-types.php:39
 msgid "All Lists"
 msgstr ""
 
-#: includes/class-post-types.php:38 includes/class-post-types.php:40
+#: includes/class-post-types.php:41 includes/class-post-types.php:43
 msgid "New List"
 msgstr ""
 
-#: includes/class-post-types.php:39
+#: includes/class-post-types.php:42
 msgid "Edit List"
 msgstr ""
 
-#: includes/class-post-types.php:41
+#: includes/class-post-types.php:44
 msgid "View List"
 msgstr ""
 
-#: includes/class-post-types.php:42
+#: includes/class-post-types.php:45
 msgid "Search List"
 msgstr ""
 
-#: includes/class-post-types.php:43
+#: includes/class-post-types.php:46
 msgid "No list found"
 msgstr ""
 
-#: includes/class-post-types.php:44
+#: includes/class-post-types.php:47
 msgid "No lists found in Trash"
 msgstr ""
 
@@ -470,39 +470,39 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: includes/functions.php:22
+#: includes/functions.php:23
 msgid "Posts section"
 msgstr ""
 
-#: includes/functions.php:27
+#: includes/functions.php:28
 msgid "Terms section"
 msgstr ""
 
-#: includes/functions.php:32
+#: includes/functions.php:33
 msgid "Users section"
 msgstr ""
 
-#: includes/functions.php:37
+#: includes/functions.php:38
 msgid "Groups section"
 msgstr ""
 
-#: includes/functions.php:49
+#: includes/functions.php:50
 msgid "Type of pagination."
 msgstr ""
 
-#: includes/functions.php:56
+#: includes/functions.php:57
 msgid "Enable ajax."
 msgstr ""
 
-#: includes/functions.php:59
+#: includes/functions.php:60
 msgid "Text for previous button."
 msgstr ""
 
-#: includes/functions.php:62
+#: includes/functions.php:63
 msgid "Text for next button."
 msgstr ""
 
-#: includes/functions.php:65
+#: includes/functions.php:66
 msgid "Pagination section"
 msgstr ""
 
@@ -1257,17 +1257,17 @@ msgctxt "Media Type"
 msgid "Any"
 msgstr ""
 
-#: includes/class-post-types.php:33
+#: includes/class-post-types.php:36
 msgctxt "post type general name"
 msgid "Lists"
 msgstr ""
 
-#: includes/class-post-types.php:34
+#: includes/class-post-types.php:37
 msgctxt "post type singular name"
 msgid "List"
 msgstr ""
 
-#: includes/class-post-types.php:37
+#: includes/class-post-types.php:40
 msgctxt "note item"
 msgid "Add New"
 msgstr ""

@@ -956,7 +956,7 @@ class W4PL_Post_Template_Tags
 			__('Posted on', 'w4-post-list') . ': <abbr class="published post-date" title="%1$s">%2$s</abbr> <span class="post_author">%3$s</span>',
 			esc_attr(get_the_time(get_option('time_format'))),
 			get_the_time(get_option('date_format')),
-			sprintf(__('by %s', 'w4-post-list'), get_the_author()),
+			sprintf(__('by %s', 'w4-post-list'), get_the_author())
 		);
 	}
 	public static function template_date($attr, $cont)
