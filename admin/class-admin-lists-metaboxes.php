@@ -124,7 +124,12 @@ class W4PL_Admin_Lists_Metaboxes
 
 		$options = stripslashes_deep($_POST['w4pl']);
 		$options['id'] = $post_ID;
+
+		// w4pl_debug($options);
+
 		$options = $this->sanitize_options($options);
+
+		// w4pl_debug($options, true);
 
 		$options = apply_filters('w4pl/pre_save_options', $options);
 
@@ -134,9 +139,15 @@ class W4PL_Admin_Lists_Metaboxes
 	public function sanitize_options($options)
 	{
 		// Sanitize options.
-		foreach (array('no_items_text', 'template', 'css', 'js') as $key) {
+		foreach (array('no_items_text') as $key) {
 			if (array_key_exists($key, $options)) {
 				$options[$key] = sanitize_textarea_field($options[$key]);
+			}
+		}
+
+		foreach (array('template', 'css', 'js') as $key) {
+			if (array_key_exists($key, $options)) {
+				$options[$key] = wp_kses_post($options[$key]);
 			}
 		}
 
