@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-12 00:54:01+00:00\n"
+"POT-Creation-Date: 2023-03-12 05:48:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,6 +13,10 @@ msgstr ""
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: admin/class-admin-lists-metaboxes.php:56
+msgid "You do not have permission to edit this list."
+msgstr ""
 
 #: admin/class-admin-lists-table-columns.php:53
 #: admin/views/html-list-edit-form.php:37
@@ -462,7 +466,7 @@ msgstr ""
 msgid "Invalid list type"
 msgstr ""
 
-#: includes/functions-form.php:61
+#: includes/functions-form.php:62
 msgid "Update"
 msgstr ""
 
