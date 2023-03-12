@@ -122,7 +122,7 @@ class W4PL_Post_Template_Tags
 					),
 					'before' => array(
 						'desc' => __('php datetime format', 'w4-post-list')
-					),
+					)
 				),
 			),
 			'post_date'            => array(
@@ -320,7 +320,7 @@ class W4PL_Post_Template_Tags
 				'group'    => 'Post',
 				'code'     => '[post_image use_fallback="1"]',
 				'callback' => array('W4PL_Post_Template_Tags', 'post_image'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: <strong>first</strong> or <strong>last</strong> image source ( src="" ) from post content
+				'desc'     => __('<strong>Output</strong>: <strong>first</strong> or <strong>last</strong> image source ( src="" ) from post content
 				<br /><br /><strong>Attributes:</strong>
 				<br /><strong>position</strong> = ( first|last )
 				<br /><strong>output</strong> = ( text|number ),
@@ -329,42 +329,42 @@ class W4PL_Post_Template_Tags
 				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
 				<br /><strong>width</strong> = ( number ), set image width attr ( image scaling, not resizing )
 				<br /><strong>height</strong> = ( number ), set image height attr ( image scaling, not resizing )
-				<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use <code>[featured_image]</code> shortcode as fallback while post content dont have any images. ',
+				<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use <code>[featured_image]</code> shortcode as fallback while post content dont have any images.', 'w4-post-list'),
 			),
 			'post_meta'            => array(
 				'group'    => 'Post',
 				'code'     => '[post_meta key="" multiple="0"]',
 				'callback' => array('W4PL_Post_Template_Tags', 'post_meta'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
+				'desc'     => __('<strong>Output</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
 				<br /><br /><strong>Attributes:</strong>
 				<br /><strong>key</strong> = ( text|number ), meta key name
 				<br /><strong>sub_key</strong> = ( text|number ), if meta value is array|object, display a specific value by it\'s key
 				<br /><strong>multiple</strong> = ( 0|1 ), display meta value at multiple occurence
-				<br /><strong>sep</strong> = ( text ), separate array meta value into string',
+				<br /><strong>sep</strong> = ( text ), separate array meta value into string', 'w4-post-list'),
 			),
 			'post_meta_date'       => array(
 				'group'    => 'Post',
 				'code'     => '[post_meta_date key=""]',
 				'callback' => array('W4PL_Post_Template_Tags', 'post_meta_date'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
+				'desc'     => __('<strong>Output</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
 				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>key</strong> = ( text|number ), meta key name',
+				<br /><strong>key</strong> = ( text|number ), meta key name', 'w4-post-list'),
 			),
 			'post_terms'           => array(
 				'group'    => 'Post',
 				'code'     => '[post_terms tax="category" sep=", "]',
 				'callback' => array('W4PL_Post_Template_Tags', 'post_terms'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: post type terms. if return value is an array, it will be migrated to string by using explode function
+				'desc'     => __('<strong>Output</strong>: post type terms. if return value is an array, it will be migrated to string by using explode function
 				<br /><br /><strong>Attributes:</strong>
 				<br /><strong>tax</strong> = ( string ), taxonomy name
 				<br /><strong>sep</strong> = ( string ), separate array meta value into string
-				<br /><strong>return</strong> = ( name|slug ), return plain name or slug',
+				<br /><strong>return</strong> = ( name|slug ), return plain name or slug', 'w4-post-list'),
 			),
 			'attachment_thumbnail' => array(
 				'group'    => 'Post',
 				'code'     => '[attachment_thumbnail size=""]',
 				'callback' => array('W4PL_Post_Template_Tags', 'attachment_thumbnail'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: if the post type is attachment, the attached file thumb is displayed.
+				'desc'     => __('<strong>Output</strong>: if the post type is attachment, the attached file thumb is displayed.
 				<br /><br /><strong>Attributes:</strong>
 				<br /><strong>id</strong> = ( string ), attachment id
 				<br /><strong>meta_key</strong> = ( string ), retrieve attachment id from meta value
@@ -375,8 +375,7 @@ class W4PL_Post_Template_Tags
 				<br /><strong>return</strong> = ( text|number ),
 				<br />----"src" - will return src of the attachment,
 				<br />----"id" - will return id of the attachment,
-				<br />----by default it will return image html
-				',
+				<br />----by default it will return image html', 'w4-post-list'),
 			),
 			'attachment_url'       => array(
 				'group'    => 'Post',
@@ -391,7 +390,7 @@ class W4PL_Post_Template_Tags
 				'output'     => __('if the post type is hierarchical, it\'s parent post permalink is returned', 'w4-post-list'),
 				'parameters' => array(
 					'self' => array(
-						'desc'    => 'if no parent item exist, return the self permalink',
+						'desc'    => __('if no parent item exist, return the self permalink', 'w4-post-list'),
 						'default' => '1'
 					)
 				),
@@ -441,9 +440,9 @@ class W4PL_Post_Template_Tags
 				'group'    => 'Post',
 				'code'     => '[more text="Continue Reading"]',
 				'callback' => array('W4PL_Post_Template_Tags', 'template_more'),
-				'desc'     => '<strong>' . __('Output', 'w4-post-list') . '</strong>: more link template
+				'desc'     => __('<strong>Output</strong>: more link template
 				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>text</strong> = ( string ), text to be displayed',
+				<br /><strong>text</strong> = ( string ), text to be displayed', 'w4-post-list'),
 			),
 
 			'group_id'             => array(
