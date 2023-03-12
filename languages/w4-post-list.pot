@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-11 23:44:44+00:00\n"
+"POT-Creation-Date: 2023-03-12 00:54:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,31 +64,31 @@ msgstr ""
 msgid "List scheduled. Shortcode %s"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:31
-#: admin/pages/class-admin-page-docs.php:32
-#: admin/pages/class-admin-page-docs.php:53
+#: admin/pages/class-admin-page-docs.php:34
+#: admin/pages/class-admin-page-docs.php:35
+#: admin/pages/class-admin-page-docs.php:58
 msgid "Documentation"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:47
+#: admin/pages/class-admin-page-docs.php:51
 #: admin/views/html-list-edit-form.php:58
 msgid "Template"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:48
+#: admin/pages/class-admin-page-docs.php:52
 msgid "Template Tags"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:49
+#: admin/pages/class-admin-page-docs.php:53
 msgid "Usage"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:58
+#: admin/pages/class-admin-page-docs.php:64
 #. translators: %s: current plugin version
 msgid "Plugin Version: %s"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:67
+#: admin/pages/class-admin-page-docs.php:73
 msgid "Secondary menu"
 msgstr ""
 
@@ -183,12 +183,6 @@ msgid "Tag"
 msgstr ""
 
 #: admin/pages/views/html-template-tags.php:16
-#: includes/template-tags/class-post-template-tags.php:323
-#: includes/template-tags/class-post-template-tags.php:338
-#: includes/template-tags/class-post-template-tags.php:349
-#: includes/template-tags/class-post-template-tags.php:357
-#: includes/template-tags/class-post-template-tags.php:367
-#: includes/template-tags/class-post-template-tags.php:444
 msgid "Output"
 msgstr ""
 
@@ -277,133 +271,139 @@ msgstr ""
 msgid "Quering for table is not allowed.:%s"
 msgstr ""
 
-#: includes/class-config.php:28 includes/class-config.php:239
-#: includes/class-config.php:250
+#: includes/class-config.php:30 includes/class-config.php:253
+#: includes/class-config.php:265
 msgid "ID"
 msgstr ""
 
-#: includes/class-config.php:29 includes/class-widget-postlist.php:74
+#: includes/class-config.php:31 includes/class-widget-postlist.php:74
 msgid "Title"
 msgstr ""
 
-#: includes/class-config.php:30 includes/class-config.php:240
+#: includes/class-config.php:32 includes/class-config.php:245
+#: includes/class-config.php:254
 msgid "Name"
 msgstr ""
 
-#: includes/class-config.php:31
+#: includes/class-config.php:33
 msgid "Publish Date"
 msgstr ""
 
-#: includes/class-config.php:32
+#: includes/class-config.php:34
 msgid "Modified Date"
 msgstr ""
 
-#: includes/class-config.php:33
+#: includes/class-config.php:35
 msgid "Menu Order"
 msgstr ""
 
-#: includes/class-config.php:34
+#: includes/class-config.php:36
 msgid "Meta value"
 msgstr ""
 
-#: includes/class-config.php:35
+#: includes/class-config.php:37
 msgid "Meta numeric value"
 msgstr ""
 
-#: includes/class-config.php:36
+#: includes/class-config.php:38
 msgid "Comment Count"
 msgstr ""
 
-#: includes/class-config.php:37
+#: includes/class-config.php:39
 msgid "Random"
 msgstr ""
 
-#: includes/class-config.php:38 includes/class-config.php:53
+#: includes/class-config.php:40 includes/class-config.php:56
+#: includes/helpers/class-helper-posts.php:267
 msgid "None"
 msgstr ""
 
-#: includes/class-config.php:39 includes/helpers/class-helper-posts.php:102
+#: includes/class-config.php:41 includes/helpers/class-helper-posts.php:105
 msgid "Include posts"
 msgstr ""
 
-#: includes/class-config.php:54
+#: includes/class-config.php:57
 msgid "Year"
 msgstr ""
 
-#: includes/class-config.php:55
+#: includes/class-config.php:58
 msgid "Month"
 msgstr ""
 
-#: includes/class-config.php:56
+#: includes/class-config.php:59
 msgid "Year Months"
 msgstr ""
 
-#: includes/class-config.php:57
+#: includes/class-config.php:60
 msgid "Author"
 msgstr ""
 
-#: includes/class-config.php:58
+#: includes/class-config.php:61
 msgid "Parent"
 msgstr ""
 
-#: includes/class-config.php:59
+#: includes/class-config.php:62
 msgid "Custom field"
 msgstr ""
 
-#: includes/class-config.php:148
+#: includes/class-config.php:154 includes/helpers/class-helper-posts.php:49
 msgid "Posts"
 msgstr ""
 
-#: includes/class-config.php:149
+#: includes/class-config.php:155
 #: includes/helpers/class-helper-posts-tax_query.php:67
 msgid "Terms"
 msgstr ""
 
-#: includes/class-config.php:150
+#: includes/class-config.php:156
 msgid "Users"
 msgstr ""
 
-#: includes/class-config.php:151
+#: includes/class-config.php:157
 msgid "Terms + Posts"
 msgstr ""
 
-#: includes/class-config.php:152
+#: includes/class-config.php:158
 msgid "Users + Posts"
 msgstr ""
 
-#: includes/class-config.php:241
+#: includes/class-config.php:244
+msgid "Term id"
+msgstr ""
+
+#: includes/class-config.php:246 includes/class-config.php:255
 msgid "Slug"
 msgstr ""
 
-#: includes/class-config.php:242
+#: includes/class-config.php:256
 msgid "Count"
 msgstr ""
 
-#: includes/class-config.php:243
+#: includes/class-config.php:257
 msgid "Term order"
 msgstr ""
 
-#: includes/class-config.php:244
+#: includes/class-config.php:258
 msgid "Include terms"
 msgstr ""
 
-#: includes/class-config.php:251
+#: includes/class-config.php:266
 msgid "Username"
 msgstr ""
 
-#: includes/class-config.php:252
+#: includes/class-config.php:267
 msgid "Nicename"
 msgstr ""
 
-#: includes/class-config.php:253
+#: includes/class-config.php:268
 msgid "Email"
 msgstr ""
 
-#: includes/class-config.php:254
+#: includes/class-config.php:269
 msgid "Registration time"
 msgstr ""
 
-#: includes/class-config.php:255
+#: includes/class-config.php:270
 msgid "Display name"
 msgstr ""
 
@@ -444,8 +444,8 @@ msgid "Select a list"
 msgstr ""
 
 #: includes/class-widget-postlist.php:96
-#: includes/helpers/class-helper-posts-date_query.php:89
-#: includes/helpers/class-helper-posts-meta_query.php:164
+#: includes/helpers/class-helper-posts-date_query.php:92
+#: includes/helpers/class-helper-posts-meta_query.php:167
 msgid "OR"
 msgstr ""
 
@@ -512,61 +512,95 @@ msgid ""
 "tags - a, br, em, strong, span, p, div."
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:44
+#: includes/helpers/class-helper-posts-date_query.php:47
 msgid "Posts: Date Query"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:51
-msgid "Column"
-msgstr ""
-
-#: includes/helpers/class-helper-posts-date_query.php:52
-#: includes/helpers/class-helper-posts-meta_query.php:54
-msgid "Key"
-msgstr ""
-
-#: includes/helpers/class-helper-posts-date_query.php:53
-#: includes/helpers/class-helper-posts-meta_query.php:55
-msgid "Compare"
-msgstr ""
-
 #: includes/helpers/class-helper-posts-date_query.php:54
-#: includes/helpers/class-helper-posts-meta_query.php:56
-msgid "Value"
+msgid "Column"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:55
 #: includes/helpers/class-helper-posts-meta_query.php:57
+msgid "Key"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:56
+#: includes/helpers/class-helper-posts-meta_query.php:58
+msgid "Compare"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:57
+#: includes/helpers/class-helper-posts-meta_query.php:59
+msgid "Value"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:58
+#: includes/helpers/class-helper-posts-meta_query.php:60
 #: includes/helpers/class-helper-posts-tax_query.php:68
 msgid "Action"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:78
-#: includes/helpers/class-helper-posts-meta_query.php:134
+#: includes/helpers/class-helper-posts-date_query.php:81
+#: includes/helpers/class-helper-posts-meta_query.php:137
 #: includes/helpers/class-helper-posts-tax_query.php:173
 msgid "+ Add"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:86
-#: includes/helpers/class-helper-posts-meta_query.php:161
+#: includes/helpers/class-helper-posts-date_query.php:89
+#: includes/helpers/class-helper-posts-meta_query.php:164
 #: includes/helpers/class-helper-posts-tax_query.php:216
 msgid "Relation"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:90
-#: includes/helpers/class-helper-posts-meta_query.php:165
+#: includes/helpers/class-helper-posts-date_query.php:93
+#: includes/helpers/class-helper-posts-meta_query.php:168
 msgid "AND"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:175
-#: includes/helpers/class-helper-posts-meta_query.php:115
-#: includes/helpers/class-helper-posts-meta_query.php:153
+#: includes/helpers/class-helper-posts-date_query.php:100
+msgid "<br />All dates should be used in Y-m-d format. ie: 2020-12-31"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:101
+#: includes/helpers/class-helper-posts-meta_query.php:175
+msgid ""
+"<br />For the value field, you can also use following shortcodes to apply "
+"dynamic value:"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:102
+#: includes/helpers/class-helper-posts-meta_query.php:176
+msgid ""
+"<br /><code>[w4pl_date day=+6 hour=-1 format=\"Y-m-d H:i:s\"]</code> - for "
+"displaying datetime based on current time"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:103
+#: includes/helpers/class-helper-posts-meta_query.php:177
+msgid ""
+"<br /><code>[w4pl_time day=+6 hour=-1]</code> - for displaying timestamp "
+"based on current time"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:104
+#: includes/helpers/class-helper-posts-meta_query.php:178
+msgid ""
+"<br /><br />Note: Above Shortcodes generates times in GMT timezone. To "
+"compare time saved in another timezone, use hour attribute. for example: "
+"[w4pl_date hour=+6] will generate the time what is identical to GMT+6 "
+"timestamp."
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:180
+#: includes/helpers/class-helper-posts-meta_query.php:118
+#: includes/helpers/class-helper-posts-meta_query.php:156
 #: includes/helpers/class-helper-posts-tax_query.php:154
 #: includes/helpers/class-helper-posts-tax_query.php:208
 msgid "Remove"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-meta_query.php:45
+#: includes/helpers/class-helper-posts-meta_query.php:48
 msgid "Posts: Meta Query"
 msgstr ""
 
@@ -586,113 +620,201 @@ msgstr ""
 msgid "Field"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:54
+#: includes/helpers/class-helper-posts.php:57
 #: includes/template-tags/class-post-template-tags.php:55
 msgid "Post type"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:67
+#: includes/helpers/class-helper-posts.php:70
 msgid "Post mime type"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:78
+#: includes/helpers/class-helper-posts.php:73
+msgid ""
+"if displaying attachment, choose mime type to restrcit result to specific "
+"file types."
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:81
 #: includes/template-tags/class-post-template-tags.php:65
 msgid "Post status"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:81
+#: includes/helpers/class-helper-posts.php:84
 msgid "Any"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:82
+#: includes/helpers/class-helper-posts.php:85
 msgid "Publish"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:83
+#: includes/helpers/class-helper-posts.php:86
 msgid "Pending"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:84
+#: includes/helpers/class-helper-posts.php:87
 msgid "Future"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:85
+#: includes/helpers/class-helper-posts.php:88
 msgid "Inherit"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:93
+#: includes/helpers/class-helper-posts.php:96
 msgid "Search keywords"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:111
+#: includes/helpers/class-helper-posts.php:99
+msgid "search posts"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:108
+#: includes/helpers/class-helper-posts.php:117
+msgid "comma separated post id"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:114
 msgid "Exclude posts"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:120
+#: includes/helpers/class-helper-posts.php:123
 msgid "Post parent"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:129
+#: includes/helpers/class-helper-posts.php:126
+msgid "display child posts. comma separated parent post ids"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:132
 msgid "Post author"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:138
+#: includes/helpers/class-helper-posts.php:135
+#: includes/helpers/class-helper-posts.php:144
+msgid "comma separated user/author ids. use 0 to indicate current user."
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:141
 msgid "Exclude post author"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:148
+#: includes/helpers/class-helper-posts.php:151
 msgid "Exclude self"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:160
+#: includes/helpers/class-helper-posts.php:154
+#: includes/helpers/class-helper-posts.php:166
+msgid "No"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:155
+#: includes/helpers/class-helper-posts.php:167
+msgid "Yes"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:157
+msgid "exclude current post on single post/page pages"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:163
 msgid "Child of self"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:173
+#: includes/helpers/class-helper-posts.php:169
+msgid "display child posts of current post/page/custom post type"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:176
 msgid "Orderby"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:183
+#: includes/helpers/class-helper-posts.php:186
 msgid "Order"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:195
+#: includes/helpers/class-helper-posts.php:189
+#: includes/helpers/class-helper-posts.php:268
+msgid "ASC"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:190
+#: includes/helpers/class-helper-posts.php:269
+msgid "DESC"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:198
 msgid "Maximum items"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:205
+#: includes/helpers/class-helper-posts.php:200
+msgid ""
+"maximum results to display in total, restrict number of items even while "
+"paginating"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:208
 msgid "Offset"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:213
+#: includes/helpers/class-helper-posts.php:210
+msgid ""
+"skip given number of posts from beginning. while building lists \r\n"
+"\t\t\t\tusing the same filters but to display on separate places, use "
+"offset \r\n"
+"\t\t\t\tto skip the previously displayed amount of posts"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:218
 msgid "Items per page"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:226
+#: includes/helpers/class-helper-posts.php:221
+msgid ""
+"number of items to show per page\r\n"
+" \t\t\t\t<br />use <strong>-1</strong> to display all"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:231
 msgid "Group by"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:237
+#: includes/helpers/class-helper-posts.php:242
 msgid "Group by Date"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:250
+#: includes/helpers/class-helper-posts.php:245
+msgid "Publish date"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:246
+msgid "Modified date"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:255
 msgid "Group by \"Custom field\" name"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:259
+#: includes/helpers/class-helper-posts.php:264
 msgid "Group Order"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:183
+#: includes/helpers/class-helper-presets.php:44
+msgid "Preset"
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:48
+msgid "preset is predefined templates"
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:189
 msgid "Custom"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:184
+#: includes/helpers/class-helper-presets.php:190
 msgid "Simple list"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:188
+#: includes/helpers/class-helper-presets.php:194
 msgid "Posts with Thumbnail"
 msgstr ""
 
@@ -881,78 +1003,230 @@ msgstr ""
 msgid "( text ), default placeholder text if post doesnt have thumbnail"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:384
+#: includes/template-tags/class-post-template-tags.php:323
+msgid ""
+"<strong>Output</strong>: <strong>first</strong> or <strong>last</strong> "
+"image source ( src=\"\" ) from post content\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>position</strong> = ( first|last )\r\n"
+"\t\t\t\t<br /><strong>output</strong> = ( text|number ),\r\n"
+"\t\t\t\t<br />----\"src\" - will return src of the image,\r\n"
+"\t\t\t\t<br />----by default it will return image html\r\n"
+"\t\t\t\t<br /><strong>class</strong> = ( string ), class name for the image "
+"( &lt;img /&gt; ) tag\r\n"
+"\t\t\t\t<br /><strong>width</strong> = ( number ), set image width attr ( "
+"image scaling, not resizing )\r\n"
+"\t\t\t\t<br /><strong>height</strong> = ( number ), set image height attr ( "
+"image scaling, not resizing )\r\n"
+"\t\t\t\t<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use "
+"<code>[featured_image]</code> shortcode as fallback while post content dont "
+"have any images."
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:338
+msgid ""
+"<strong>Output</strong>: post meta value. if return value is an array, it "
+"will be migrated to string by using explode function\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>key</strong> = ( text|number ), meta key name\r\n"
+"\t\t\t\t<br /><strong>sub_key</strong> = ( text|number ), if meta value is "
+"array|object, display a specific value by it's key\r\n"
+"\t\t\t\t<br /><strong>multiple</strong> = ( 0|1 ), display meta value at "
+"multiple occurence\r\n"
+"\t\t\t\t<br /><strong>sep</strong> = ( text ), separate array meta value "
+"into string"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:349
+msgid ""
+"<strong>Output</strong>: post meta value. if return value is an array, it "
+"will be migrated to string by using explode function\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>key</strong> = ( text|number ), meta key name"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:357
+msgid ""
+"<strong>Output</strong>: post type terms. if return value is an array, it "
+"will be migrated to string by using explode function\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>tax</strong> = ( string ), taxonomy name\r\n"
+"\t\t\t\t<br /><strong>sep</strong> = ( string ), separate array meta value "
+"into string\r\n"
+"\t\t\t\t<br /><strong>return</strong> = ( name|slug ), return plain name or "
+"slug"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:367
+msgid ""
+"<strong>Output</strong>: if the post type is attachment, the attached file "
+"thumb is displayed.\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>id</strong> = ( string ), attachment id\r\n"
+"\t\t\t\t<br /><strong>meta_key</strong> = ( string ), retrieve attachment "
+"id from meta value\r\n"
+"\t\t\t\t<br /><strong>size</strong> = ( string ), image size\r\n"
+"\t\t\t\t<br /><strong>class</strong> = ( string ), class name for the image "
+"( &lt;img /&gt; ) tag\r\n"
+"\t\t\t\t<br /><strong>width</strong> = ( number ), image width\r\n"
+"\t\t\t\t<br /><strong>height</strong> = ( number ), image height\r\n"
+"\t\t\t\t<br /><strong>return</strong> = ( text|number ),\r\n"
+"\t\t\t\t<br />----\"src\" - will return src of the attachment,\r\n"
+"\t\t\t\t<br />----\"id\" - will return id of the attachment,\r\n"
+"\t\t\t\t<br />----by default it will return image html"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:383
 msgid " if the post is an attachment, the attached image source is returned"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:391
+#: includes/template-tags/class-post-template-tags.php:390
 msgid "if the post type is hierarchical, it's parent post permalink is returned"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:403
+#: includes/template-tags/class-post-template-tags.php:393
+msgid "if no parent item exist, return the self permalink"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:402
 msgid "title template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:408
+#: includes/template-tags/class-post-template-tags.php:407
 msgid "meta template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:413
-#: includes/template-tags/class-post-template-tags.php:418
+#: includes/template-tags/class-post-template-tags.php:412
+#: includes/template-tags/class-post-template-tags.php:417
 msgid "publish time template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:423
+#: includes/template-tags/class-post-template-tags.php:422
 msgid "modified time template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:428
+#: includes/template-tags/class-post-template-tags.php:427
 msgid "author template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:433
+#: includes/template-tags/class-post-template-tags.php:432
 msgid "excerpt template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:438
+#: includes/template-tags/class-post-template-tags.php:437
 msgid "content template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:452
-#: includes/template-tags/class-post-template-tags.php:457
+#: includes/template-tags/class-post-template-tags.php:443
+msgid ""
+"<strong>Output</strong>: more link template\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes:</strong>\r\n"
+"\t\t\t\t<br /><strong>text</strong> = ( string ), text to be displayed"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:451
+#: includes/template-tags/class-post-template-tags.php:456
 msgid "group name / title"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:462
+#: includes/template-tags/class-post-template-tags.php:461
 msgid "group page link"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:949
+#: includes/template-tags/class-post-template-tags.php:948
 msgid "View %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:957
+#: includes/template-tags/class-post-template-tags.php:956
 msgid "Posted on"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:960
+#: includes/template-tags/class-post-template-tags.php:959
 msgid "by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:966
+#: includes/template-tags/class-post-template-tags.php:965
 msgid "Published"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:974
+#: includes/template-tags/class-post-template-tags.php:973
 msgid "Updated"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:984
+#: includes/template-tags/class-post-template-tags.php:983
 msgid "View all posts by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:1004
+#: includes/template-tags/class-post-template-tags.php:1003
 msgid "Continue reading &raquo;"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:34
+msgid "<strong>Output</strong>: term id"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:39
+msgid "<strong>Output</strong>: term name"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:44
+msgid "<strong>Output</strong>: term slug"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:49
+msgid "<strong>Output</strong>: term page link"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:54
+msgid "<strong>Output</strong>: term posts count"
+msgstr ""
+
+#: includes/template-tags/class-term-template-tags.php:59
+msgid "<strong>Output</strong>: term description"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:37
+msgid "<strong>Output</strong>: user id"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:42
+msgid "<strong>Output</strong>: user name"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:47
+msgid "<strong>Output</strong>: user email"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:53
+msgid "<strong>Output</strong>: user post page link"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:58
+msgid "<strong>Output</strong>: user posts count"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:63
+msgid "<strong>Output</strong>: user description / biography"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:69
+msgid ""
+"<strong>Output</strong>: user meta value. if return value is an array, it "
+"will be migrated to string by using explode function\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes</strong>:\r\n"
+"\t\t\t\t<br /><strong>key</strong> = (text|number), meta key name\r\n"
+"\t\t\t\t<br /><strong>multiple</strong> = (0|1), display meta value at "
+"multiple occurence\r\n"
+"\t\t\t\t<br /><strong>sep</strong> = (text), separate array meta value into "
+"string"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:78
+msgid ""
+"<strong>Output</strong>: user avatar\r\n"
+"\t\t\t\t<br /><br /><strong>Attributes</strong>:\r\n"
+"\t\t\t\t<br /><strong>size</strong> = (number), avatar image size, ex: 32, "
+"64, 128"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -972,6 +1246,11 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://shazzad.me"
+msgstr ""
+
+#: includes/class-config.php:134
+msgctxt "Media Type"
+msgid "Any"
 msgstr ""
 
 #: includes/class-post-types.php:33
