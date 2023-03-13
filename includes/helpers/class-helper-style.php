@@ -49,9 +49,9 @@ class W4PL_Helper_Style {
 			'label'       => __( 'CSS', 'w4-post-list' ),
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
-			'desc2'       => 'this css rules is placed inline just before the list is place at front-end (not in the HEAD tag).
-								<br />to apply css just for current list, use <code>#w4pl-list-' . $post_data['id'] . '</code> as parent selector.
-								<br />Alternatively, you can use <code>#w4pl-list-[listid]</code> to dynamically this selector.',
+			'desc2'       => sprintf(__('this css rules is placed inline just before the list is place at front-end (not in the HEAD tag).
+								<br />to apply css just for current list, use <code>#w4pl-list-%s</code> as parent selector.
+								<br />Alternatively, you can use <code>#w4pl-list-[listid]</code> to dynamically this selector.', 'w4-post-list' ),$post_data['id']),
 		);
 		$fields['js']                       = array(
 			'position'    => '172',
@@ -60,7 +60,7 @@ class W4PL_Helper_Style {
 			'label'       => __( 'JavaScript', 'w4-post-list' ),
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
-			'desc2'       => 'javascript loads right after template ends. don\'t use <code>&lt;script&gt;</code> tag',
+			'desc2'       => __( 'javascript loads right after template ends. don\'t use <code>&lt;script&gt;</code> tag', 'w4-post-list' ),
 			'after'       => '</div><!--.w4pl_group_fields--></div><!--#w4pl_field_group_style-->',
 		);
 		$fields['class']                    = array(
@@ -69,7 +69,7 @@ class W4PL_Helper_Style {
 			'name'        => 'w4pl[class]',
 			'label'       => __( 'HTML class name', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'applied on the wrapper html DIV tag',
+			'desc'        => __( 'applied on the wrapper html DIV tag', 'w4-post-list' ),
 			'input_class' => 'widefat',
 		);
 		$fields['after_field_group_style']  = array(
