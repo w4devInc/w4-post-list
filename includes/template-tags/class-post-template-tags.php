@@ -617,17 +617,22 @@ class W4PL_Post_Template_Tags
 		$post = get_post();
 		$excerpt = $post->post_excerpt;
 
-		if ('' == $excerpt) {
-			$excerpt = $post->post_content;
-		}
+		if (post_password_required($post)) {
+			$excerpt = get_the_password_form($post);
+			$excerpt .= __('There is no excerpt because this is a protected post.');
+		} else {
+			if ('' == $excerpt) {
+				$excerpt = $post->post_content;
+			}
 
-		if (isset($attr['strip_shortcodes']) && '1' === $attr['strip_shortcodes']) {
-			$excerpt = strip_shortcodes($excerpt);
-		}
+			if (isset($attr['strip_shortcodes']) && '1' === $attr['strip_shortcodes']) {
+				$excerpt = strip_shortcodes($excerpt);
+			}
 
-		if (isset($attr['wordlimit'])) {
-			$wordlimit = (int) $attr['wordlimit'];
-			$excerpt = wp_trim_words($excerpt, $wordlimit);
+			if (isset($attr['wordlimit'])) {
+				$wordlimit = (int) $attr['wordlimit'];
+				$excerpt = wp_trim_words($excerpt, $wordlimit);
+			}
 		}
 
 		return $excerpt;
@@ -636,6 +641,7 @@ class W4PL_Post_Template_Tags
 	public static function post_content($attr, $cont)
 	{
 		global $post;
+
 		// Post content without wrapper --
 		$content = apply_filters('the_content', get_the_content());
 		$content = str_replace(']]>', ']]&gt;', $content);

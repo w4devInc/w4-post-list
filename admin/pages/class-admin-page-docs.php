@@ -79,7 +79,7 @@ class W4PL_Admin_Page_Docs
 							}
 							printf(
 								'<a href="%1$s" class="nav-tab%2$s" aria-current="page">%3$s</a>',
-								add_query_arg('tab', $tab),
+								esc_url(add_query_arg('tab', $tab)),
 								$active_class,
 								$label
 							);
