@@ -6,7 +6,7 @@
  * @package W4_Post_List
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -15,12 +15,9 @@ if (!defined('ABSPATH')) {
  *
  * @class W4PL_User_Template_Tags
  */
-class W4PL_User_Template_Tags
-{
-
-	function __construct()
-	{
-		add_filter('w4pl/get_shortcodes', array($this, 'get_shortcodes'), 21);
+class W4PL_User_Template_Tags {
+	function __construct() {
+		add_filter( 'w4pl/get_shortcodes', array( $this, 'get_shortcodes' ), 21 );
 	}
 
 	/**
@@ -28,122 +25,120 @@ class W4PL_User_Template_Tags
 	 *
 	 * @param  array $shortcodes [description].
 	 */
-	public static function get_shortcodes($shortcodes)
-	{
+	public static function get_shortcodes( $shortcodes ) {
 		$_shortcodes = array(
 			'user_id'     => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_id'),
-				'desc'     => __('<strong>Output</strong>: user id', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_id' ),
+				'desc'     => __( '<strong>Output</strong>: user id', 'w4-post-list' ),
 			),
 			'user_name'   => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_name'),
-				'desc'     => __('<strong>Output</strong>: user name', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_name' ),
+				'desc'     => __( '<strong>Output</strong>: user name', 'w4-post-list' ),
 			),
 			'user_email'  => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_email'),
-				'desc'     => __('<strong>Output</strong>: user email', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_email' ),
+				'desc'     => __( '<strong>Output</strong>: user email', 'w4-post-list' ),
 			),
 			'user_link'   => array(
 				'group'    => 'User',
 				'func'     => 'user_link',
-				'callback' => array('W4PL_User_Template_Tags', 'user_link'),
-				'desc'     => __('<strong>Output</strong>: user post page link', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_link' ),
+				'desc'     => __( '<strong>Output</strong>: user post page link', 'w4-post-list' ),
 			),
 			'user_count'  => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_count'),
-				'desc'     => __('<strong>Output</strong>: user posts count', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_count' ),
+				'desc'     => __( '<strong>Output</strong>: user posts count', 'w4-post-list' ),
 			),
 			'user_bio'    => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_bio'),
-				'desc'     => __('<strong>Output</strong>: user description / biography', 'w4-post-list'),
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_bio' ),
+				'desc'     => __( '<strong>Output</strong>: user description / biography', 'w4-post-list' ),
 			),
 			'user_meta'   => array(
 				'group'    => 'User',
 				'code'     => '[user_meta key="" multiple="0"]',
-				'callback' => array('W4PL_User_Template_Tags', 'user_meta'),
-				'desc'     => __('<strong>Output</strong>: user meta value. if return value is an array, it will be migrated to string by using explode function
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_meta' ),
+				'desc'     => __(
+					'<strong>Output</strong>: user meta value. if return value is an array, it will be migrated to string by using explode function
 				<br /><br /><strong>Attributes</strong>:
 				<br /><strong>key</strong> = (text|number), meta key name
 				<br /><strong>multiple</strong> = (0|1), display meta value at multiple occurence
-				<br /><strong>sep</strong> = (text), separate array meta value into string', 'w4-post-list'),
+				<br /><strong>sep</strong> = (text), separate array meta value into string',
+					'w4-post-list'
+				),
 			),
 			'user_avatar' => array(
 				'group'    => 'User',
-				'callback' => array('W4PL_User_Template_Tags', 'user_avatar'),
-				'desc'     => __('<strong>Output</strong>: user avatar
+				'callback' => array( 'W4PL_User_Template_Tags', 'user_avatar' ),
+				'desc'     => __(
+					'<strong>Output</strong>: user avatar
 				<br /><br /><strong>Attributes</strong>:
-				<br /><strong>size</strong> = (number), avatar image size, ex: 32, 64, 128', 'w4-post-list'),
+				<br /><strong>size</strong> = (number), avatar image size, ex: 32, 64, 128',
+					'w4-post-list'
+				),
 			),
 		);
 
-		return array_merge($shortcodes, $_shortcodes);
+		return array_merge( $shortcodes, $_shortcodes );
 	}
 
 
 	/* User Shortcode Callbacks */
 
-	public static function user_id($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? $list->current_user->ID : 0;
+	public static function user_id( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? $list->current_user->ID : 0;
 	}
-	public static function user_name($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? $list->current_user->display_name : '';
+	public static function user_name( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? $list->current_user->display_name : '';
 	}
-	public static function user_email($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? $list->current_user->user_email : '';
+	public static function user_email( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? $list->current_user->user_email : '';
 	}
-	public static function user_link($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? get_author_posts_url($list->current_user->ID) : '';
+	public static function user_link( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? get_author_posts_url( $list->current_user->ID ) : '';
 	}
-	public static function user_count($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? count_user_posts($list->current_user->ID) : 0;
+	public static function user_count( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? count_user_posts( $list->current_user->ID ) : 0;
 	}
-	public static function user_bio($attr, $cont, $list)
-	{
-		return isset($list->current_user) ? get_the_author_meta('description', $list->current_user->ID) : '';
+	public static function user_bio( $attr, $cont, $list ) {
+		return isset( $list->current_user ) ? get_the_author_meta( 'description', $list->current_user->ID ) : '';
 	}
-	public static function user_meta($attr, $cont, $list)
-	{
-		if (isset($attr) && !is_array($attr) && is_string($attr)) {
-			$meta_key = trim($attr);
-			$attr = array();
+	public static function user_meta( $attr, $cont, $list ) {
+		if ( isset( $attr ) && ! is_array( $attr ) && is_string( $attr ) ) {
+			$meta_key = trim( $attr );
+			$attr     = array();
 		}
-		if (isset($attr['key'])) {
+		if ( isset( $attr['key'] ) ) {
 			$meta_key = $attr['key'];
-		} elseif (isset($attr['meta_key'])) {
+		} elseif ( isset( $attr['meta_key'] ) ) {
 			$meta_key = $attr['meta_key'];
 		}
-		if (!$meta_key) {
+		if ( ! $meta_key ) {
 			return;
 		}
 
-		$single = !(isset($attr) && is_array($attr) && array_key_exists('multiple', $attr) ? (bool) $attr['multiple'] : true);
+		$single = ! ( isset( $attr ) && is_array( $attr ) && array_key_exists( 'multiple', $attr ) ? (bool) $attr['multiple'] : true );
 
 		$sep = ', ';
-		if (isset($attr['sep'])) {
+		if ( isset( $attr['sep'] ) ) {
 			$sep = $attr['sep'];
 		}
 
-		$return = get_user_meta($list->current_user->ID, $meta_key, $single);
+		$return = get_user_meta( $list->current_user->ID, $meta_key, $single );
 
-		if (is_array($return)) {
+		if ( is_array( $return ) ) {
 			$new = array();
-			foreach ($return as $r => $d) {
-				if (!is_array($d)) {
+			foreach ( $return as $r => $d ) {
+				if ( ! is_array( $d ) ) {
 					$new[] = $d;
 				}
 			}
-			if ($new) {
-				$return = implode($sep, $new);
+			if ( $new ) {
+				$return = implode( $sep, $new );
 			} else {
 				$return = '';
 			}
@@ -152,9 +147,8 @@ class W4PL_User_Template_Tags
 		return $return;
 	}
 
-	public static function user_avatar($attr, $cont, $list)
-	{
-		$size = isset($attr['size']) ? $attr['size'] : '96';
-		return get_avatar($list->current_user->ID, $size);
+	public static function user_avatar( $attr, $cont, $list ) {
+		$size = isset( $attr['size'] ) ? $attr['size'] : '96';
+		return get_avatar( $list->current_user->ID, $size );
 	}
 }

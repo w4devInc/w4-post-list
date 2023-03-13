@@ -1,12 +1,18 @@
 <?php
 /**
+ * Appsero functions.
+ *
+ * @package W4_Post_List
+ */
+
+/**
  * Appsero insights instance
  */
 function w4pl_appsero_insights_instance() {
 	static $insights = null;
 
 	if ( is_null( $insights ) && class_exists( 'Appsero\Client' ) ) {
-		$client = new Appsero\Client(
+		$client   = new Appsero\Client(
 			'fc943997-f146-4d10-867c-115d155c7fdd',
 			'W4 Post List',
 			W4PL_PLUGIN_FILE
@@ -48,12 +54,10 @@ function w4pl_appsero_admin_notices() {
 		return;
 	}
 
-	//echo $pagenow . $typenow;
-
 	if (
-		( in_array( $pagenow, array( 'edit.php'/*, 'post.php', 'post-new.php'*/ ) ) && 'w4pl' === $typenow )
+		( in_array( $pagenow, array( 'edit.php' ), true ) && 'w4pl' === $typenow )
 		|| 'plugins.php' === $pagenow
-	 ) {
+	) {
 		$insights->notice = __( 'Allow us to understand how we can improve W4 Post List Plugin by collecting some diagnostic data and usage information.' );
 
 		ob_start();
@@ -63,13 +67,13 @@ function w4pl_appsero_admin_notices() {
 		$notice = str_replace(
 			array(
 				', Your name and email address',
-				' <a href="https://appsero.com/privacy-policy/">Learn more</a> about how Appsero collects and handle your data.'
+				' <a href="https://appsero.com/privacy-policy/">Learn more</a> about how Appsero collects and handle your data.',
 			),
 			'',
 			$notice
 		);
 
-		echo $notice;
+		echo wp_kses_post( $notice );
 	}
 }
 
@@ -81,9 +85,9 @@ function w4pl_appsero_admin_footer() {
 
 	if ( 'plugins.php' !== $pagenow ) {
 		return;
-	 }
+	}
 
-	 echo '<style>.wd-dr-modal-body{height:280px; overflow-x:auto;}.wd-dr-modal-body textarea{max-width:100%;}</style>';
+	echo '<style>.wd-dr-modal-body{height:280px; overflow-x:auto;}.wd-dr-modal-body textarea{max-width:100%;}</style>';
 }
 add_action( 'admin_footer', 'w4pl_appsero_admin_footer', 11 );
 
@@ -102,11 +106,12 @@ function w4pl_insights_extra() {
 		'VisualComposer' => 'Nop',
 	);
 
-	$extra['ListCount'] = $wpdb->get_var( "SELECT COUNT( * ) FROM {$wpdb->posts} WHERE post_type = 'w4pl' AND post_status IN ('publish', 'private', 'pending', 'draft')" );
+	$counts             = wp_count_posts( 'w4pl' );
+	$extra['ListCount'] = $counts->publish + $counts->private + $counts->pending + $counts->draft;
 
 	global $wp_version;
 	if ( defined( 'GUTENBERG_VERSION' ) ) {
-        $extra['Editor'] = 'Block';
+		$extra['Editor'] = 'Block';
 	} elseif ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
 		if ( class_exists( 'Classic_Editor' ) ) {
 			$extra['Editor'] = 'Classic';
@@ -130,7 +135,7 @@ function w4pl_insights_extra() {
 /**
  * We don't need admin name & email, better exclude them.
  *
- * @param  array $args  Arguments.
+ * @param  array  $args  Arguments.
  * @param  string $url  Request url.
  * @return array        [description].
  */
@@ -150,7 +155,7 @@ function w4pl_filter_appsero_request( $args, $url ) {
 				$args['body']['last_name'] = 'Doe';
 			}
 			if ( isset( $args['body']['ip_address'] ) ) {
-				$args['body']['ip_address'] = '192.168.' . rand(0, 255). '.' . rand(0, 255);
+				$args['body']['ip_address'] = '192.168.' . wp_rand( 0, 255 ) . '.' . wp_rand( 0, 255 );
 			}
 
 			if ( isset( $args['body']['extra'] ) ) {
@@ -173,8 +178,6 @@ function w4pl_filter_appsero_request( $args, $url ) {
 				);
 			}
 		}
-
-		# echo '<pre>'; print_r( $args['body'] ); exit;
 	}
 
 	return $args;

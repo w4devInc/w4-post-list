@@ -157,7 +157,6 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 					$template = str_replace( $posts_match[0], $posts_loop, $template );
 				}
 			}
-
 		} else {
 			// no posts
 			// replace [posts].

@@ -29,11 +29,11 @@
 		<tr class="<?php echo $row_class; ?>">
 			<th class="col-name">
 				<?php
-				#if ( isset( $attr['code'] ) ) {
-				#	echo $attr['code'];
-				#} else {
+				// if ( isset( $attr['code'] ) ) {
+				// echo $attr['code'];
+				// } else {
 					echo "[{$shortcode}]";
-				#}
+				// }
 				?>
 			</th>
 			<th class="col-output">

@@ -63,8 +63,8 @@ class W4PL_Admin_Lists_Table_Columns {
 	/**
 	 * Display values for custom columns
 	 *
-	 * @param  string   $column_name Column name.
-	 * @param  interger $post_ID     current post id.
+	 * @param  string $column_name Column name.
+	 * @param  int    $post_ID     current post id.
 	 * @return void
 	 */
 	public function manage_posts_custom_column( $column_name, $post_ID ) {
@@ -82,7 +82,7 @@ class W4PL_Admin_Lists_Table_Columns {
 	 * Prints a friendly list type of a given post list
 	 * used on admin lists table
 	 *
-	 * @param interger $post_ID Id of the post.
+	 * @param int $post_ID Id of the post.
 	 */
 	public function list_type_label( $post_ID ) {
 		// this is really odd to get information like this.
@@ -113,7 +113,7 @@ class W4PL_Admin_Lists_Table_Columns {
 		}
 
 		if ( empty( $return ) ) {
-			$lt_options = W4PL_Utils::list_type_options();
+			$lt_options = W4PL_Config::list_type_options();
 			if ( ! empty( $lt ) && isset( $lt_options[ $lt ] ) ) {
 				$return = $lt_options[ $lt ];
 			} else {

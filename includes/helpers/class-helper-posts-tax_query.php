@@ -16,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class W4PL_Helper_Tax_Query
  */
 class W4PL_Helper_Tax_Query {
-
 	/**
 	 * Constructor
 	 */
@@ -149,12 +148,12 @@ class W4PL_Helper_Tax_Query {
 						<a class="w4pl_tax_query_value_add button" href="#">+</a>
 						<a class="w4pl_tax_query_value_del button" href="#">-</a>
 					</div>';
-					++ $cindex;
+					++$cindex;
 				}
 				$html .= '</td><td class="w4pl_tax_query_action_cell"><a class="w4pl_tax_query_remove_btn" href="#" class="button">' . __( 'Remove', 'w4-post-list' ) . '</a></td>
 				</tr>';
 
-				++ $index;
+				++$index;
 			}
 		}
 		$html .= '</tbody>
@@ -173,32 +172,32 @@ class W4PL_Helper_Tax_Query {
 		<p style="text-align:right;"><a id="w4pl_tax_query_add_btn" href="#" class="button">' . __( '+ Add', 'w4-post-list' ) . '</a></p>
 		<table id="w4pl_tax_query_clone" style="display:none;">
 		<tr><td class="w4pl_tax_query_taxonomy_cell">'
-					. w4pl_form_child_field_html(
-						array(
-							'name'        => 'w4pl[tax_query][taxonomy][]',
-							'input_class' => 'w4pl_tax_query_taxonomy',
-							'type'        => 'select',
-							'option'      => W4PL_Config::post_type_taxonomies_choices( $post_type ),
-						)
-					)
-					. '</td><td class="w4pl_tax_query_operator_cell">'
-					. w4pl_form_child_field_html(
-						array(
-							'name'        => 'w4pl[tax_query][operator][]',
-							'input_class' => 'w4pl_tax_query_operator',
-							'type'        => 'select',
-							'option'      => W4PL_Config::tax_query_operator_options(),
-						)
-					)
-					. '</td><td class="w4pl_tax_query_field_cell">'
-					. w4pl_form_child_field_html(
-						array(
-							'name'        => 'w4pl[tax_query][field][]',
-							'input_class' => 'w4pl_tax_query_field',
-							'type'        => 'select',
-							'option'      => W4PL_Config::tax_query_field_options(),
-						)
-					)
+			. w4pl_form_child_field_html(
+				array(
+					'name'        => 'w4pl[tax_query][taxonomy][]',
+					'input_class' => 'w4pl_tax_query_taxonomy',
+					'type'        => 'select',
+					'option'      => W4PL_Config::post_type_taxonomies_choices( $post_type ),
+				)
+			)
+			. '</td><td class="w4pl_tax_query_operator_cell">'
+			. w4pl_form_child_field_html(
+				array(
+					'name'        => 'w4pl[tax_query][operator][]',
+					'input_class' => 'w4pl_tax_query_operator',
+					'type'        => 'select',
+					'option'      => W4PL_Config::tax_query_operator_options(),
+				)
+			)
+			. '</td><td class="w4pl_tax_query_field_cell">'
+			. w4pl_form_child_field_html(
+				array(
+					'name'        => 'w4pl[tax_query][field][]',
+					'input_class' => 'w4pl_tax_query_field',
+					'type'        => 'select',
+					'option'      => W4PL_Config::tax_query_field_options(),
+				)
+			)
 			. '</td><td class="w4pl_tax_query_terms_cell terms">'
 			. '<div class="item">
 				<input type="text" class="wff wfft_text wffi_w4pl_tax_query_terms">
