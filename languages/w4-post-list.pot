@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-12 23:03:14+00:00\n"
+"POT-Creation-Date: 2023-03-13 09:49:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,27 +96,27 @@ msgstr ""
 msgid "Secondary menu"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:42
+#: admin/pages/views/html-plugin-links.php:43
 msgid "Reference"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:45
+#: admin/pages/views/html-plugin-links.php:47
 msgid "Online Documentation"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:46
+#: admin/pages/views/html-plugin-links.php:48
 msgid "Visit Plugin Page"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:47
+#: admin/pages/views/html-plugin-links.php:49
 msgid "Demos & Examples"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:48
+#: admin/pages/views/html-plugin-links.php:51
 msgid "Post a review"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:49
+#: admin/pages/views/html-plugin-links.php:53
 msgid "Do you need a Soccer / Football Plugin ?"
 msgstr ""
 
@@ -194,40 +194,40 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:10
+#: admin/pages/views/html-usage.php:11
 msgid "Diplaying list with shortcode"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:15
+#: admin/pages/views/html-usage.php:17
 #. translators: %s: postlist wrapper in code html tag
 msgid ""
 "Shortcode %s can be used to display a list by list id, slug or title on "
 "post/page content area"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:25
+#: admin/pages/views/html-usage.php:28
 msgid "Gutenberg / Block Editor"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:26
+#: admin/pages/views/html-usage.php:31
 msgid "W4 Post list has a registered block that you can use to display a list"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:28
+#: admin/pages/views/html-usage.php:35
 msgid "Widget"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:29
+#: admin/pages/views/html-usage.php:38
 msgid ""
 "W4 Post List has a dedicated widget that you can use on widget area from "
 "widgets manager page."
 msgstr ""
 
-#: admin/pages/views/html-usage.php:31
+#: admin/pages/views/html-usage.php:42
 msgid "Displaying list with PHP function"
 msgstr ""
 
-#: admin/pages/views/html-usage.php:36
+#: admin/pages/views/html-usage.php:48
 #. translators: %s: php function name
 msgid "Display list using %s function"
 msgstr ""
@@ -822,20 +822,40 @@ msgstr ""
 msgid "Posts with Thumbnail"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:42
+#: includes/helpers/class-helper-style.php:44
 msgid "Style"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:49
+#: includes/helpers/class-helper-style.php:51
 msgid "CSS"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:60
+#: includes/helpers/class-helper-style.php:54
+msgid ""
+"this css rules is placed inline just before the list is place at front-end "
+"(not in the HEAD tag).\r\n"
+"\t\t\t\t\t\t\t\t<br />to apply css just for current list, use "
+"<code>#w4pl-list-%s</code> as parent selector.\r\n"
+"\t\t\t\t\t\t\t\t<br />Alternatively, you can use "
+"<code>#w4pl-list-[listid]</code> to dynamically this selector."
+msgstr ""
+
+#: includes/helpers/class-helper-style.php:62
 msgid "JavaScript"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:70
+#: includes/helpers/class-helper-style.php:65
+msgid ""
+"javascript loads right after template ends. don't use "
+"<code>&lt;script&gt;</code> tag"
+msgstr ""
+
+#: includes/helpers/class-helper-style.php:72
 msgid "HTML class name"
+msgstr ""
+
+#: includes/helpers/class-helper-style.php:74
+msgid "applied on the wrapper html DIV tag"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:40

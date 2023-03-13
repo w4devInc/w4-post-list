@@ -39,14 +39,18 @@ $soccer_url = add_query_arg(
 );
 ?>
 <div class="w4pl-plugin-links">
-	<h2 style="margin-top: 0;"><?php esc_html_e( 'Reference', 'w4-post-list' ); ?></h2>
+	<h2 style="margin-top: 0;">
+		<?php esc_html_e('Reference', 'w4-post-list'); ?>
+	</h2>
 	<div class="inside">
 		<ul>
-			<li><a href="<?php echo esc_url( $doc_url ); ?>" target="_blank"><?php esc_html_e( 'Online Documentation', 'w4-post-list' ); ?></a></li>
-			<li><a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank"><?php esc_html_e( 'Visit Plugin Page', 'w4-post-list' ); ?></a></li>
-			<li><a href="<?php echo esc_url( $demo_url ); ?>" target="_blank"><?php esc_html_e( 'Demos & Examples', 'w4-post-list' ); ?></a></li>
-			<li><a href="https://wordpress.org/support/view/plugin-reviews/w4-post-list" target="_blank"><?php esc_html_e( 'Post a review', 'w4-post-list' ); ?></a></li>
-			<!-- <li><a href="<?php echo esc_url( $soccer_url ); ?> " target="_blank"><?php esc_html_e( 'Do you need a Soccer / Football Plugin ?', 'w4-post-list' ); ?></a></li> -->
+			<li><a href="<?php echo esc_url($doc_url); ?>" target="_blank"><?php esc_html_e('Online Documentation', 'w4-post-list'); ?></a></li>
+			<li><a href="<?php echo esc_url($plugin_url); ?>" target="_blank"><?php esc_html_e('Visit Plugin Page', 'w4-post-list'); ?></a></li>
+			<li><a href="<?php echo esc_url($demo_url); ?>" target="_blank"><?php esc_html_e('Demos & Examples', 'w4-post-list'); ?></a></li>
+			<li><a href="https://wordpress.org/support/view/plugin-reviews/w4-post-list" target="_blank">
+					<?php esc_html_e('Post a review', 'w4-post-list'); ?>
+				</a></li>
+			<!-- <li><a href="<?php echo esc_url($soccer_url); ?> " target="_blank"><?php esc_html_e('Do you need a Soccer / Football Plugin ?', 'w4-post-list'); ?></a></li> -->
 		</ul>
 	</div><!--inside-->
 </div><!--postbox-->

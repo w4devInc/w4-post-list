@@ -9,7 +9,7 @@
 
 	<!-- Configs -->
 	<config name="minimum_supported_wp_version" value="4.7" />
-	<config name="testVersion" value="5.4.1-" />
+	<config name="testVersion" value="6.1.1-" />
 
 	<!-- Rules -->
 	<rule ref="WordPress">

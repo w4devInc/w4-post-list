@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.4.5';
+	public $version = '2.4.6';
 
 	/**
 	 * This will hold current class instance
