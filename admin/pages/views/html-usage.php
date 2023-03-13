@@ -8,7 +8,7 @@
 ?>
 <div class="w4pl-usage">
 	<h2>
-		<?php _e( 'Diplaying list with shortcode', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'Diplaying list with shortcode', 'w4-post-list' ); ?>
 	</h2>
 	<p>
 		<?php
@@ -25,21 +25,21 @@
 	</p>
 
 	<h2>
-		<?php _e( 'Gutenberg / Block Editor', 'w4-post-list' ); ?>:
+		<?php esc_html_e( 'Gutenberg / Block Editor', 'w4-post-list' ); ?>:
 	</h2>
 	<p>
-		<?php echo __( 'W4 Post list has a registered block that you can use to display a list', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'W4 Post list has a registered block that you can use to display a list', 'w4-post-list' ); ?>
 	</p>
 
 	<h2>
-		<?php _e( 'Widget', 'w4-post-list' ); ?>:
+		<?php esc_html_e( 'Widget', 'w4-post-list' ); ?>:
 	</h2>
 	<p>
-		<?php echo __( 'W4 Post List has a dedicated widget that you can use on widget area from widgets manager page.', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'W4 Post List has a dedicated widget that you can use on widget area from widgets manager page.', 'w4-post-list' ); ?>
 	</p>
 
 	<h2>
-		<?php _e( 'Displaying list with PHP function', 'w4-post-list' ); ?>:
+		<?php esc_html_e( 'Displaying list with PHP function', 'w4-post-list' ); ?>:
 	</h2>
 	<p>
 		<?php

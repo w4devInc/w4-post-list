@@ -118,17 +118,19 @@ class W4PL_Admin_Lists_Metaboxes {
 		$options       = stripslashes_deep( $_POST['w4pl'] );
 		$options['id'] = $post_ID;
 
-		// w4pl_debug($options);
-
 		$options = $this->sanitize_options( $options );
-
-		// w4pl_debug($options, true);
 
 		$options = apply_filters( 'w4pl/pre_save_options', $options );
 
 		update_post_meta( $post_ID, '_w4pl', $options );
 	}
 
+	/**
+	 * Sanitize options
+	 *
+	 * @param array $options List options.
+	 * @return array
+	 */
 	public function sanitize_options( $options ) {
 		// Sanitize options.
 		foreach ( array( 'no_items_text' ) as $key ) {
