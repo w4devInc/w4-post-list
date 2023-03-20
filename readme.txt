@@ -4,7 +4,7 @@ Tags: post, post list, custom post list, custom post type, widget, shortcode, me
 Requires at least: 5.8
 Tested up to: 6.1.1
 Requires PHP: 7.4
-Stable tag: 2.4.5
+Stable tag: 2.4.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,7 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 == Changelog ==
 = 2.4.6 = 
 * Security: Fixed multiple security issues.
+* Fixed: Template attributes removal upon saving.
 = 2.4.5 =
 * Fix: Sanitization were removing html tags from template.
 * Change: Updated post list post type capability to page level access.
@@ -150,6 +151,7 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 == Upgrade Notice ==
 = 2.4.6 = 
 * Security: Fixed multiple security issues.
+* Fixed: Template attributes removal upon saving.
 = 2.4.5 =
 * Fix: Sanitization were removing html tags from template.
 * Change: Updated post list post type capability to page level access.
