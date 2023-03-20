@@ -6,7 +6,7 @@
  * @package W4_Post_List
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -15,18 +15,15 @@ if (!defined('ABSPATH')) {
  *
  * @class W4PL_Helper_No_Items
  */
-class W4PL_Helper_No_Items
-{
-
+class W4PL_Helper_No_Items {
 	/**
 	 * Constructor
 	 */
-	public function __construct()
-	{
-		add_filter('w4pl/list_edit_form_fields', array($this, 'list_edit_form_fields'), 10, 2);
-		add_filter('w4pl/pre_save_options', array($this, 'pre_save_options'));
-		add_filter('w4pl/pre_get_options', array($this, 'pre_get_options'));
-		add_action('w4pl/parse_html', array($this, 'parse_html'), 60);
+	public function __construct() {
+		add_filter( 'w4pl/list_edit_form_fields', array( $this, 'list_edit_form_fields' ), 10, 2 );
+		add_filter( 'w4pl/pre_save_options', array( $this, 'pre_save_options' ) );
+		add_filter( 'w4pl/pre_get_options', array( $this, 'pre_get_options' ) );
+		add_action( 'w4pl/parse_html', array( $this, 'parse_html' ), 60 );
 	}
 
 	/**
@@ -36,9 +33,8 @@ class W4PL_Helper_No_Items
 	 * @param  array $options List options.
 	 * @return array          List editor fields.
 	 */
-	public function list_edit_form_fields(array $fields, array $options)
-	{
-		if ('posts' == $options['list_type']) {
+	public function list_edit_form_fields( array $fields, array $options ) {
+		if ( 'posts' == $options['list_type'] ) {
 			$pos = 99.2;
 		} else {
 			// Except posts, all other list type is bound within 5-50.
@@ -49,10 +45,10 @@ class W4PL_Helper_No_Items
 			'position'    => $pos,
 			'option_name' => 'no_items_text',
 			'name'        => 'w4pl[no_items_text]',
-			'label'       => __('No items text', 'w4-post-list'),
+			'label'       => __( 'No items text', 'w4-post-list' ),
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
-			'desc2'       => __('Displayed when no items found by this filter or pagination. Allows html tags - a, br, em, strong, span, p, div.', 'w4-post-list'),
+			'desc2'       => __( 'Displayed when no items found by this filter or pagination. Allows html tags - a, br, em, strong, span, p, div.', 'w4-post-list' ),
 		);
 
 		return $fields;
@@ -63,11 +59,10 @@ class W4PL_Helper_No_Items
 	 *
 	 * @param  array $options List options.
 	 */
-	public function pre_save_options(array $options)
-	{
-		foreach (array('no_items_text' => '', ) as $k => $v) {
-			if (array_key_exists($k, $options) && empty($options[$k])) {
-				unset($options[$k]);
+	public function pre_save_options( array $options ) {
+		foreach ( array( 'no_items_text' => '' ) as $k => $v ) {
+			if ( array_key_exists( $k, $options ) && empty( $options[ $k ] ) ) {
+				unset( $options[ $k ] );
 			}
 		}
 		return $options;
@@ -78,11 +73,10 @@ class W4PL_Helper_No_Items
 	 *
 	 * @param  array $options List options.
 	 */
-	public function pre_get_options(array $options)
-	{
-		foreach (array('no_items_text' => '', ) as $k => $v) {
-			if (!isset($options[$k])) {
-				$options[$k] = '';
+	public function pre_get_options( array $options ) {
+		foreach ( array( 'no_items_text' => '' ) as $k => $v ) {
+			if ( ! isset( $options[ $k ] ) ) {
+				$options[ $k ] = '';
 			}
 		}
 		return $options;
@@ -93,9 +87,8 @@ class W4PL_Helper_No_Items
 	 *
 	 * @param  object $obj Instance of W4PL_List
 	 */
-	public function parse_html($obj)
-	{
-		if (empty($obj->template) && !empty($obj->options['no_items_text'])) {
+	public function parse_html( $obj ) {
+		if ( empty( $obj->template ) && ! empty( $obj->options['no_items_text'] ) ) {
 			$escaped_html = wp_kses(
 				$obj->options['no_items_text'],
 				array(
@@ -113,7 +106,7 @@ class W4PL_Helper_No_Items
 				)
 			);
 
-			$obj->html = str_replace('class="w4pl-inner">', 'class="w4pl-inner">' . $escaped_html, $obj->html);
+			$obj->html = str_replace( 'class="w4pl-inner">', 'class="w4pl-inner">' . $escaped_html, $obj->html );
 		}
 	}
 }

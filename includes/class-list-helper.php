@@ -70,7 +70,7 @@ class W4PL_List_Helper {
 				'id'        => md5( microtime() . rand() ),
 				'tab_id'    => 'w4pl_field_group_type',
 				'list_type' => 'posts',
-				'template'  => ''
+				'template'  => '',
 			)
 		);
 

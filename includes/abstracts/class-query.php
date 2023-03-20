@@ -181,7 +181,8 @@ abstract class W4PL_Query {
 	/**
 	 * Should be defined by extender
 	 */
-	public function query(){}
+	public function query() {
+	}
 
 	/**
 	 * Parse searchable field
@@ -200,7 +201,7 @@ abstract class W4PL_Query {
 		foreach ( $args as $column => $term ) {
 			/*
 			if( 0 === strrpos($column, '__like') )
-				$column = str_replace('__like', '', $column);
+			$column = str_replace('__like', '', $column);
 			*/
 
 			$search_terms = array();

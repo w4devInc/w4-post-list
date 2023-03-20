@@ -19,6 +19,7 @@ class W4PL_Utils {
 
 	/**
 	 * Store log
+	 *
 	 * @param  string $str log message
 	 */
 	public static function log( $str = '' ) {
@@ -26,9 +27,13 @@ class W4PL_Utils {
 	}
 
 	public static function order_by_position( $a, $b ) {
-		if ( !isset( $a['position'] ) || !isset( $b['position'] ) ) return -1;
-		if ( $a['position'] == $b['position'] ) return 0;
-	    return ( $a['position'] < $b['position'] ) ? -1 : 1;
+		if ( ! isset( $a['position'] ) || ! isset( $b['position'] ) ) {
+			return -1;
+		}
+		if ( $a['position'] == $b['position'] ) {
+			return 0;
+		}
+		return ( $a['position'] < $b['position'] ) ? -1 : 1;
 	}
 
 	public static function p( $a ) {
@@ -69,7 +74,7 @@ class W4PL_Utils {
 			foreach ( array_keys( $rows[ $keys[0] ] ) as $i ) {
 				$row = array();
 				foreach ( $keys as $key ) {
-					$row[$key] = isset( $rows[$key][$i] ) ? $rows[$key][$i] : '';
+					$row[ $key ] = isset( $rows[ $key ][ $i ] ) ? $rows[ $key ][ $i ] : '';
 				}
 
 				$items[] = $row;
@@ -85,9 +90,9 @@ class W4PL_Utils {
 
 	/* Retrive latest updates about Post List plugin */
 	public static function plugin_news( $echo = true, $refresh = false ) {
-		$transient = 'w4pl_plugin_news';
+		$transient     = 'w4pl_plugin_news';
 		$transient_old = $transient . '_old';
-		$expiration = 7200;
+		$expiration    = 7200;
 
 		$output = get_transient( $transient );
 

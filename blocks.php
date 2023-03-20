@@ -70,7 +70,7 @@ function w4pl_render_block_postlist( $attributes ) {
 
 		// include className if used.
 		if ( ! empty( $attributes['className'] ) ) {
-			$before = sprintf( '<div class="%s">', $attributes['className'] );
+			$before = sprintf( '<div class="%s">', esc_attr( $attributes['className'] ) );
 			$after  = '</div>';
 		}
 

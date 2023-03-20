@@ -14,28 +14,27 @@
  * @package W4_Post_List
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Define current file as plugin file.
-if (!defined('W4PL_PLUGIN_FILE')) {
-	define('W4PL_PLUGIN_FILE', __FILE__);
+if ( ! defined( 'W4PL_PLUGIN_FILE' ) ) {
+	define( 'W4PL_PLUGIN_FILE', __FILE__ );
 }
 
 // Load dependencies.
-require plugin_dir_path(W4PL_PLUGIN_FILE) . '/vendor/autoload.php';
+require plugin_dir_path( W4PL_PLUGIN_FILE ) . '/vendor/autoload.php';
 
 /**
  * Returns the main instance of Plugin.
  *
  * @return W4_Post_List
  */
-function w4pl()
-{
+function w4pl() {
 	/* Require the main plug class */
-	if (!class_exists('W4_Post_List')) {
-		require plugin_dir_path(W4PL_PLUGIN_FILE) . 'includes/class-w4-post-list.php';
+	if ( ! class_exists( 'W4_Post_List' ) ) {
+		require plugin_dir_path( W4PL_PLUGIN_FILE ) . 'includes/class-w4-post-list.php';
 	}
 
 	return W4_Post_List::instance();
@@ -44,23 +43,21 @@ function w4pl()
 /**
  * Bootstrap the plugin
  */
-function w4pl_load()
-{
+function w4pl_load() {
 	w4pl();
 }
-add_action('plugins_loaded', 'w4pl_load', 10);
+add_action( 'plugins_loaded', 'w4pl_load', 10 );
 
 /**
  * Run when plugin gets activated
  */
-function w4pl_activated()
-{
-	update_option('w4pl_flush_rules', time());
+function w4pl_activated() {
+	update_option( 'w4pl_flush_rules', time() );
 }
-register_activation_hook(W4PL_PLUGIN_FILE, 'w4pl_activated');
+register_activation_hook( W4PL_PLUGIN_FILE, 'w4pl_activated' );
 
 // Block editor.
-require plugin_dir_path(W4PL_PLUGIN_FILE) . 'blocks.php';
+require plugin_dir_path( W4PL_PLUGIN_FILE ) . 'blocks.php';
 
 // Appsero.
-require plugin_dir_path(W4PL_PLUGIN_FILE) . 'appsero.php';
+require plugin_dir_path( W4PL_PLUGIN_FILE ) . 'appsero.php';
