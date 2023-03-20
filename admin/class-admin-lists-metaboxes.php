@@ -139,11 +139,11 @@ class W4PL_Admin_Lists_Metaboxes {
 			}
 		}
 
-		foreach ( array( 'template', 'css', 'js' ) as $key ) {
-			if ( array_key_exists( $key, $options ) ) {
-				$options[ $key ] = wp_kses_post( $options[ $key ] );
-			}
-		}
+		// foreach ( array( 'template', 'css', 'js' ) as $key ) {
+		// 	if ( array_key_exists( $key, $options ) ) {
+		// 		$options[ $key ] = wp_kses_post( $options[ $key ] );
+		// 	}
+		// }
 
 		foreach ( array( 'post_s', 'post__in', 'post__not_in', 'post_parent__in', 'author__in', 'author__not_in', 'posts_per_page', 'limit', 'offset' ) as $key ) {
 			if ( array_key_exists( $key, $options ) ) {

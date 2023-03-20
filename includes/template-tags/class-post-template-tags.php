@@ -672,7 +672,13 @@ class W4PL_Post_Template_Tags {
 			return $post_thumbnail_id;
 		} elseif ( isset( $attr['output'] ) && 'src' == $attr['output'] ) {
 			$img = wp_get_attachment_image_src( $post_thumbnail_id, $size );
-			return isset( $img[0] ) ? $img[0] : '';
+			if ( isset( $img[0] ) ) {
+				return $img[0];
+			} elseif ( ! empty( $attr['placeholder'] ) ) {
+				return $attr['placeholder'];
+			} else {
+				return '';
+			}
 		} elseif ( $post_thumbnail_id ) {
 			return wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
 		} elseif ( ! empty( $attr['placeholder'] ) ) {
