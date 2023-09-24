@@ -39,8 +39,11 @@ class W4PL_List_Shortcode {
 
 		try {
 			$list = W4PL_List_Factory::get_list( $options );
+
 			return $list->get_html();
-		} catch ( Exception $e ) {
+
+		} catch (Exception $e) {
+
 			// Not showing error.
 			return $e->getMessage();
 		}
@@ -53,20 +56,43 @@ class W4PL_List_Shortcode {
 	 * @return array
 	 */
 	public function parse_shortcode_attrs( $attrs ) {
-		if ( isset( $attrs['id'] ) ) {
+		if ( isset( $attrs['id'] ) && W4PL_Config::LIST_POST_TYPE === get_post_type( $attrs['id'] ) ) {
 			$options       = get_post_meta( $attrs['id'], '_w4pl', true );
 			$options['id'] = $attrs['id'];
+
 		} elseif ( isset( $attrs['slug'] ) ) {
-			$post = get_page_by_path( $attrs['slug'], OBJECT, array( W4PL_Config::LIST_POST_TYPE ) );
-			if ( $post ) {
-				$options       = get_post_meta( $post->ID, '_w4pl', true );
-				$options['id'] = $post->ID;
+			$query = new WP_Query(
+				array(
+					'post_type'              => W4PL_Config::LIST_POST_TYPE,
+					'name'                   => $attrs['slug'],
+					'posts_per_page'         => 1,
+					'no_found_rows'          => true,
+					'ignore_sticky_posts'    => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+				)
+			);
+
+			if ( ! empty( $query->post ) ) {
+				$options       = get_post_meta( $query->post->ID, '_w4pl', true );
+				$options['id'] = $query->post->ID;
 			}
 		} elseif ( isset( $attrs['title'] ) ) {
-			$post = get_page_by_title( $attrs['title'], OBJECT, W4PL_Config::LIST_POST_TYPE );
-			if ( $post ) {
-				$options       = get_post_meta( $post->ID, '_w4pl', true );
-				$options['id'] = $post->ID;
+			$query = new WP_Query(
+				array(
+					'post_type'              => W4PL_Config::LIST_POST_TYPE,
+					'title'                  => $attrs['title'],
+					'posts_per_page'         => 1,
+					'no_found_rows'          => true,
+					'ignore_sticky_posts'    => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+				)
+			);
+
+			if ( ! empty( $query->post ) ) {
+				$options       = get_post_meta( $query->post->ID, '_w4pl', true );
+				$options['id'] = $query->post->ID;
 			}
 		} else {
 			$options = array();

@@ -31,6 +31,24 @@ abstract class W4PL_List {
 	 */
 	public $options;
 
+	// define above variables.
+	public $terms_args = array();
+	public $terms_query = array();
+	public $current_term = '';
+	public $users_args = array();
+	public $users_query = array();
+	public $current_user = '';
+	public $posts_args = array();
+	public $posts_query = array();
+	public $current_post = '';
+	public $groups = array();
+	public $current_group = '';
+	public $css = '';
+	public $js = '';
+	public $html = '';
+	public $template = '';
+
+
 	/**
 	 * Constructor
 	 *
@@ -122,7 +140,7 @@ abstract class W4PL_List {
 			$use_ajax = isset( $attr['ajax'] ) ? (bool) $attr['ajax'] : false;
 
 			if ( $use_ajax ) {
-				$class    .= ' ajax-navigation';
+				$class .= ' ajax-navigation';
 				$this->js .= ';(function($){
 					$(document).ready(function(){
 						$(document.body).on("click", "#w4pl-list-' . $this->id . ' .navigation a.page-numbers", function(){
