@@ -13,5 +13,10 @@
 	"bugs": {
 		"url": "https://github.com/w4devInc/w4-post-list/issues"
 	},
-	"homepage": "https://github.com/w4devInc/w4-post-list#readme"
+	"homepage": "https://github.com/w4devInc/w4-post-list#readme",
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }

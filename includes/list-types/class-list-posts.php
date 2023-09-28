@@ -45,7 +45,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 		$this->html = '';
 
 		// let helper class extend/modify this class.
-		do_action_ref_array( 'w4pl/pre_get_list', array( &$this ) );
+		do_action_ref_array( 'w4pl/pre_get_list', array(&$this ) );
 	}
 
 	/**
@@ -53,13 +53,13 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 	 */
 	public function get_html() {
 		// let helper class extend/modify this class.
-		do_action_ref_array( 'w4pl/parse_query_args', array( &$this ) );
+		do_action_ref_array( 'w4pl/parse_query_args', array(&$this ) );
 
 		$template       = $this->list_type_posts_template();
 		$this->template = trim( $template );
 
 		// html
-		$this->html  = '';
+		$this->html = '';
 		$this->html .= '<div id="w4pl-list-' . $this->id . '">' . "\n\t" . '<div id="w4pl-inner-' . $this->id . '" class="w4pl-inner">';
 		if ( ! empty( $this->template ) ) {
 			$this->html .= "\n\t\t" . $this->template . "\n\t";
@@ -67,7 +67,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 		$this->html .= '</div><!--#w4pl-inner-' . $this->id . '-->' . "\n" . '</div><!--#w4pl-' . $this->id . '-->';
 
 		// let helper classes extend or modify this class.
-		do_action_ref_array( 'w4pl/parse_html', array( &$this ) );
+		do_action_ref_array( 'w4pl/parse_html', array(&$this ) );
 
 		return "<!--W4PL_List_{$this->id}-->\n" . $this->html . "\n<!--END_W4PL_List_{$this->id}-->\n";
 	}
@@ -132,14 +132,14 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 					while ( $this->posts_query->have_posts() ) {
 						$this->posts_query->the_post();
 						if ( in_array( get_the_ID(), $group['post_ids'] ) ) {
-							$group_posts_loop .= preg_replace_callback( "/$pattern/s", array( &$this, 'do_shortcode_tag' ), $posts_template );
+							$group_posts_loop .= preg_replace_callback( "/$pattern/s", array(&$this, 'do_shortcode_tag' ), $posts_template );
 						}
 					}
 
 					// replace [posts]
 					$groups_template_clone = str_replace( $posts_match['0'], $group_posts_loop, $groups_template_clone );
 
-					$groups_loop .= preg_replace_callback( "/$pattern/s", array( &$this, 'do_shortcode_tag' ), $groups_template_clone );
+					$groups_loop .= preg_replace_callback( "/$pattern/s", array(&$this, 'do_shortcode_tag' ), $groups_template_clone );
 				}
 
 				// replace [groups]
@@ -149,7 +149,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 				// post loop
 				while ( $this->posts_query->have_posts() ) {
 					$this->posts_query->the_post();
-					$posts_loop .= preg_replace_callback( "/$pattern/s", array( &$this, 'do_shortcode_tag' ), $posts_template );
+					$posts_loop .= preg_replace_callback( "/$pattern/s", array(&$this, 'do_shortcode_tag' ), $posts_template );
 				}
 
 				// replace [posts]
@@ -161,7 +161,6 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 			// no posts
 			// replace [posts].
 			$template = '';
-
 		}
 
 		// reset postdata back to normal.

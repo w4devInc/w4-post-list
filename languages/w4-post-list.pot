@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2023-03-20 03:40:49+00:00\n"
+"POT-Creation-Date: 2023-09-28 03:21:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -100,23 +100,23 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:47
+#: admin/pages/views/html-plugin-links.php:48
 msgid "Online Documentation"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:48
+#: admin/pages/views/html-plugin-links.php:51
 msgid "Visit Plugin Page"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:49
+#: admin/pages/views/html-plugin-links.php:54
 msgid "Demos & Examples"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:51
+#: admin/pages/views/html-plugin-links.php:57
 msgid "Post a review"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:53
+#: admin/pages/views/html-plugin-links.php:59
 msgid "Do you need a Soccer / Football Plugin ?"
 msgstr ""
 
@@ -258,15 +258,15 @@ msgstr ""
 msgid "No list selected."
 msgstr ""
 
-#: includes/abstracts/class-list.php:56
+#: includes/abstracts/class-list.php:74
 msgid "Previous"
 msgstr ""
 
-#: includes/abstracts/class-list.php:57
+#: includes/abstracts/class-list.php:75
 msgid "Next"
 msgstr ""
 
-#: includes/abstracts/class-list.php:182 includes/abstracts/class-list.php:213
+#: includes/abstracts/class-list.php:200 includes/abstracts/class-list.php:231
 msgid "Unknown"
 msgstr ""
 
