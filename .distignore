@@ -1,0 +1,20 @@
+# Directories
+/.wordpress-org
+/.github
+/node_modules
+/src
+
+
+# Files
+/.browserlistrc
+/.gitattributes
+/.gitignore
+/CHANGELOG.txt
+/composer.json
+/composer.lock
+/Gruntfile.js
+/LICENSE
+/package-lock.json
+/package.json
+/phpcs.xml
+/README.md
