@@ -1,6 +1,6 @@
 {
 	"name": "w4-post-list",
-	"version": "2.5.1",
+	"version": "2.4.8",
 	"description": "A WordPress Plugin for listing posts in some handy manner.",
 	"main": "Gruntfile.js",
 	"scripts": {
