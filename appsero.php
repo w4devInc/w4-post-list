@@ -73,7 +73,14 @@ function w4pl_appsero_admin_notices() {
 			$notice
 		);
 
-		echo wp_kses_post( $notice );
+		$allowed_html           = wp_kses_allowed_html( 'post' );
+		$allowed_html['script'] = array( 'type' => true, 'src' => true, 'async' => true, 'defer' => true );
+
+		$notice = wp_kses( $notice, $allowed_html );
+
+		// Not sure why kses is not working for style attribute.
+		$notice = str_replace( '<p class="description">', '<p class="description" style="display:none">', $notice );
+		echo $notice;
 	}
 }
 

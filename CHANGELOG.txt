@@ -1,4 +1,18 @@
 == Changelog ==
+= 2.3.8 =
+* New: Added term_order clasue for Terms list to order terms (by Category Order and Taxonomy Terms Order plugin).
+= 2.3.5 =
+* Updated: WordPress version compatibility meta.
+= 2.3.4 =
+* Fix: Replace depreciated jQuery method live.
+* Updated: Appsero client library updated to 1.1.11.
+= 2.3.3 =
+* Fix: Using 0 (zero) for current author posts were not working.
+= 2.3.2 =
+* Fix: `strip_shortcodes` attribute of [post_excerpt] template tag were not working.
+= 2.3.1 =
+* New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
+* Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
 = 2.2.0 =
 * New: Add a list to content editor using Gutenberg block editor.
 = 2.1.8 =

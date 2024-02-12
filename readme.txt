@@ -2,7 +2,7 @@
 Contributors: sajib1223
 Tags: post, post list, custom post list, custom post type, widget, shortcode, media
 Requires at least: 5.8
-Tested up to: 6.3.1
+Tested up to: 6.4.3
 Requires PHP: 7.4
 Stable tag: 2.4.7
 License: GPLv3
@@ -112,6 +112,9 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.4.8 = 
+* Fix: Prev page navigation button weren't showing on page 2.
+* Fix: Tracking message were showing javascript content on admin notice.
 = 2.4.7 = 
 * Updated: Updated php 8.2 compatibility.
 = 2.4.6 = 
@@ -131,26 +134,14 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 = 2.4.0 =
 * Fixed: Previous pagination link were not showing on page 2.
 * Fixed: Default 10 lists per page were showing on block editor list select. Made it to 100.
-= 2.3.8 =
-* New: Added term_order clasue for Terms list to order terms (by Category Order and Taxonomy Terms Order plugin).
-= 2.3.5 =
-* Updated: WordPress version compatibility meta.
-= 2.3.4 =
-* Fix: Replace depreciated jQuery method live.
-* Updated: Appsero client library updated to 1.1.11.
-= 2.3.3 =
-* Fix: Using 0 (zero) for current author posts were not working.
-= 2.3.2 =
-* Fix: `strip_shortcodes` attribute of [post_excerpt] template tag were not working.
-= 2.3.1 =
-* New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
-* Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
-= 2.2.0 =
-* New: Add a list to content editor using Gutenberg block editor.
+
 
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.4.8 =
+* Fix: Prev page navigation button weren't showing on page 2.
+* Fix: Tracking message were showing javascript content on admin notice.
 = 2.4.7 = 
 * Updated: Updated php 8.2 compatibility.
 = 2.4.6 = 
@@ -167,17 +158,6 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 * Updated: WP Version compatibility.
 = 2.4.1 =
 * Improvement: Added search feature for list block which avoids loading 100 lists on load.
-= 2.3.4 =
-* Updated plugin to make it compatible with WordPress 5.5. WordPress 5.5 has updated jQuery version to 1.12.4 and removed jQuery migrate that was used to support depreciated jquery functions.
-= 2.3.3 =
-* Fix: Using 0 (zero) for current author posts were not working.
-= 2.3.2 =
-* Fix: `strip_shortcodes` attribute of [post_excerpt] template tag were not working.
-= 2.3.1 =
-* New: Added new attribute `strip_shortcodes` to [post_excerpt] template tag.
-* Fix: [post_thumbnail] template tag were missing return attribute. We propose you to use `output` rather than `return`, for now `return` were kept as fallback.
-= 2.3.0 =
-* Improvement: Codebase has been upgraded to follow WordPress coding standards.
 
 == Privacy Policy ==
 W4 Post List uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.

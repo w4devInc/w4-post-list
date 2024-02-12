@@ -114,7 +114,7 @@ abstract class W4PL_List {
 			// default navigation.
 			if ( 2 === $paged ) {
 				$return .= sprintf(
-					'<a href="%s" class="prev page-numbers prev_text"></a>',
+					'<a href="%s" class="prev page-numbers prev_text">%s</a>',
 					esc_url( remove_query_arg( $paged_qp ) ),
 					$prev_text
 				);
