@@ -1,5 +1,5 @@
-node_modules/
-vendor/
-composer.lock
-.htaccess
-*.log
+/node_modules
+/vendor/**/phpcs.xml.dist
+/vendor/**/.github
+/vendor/**/.git
+/vendor/**/readme.md

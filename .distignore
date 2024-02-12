@@ -6,7 +6,7 @@
 
 
 # Files
-/.browserlistrc
+/.browserslistrc
 /.gitattributes
 /.gitignore
 /CHANGELOG.txt
@@ -18,3 +18,4 @@
 /package.json
 /phpcs.xml
 /README.md
+/.distignore
