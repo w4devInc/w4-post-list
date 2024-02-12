@@ -1,11 +1,13 @@
 # Directories
+
 /.wordpress-org
 /.github
+/.git
 /node_modules
 /src
 
-
 # Files
+
 /.browserslistrc
 /.gitattributes
 /.gitignore
