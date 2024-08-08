@@ -42,14 +42,14 @@ class W4PL_Helper_Terms {
 		$fields['before_field_group_terms_query'] = array(
 			'position' => '5',
 			'html'     => '<div id="w4pl_field_group_terms_query" class="w4pl_field_group">
-				<div class="w4pl_group_title">Terms</div>
+				<div class="w4pl_group_title">' . esc_html__( 'Terms', 'w4-post-list' ) . '</div>
 				<div class="w4pl_group_fields"><div class="w4pl_group_fields_wrap">',
 		);
 		$fields['terms_taxonomy']                 = array(
 			'position'    => '10',
 			'option_name' => 'terms_taxonomy',
 			'name'        => 'w4pl[terms_taxonomy]',
-			'label'       => 'Taxonomy',
+			'label'       => __( 'Taxonomy', 'w4-post-list' ),
 			'type'        => 'radio',
 			'option'      => W4PL_Utils::taxonomies_options(),
 			'input_class' => 'w4pl_onchange_lfr',
@@ -58,59 +58,59 @@ class W4PL_Helper_Terms {
 			'position'    => '11',
 			'option_name' => 'terms__in',
 			'name'        => 'w4pl[terms__in]',
-			'label'       => 'Include terms',
+			'label'       => __( 'Include terms', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => 'comma separated term id',
+			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
 		);
 		$fields['terms__not_in']                  = array(
 			'position'    => '12',
 			'option_name' => 'terms__not_in',
 			'name'        => 'w4pl[terms__not_in]',
-			'label'       => 'Exclude terms',
+			'label'       => __( 'Exclude terms', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => 'comma separated term id',
+			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
 		);
 		$fields['terms_parent__in']               = array(
 			'position'    => '13',
 			'option_name' => 'terms_parent__in',
 			'name'        => 'w4pl[terms_parent__in]',
-			'label'       => 'Parents',
+			'label'       => __( 'Parents', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => 'comma separated term id',
+			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
 		);
 
 		$fields['terms_name__like']        = array(
 			'position'    => '15',
 			'option_name' => 'terms_name__like',
 			'name'        => 'w4pl[terms_name__like]',
-			'label'       => 'Name search',
+			'label'       => __( 'Name search', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'enter text that will be used to search terms by name &amp; slug',
+			'desc'        => __( 'enter text that will be used to search terms by name &amp; slug', 'w4-post-list' ),
 		);
 		$fields['terms_slug__like']        = array(
 			'position'    => '16',
 			'option_name' => 'terms_slug__like',
 			'name'        => 'w4pl[terms_slug__like]',
-			'label'       => 'Slug search',
+			'label'       => __( 'Slug search', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'enter text that will be used to search terms by name',
+			'desc'        => __( 'enter text that will be used to search terms by name', 'w4-post-list' ),
 		);
 		$fields['terms_description__like'] = array(
 			'position'    => '17',
 			'option_name' => 'terms_description__like',
 			'name'        => 'w4pl[terms_description__like]',
-			'label'       => 'Description search',
+			'label'       => __( 'Description search', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'enter text that will be used to search terms by description',
+			'desc'        => __( 'enter text that will be used to search terms by description', 'w4-post-list' ),
 		);
 		$fields['terms_count__min']        = array(
 			'position'    => '18',
 			'option_name' => 'terms_count__min',
 			'name'        => 'w4pl[terms_count__min]',
-			'label'       => 'Having min posts',
+			'label'       => __( 'Having min posts', 'w4-post-list' ),
 			'type'        => 'text',
 		);
 
@@ -118,7 +118,7 @@ class W4PL_Helper_Terms {
 			'position'    => '21',
 			'option_name' => 'terms_orderby',
 			'name'        => 'w4pl[terms_orderby]',
-			'label'       => 'Orderby',
+			'label'       => __( 'Orderby', 'w4-post-list' ),
 			'type'        => 'select',
 			'option'      => W4PL_Config::terms_orderby_options(),
 		);
@@ -126,36 +126,36 @@ class W4PL_Helper_Terms {
 			'position'    => '22',
 			'option_name' => 'terms_order',
 			'name'        => 'w4pl[terms_order]',
-			'label'       => 'Order',
+			'label'       => __( 'Order', 'w4-post-list' ),
 			'type'        => 'radio',
 			'option'      => array(
-				'ASC'  => 'ASC',
-				'DESC' => 'DESC',
+				'ASC'  => __( 'ASC', 'w4-post-list' ),
+				'DESC' => __( 'DESC', 'w4-post-list' ),
 			),
 		);
 		$fields['terms_offset']  = array(
 			'position'    => '31',
 			'option_name' => 'terms_offset',
 			'name'        => 'w4pl[terms_offset]',
-			'label'       => 'Offset',
+			'label'       => __( 'Offset', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'skip given number of terms from beginning',
+			'desc'        => __( 'skip given number of terms from beginning', 'w4-post-list' ),
 		);
 		$fields['terms_limit']   = array(
 			'position'    => '32',
 			'option_name' => 'terms_limit',
 			'name'        => 'w4pl[terms_limit]',
-			'label'       => 'Items per page',
+			'label'       => __( 'Items per page', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'number of items to show per page',
+			'desc'        => __( 'number of items to show per page', 'w4-post-list' ),
 		);
 		$fields['terms_max']     = array(
 			'position'    => '33',
 			'option_name' => 'terms_max',
 			'name'        => 'w4pl[terms_max]',
-			'label'       => 'Maximum items',
+			'label'       => __( 'Maximum items', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'maximum results to display in total, default all found',
+			'desc'        => __( 'maximum results to display in total, default all found', 'w4-post-list' ),
 		);
 
 		$fields['after_field_group_terms_query'] = array(

@@ -42,50 +42,50 @@ class W4PL_Helper_Users {
 		$fields['before_field_group_users_query'] = array(
 			'position' => '5',
 			'html'     => '<div id="w4pl_field_group_users_query" class="w4pl_field_group">
-				<div class="w4pl_group_title">Users</div>
+				<div class="w4pl_group_title">' . esc_html__( 'Users', 'w4-post-list' ) . '</div>
 				<div class="w4pl_group_fields"><div class="w4pl_group_fields_wrap">',
 		);
 		$fields['users__in']                      = array(
 			'position'    => '11',
 			'option_name' => 'users__in',
 			'name'        => 'w4pl[users__in]',
-			'label'       => 'Include users',
+			'label'       => __( 'Include users', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => 'comma separated term id',
+			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
 		);
 		$fields['users__not_in']                  = array(
 			'position'    => '12',
 			'option_name' => 'users__not_in',
 			'name'        => 'w4pl[users__not_in]',
-			'label'       => 'Exclude users',
+			'label'       => __( 'Exclude users', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => 'comma separated term id',
+			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
 		);
 
 		$fields['users_display_name__like'] = array(
 			'position'    => '15',
 			'option_name' => 'users_display_name__like',
 			'name'        => 'w4pl[users_display_name__like]',
-			'label'       => 'Display Name search',
+			'label'       => __( 'Display Name search', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'enter text that will be used to search users by name',
+			'desc'        => __( 'enter text that will be used to search users by name', 'w4-post-list' ),
 		);
 		$fields['users_user_email__like']   = array(
 			'position'    => '16',
 			'option_name' => 'users_user_email__like',
 			'name'        => 'w4pl[users_user_email__like]',
-			'label'       => 'Email search',
+			'label'       => __( 'Email search', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'enter text that will be used to search users by email',
+			'desc'        => __( 'enter text that will be used to search users by email', 'w4-post-list' ),
 		);
 
 		$fields['users_orderby'] = array(
 			'position'    => '21',
 			'option_name' => 'users_orderby',
 			'name'        => 'w4pl[users_orderby]',
-			'label'       => 'Orderby',
+			'label'       => __( 'Orderby', 'w4-post-list' ),
 			'type'        => 'select',
 			'option'      => W4PL_Config::users_orderby_options(),
 		);
@@ -93,36 +93,36 @@ class W4PL_Helper_Users {
 			'position'    => '22',
 			'option_name' => 'users_order',
 			'name'        => 'w4pl[users_order]',
-			'label'       => 'Order',
+			'label'       => __( 'Order', 'w4-post-list' ),
 			'type'        => 'radio',
 			'option'      => array(
-				'ASC'  => 'ASC',
-				'DESC' => 'DESC',
+				'ASC'  => __( 'ASC', 'w4-post-list' ),
+				'DESC' => __( 'DESC', 'w4-post-list' ),
 			),
 		);
 		$fields['users_offset']  = array(
 			'position'    => '31',
 			'option_name' => 'users_offset',
 			'name'        => 'w4pl[users_offset]',
-			'label'       => 'Offset',
+			'label'       => __( 'Offset', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'skip given number of users from beginning',
+			'desc'        => __( 'skip given number of users from beginning', 'w4-post-list' ),
 		);
 		$fields['users_limit']   = array(
 			'position'    => '32',
 			'option_name' => 'users_limit',
 			'name'        => 'w4pl[users_limit]',
-			'label'       => 'Items per page',
+			'label'       => __( 'Items per page', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'number of items to show per page',
+			'desc'        => __( 'number of items to show per page', 'w4-post-list' ),
 		);
 		$fields['users_max']     = array(
 			'position'    => '33',
 			'option_name' => 'users_max',
 			'name'        => 'w4pl[users_max]',
-			'label'       => 'Maximum items',
+			'label'       => __( 'Maximum items', 'w4-post-list' ),
 			'type'        => 'text',
-			'desc'        => 'maximum results to display in total, default all found',
+			'desc'        => __( 'maximum results to display in total, default all found', 'w4-post-list' ),
 		);
 
 		$fields['after_field_group_users_query'] = array(
