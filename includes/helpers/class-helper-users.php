@@ -169,24 +169,14 @@ class W4PL_Helper_Users {
 	public function parse_query_args( $list ) {
 		if ( in_array( $list->options['list_type'], array( 'users', 'users.posts' ) ) ) {
 			// push default options to query var.
-			foreach ( array(
-				'users_display_name__like' => 'display_name__like',
-				'users_user_email__like'   => 'user_email__like',
-				'users_offset'             => 'offset',
-				'users_limit'              => 'limit',
-				'users_orderby'            => 'orderby',
-				'users_order'              => 'order',
-			) as $option => $name ) {
+			foreach ( array( 'users_display_name__like' => 'display_name__like', 'users_user_email__like' => 'user_email__like', 'users_offset' => 'offset', 'users_limit' => 'limit', 'users_orderby' => 'orderby', 'users_order' => 'order', ) as $option => $name ) {
 				if ( ! empty( $list->options[ $option ] ) ) {
 					$list->users_args[ $name ] = $list->options[ $option ];
 				}
 			}
 
 			// comma separated ids.
-			foreach ( array(
-				'users__in'     => 'ID__in',
-				'users__not_in' => 'ID__not_in',
-			) as $option => $name ) {
+			foreach ( array( 'users__in' => 'ID__in', 'users__not_in' => 'ID__not_in', ) as $option => $name ) {
 				if ( ! empty( $list->options[ $option ] ) ) {
 					$opt = wp_parse_id_list( $list->options[ $option ] );
 					if ( ! empty( $opt ) ) {

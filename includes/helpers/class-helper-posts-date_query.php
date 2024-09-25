@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class W4PL_Helper_Date_Query
  */
 class W4PL_Helper_Date_Query {
+
 	/**
 	 * Constructor
 	 */

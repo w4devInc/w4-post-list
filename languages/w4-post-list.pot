@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2024-02-12 14:06:16+00:00\n"
+"POT-Creation-Date: 2024-09-25 18:51:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -359,11 +359,12 @@ msgid "Posts"
 msgstr ""
 
 #: includes/class-config.php:149
-#: includes/helpers/class-helper-posts-tax_query.php:66
+#: includes/helpers/class-helper-posts-tax_query.php:67
+#: includes/helpers/class-helper-terms.php:45
 msgid "Terms"
 msgstr ""
 
-#: includes/class-config.php:150
+#: includes/class-config.php:150 includes/helpers/class-helper-users.php:45
 msgid "Users"
 msgstr ""
 
@@ -391,7 +392,7 @@ msgstr ""
 msgid "Term order"
 msgstr ""
 
-#: includes/class-config.php:244
+#: includes/class-config.php:244 includes/helpers/class-helper-terms.php:61
 msgid "Include terms"
 msgstr ""
 
@@ -452,8 +453,8 @@ msgid "Select a list"
 msgstr ""
 
 #: includes/class-widget-postlist.php:103
-#: includes/helpers/class-helper-posts-date_query.php:88
-#: includes/helpers/class-helper-posts-meta_query.php:163
+#: includes/helpers/class-helper-posts-date_query.php:89
+#: includes/helpers/class-helper-posts-meta_query.php:164
 msgid "OR"
 msgstr ""
 
@@ -510,89 +511,89 @@ msgstr ""
 msgid "Pagination section"
 msgstr ""
 
-#: includes/helpers/class-helper-no-items.php:48
+#: includes/helpers/class-helper-no-items.php:49
 msgid "No items text"
 msgstr ""
 
-#: includes/helpers/class-helper-no-items.php:51
+#: includes/helpers/class-helper-no-items.php:52
 msgid ""
 "Displayed when no items found by this filter or pagination. Allows html "
 "tags - a, br, em, strong, span, p, div."
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:43
+#: includes/helpers/class-helper-posts-date_query.php:44
 msgid "Posts: Date Query"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:50
-msgid "Column"
-msgstr ""
-
 #: includes/helpers/class-helper-posts-date_query.php:51
-#: includes/helpers/class-helper-posts-meta_query.php:53
-msgid "Key"
+msgid "Column"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:52
 #: includes/helpers/class-helper-posts-meta_query.php:54
-msgid "Compare"
+msgid "Key"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:53
 #: includes/helpers/class-helper-posts-meta_query.php:55
-msgid "Value"
+msgid "Compare"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:54
 #: includes/helpers/class-helper-posts-meta_query.php:56
-#: includes/helpers/class-helper-posts-tax_query.php:67
+msgid "Value"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:55
+#: includes/helpers/class-helper-posts-meta_query.php:57
+#: includes/helpers/class-helper-posts-tax_query.php:68
 msgid "Action"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:77
-#: includes/helpers/class-helper-posts-meta_query.php:133
-#: includes/helpers/class-helper-posts-tax_query.php:172
+#: includes/helpers/class-helper-posts-date_query.php:78
+#: includes/helpers/class-helper-posts-meta_query.php:134
+#: includes/helpers/class-helper-posts-tax_query.php:173
 msgid "+ Add"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:85
-#: includes/helpers/class-helper-posts-meta_query.php:160
-#: includes/helpers/class-helper-posts-tax_query.php:215
+#: includes/helpers/class-helper-posts-date_query.php:86
+#: includes/helpers/class-helper-posts-meta_query.php:161
+#: includes/helpers/class-helper-posts-tax_query.php:216
 msgid "Relation"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:89
-#: includes/helpers/class-helper-posts-meta_query.php:164
+#: includes/helpers/class-helper-posts-date_query.php:90
+#: includes/helpers/class-helper-posts-meta_query.php:165
 msgid "AND"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:96
-msgid "<br />All dates should be used in Y-m-d format. ie: 2020-12-31"
-msgstr ""
-
 #: includes/helpers/class-helper-posts-date_query.php:97
-#: includes/helpers/class-helper-posts-meta_query.php:171
-msgid ""
-"<br />For the value field, you can also use following shortcodes to apply "
-"dynamic value:"
+msgid "<br />All dates should be used in Y-m-d format. ie: 2020-12-31"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:98
 #: includes/helpers/class-helper-posts-meta_query.php:172
 msgid ""
-"<br /><code>[w4pl_date day=+6 hour=-1 format=\"Y-m-d H:i:s\"]</code> - for "
-"displaying datetime based on current time"
+"<br />For the value field, you can also use following shortcodes to apply "
+"dynamic value:"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:99
 #: includes/helpers/class-helper-posts-meta_query.php:173
 msgid ""
-"<br /><code>[w4pl_time day=+6 hour=-1]</code> - for displaying timestamp "
-"based on current time"
+"<br /><code>[w4pl_date day=+6 hour=-1 format=\"Y-m-d H:i:s\"]</code> - for "
+"displaying datetime based on current time"
 msgstr ""
 
 #: includes/helpers/class-helper-posts-date_query.php:100
 #: includes/helpers/class-helper-posts-meta_query.php:174
+msgid ""
+"<br /><code>[w4pl_time day=+6 hour=-1]</code> - for displaying timestamp "
+"based on current time"
+msgstr ""
+
+#: includes/helpers/class-helper-posts-date_query.php:101
+#: includes/helpers/class-helper-posts-meta_query.php:175
 msgid ""
 "<br /><br />Note: Above Shortcodes generates times in GMT timezone. To "
 "compare time saved in another timezone, use hour attribute. for example: "
@@ -600,31 +601,32 @@ msgid ""
 "timestamp."
 msgstr ""
 
-#: includes/helpers/class-helper-posts-date_query.php:174
-#: includes/helpers/class-helper-posts-meta_query.php:114
-#: includes/helpers/class-helper-posts-meta_query.php:152
-#: includes/helpers/class-helper-posts-tax_query.php:153
-#: includes/helpers/class-helper-posts-tax_query.php:207
+#: includes/helpers/class-helper-posts-date_query.php:175
+#: includes/helpers/class-helper-posts-meta_query.php:115
+#: includes/helpers/class-helper-posts-meta_query.php:153
+#: includes/helpers/class-helper-posts-tax_query.php:154
+#: includes/helpers/class-helper-posts-tax_query.php:208
 msgid "Remove"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-meta_query.php:44
+#: includes/helpers/class-helper-posts-meta_query.php:45
 msgid "Posts: Meta Query"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-tax_query.php:50
+#: includes/helpers/class-helper-posts-tax_query.php:51
 msgid "Posts: Tax Query"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-tax_query.php:63
+#: includes/helpers/class-helper-posts-tax_query.php:64
+#: includes/helpers/class-helper-terms.php:52
 msgid "Taxonomy"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-tax_query.php:64
+#: includes/helpers/class-helper-posts-tax_query.php:65
 msgid "Operator"
 msgstr ""
 
-#: includes/helpers/class-helper-posts-tax_query.php:65
+#: includes/helpers/class-helper-posts-tax_query.php:66
 msgid "Field"
 msgstr ""
 
@@ -733,24 +735,34 @@ msgid "display child posts of current post/page/custom post type"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:173
+#: includes/helpers/class-helper-terms.php:121
+#: includes/helpers/class-helper-users.php:88
 msgid "Orderby"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:183
+#: includes/helpers/class-helper-terms.php:129
+#: includes/helpers/class-helper-users.php:96
 msgid "Order"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:186
 #: includes/helpers/class-helper-posts.php:271
+#: includes/helpers/class-helper-terms.php:132
+#: includes/helpers/class-helper-users.php:99
 msgid "ASC"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:187
 #: includes/helpers/class-helper-posts.php:272
+#: includes/helpers/class-helper-terms.php:133
+#: includes/helpers/class-helper-users.php:100
 msgid "DESC"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:195
+#: includes/helpers/class-helper-terms.php:156
+#: includes/helpers/class-helper-users.php:123
 msgid "Maximum items"
 msgstr ""
 
@@ -761,6 +773,8 @@ msgid ""
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:205
+#: includes/helpers/class-helper-terms.php:140
+#: includes/helpers/class-helper-users.php:107
 msgid "Offset"
 msgstr ""
 
@@ -773,6 +787,8 @@ msgid ""
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:218
+#: includes/helpers/class-helper-terms.php:148
+#: includes/helpers/class-helper-users.php:115
 msgid "Items per page"
 msgstr ""
 
@@ -826,15 +842,15 @@ msgstr ""
 msgid "Posts with Thumbnail"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:41
+#: includes/helpers/class-helper-style.php:42
 msgid "Style"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:48
+#: includes/helpers/class-helper-style.php:49
 msgid "CSS"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:52
+#: includes/helpers/class-helper-style.php:53
 msgid ""
 "this css rules is placed inline just before the list is place at front-end "
 "(not in the HEAD tag).\n"
@@ -844,22 +860,108 @@ msgid ""
 "<code>#w4pl-list-[listid]</code> to dynamically this selector."
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:65
+#: includes/helpers/class-helper-style.php:66
 msgid "JavaScript"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:68
+#: includes/helpers/class-helper-style.php:69
 msgid ""
 "javascript loads right after template ends. don't use "
 "<code>&lt;script&gt;</code> tag"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:75
+#: includes/helpers/class-helper-style.php:76
 msgid "HTML class name"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:77
+#: includes/helpers/class-helper-style.php:78
 msgid "applied on the wrapper html DIV tag"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:64
+#: includes/helpers/class-helper-terms.php:73
+#: includes/helpers/class-helper-terms.php:82
+#: includes/helpers/class-helper-users.php:55
+#: includes/helpers/class-helper-users.php:64
+msgid "comma separated term id"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:70
+msgid "Exclude terms"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:79
+msgid "Parents"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:89
+msgid "Name search"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:91
+msgid "enter text that will be used to search terms by name &amp; slug"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:97
+msgid "Slug search"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:99
+msgid "enter text that will be used to search terms by name"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:105
+msgid "Description search"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:107
+msgid "enter text that will be used to search terms by description"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:113
+msgid "Having min posts"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:142
+msgid "skip given number of terms from beginning"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:150
+#: includes/helpers/class-helper-users.php:117
+msgid "number of items to show per page"
+msgstr ""
+
+#: includes/helpers/class-helper-terms.php:158
+#: includes/helpers/class-helper-users.php:125
+msgid "maximum results to display in total, default all found"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:52
+msgid "Include users"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:61
+msgid "Exclude users"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:71
+msgid "Display Name search"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:73
+msgid "enter text that will be used to search users by name"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:79
+msgid "Email search"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:81
+msgid "enter text that will be used to search users by email"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:109
+msgid "skip given number of users from beginning"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:37

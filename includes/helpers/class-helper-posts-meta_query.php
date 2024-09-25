@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class W4PL_Helper_Meta_Query
  */
 class W4PL_Helper_Meta_Query {
+
 	/**
 	 * Constructor
 	 */
