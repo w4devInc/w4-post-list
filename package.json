@@ -21,7 +21,7 @@
 	"homepage": "https://github.com/w4devInc/w4-post-list#readme",
 	"devDependencies": {
 		"@wordpress/api-fetch": "^6.8.0",
-		"@wordpress/scripts": "^23.3.0",
+		"@wordpress/scripts": "^30.0.2",
 		"autoprefixer": "^10.4.7",
 		"css-mqpacker": "^7.0.0",
 		"grunt": "^1.5.3",
