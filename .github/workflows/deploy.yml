@@ -1,8 +1,9 @@
 name: Deploy to WordPress.org Repository
 
 on:
-  release:
-    types: [released]
+  push:
+    tags:
+      - "*"
 
 jobs:
   deploy_to_wp_repository:
