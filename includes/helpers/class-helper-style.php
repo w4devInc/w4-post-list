@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class W4PL_Helper_Style
  */
 class W4PL_Helper_Style {
+
 	/**
 	 * Constructor
 	 */
@@ -91,11 +92,7 @@ class W4PL_Helper_Style {
 	 * @param  array $options List options.
 	 */
 	public function pre_save_options( $options ) {
-		foreach ( array(
-			'class' => '',
-			'js'    => '',
-			'css'   => '',
-		) as $k => $v ) {
+		foreach ( array( 'class' => '', 'js' => '', 'css' => '', ) as $k => $v ) {
 			if ( array_key_exists( $k, $options ) && empty( $options[ $k ] ) ) {
 				unset( $options[ $k ] );
 			}

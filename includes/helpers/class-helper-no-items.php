@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class W4PL_Helper_No_Items
  */
 class W4PL_Helper_No_Items {
+
 	/**
 	 * Constructor
 	 */

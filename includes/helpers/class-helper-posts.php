@@ -174,7 +174,7 @@ class W4PL_Helper_Posts {
 			'type'        => 'select',
 			'option'      => W4PL_Config::post_orderby_options( $options['post_type'] ),
 			'input_after' => '<div id="orderby_meta_key_wrap">Meta key: <input name="w4pl[orderby_meta_key]" type="text" value="'
-			. ( isset( $options['orderby_meta_key'] ) ? esc_attr( $options['orderby_meta_key'] ) : '' ) . '" /></div>',
+				. ( isset( $options['orderby_meta_key'] ) ? esc_attr( $options['orderby_meta_key'] ) : '' ) . '" /></div>',
 		);
 		$fields['order']   = array(
 			'position'    => '71',

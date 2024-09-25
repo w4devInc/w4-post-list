@@ -72,11 +72,11 @@ class W4PL_Helper_Presets {
 		}
 
 		// Quick kill.
-		if ( ! isset( $options['preset'] ) || empty( $options['preset'] ) ) {
+		if ( empty( $options['preset'] ) ) {
 			return $options;
 		}
 
-		if ( isset( $options['preset'] ) && 'simple_list' === $options['preset'] ) {
+		if ( 'simple_list' === $options['preset'] ) {
 			if ( 'posts' === $options['list_type'] ) {
 				$options['template'] = '<ul>[posts]
 					<li class="post-item-[post_id]"><a href="[post_permalink]">[post_title]</a></li>
@@ -110,7 +110,7 @@ class W4PL_Helper_Presets {
 			}
 		}
 
-		if ( isset( $options['preset'] ) && 'post_with_thumbnail' === $options['preset'] ) {
+		if ( 'post_with_thumbnail' === $options['preset'] ) {
 			if ( 'posts' === $options['list_type'] ) {
 				$options['template'] = '<ul class="posts-list">[posts]
 					<li class="post-item-[post_id]"><a href="[post_permalink]">[post_title]<br />[post_thumbnail size="thumbnail"]</a></li>

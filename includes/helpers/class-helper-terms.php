@@ -208,7 +208,7 @@ class W4PL_Helper_Terms {
 	public function parse_query_args( $list ) {
 		if ( in_array( $list->options['list_type'], array( 'terms', 'terms.posts' ) ) ) {
 			// push default options to query var.
-			foreach ( array(
+			$default_options = array(
 				'terms_count__min'        => 'count__min',
 				'terms_name__like'        => 'name__like',
 				'terms_slug__like'        => 'slug__like',
@@ -217,18 +217,20 @@ class W4PL_Helper_Terms {
 				'terms_limit'             => 'limit',
 				'terms_orderby'           => 'orderby',
 				'terms_order'             => 'order',
-			) as $option => $name ) {
+			);
+			foreach ( $default_options as $option => $name ) {
 				if ( ! empty( $list->options[ $option ] ) ) {
 					$list->terms_args[ $name ] = $list->options[ $option ];
 				}
 			}
 
 			// Comma separated ids.
-			foreach ( array(
+			$id_options = array(
 				'terms__in'        => 'term_id__in',
 				'terms__not_in'    => 'term_id__not_in',
 				'terms_parent__in' => 'term_parent__in',
-			) as $option => $name ) {
+			);
+			foreach ( $id_options as $option => $name ) {
 				if ( ! empty( $list->options[ $option ] ) ) {
 					$opt = wp_parse_id_list( $list->options[ $option ] );
 					if ( ! empty( $opt ) ) {
