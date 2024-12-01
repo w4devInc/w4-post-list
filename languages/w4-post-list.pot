@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2024-09-25 23:31:59+00:00\n"
+"POT-Creation-Date: 2024-12-01 21:42:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Shortcodes"
 msgstr ""
 
-#: appsero.php:61
+#: appsero.php:62
 msgid ""
 "Allow us to understand how we can improve W4 Post List Plugin by collecting "
 "some diagnostic data and usage information."
@@ -1357,6 +1357,10 @@ msgid ""
 "\t\t\t\t<br /><br /><strong>Attributes</strong>:\n"
 "\t\t\t\t<br /><strong>size</strong> = (number), avatar image size, ex: 32, "
 "64, 128"
+msgstr ""
+
+#: vendor/appsero/client/src/Insights.php:725
+msgid "Once Weekly"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

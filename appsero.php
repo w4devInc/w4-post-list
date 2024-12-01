@@ -11,12 +11,13 @@
 function w4pl_appsero_insights_instance() {
 	static $insights = null;
 
-	if ( is_null( $insights ) && class_exists( 'Appsero\Client' ) ) {
-		$client   = new Appsero\Client(
+	if ( $insights === null && class_exists( 'Appsero\Client' ) ) {
+		$client = new Appsero\Client(
 			'fc943997-f146-4d10-867c-115d155c7fdd',
 			'W4 Post List',
 			W4PL_PLUGIN_FILE
 		);
+
 		$insights = $client->insights();
 	}
 
@@ -29,13 +30,12 @@ function w4pl_appsero_insights_instance() {
 function w4pl_appsero_init() {
 	$insights = w4pl_appsero_insights_instance();
 
-	if ( ! is_null( $insights ) ) {
+	if ( $insights !== null ) {
 		$insights
 			->add_extra( 'w4pl_insights_extra' )
+			->add_plugin_data()
+			->hide_notice() // Hide the default notice.
 			->init();
-
-		// We want to some texts, so lets remove it from here.
-		remove_action( 'admin_notices', array( $insights, 'admin_notice' ) );
 
 		// Display the modified notice.
 		add_action( 'admin_notices', 'w4pl_appsero_admin_notices' );
@@ -50,36 +50,44 @@ function w4pl_appsero_admin_notices() {
 	global $pagenow, $typenow;
 
 	$insights = w4pl_appsero_insights_instance();
-	if ( is_null( $insights ) ) {
+	if ( $insights === null ) {
 		return;
 	}
 
 	if (
-		( in_array( $pagenow, array( 'edit.php' ), true ) && 'w4pl' === $typenow )
-		|| 'plugins.php' === $pagenow
+		( in_array( $pagenow, [ 'edit.php' ], true ) && 'w4pl' === $typenow )
 	) {
 		$insights->notice = __( 'Allow us to understand how we can improve W4 Post List Plugin by collecting some diagnostic data and usage information.' );
 
 		ob_start();
+
 		$insights->admin_notice();
+
 		$notice = ob_get_clean();
 
+		// Remove the privacy policy link.
 		$notice = str_replace(
-			array(
+			[ 
 				', Your name and email address',
-				' <a href="https://appsero.com/privacy-policy/">Learn more</a> about how Appsero collects and handle your data.',
-			),
+				' <a href="https://appsero.com/privacy-policy/" target="_blank">Learn more</a> about how Appsero collects and handle your data.',
+			],
 			'',
 			$notice
 		);
 
-		$allowed_html           = wp_kses_allowed_html( 'post' );
-		$allowed_html['script'] = array( 'type' => true, 'src' => true, 'async' => true, 'defer' => true );
+		$allowed_html = wp_kses_allowed_html( 'post' );
+
+		$allowed_html['script'] = [ 'type' => true, 'src' => true, 'async' => true, 'defer' => true ];
 
 		$notice = wp_kses( $notice, $allowed_html );
 
 		// Not sure why kses is not working for style attribute.
-		$notice = str_replace( '<p class="description">', '<p class="description" style="display:none">', $notice );
+		$notice = str_replace(
+			'<p class="description">',
+			'<p class="description" style="display:none">',
+			$notice
+		);
+
 		echo $notice;
 	}
 }
@@ -106,15 +114,17 @@ add_action( 'admin_footer', 'w4pl_appsero_admin_footer', 11 );
 function w4pl_insights_extra() {
 	global $wpdb;
 
-	$extra = array(
+	$extra = [ 
 		'ListCount'      => 0,
 		'Editor'         => 'Nop',
 		'Elementor'      => 'Nop',
 		'VisualComposer' => 'Nop',
-	);
+	];
 
-	$counts             = wp_count_posts( 'w4pl' );
-	$extra['ListCount'] = $counts->publish + $counts->private + $counts->pending + $counts->draft;
+	$counts = wp_count_posts( 'w4pl' );
+	if ( isset( $counts->publish ) || isset( $counts->private ) || isset( $counts->pending ) || isset( $counts->draft ) ) {
+		$extra['ListCount'] = $counts->publish + $counts->private + $counts->pending + $counts->draft;
+	}
 
 	global $wp_version;
 	if ( defined( 'GUTENBERG_VERSION' ) ) {

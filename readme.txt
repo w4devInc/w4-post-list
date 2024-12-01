@@ -2,7 +2,7 @@
 Contributors: sajib1223
 Tags: post, post list, custom post type, shortcode, media
 Requires at least: 5.8
-Tested up to: 6.4.3
+Tested up to: 6.7.1
 Requires PHP: 7.4
 Stable tag: 2.5.0
 License: GPLv3

@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.5.0';
+	public $version = '2.5.1';
 
 	/**
 	 * This will hold current class instance
@@ -207,33 +207,33 @@ final class W4_Post_List {
 		wp_register_style(
 			'w4pl_form',
 			W4PL_URL . 'assets/css/form' . $min . '.css',
-			array(),
+			[],
 			W4PL_VERSION
 		);
 		wp_register_style(
 			'w4pl_list_editor',
 			W4PL_URL . 'assets/css/list-editor' . $min . '.css',
-			array(),
+			[],
 			W4PL_VERSION
 		);
 		wp_register_style(
 			'w4pl-admin-documentation',
 			W4PL_URL . 'assets/css/admin-documentation' . $min . '.css',
-			array(),
+			[],
 			W4PL_VERSION
 		);
 
 		wp_register_script(
 			'w4pl_form',
 			W4PL_URL . 'assets/js/form' . $min . '.js',
-			array( 'jquery', 'jquery-ui-sortable' ),
+			[ 'jquery', 'jquery-ui-sortable' ],
 			W4PL_VERSION,
 			true
 		);
 		wp_register_script(
 			'w4pl_list_editor',
 			W4PL_URL . 'assets/js/list-editor' . $min . '.js',
-			array( 'jquery', 'jquery-ui-sortable' ),
+			[ 'jquery', 'jquery-ui-sortable' ],
 			W4PL_VERSION,
 			true
 		);
