@@ -4,7 +4,7 @@ Tags: post, post list, custom post type, shortcode, media
 Requires at least: 5.8
 Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.5.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.5.1 =
+* Fix: Fixed textdomain issue.
 = 2.4.9 = 
 * Updated: Text localization.
 = 2.4.8 = 
@@ -141,6 +143,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.1 =
+* Fix: Fixed textdomain issue.
 = 2.4.9 = 
 * Updated: Text localization.
 = 2.4.8 =
