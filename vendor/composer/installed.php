@@ -3,7 +3,7 @@
         'name' => 'w4devinc/w4-post-list',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '5d298488f5c313e8c1c4ab80e0b7775c04a52c09',
+        'reference' => 'c05ebfde7ae42480774ee4d9c059473d9ea3323e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'appsero/client' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '27613f79a6e178e75abd8a3b92c9db0f992c96cd',
+            'reference' => 'aef4cf138ab4f348cee4e2f20f7d3cd815db0877',
             'type' => 'library',
             'install_path' => __DIR__ . '/../appsero/client',
             'aliases' => array(
@@ -24,7 +24,7 @@
         'w4devinc/w4-post-list' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '5d298488f5c313e8c1c4ab80e0b7775c04a52c09',
+            'reference' => 'c05ebfde7ae42480774ee4d9c059473d9ea3323e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
