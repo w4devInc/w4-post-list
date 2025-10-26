@@ -112,60 +112,19 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.5.3 =
+* Fix: Fixed version number.
 = 2.5.1 =
 * Fix: Fixed textdomain issue.
-= 2.4.9 = 
-* Updated: Text localization.
-= 2.4.8 = 
-* Fix: Prev page navigation button weren't showing on page 2.
-* Fix: Tracking message were showing javascript content on admin notice.
-= 2.4.7 = 
-* Updated: Updated php 8.2 compatibility.
-= 2.4.6 = 
-* Security: Fixed multiple security issues.
-* Fixed: Template attributes removal upon saving.
-= 2.4.5 =
-* Fix: Sanitization were removing html tags from template.
-* Change: Updated post list post type capability to page level access.
-= 2.4.4 =
-* Security: Sanitized all form inputs.
-= 2.4.3 =
-* Security: Escaped no items text from XSS injection.
-= 2.4.2 =
-* Updated: WP Version compatibility.
-= 2.4.1 =
-* New: Added search and select option for list block.
-= 2.4.0 =
-* Fixed: Previous pagination link were not showing on page 2.
-* Fixed: Default 10 lists per page were showing on block editor list select. Made it to 100.
 
 
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.3 =
+* Fix: Fixed version number.
 = 2.5.1 =
 * Fix: Fixed textdomain issue.
-= 2.4.9 = 
-* Updated: Text localization.
-= 2.4.8 =
-* Fix: Prev page navigation button weren't showing on page 2.
-* Fix: Tracking message were showing javascript content on admin notice.
-= 2.4.7 = 
-* Updated: Updated php 8.2 compatibility.
-= 2.4.6 = 
-* Security: Fixed multiple security issues.
-* Fixed: Template attributes removal upon saving.
-= 2.4.5 =
-* Fix: Sanitization were removing html tags from template.
-* Change: Updated post list post type capability to page level access.
-= 2.4.4 =
-* Security: Sanitized all form inputs.
-= 2.4.3 =
-* Security: Escaped no items text from XSS injection.
-= 2.4.2 =
-* Updated: WP Version compatibility.
-= 2.4.1 =
-* Improvement: Added search feature for list block which avoids loading 100 lists on load.
 
 == Privacy Policy ==
 W4 Post List uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
