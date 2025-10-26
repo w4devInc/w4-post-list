@@ -1,13 +1,13 @@
-# Copyright 2010-2024 W4 Post List.
+# Copyright 2010-2025 W4 Post List.
 msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2024-12-01 22:31:29+00:00\n"
+"POT-Creation-Date: 2025-10-26 03:34:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: W4 Post List <sajib1223@gmail.com>\n"
 "Language: en_US\n"
