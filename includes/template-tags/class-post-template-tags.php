@@ -642,6 +642,8 @@ class W4PL_Post_Template_Tags {
 		if ( isset( $attr['size'] ) ) {
 			$size = $attr['size'];
 		} elseif ( isset( $attr['width'] ) ) {
+			$attr['width'] = trim( $attr['width'], 'px' );
+
 			if ( isset( $attr['height'] ) ) {
 				$height = $attr['height'];
 			} else {
@@ -650,6 +652,8 @@ class W4PL_Post_Template_Tags {
 
 			$size = array( $attr['width'], $height );
 		} elseif ( isset( $attr['height'] ) ) {
+			$attr['height'] = trim( $attr['height'], 'px' );
+
 			if ( isset( $attr['width'] ) ) {
 				$width = $attr['width'];
 			} else {
