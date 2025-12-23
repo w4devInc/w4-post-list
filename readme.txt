@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post, post list, custom post type, shortcode, media
 Requires at least: 5.8
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.5.3
+Stable tag: 2.5.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.5.4 =
+* Fix: Sanitized media image width and height attributes - https://github.com/w4devInc/w4-post-list/issues/64.
 = 2.5.3 =
 * Fix: Fixed version number.
 = 2.5.1 =
@@ -121,6 +123,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.4 =
+* Fix: Sanitized media image width and height attributes - https://github.com/w4devInc/w4-post-list/issues/64.
 = 2.5.3 =
 * Fix: Fixed version number.
 = 2.5.1 =
