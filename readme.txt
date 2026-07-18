@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post, post list, custom post type, shortcode, media
 Requires at least: 5.8
-Tested up to: 6.9.1
+Tested up to: 7.0.2
 Requires PHP: 7.4
-Stable tag: 2.5.5
+Stable tag: 2.5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,9 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 3. Preview 2
 
 == Changelog ==
+= 2.5.6 =
+* New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
+* Tested up to WordPress 7.0.2.
 = 2.5.5 =
 * Tested up to WordPress 6.9.1.
 = 2.5.4 =
@@ -125,6 +128,9 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.6 =
+* New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
+* Tested up to WordPress 7.0.2.
 = 2.5.5 =
 * Tested up to WordPress 6.9.1.
 = 2.5.4 =

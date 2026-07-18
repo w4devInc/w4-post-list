@@ -77,13 +77,8 @@ class W4PL_Helper_Posts {
 			'name'        => 'w4pl[post_status]',
 			'label'       => __( 'Post status', 'w4-post-list' ),
 			'type'        => 'checkbox',
-			'option'      => array(
-				'any'     => __( 'Any', 'w4-post-list' ),
-				'publish' => __( 'Publish', 'w4-post-list' ),
-				'pending' => __( 'Pending', 'w4-post-list' ),
-				'future'  => __( 'Future', 'w4-post-list' ),
-				'inherit' => __( 'Inherit', 'w4-post-list' ),
-			),
+			'option'      => W4PL_Config::post_status_options(),
+			'desc'        => __( 'Note: "Any" excludes statuses that are hidden from search. Check a status directly to include it.', 'w4-post-list' ),
 		);
 
 		$fields['post_s']          = array(

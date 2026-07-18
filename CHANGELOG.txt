@@ -1,5 +1,16 @@
 == Changelog ==
-= 2.4.9 = 
+= 2.5.6 =
+* New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
+* Tested up to WordPress 7.0.2.
+= 2.5.5 =
+* Tested up to WordPress 6.9.1.
+= 2.5.4 =
+* Fix: Sanitized media image width and height attributes - https://github.com/w4devInc/w4-post-list/issues/64.
+= 2.5.3 =
+* Fix: Fixed version number.
+= 2.5.1 =
+* Fix: Fixed textdomain issue.
+= 2.4.9 =
 * Updated: Text localization.
 = 2.4.8 = 
 * Fix: Prev page navigation button weren't showing on page 2.
