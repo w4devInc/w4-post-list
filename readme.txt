@@ -1,117 +1,125 @@
 === W4 Post List ===
 Contributors: sajib1223
-Tags: post, post list, custom post type, shortcode, media
+Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
-Tested up to: 7.0.2
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 2.5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-W4 Post List lets you create a list of posts, terms, users or a combined one. Decorate output using shortcodes. It's just easy and fun.
+Build lists the Query Loop can't: posts grouped by year, category or author, term lists and user directories — via block, shortcode or widget.
 
 
 == Description ==
 
-Display Posts (any custom post type), Terms (any custom taxonomy), Users (any role) on Content or Widget Areas by placing a shortcode. Select what to show and design how to show it. Using the plugin is really easy. You will find Tinymce button on post/page editor to quickly inset a list. Also, there's a separate page for creating or editing list.
+W4 Post List builds the lists that WordPress core still can't: posts **grouped** under year, month, category or author headings; category and term indexes; user directories; and combined Terms + Posts and Users + Posts lists. You control the output with a template of plain HTML and simple template tags, so the markup stays clean, semantic and completely yours.
 
-= List Types =
+Place any list anywhere with the **W4 Post List block**, the `[postlist id="123"]` shortcode, or the classic widget.
+
+= What can you build? =
+
+* **Year/month archives** — posts grouped under date headings
+* **Category, tag or custom taxonomy indexes** — with or without each term's posts listed underneath
+* **Author and user directories** — list users by role, with avatars, bios and each user's posts
+* **Filtered post lists** — any post type, filtered by status, taxonomy terms, custom fields, dates, authors, parents and more
+* **Media lists** — image and attachment lists by mime type
+
+= Five list types =
+
 * Posts
 * Terms
 * Users
-* Terms & Posts
-* Users & Posts
+* Terms + Posts
+* Users + Posts
 
-Creating a list is just few steps. There are different sets option for different List Type, following options are available for List Type - `posts`.
-= Posts =
-* post type
-* post mime type
-* post status
-* post search keyword
-* include post by ids
-* exclude post by ids
-* exclude current post
-* posts per page - while using pagination
-* post by parent ids
-* post by author ids
-* post by terms ( tax_query )
-* post by meta ( meta_query )
-* post by year, month, day ( date_query )
+= Query options (Posts) =
 
-= Group Results by =
-* year
-* month
-* month year
-* category, post tag or custom taxonomies
-* authors
-* parents
+* Post type, status and mime type
+* Search keyword
+* Include/exclude posts by ID, exclude the current post
+* Filter by parent, author, taxonomy terms (tax query), custom fields (meta query) and dates (date query)
+* Items per page, with multi-page pagination
 
-= Order Results by =
-* post id
-* post title
-* post name
-* post publish date
-* post modified date
-* menu order
-* approved comment count
-* meta value
-* or random
+= Group results by =
 
-= Multi-Page Pagination by =
-* Next / Previous links
-* Numeric navigation flat - Ex: 1, 2, 3.
-* Numeric navigation showing in unordered list.
-* Enable/Disable pagination by ajax
+* Year, month, or month + year
+* Category, tag or any custom taxonomy
+* Author
+* Parent
 
+= Order results by =
 
-= To Create Template =
-Templates are designed using Shortcodes. You can create a simple list just showing post title and linked to the post page, or you can display complex list using any of the information relating to post. Some of the available shortcodes are -
+* ID, title, slug, publish date, modified date, menu order, comment count, custom field value, or random
 
-* post thumbnail
-* post categories
-* post tags
-* post custom taxonomy terms
-* post author name / links / avatar
-* post publish time
-* post modified time
-* post excerpt
-* post content
-* post meta value (multiple times, with multiple meta keys)
-* media thumbnail
+= Pagination =
 
+* Next/previous links or numeric navigation, with optional AJAX page loading
 
-Check all of the [available shortcodes](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/) here.
+= Full control over the output =
 
+Output is template-driven: every list has an HTML template with template tags like `[post_title]`, `[post_permalink]`, `[featured_image]`, `[post_author_name]` and `[post_meta key="..."]`. Start from a preset and tweak it, or write your own markup for pixel-perfect control. If you want a drag-and-drop visual builder, this plugin isn't that — it keeps you close to your own HTML, which is exactly why themes and developers like it.
 
-= Check Example =
-* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples/#example-1)
-* [Media List](https://w4dev.com/wp/w4-post-list-examples/#example-2)
-* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples/#example-3)
-* [List of Categories](https://w4dev.com/wp/w4-post-list-examples/#example-4)
-* [List of Terms](https://w4dev.com/wp/w4-post-list-examples/#example-5)
+See the [full template tag reference](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/) and [live examples with copy-paste templates](https://w4dev.com/wp/w4-post-list-examples/).
+
+= Lightweight, independently measured =
+
+[WP Hive](https://wphive.com/plugins/w4-post-list/) independently measures W4 Post List at **19 KB memory usage and +0.05 s page-speed impact — better than 99% of the plugins they test**. No bundled frameworks, no frontend bloat.
 
 
 == Installation ==
 
-1. Upload zip file to the `/wp-content/plugins/` directory
-2. Activate the plugin through the `Plugins` menu in WordPress
-3. You will find W4 post list menu below Posts Menu. Create / manage your list from there.
+1. Install from Plugins → Add New (search for "W4 Post List"), or upload the zip to `/wp-content/plugins/`.
+2. Activate the plugin through the Plugins menu.
+3. Find the **W4 Post List** menu (list icon) in your admin sidebar. Create a list, publish it, then place it on any page with the W4 Post List block or the `[postlist id="123"]` shortcode.
 
 
 == Frequently Asked Questions ==
 
-= How to display a list =
+= How do I display a list? =
 
-Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
+Three ways: add the **W4 Post List block** and pick your list; paste the shortcode `[postlist id="123"]` into any content; or add the W4 Post List widget to a widget area. Each list's ID and ready-made shortcode are shown in the Shortcode column on the All Lists screen.
+
+= How do I list posts from a specific category? =
+
+Create a Posts list, open the **Posts: Tax Query** section, and select your taxonomy and terms. You can combine multiple term filters, and filter by custom fields and dates the same way.
+
+= Why does my list show nothing on the page? =
+
+The usual causes, in order: the list is not **Published** yet; the shortcode ID doesn't match (check the Shortcode column on the All Lists screen); the template is missing its loop tags (a Posts list template needs `[posts]...[/posts]`, Terms needs `[terms]...[/terms]`, Users needs `[users]...[/users]`); or the query simply matched no items. Opening the list and re-checking the query options usually finds it.
+
+= Can I display custom fields (including ACF)? =
+
+Yes. Use `[post_meta key="your_field_key"]` inside the posts loop. Fields stored as plain values (text, numbers, URLs) work best; complex/serialized fields are output as stored.
+
+= Can I group posts by year, category or author? =
+
+Yes — that's this plugin's specialty. Set **Group by** to year, month, month + year, any taxonomy, author or parent, and the list renders grouped sections with headings. The core Query Loop block can't do this.
+
+= Can I list users or build an author directory? =
+
+Yes. Use the **Users** list type (filter by role, order by name/registration date) or **Users + Posts** to show each user with their latest posts. Template tags cover avatars, display names, bios and profile URLs.
+
+= Does it work with the block editor and block themes? =
+
+Yes. The W4 Post List block renders your list server-side with a live preview in the editor, and the shortcode works in classic editors, page builders and template files (`echo do_shortcode( '[postlist id="123"]' );`).
+
+= Where is the documentation? =
+
+In your admin: **W4 Post List → Documentation** (template tags reference, examples, usage). Online: [w4dev.com/docs/w4-post-list](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/).
 
 
 == Screenshots ==
 
-1. Settings Panel
-2. Preview 1
-3. Preview 2
+1. The list editor — choose a list type, then configure query, template and style options per section.
+2. Front-end output — an AJAX-paginated post list, an image/media grid, and a year/month grouped archive.
+
 
 == Changelog ==
+= 2.5.7 =
+* Improved: Rewrote the wordpress.org listing for accuracy — removed the reference to the retired TinyMCE button, repositioned the description around grouped lists and user directories, expanded the FAQ from real support questions, updated screenshots and fixed typos.
+* Improved: Plugin header description.
+* Note: No functional changes in this release.
 = 2.5.6 =
 * New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
 * Tested up to WordPress 7.0.2.
@@ -128,17 +136,8 @@ Each list have a unique id. Display a list by using `[postlist id="LIST_ID"]`.
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
-= 2.5.6 =
-* New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
-* Tested up to WordPress 7.0.2.
-= 2.5.5 =
-* Tested up to WordPress 6.9.1.
-= 2.5.4 =
-* Fix: Sanitized media image width and height attributes - https://github.com/w4devInc/w4-post-list/issues/64.
-= 2.5.3 =
-* Fix: Fixed version number.
-= 2.5.1 =
-* Fix: Fixed textdomain issue.
+= 2.5.7 =
+Listing and documentation accuracy update — no functional changes.
 
 == Privacy Policy ==
 W4 Post List uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
