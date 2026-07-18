@@ -1,85 +1,59 @@
-# W4 Post List - WordPress Plugin
+# W4 Post List — WordPress Plugin
 
-Display Posts (or any custom post type), Terms (or any custom taxonomy), Users (any role) on Content or Widget Areas by placing a shortcode. Select what to show and design how to show it. Using the plugin is really easy. You will find Tinymce button on post/page editor to quickly inset a list. Also, there's a separate page for creating or editing list.
+Build the lists WordPress core still can't: posts **grouped** under year, month, category or author headings; category and term indexes; user directories; and combined Terms + Posts and Users + Posts lists. Output is controlled by a template of plain HTML and simple template tags, so the markup stays clean, semantic and completely yours.
 
-## List Types
+Place any list anywhere with the **W4 Post List block**, the `[postlist id="123"]` shortcode, or the classic widget.
+
+**Plugin page:** [wordpress.org/plugins/w4-post-list](https://wordpress.org/plugins/w4-post-list/)
+
+## What can you build?
+
+* **Year/month archives** — posts grouped under date headings
+* **Category, tag or custom taxonomy indexes** — with or without each term's posts listed underneath
+* **Author and user directories** — list users by role, with avatars, bios and each user's posts
+* **Filtered post lists** — any post type, filtered by status, taxonomy terms, custom fields (meta query), dates (date query), authors, parents and more
+* **Media lists** — image and attachment lists by mime type
+
+## List types
+
 * Posts
 * Terms
 * Users
-* Terms & Posts
-* Users & Posts
+* Terms + Posts
+* Users + Posts
 
-Creating a list is just few steps. There are different sets option for different List Type, following options are available for List Type - `posts`.
+## Features
 
-### Posts
-* post type
-* post mime type
-* post status
-* post search keyword
-* include post by ids
-* exclude post by ids
-* exclude current post
-* posts per page - while using pagination
-* post by parent ids
-* post by author ids
-* post by terms ( tax_query )
-* post by meta ( meta_query )
-* post by year, month, day ( date_query )
+* **Grouping** — by year, month, month + year, any taxonomy, author or parent (the core Query Loop block can't do this)
+* **Ordering** — by ID, title, slug, publish/modified date, menu order, comment count, custom field value, or random
+* **Pagination** — next/previous links or numeric navigation, with optional AJAX page loading
+* **Template-driven output** — HTML plus template tags like `[post_title]`, `[post_permalink]`, `[featured_image]`, `[post_meta key="..."]`; start from a preset or write your own markup
+* **Lightweight** — [independently measured by WP Hive](https://wphive.com/plugins/w4-post-list/) at ~19 KB memory and +0.05 s page-speed impact, better than 99% of tested plugins
 
-### Group Results by
-* year
-* month
-* month year
-* category, post tag or custom taxonomies
-* authors
-* parents
-
-### Order Results by
-* post id
-* post title
-* post name
-* post publish date
-* post modified date
-* menu order
-* approved comment count
-* meta value
-* or random
-
-### Multi-Page Pagination by
-* Next / Previous links
-* Numeric navigation flat - Ex: 1, 2, 3.
-* Numeric navigation showing in unordered list.
-* Enable/Disable pagination by ajax
-
-
-### Creating Template
-Templates are designed using Shortcodes. You can create a simple list just showing post title and linked to the post page, or you can display complex list using any of the information relating to post. Some of the available shortcodes are -
-
-* post thumbnail
-* post categories
-* post tags
-* post custom taxonomy terms
-* post author name / links / avatar
-* post publish time
-* post modified time
-* post excerpt
-* post content
-* post meta value (multiple times, with multiple meta keys)
-* media thumbnail
-
-
-Check all of the [available shortcodes](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/) here.
-
-
-### Check Example
-* [Simple Posts List](https://w4dev.com/wp/w4-post-list-examples/#example-1)
-* [Media List](https://w4dev.com/wp/w4-post-list-examples/#example-2)
-* [Year/Month Archive](https://w4dev.com/wp/w4-post-list-examples/#example-3)
-* [List of Categories](https://w4dev.com/wp/w4-post-list-examples/#example-4)
-* [List of Terms](https://w4dev.com/wp/w4-post-list-examples/#example-5)
-
+Full [template tag reference](https://w4dev.com/docs/w4-post-list/faqs/what-are-the-available-template-tags/) and [live examples with copy-paste templates](https://w4dev.com/wp/w4-post-list-examples/).
 
 ## Installation
-1. Upload zip to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Find W4 post list menu under Posts Menu. Add and manage post list from there.
+
+1. Install from Plugins → Add New (search for "W4 Post List"), or upload the zip to `/wp-content/plugins/`.
+2. Activate the plugin through the Plugins menu.
+3. Find the **W4 Post List** menu (list icon) in your admin sidebar. Create a list, publish it, then place it with the block or the `[postlist id="123"]` shortcode.
+
+## Development
+
+```bash
+npm install && composer install   # install dependencies
+
+npm run start-block               # block editor dev (hot reload)
+npm run build-block               # build block assets
+
+npm run build-plugin              # full build: i18n → version sync → LESS → minify
+npm run zip-plugin                # distribution zip
+
+./vendor/bin/phpcs                # WordPress Coding Standards check
+```
+
+Version is managed in `package.json` (source of truth) and synced into PHP files by `npm run build-plugin`.
+
+## License
+
+GPLv3 — see [LICENSE](LICENSE).

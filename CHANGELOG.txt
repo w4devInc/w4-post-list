@@ -1,4 +1,8 @@
 == Changelog ==
+= 2.5.7 =
+* Improved: Rewrote the wordpress.org listing for accuracy — removed the reference to the retired TinyMCE button, repositioned the description around grouped lists and user directories, expanded the FAQ from real support questions, updated screenshots and fixed typos.
+* Improved: Plugin header description.
+* Note: No functional changes in this release.
 = 2.5.6 =
 * New: Post status options now include all registered statuses, including custom ones (e.g. "Expired" from job listing plugins) - https://github.com/w4devInc/w4-post-list/issues/88.
 * Tested up to WordPress 7.0.2.
