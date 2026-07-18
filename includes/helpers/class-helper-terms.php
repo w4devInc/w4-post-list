@@ -61,7 +61,7 @@ class W4PL_Helper_Terms {
 			'label'       => __( 'Include terms', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
+			'desc'        => __( 'Comma-separated term IDs.', 'w4-post-list' ),
 		);
 		$fields['terms__not_in']                  = array(
 			'position'    => '12',
@@ -70,7 +70,7 @@ class W4PL_Helper_Terms {
 			'label'       => __( 'Exclude terms', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
+			'desc'        => __( 'Comma-separated term IDs.', 'w4-post-list' ),
 		);
 		$fields['terms_parent__in']               = array(
 			'position'    => '13',
@@ -79,7 +79,7 @@ class W4PL_Helper_Terms {
 			'label'       => __( 'Parents', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
+			'desc'        => __( 'Comma-separated term IDs.', 'w4-post-list' ),
 		);
 
 		$fields['terms_name__like']        = array(

@@ -52,7 +52,7 @@ class W4PL_Helper_Users {
 			'label'       => __( 'Include users', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
+			'desc'        => __( 'Comma-separated user IDs.', 'w4-post-list' ),
 		);
 		$fields['users__not_in']                  = array(
 			'position'    => '12',
@@ -61,7 +61,7 @@ class W4PL_Helper_Users {
 			'label'       => __( 'Exclude users', 'w4-post-list' ),
 			'type'        => 'text',
 			'input_class' => 'widefat',
-			'desc'        => __( 'comma separated term id', 'w4-post-list' ),
+			'desc'        => __( 'Comma-separated user IDs.', 'w4-post-list' ),
 		);
 
 		$fields['users_display_name__like'] = array(

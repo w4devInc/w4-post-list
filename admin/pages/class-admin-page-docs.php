@@ -31,7 +31,7 @@ class W4PL_Admin_Page_Docs {
 			'edit.php?post_type=w4pl',
 			__( 'Documentation', 'w4-post-list' ),
 			__( 'Documentation', 'w4-post-list' ),
-			'delete_users',
+			'edit_pages',
 			'w4pl-docs',
 			array( $this, 'admin_page' )
 		);
@@ -43,11 +43,12 @@ class W4PL_Admin_Page_Docs {
 	 * Page template
 	 */
 	public function admin_page() {
-		$current_tab = isset( $_REQUEST['tab'] ) ? wp_unslash( $_REQUEST['tab'] ) : 'template-examples';
+		$current_tab = isset( $_REQUEST['tab'] ) ? sanitize_key( wp_unslash( $_REQUEST['tab'] ) ) : 'getting-started';
 		$tabs        = array(
+			'getting-started'   => __( 'Getting Started', 'w4-post-list' ),
+			'usage'             => __( 'Usage', 'w4-post-list' ),
 			'template-examples' => __( 'Template', 'w4-post-list' ),
 			'template-tags'     => __( 'Template Tags', 'w4-post-list' ),
-			'usage'             => __( 'Usage', 'w4-post-list' ),
 		);
 		?>
 		<div class="wrap w4pl-documentation-wrap">
@@ -91,8 +92,11 @@ class W4PL_Admin_Page_Docs {
 						case 'usage':
 							include_once dirname( __FILE__ ) . '/views/html-usage.php';
 							break;
-						default:
+						case 'template-examples':
 							include_once dirname( __FILE__ ) . '/views/html-template-examples.php';
+							break;
+						default:
+							include_once dirname( __FILE__ ) . '/views/html-getting-started.php';
 							break;
 					}
 					?>
