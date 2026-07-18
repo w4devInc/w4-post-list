@@ -97,6 +97,29 @@ class W4PL_Config {
 	}
 
 	/**
+	 * Post status choices
+	 *
+	 * Includes all registered non-internal statuses, so custom statuses
+	 * added by other plugins are selectable.
+	 *
+	 * @return array [description]
+	 */
+	public static function post_status_options() {
+		$return = array(
+			'any' => __( 'Any', 'w4-post-list' ),
+		);
+
+		foreach ( get_post_stati( array( 'internal' => false ), 'objects' ) as $post_status => $post_status_object ) {
+			$return[ $post_status ] = $post_status_object->label;
+		}
+
+		// Attachment status, registered as internal but queryable.
+		$return['inherit'] = __( 'Inherit', 'w4-post-list' );
+
+		return $return;
+	}
+
+	/**
 	 * [post_mime_type_options description]
 	 *
 	 * @param  string $post_types [description].
