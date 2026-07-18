@@ -8,7 +8,7 @@
 ?>
 <div class="w4pl-usage">
 	<h2>
-		<?php esc_html_e( 'Diplaying list with shortcode', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'Displaying a list with the shortcode', 'w4-post-list' ); ?>
 	</h2>
 	<p>
 		<?php

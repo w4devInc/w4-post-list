@@ -242,7 +242,7 @@ class W4PL_Post_Template_Tags {
 						'desc' => __( 'Limit number of words to display', 'w4-post-list' ),
 					),
 					'strip_shortcodes' => array(
-						'desc' => __( 'Remove shortcodes from exceprt text. use strip_shortcode="1" to enabled.', 'w4-post-list' ),
+						'desc' => __( 'Remove shortcodes from excerpt text. Use strip_shortcode="1" to enable.', 'w4-post-list' ),
 					),
 				),
 			),
@@ -255,7 +255,7 @@ class W4PL_Post_Template_Tags {
 				'group'      => 'Post',
 				'code'       => '[featured_image size="" return=""]',
 				'callback'   => array( 'W4PL_Post_Template_Tags', 'featured_image' ),
-				'output'     => __( '( text or number ) based on the rerurn attribute & only if the post has a featured image assigned', 'w4-post-list' ),
+				'output'     => __( '( text or number ) based on the return attribute & only if the post has a featured image assigned', 'w4-post-list' ),
 				'parameters' => array(
 					'output'      => array(
 						'desc'    => __( '"src" - will return src of the image, "id" - will return id of the image, by default it will return image html', 'w4-post-list' ),
@@ -286,7 +286,7 @@ class W4PL_Post_Template_Tags {
 				'group'      => 'Post',
 				'code'       => '[post_thumbnail size="" return=""]',
 				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_thumbnail' ),
-				'output'     => __( '( text or number ) based on the rerurn attribute & only if the post has a featured image assigned', 'w4-post-list' ),
+				'output'     => __( '( text or number ) based on the return attribute & only if the post has a featured image assigned', 'w4-post-list' ),
 				'parameters' => array(
 					'output'      => array(
 						'desc'    => __( '"src" - will return src of the image, "id" - will return id of the image, by default it will return image html', 'w4-post-list' ),

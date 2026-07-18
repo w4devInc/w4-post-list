@@ -67,7 +67,7 @@ class W4PL_Helper_Posts {
 				'label'       => __( 'Post mime type', 'w4-post-list' ),
 				'type'        => 'checkbox',
 				'option'      => $mime_type_options,
-				'desc'        => __( 'if displaying attachment, choose mime type to restrcit result to specific file types.', 'w4-post-list' ),
+				'desc'        => __( 'If displaying attachments, choose a mime type to restrict results to specific file types.', 'w4-post-list' ),
 			);
 		}
 
@@ -243,7 +243,7 @@ class W4PL_Helper_Posts {
 						'post_date'     => __( 'Publish date', 'w4-post-list' ),
 						'post_modified' => __( 'Modified date', 'w4-post-list' ),
 					),
-					'desc2'       => 'which date we will use to caculate the group time',
+					'desc2'       => __( 'Which date to use when calculating the group.', 'w4-post-list' ),
 				);
 			} elseif ( in_array( $options['groupby'], array( 'meta_value' ) ) ) {
 				$fields['groupby_meta_key'] = array(

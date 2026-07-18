@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.5.7
+Stable tag: 2.5.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,12 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.5.8 =
+* Fix: Documentation examples used unregistered template tags ([post_link], [group_name], [group_link]) and invalid HTML, so copy-pasting them produced broken output. All examples now use registered tags with valid loop markup.
+* New: "Getting Started" documentation tab with a step-by-step walkthrough, now the default tab.
+* Fix: The Documentation page is now visible to everyone who can edit lists (previously required the delete_users capability, hiding it from Editors).
+* Fix: The "Include users" and "Exclude users" fields were incorrectly described as taking term IDs; corrected, along with a typo cleanup across admin field descriptions.
+* Fix: Added missing text domain to the Appsero opt-in notice string.
 = 2.5.7 =
 * Improved: Rewrote the wordpress.org listing for accuracy — removed the reference to the retired TinyMCE button, repositioned the description around grouped lists and user directories, expanded the FAQ from real support questions, updated screenshots and fixed typos.
 * Improved: Plugin header description.
@@ -136,6 +142,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.8 =
+Documentation fixes: examples now copy-paste correctly, new Getting Started guide, docs visible to Editors.
 = 2.5.7 =
 Listing and documentation accuracy update — no functional changes.
 

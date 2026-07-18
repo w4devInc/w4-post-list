@@ -10,7 +10,7 @@
 	<?php esc_html_e( 'What is Template Tags?', 'w4-post-list' ); ?>
 </h2>
 <p>
-	<?php esc_html_e( 'Template tags are like WordPress shortcode. It\'s a piece of code that gets replaced with a dyanamic value.', 'w4-post-list' ); ?>
+	<?php esc_html_e( 'Template tags are like WordPress shortcodes: a piece of code that gets replaced with a dynamic value.', 'w4-post-list' ); ?>
 </p>
 
 <table class="widefat w4pl-template-tags" cellpadding="0" cellspacing="0">

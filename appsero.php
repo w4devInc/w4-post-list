@@ -57,7 +57,7 @@ function w4pl_appsero_admin_notices() {
 	if (
 		( in_array( $pagenow, [ 'edit.php' ], true ) && 'w4pl' === $typenow )
 	) {
-		$insights->notice = __( 'Allow us to understand how we can improve W4 Post List Plugin by collecting some diagnostic data and usage information.' );
+		$insights->notice = __( 'Allow us to understand how we can improve W4 Post List Plugin by collecting some diagnostic data and usage information.', 'w4-post-list' );
 
 		ob_start();
 

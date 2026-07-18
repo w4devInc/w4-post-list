@@ -42,7 +42,7 @@ class W4PL_Helper_Presets {
 			'type'        => 'select',
 			'option'      => self::preset_options( $options['list_type'] ),
 			'input_class' => 'w4pl_onchange_lfr',
-			'desc'        => __( 'preset is predefined templates', 'w4-post-list' ),
+			'desc'        => __( 'Presets are ready-made templates. When one is selected it controls the output, and the Template and Style sections are hidden.', 'w4-post-list' ),
 		);
 
 		if ( isset( $options['preset'] ) && ! empty( $options['preset'] ) ) {
