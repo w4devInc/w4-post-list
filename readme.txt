@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.5.8
+Stable tag: 2.5.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.5.9 =
+* New: Added a WordPress Playground blueprint that powers the Live Preview button on the wordpress.org plugin page.
 = 2.5.8 =
 * Fix: Documentation examples used unregistered template tags ([post_link], [group_name], [group_link]) and invalid HTML, so copy-pasting them produced broken output. All examples now use registered tags with valid loop markup.
 * New: "Getting Started" documentation tab with a step-by-step walkthrough, now the default tab.
@@ -142,6 +144,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.5.9 =
+Adds a Live Preview blueprint for the wordpress.org plugin page. No functional changes.
 = 2.5.8 =
 Documentation fixes: examples now copy-paste correctly, new Getting Started guide, docs visible to Editors.
 = 2.5.7 =

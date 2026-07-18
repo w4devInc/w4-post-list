@@ -1,4 +1,6 @@
 == Changelog ==
+= 2.5.9 =
+* New: Added a WordPress Playground blueprint that powers the Live Preview button on the wordpress.org plugin page.
 = 2.5.8 =
 * Fix: Documentation examples used unregistered template tags ([post_link], [group_name], [group_link]) and invalid HTML, so copy-pasting them produced broken output. All examples now use registered tags with valid loop markup.
 * New: "Getting Started" documentation tab with a step-by-step walkthrough, now the default tab.
