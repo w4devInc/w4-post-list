@@ -1,6 +1,7 @@
 name: Update WordPress.org Assets
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -22,3 +23,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          IGNORE_OTHER_FILES: true
