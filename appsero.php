@@ -54,6 +54,13 @@ function w4pl_appsero_admin_notices() {
 		return;
 	}
 
+	// Hold the telemetry ask until the user has published a first list, so
+	// onboarding guidance is the plugin's first communication.
+	$published = wp_count_posts( 'w4pl' );
+	if ( empty( $published->publish ) ) {
+		return;
+	}
+
 	if (
 		( in_array( $pagenow, [ 'edit.php' ], true ) && 'w4pl' === $typenow )
 	) {

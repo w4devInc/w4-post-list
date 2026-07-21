@@ -3,7 +3,7 @@
  * Plugin Name: W4 Post List
  * Plugin URI: https://w4dev.com/plugins/w4-post-list
  * Description: Create lists of posts, terms and users — grouped archives, taxonomy indexes and user directories — placed anywhere with the block, [postlist] shortcode or widget.
- * Version: 2.6.0
+ * Version: 2.7.0
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Shazzad Hossain Khan
@@ -50,9 +50,18 @@ add_action( 'plugins_loaded', 'w4pl_load', 10 );
 
 /**
  * Run when plugin gets activated
+ *
+ * @param bool $network_wide Whether the plugin is being activated network-wide.
  */
-function w4pl_activated() {
+function w4pl_activated( $network_wide = false ) {
 	update_option( 'w4pl_flush_rules', time() );
+
+	// Per-site onboarding; skipped on network-wide activation so bulk
+	// activation does not touch every site.
+	if ( ! $network_wide ) {
+		update_option( 'w4pl_welcome_pending', time(), false );
+		update_option( 'w4pl_maybe_create_sample', 1, false );
+	}
 }
 register_activation_hook( W4PL_PLUGIN_FILE, 'w4pl_activated' );
 
