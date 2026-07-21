@@ -118,6 +118,7 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 == Changelog ==
 = 2.8.0 =
 * New: The Template, CSS and JavaScript fields are now real code editors with syntax highlighting and line numbers; template tags insert at the cursor.
+* Improved: Default templates rewritten in the plain tag dialect with a visible per-item wrapper (div.post-item / .term-item / .user-item) and the [nav] pagination tag, so the loop structure is obvious at a glance. Applies to newly created lists; saved lists keep their stored template.
 * New: "Display this list" box on the list editor with the copyable shortcode, a copy button and placement pointers.
 * New: A wrong or missing list ID, or a rendering error, now shows logged-in editors an inline explanation - visitors see nothing (previously raw error text could leak to visitors).
 * New: "No items text" is prefilled with "No items found." for new lists, so empty results are no longer an invisible blank. Existing lists are unchanged.

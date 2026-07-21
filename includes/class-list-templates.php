@@ -39,11 +39,17 @@ class W4PL_List_Templates {
 			return $template;
 		}
 
-		$users      = '<ul>[users]' . "\n" . '<li>' . "\n" . '<a href="[user_link]">[user_name]</a>' . "\n" . '</li>' . "\n" . '[/users]</ul>';
-		$terms      = '<ul>[terms]' . "\n" . '<li>' . "\n" . '<a href="[term_link]">[term_name]</a>' . "\n" . '</li>' . "\n" . '[/terms]</ul>';
-		$posts      = '<ul>[posts]' . "\n" . '<li>' . "\n" . '[title]' . "\n" . '[excerpt wordlimit=20]' . "\n" . '[more]' . "\n" . '</li>' . "\n" . '[/posts]</ul>';
-		$termsposts = '<ul>[terms]' . "\n" . '<li>' . "\n" . '<a href="[term_link]">[term_name]</a>' . "\n" . $posts . "\n" . '</li>' . "\n" . '[/terms]</ul>';
-		$usersposts = '<ul>[users]' . "\n" . '<li>' . "\n" . '<a href="[user_link]">[user_name]</a>' . "\n" . $posts . "\n" . '</li>' . "\n" . '[/users]</ul>';
+		// Everything between a loop tag pair repeats once per item; the
+		// per-item wrapper div makes that visible at a glance.
+		$posts = "[posts]\n\t<div class=\"post-item\">\n\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t</div>\n[/posts]\n[nav]";
+
+		$terms = "[terms]\n\t<div class=\"term-item\">\n\t\t<a href=\"[term_link]\">[term_name]</a>\n\t</div>\n[/terms]";
+
+		$users = "[users]\n\t<div class=\"user-item\">\n\t\t<a href=\"[user_link]\">[user_name]</a>\n\t</div>\n[/users]";
+
+		$termsposts = "[terms]\n\t<div class=\"term-item\">\n\t\t<a href=\"[term_link]\">[term_name]</a>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/terms]";
+
+		$usersposts = "[users]\n\t<div class=\"user-item\">\n\t\t<a href=\"[user_link]\">[user_name]</a>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/users]";
 
 		if ( 'terms' === $options['list_type'] ) {
 			$template = $terms;

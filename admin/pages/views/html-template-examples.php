@@ -19,11 +19,15 @@
 <h3>
 	<?php esc_html_e( 'Post list', 'w4-post-list' ); ?>
 </h3>
-<pre>&lt;ul&gt;
-[posts]
-	&lt;li&gt;&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;&lt;/li&gt;
+<p>
+	<?php esc_html_e( 'Everything between [posts] and [/posts] repeats once for every post — the per-item wrapper makes that easy to see:', 'w4-post-list' ); ?>
+</p>
+<pre>[posts]
+	&lt;div class=&quot;post-item&quot;&gt;
+		&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;
+	&lt;/div&gt;
 [/posts]
-&lt;/ul&gt;</pre>
+[nav]</pre>
 
 
 <h3>
