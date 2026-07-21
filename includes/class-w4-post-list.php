@@ -203,46 +203,47 @@ final class W4_Post_List {
 
 	/**
 	 * Register stylesheets / javascripts
+	 *
+	 * All plugin assets are admin-only, so unminified sources are always
+	 * served; minification buys nothing there.
 	 */
 	public function register_scripts() {
-		$min     = '.min';
 		$version = W4PL_VERSION;
 
-		// While debugging locally, load unminified assets and bypass caches.
+		// While debugging locally, bypass browser caches.
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$min     = '';
 			$version = (string) time();
 		}
 
 		wp_register_style(
 			'w4pl_form',
-			W4PL_URL . 'assets/css/form' . $min . '.css',
+			W4PL_URL . 'assets/css/form.css',
 			[],
 			$version
 		);
 		wp_register_style(
 			'w4pl_list_editor',
-			W4PL_URL . 'assets/css/list-editor' . $min . '.css',
+			W4PL_URL . 'assets/css/list-editor.css',
 			[],
 			$version
 		);
 		wp_register_style(
 			'w4pl-admin-documentation',
-			W4PL_URL . 'assets/css/admin-documentation' . $min . '.css',
+			W4PL_URL . 'assets/css/admin-documentation.css',
 			[],
 			$version
 		);
 
 		wp_register_script(
 			'w4pl_form',
-			W4PL_URL . 'assets/js/form' . $min . '.js',
+			W4PL_URL . 'assets/js/form.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
 			$version,
 			true
 		);
 		wp_register_script(
 			'w4pl_list_editor',
-			W4PL_URL . 'assets/js/list-editor' . $min . '.js',
+			W4PL_URL . 'assets/js/list-editor.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
 			$version,
 			true
