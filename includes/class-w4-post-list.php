@@ -202,6 +202,24 @@ final class W4_Post_List {
 	}
 
 	/**
+	 * Cache-busting version for a plugin asset: plugin version plus the
+	 * file's mtime, so updated assets bypass long-lived browser/CDN caches
+	 * even when the plugin version has not changed.
+	 *
+	 * @param  string $relative Path relative to the plugin directory.
+	 * @return string
+	 */
+	private function asset_version( $relative ) {
+		$file = W4PL_DIR . $relative;
+
+		if ( file_exists( $file ) ) {
+			return W4PL_VERSION . '.' . filemtime( $file );
+		}
+
+		return W4PL_VERSION;
+	}
+
+	/**
 	 * Register stylesheets / javascripts
 	 */
 	public function register_scripts() {
@@ -214,33 +232,33 @@ final class W4_Post_List {
 			'w4pl_form',
 			W4PL_URL . 'assets/css/form' . $min . '.css',
 			[],
-			W4PL_VERSION
+			$this->asset_version( 'assets/css/form' . $min . '.css' )
 		);
 		wp_register_style(
 			'w4pl_list_editor',
 			W4PL_URL . 'assets/css/list-editor' . $min . '.css',
 			[],
-			W4PL_VERSION
+			$this->asset_version( 'assets/css/list-editor' . $min . '.css' )
 		);
 		wp_register_style(
 			'w4pl-admin-documentation',
 			W4PL_URL . 'assets/css/admin-documentation' . $min . '.css',
 			[],
-			W4PL_VERSION
+			$this->asset_version( 'assets/css/admin-documentation' . $min . '.css' )
 		);
 
 		wp_register_script(
 			'w4pl_form',
 			W4PL_URL . 'assets/js/form' . $min . '.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
-			W4PL_VERSION,
+			$this->asset_version( 'assets/js/form' . $min . '.js' ),
 			true
 		);
 		wp_register_script(
 			'w4pl_list_editor',
 			W4PL_URL . 'assets/js/list-editor' . $min . '.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
-			W4PL_VERSION,
+			$this->asset_version( 'assets/js/list-editor' . $min . '.js' ),
 			true
 		);
 	}
