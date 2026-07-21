@@ -66,7 +66,7 @@ $template_html = '
 		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Shortcodes', 'w4-post-list' ) . '</a>
 	</p>
 	<div id="w4pl_template_examples" class="csshide">'
-	. "<pre style='width:auto'>\n[groups]\n\t[group_title]\n\t[posts]\n\t\t&lt;div class=&quot;post-item&quot;&gt;[post_title]&lt;/div&gt;\n\t[/posts]\n[/groups]\n[nav]</pre>"
+	. "<pre style='width:auto'>\n[groups]\n\t&lt;div class=&quot;group-item&quot;&gt;\n\t\t&lt;div class=&quot;group-title&quot;&gt;[group_title]&lt;/div&gt;\n\t\t[posts]\n\t\t\t&lt;div class=&quot;post-item&quot;&gt;[post_title]&lt;/div&gt;\n\t\t[/posts]\n\t&lt;/div&gt;\n[/groups]\n[nav]</pre>"
 	. '<br />without group, a simple template should be like -'
 	. "<pre style='width:auto'>[posts]\n\t&lt;div class=&quot;post-item&quot;&gt;\n\t\t&lt;div class=&quot;post-title&quot;&gt;[post_title]&lt;/div&gt;\n\t&lt;/div&gt;\n[/posts]\n[nav]</pre>"
 	. '<br />' . esc_html__( 'Everything between [posts] and [/posts] repeats once for every post — put your per-post markup there.', 'w4-post-list' )

@@ -45,18 +45,21 @@
 <h3>
 	<?php esc_html_e( 'Post list grouped by year (set the "Group by" option to Year while using this)', 'w4-post-list' ); ?>
 </h3>
-<pre><code>&lt;ul&gt;
-[groups]
-	&lt;li&gt;
-		&lt;a href=&quot;[group_url]&quot;&gt;[group_title]&lt;/a&gt;
-		&lt;ol&gt;
+<pre><code>[groups]
+	&lt;div class=&quot;group-item&quot;&gt;
+		&lt;div class=&quot;group-title&quot;&gt;
+			&lt;a href=&quot;[group_url]&quot;&gt;[group_title]&lt;/a&gt;
+		&lt;/div&gt;
 		[posts]
-			&lt;li&gt;&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;&lt;/li&gt;
+			&lt;div class=&quot;post-item&quot;&gt;
+				&lt;div class=&quot;post-title&quot;&gt;
+					&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
 		[/posts]
-		&lt;/ol&gt;
-	&lt;/li&gt;
+	&lt;/div&gt;
 [/groups]
-&lt;/ul&gt;</code></pre>
+[nav]</code></pre>
 
 <h3>
 	<?php esc_html_e( 'Category list', 'w4-post-list' ); ?>
