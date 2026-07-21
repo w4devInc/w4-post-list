@@ -10,7 +10,7 @@ in ~5 minutes on the docker dev site.
 - [ ] Type in the Template editor, switch List Type (Posts → Terms): form refreshes and **editors re-initialize** (not blank textareas, not frozen)
 - [ ] Values typed in the editors survive a list-type switch (serialize reads synced textareas)
 - [ ] Save the list: template/CSS/JS persist exactly as typed
-- [ ] Click a tag in the "Shortcodes" panel: it inserts **at the cursor inside CodeMirror**
+- [ ] Click a tag in the "Template Tags" panel: it inserts **at the cursor inside CodeMirror**
 
 ## AJAX refresh
 

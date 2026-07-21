@@ -63,7 +63,7 @@ $template_html = '
 <div class="wffw wffwi_w4pl_template wffwt_textarea">
 	<p style="margin-top:0px;">
 		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_examples">' . __( 'Template Example', 'w4-post-list' ) . '</a>
-		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Shortcodes', 'w4-post-list' ) . '</a>
+		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Template Tags', 'w4-post-list' ) . '</a>
 	</p>
 	<div id="w4pl_template_examples" class="csshide">'
 	. "<pre style='width:auto'>\n[groups]\n\t&lt;div class=&quot;group-item&quot;&gt;\n\t\t&lt;div class=&quot;group-title&quot;&gt;[group_title]&lt;/div&gt;\n\t\t[posts]\n\t\t\t&lt;div class=&quot;post-item&quot;&gt;[post_title]&lt;/div&gt;\n\t\t[/posts]\n\t&lt;/div&gt;\n[/groups]\n[nav]</pre>"
