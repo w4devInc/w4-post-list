@@ -54,7 +54,6 @@ jobs:
   phpcs:
     name: Coding standards (advisory)
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Checkout code
@@ -69,5 +68,7 @@ jobs:
       - name: Install dev dependencies
         run: COMPOSER=composer-dev.json composer install --no-interaction --no-progress
 
-      - name: Run phpcs
-        run: vendor-dev/bin/phpcs --standard=phpcs.xml --report=summary .
+      - name: Run phpcs (does not block)
+        run: |
+          vendor-dev/bin/phpcs --standard=phpcs.xml --report=summary . \
+            || echo "::warning::phpcs reports pre-existing violations (advisory; a dedicated cleanup release will address them)"

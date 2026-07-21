@@ -641,25 +641,20 @@ class W4PL_Post_Template_Tags {
 	public static function featured_image( $attr, $cont ) {
 		if ( isset( $attr['size'] ) ) {
 			$size = $attr['size'];
-		} elseif ( isset( $attr['width'] ) ) {
-			$attr['width'] = trim( $attr['width'], 'px' );
-
-			if ( isset( $attr['height'] ) ) {
-				$height = $attr['height'];
-			} else {
-				$height = 9999;
+		} elseif ( isset( $attr['width'] ) || isset( $attr['height'] ) ) {
+			// Forgiving dimension parsing: "50px", "50" and 50 all mean 50;
+			// anything non-numeric falls back to unconstrained.
+			$width = 9999;
+			if ( isset( $attr['width'] ) && absint( $attr['width'] ) ) {
+				$width = absint( $attr['width'] );
 			}
 
-			$size = array( $attr['width'], $height );
-		} elseif ( isset( $attr['height'] ) ) {
-			$attr['height'] = trim( $attr['height'], 'px' );
-
-			if ( isset( $attr['width'] ) ) {
-				$width = $attr['width'];
-			} else {
-				$width = 9999;
+			$height = 9999;
+			if ( isset( $attr['height'] ) && absint( $attr['height'] ) ) {
+				$height = absint( $attr['height'] );
 			}
-			$size = array( $width, $attr['height'] );
+
+			$size = array( $width, $height );
 		} else {
 			$size = 'post-thumbnail';
 		}

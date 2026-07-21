@@ -258,5 +258,6 @@ class ListRenderingTest extends WP_UnitTestCase {
 
 		$this->assertIsString( $html );
 		$this->assertStringContainsString( 'Winter release notes', $html );
+		$this->assertStringContainsString( '<img', $html, 'Thumbnail should render despite the px-suffixed dimensions' );
 	}
 }
