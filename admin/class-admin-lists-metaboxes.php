@@ -74,8 +74,65 @@ class W4PL_Admin_Lists_Metaboxes {
 		// add configuration box right after post title, out of metabox.
 		add_action( 'edit_form_after_title', array( $this, 'list_options_meta_box' ) );
 
+		// usage / shortcode box in the sidebar.
+		add_meta_box(
+			'w4pl_usage',
+			__( 'Display this list', 'w4-post-list' ),
+			array( $this, 'usage_meta_box' ),
+			null,
+			'side',
+			'high'
+		);
+
 		// enqueue js & css.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+	}
+
+	/**
+	 * Sidebar box with the list's copyable shortcode and placement pointers.
+	 *
+	 * @param WP_Post $post Current list post.
+	 */
+	public function usage_meta_box( $post ) {
+		$shortcode = '[postlist id="' . $post->ID . '"]';
+		?>
+		<p><?php esc_html_e( 'Copy the shortcode into any post or page:', 'w4-post-list' ); ?></p>
+		<p>
+			<label class="screen-reader-text" for="w4pl_copy_shortcode"><?php esc_html_e( 'List shortcode', 'w4-post-list' ); ?></label>
+			<input type="text" readonly id="w4pl_copy_shortcode" class="widefat code" value="<?php echo esc_attr( $shortcode ); ?>" onfocus="this.select();" />
+		</p>
+		<p>
+			<button type="button" class="button" id="w4pl_copy_shortcode_btn"><?php esc_html_e( 'Copy shortcode', 'w4-post-list' ); ?></button>
+			<span id="w4pl_copy_shortcode_done" style="display:none;color:#008a20;" role="status"><?php esc_html_e( 'Copied!', 'w4-post-list' ); ?></span>
+		</p>
+		<?php if ( 'publish' !== $post->post_status ) : ?>
+		<p class="description"><?php esc_html_e( 'Publish the list to make it appear on your site.', 'w4-post-list' ); ?></p>
+		<?php endif; ?>
+		<p class="description"><?php esc_html_e( 'You can also add the "W4 Post List" block in the editor, or the W4 Post List widget in a widget area.', 'w4-post-list' ); ?></p>
+		<script>
+		( function () {
+			var btn = document.getElementById( 'w4pl_copy_shortcode_btn' );
+			if ( ! btn ) {
+				return;
+			}
+			btn.addEventListener( 'click', function () {
+				var input = document.getElementById( 'w4pl_copy_shortcode' );
+				var done  = function () {
+					var ok = document.getElementById( 'w4pl_copy_shortcode_done' );
+					ok.style.display = 'inline';
+					setTimeout( function () { ok.style.display = 'none'; }, 2000 );
+				};
+				input.select();
+				if ( navigator.clipboard && navigator.clipboard.writeText ) {
+					navigator.clipboard.writeText( input.value ).then( done );
+				} else {
+					document.execCommand( 'copy' );
+					done();
+				}
+			} );
+		} )();
+		</script>
+		<?php
 	}
 
 	/**
