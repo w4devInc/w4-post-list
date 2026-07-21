@@ -40,16 +40,17 @@ class W4PL_List_Templates {
 		}
 
 		// Everything between a loop tag pair repeats once per item; the
-		// per-item wrapper div makes that visible at a glance.
-		$posts = "[posts]\n\t<div class=\"post-item\">\n\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t</div>\n[/posts]\n[nav]";
+		// per-item and per-field wrapper divs make that visible at a glance
+		// and give themes stable styling hooks.
+		$posts = "[posts]\n\t<div class=\"post-item\">\n\t\t<div class=\"post-title\">\n\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t</div>\n\t</div>\n[/posts]\n[nav]";
 
-		$terms = "[terms]\n\t<div class=\"term-item\">\n\t\t<a href=\"[term_link]\">[term_name]</a>\n\t</div>\n[/terms]";
+		$terms = "[terms]\n\t<div class=\"term-item\">\n\t\t<div class=\"term-name\">\n\t\t\t<a href=\"[term_link]\">[term_name]</a>\n\t\t</div>\n\t</div>\n[/terms]";
 
-		$users = "[users]\n\t<div class=\"user-item\">\n\t\t<a href=\"[user_link]\">[user_name]</a>\n\t</div>\n[/users]";
+		$users = "[users]\n\t<div class=\"user-item\">\n\t\t<div class=\"user-name\">\n\t\t\t<a href=\"[user_link]\">[user_name]</a>\n\t\t</div>\n\t</div>\n[/users]";
 
-		$termsposts = "[terms]\n\t<div class=\"term-item\">\n\t\t<a href=\"[term_link]\">[term_name]</a>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/terms]";
+		$termsposts = "[terms]\n\t<div class=\"term-item\">\n\t\t<div class=\"term-name\">\n\t\t\t<a href=\"[term_link]\">[term_name]</a>\n\t\t</div>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<div class=\"post-title\">\n\t\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/terms]";
 
-		$usersposts = "[users]\n\t<div class=\"user-item\">\n\t\t<a href=\"[user_link]\">[user_name]</a>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/users]";
+		$usersposts = "[users]\n\t<div class=\"user-item\">\n\t\t<div class=\"user-name\">\n\t\t\t<a href=\"[user_link]\">[user_name]</a>\n\t\t</div>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">\n\t\t\t\t<div class=\"post-title\">\n\t\t\t\t\t<a href=\"[post_permalink]\">[post_title]</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t[/posts]\n\t</div>\n[/users]";
 
 		if ( 'terms' === $options['list_type'] ) {
 			$template = $terms;

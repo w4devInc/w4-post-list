@@ -68,7 +68,7 @@ $template_html = '
 	<div id="w4pl_template_examples" class="csshide">'
 	. "<pre style='width:auto'>\n[groups]\n\t[group_title]\n\t[posts]\n\t\t&lt;div class=&quot;post-item&quot;&gt;[post_title]&lt;/div&gt;\n\t[/posts]\n[/groups]\n[nav]</pre>"
 	. '<br />without group, a simple template should be like -'
-	. "<pre style='width:auto'>[posts]\n\t&lt;div class=&quot;post-item&quot;&gt;\n\t\t[post_title]\n\t&lt;/div&gt;\n[/posts]\n[nav]</pre>"
+	. "<pre style='width:auto'>[posts]\n\t&lt;div class=&quot;post-item&quot;&gt;\n\t\t&lt;div class=&quot;post-title&quot;&gt;[post_title]&lt;/div&gt;\n\t&lt;/div&gt;\n[/posts]\n[nav]</pre>"
 	. '<br />' . esc_html__( 'Everything between [posts] and [/posts] repeats once for every post — put your per-post markup there.', 'w4-post-list' )
 	. '</div>';
 

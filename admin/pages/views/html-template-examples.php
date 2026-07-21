@@ -24,7 +24,9 @@
 </p>
 <pre>[posts]
 	&lt;div class=&quot;post-item&quot;&gt;
-		&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;
+		&lt;div class=&quot;post-title&quot;&gt;
+			&lt;a href=&quot;[post_permalink]&quot;&gt;[post_title]&lt;/a&gt;
+		&lt;/div&gt;
 	&lt;/div&gt;
 [/posts]
 [nav]</pre>
