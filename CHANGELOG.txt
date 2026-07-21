@@ -1,4 +1,11 @@
 == Changelog ==
+= 2.6.0 =
+* New: Automated test suite now gates every release - characterization snapshots freeze the rendered output of all five list types (including grouped lists and pagination) so updates can no longer break existing lists unnoticed.
+* New: List options now carry a schema version with a lazy migration path, protecting saved lists during future upgrades.
+* New: Opt-in usage counters (lists created/published) added to the existing Appsero telemetry. Nothing is collected without your explicit consent.
+* Fix: PHP 8.2+ deprecation notices from the query classes (dynamic properties).
+* Dev: Docs-drift guard - documentation examples, default templates and presets are verified in CI against the registered template tags.
+* Dev: Coding-standards nonce exclusion scoped to legacy files only; new endpoints are always linted for nonce verification.
 = 2.5.9 =
 * New: Added a WordPress Playground blueprint that powers the Live Preview button on the wordpress.org plugin page.
 = 2.5.8 =

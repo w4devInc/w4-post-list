@@ -21,3 +21,9 @@
 /phpcs.xml
 /README.md
 /.distignore
+/vendor-dev
+/wp
+/tests
+/composer-dev.json
+/composer-dev.lock
+/phpunit.xml.dist

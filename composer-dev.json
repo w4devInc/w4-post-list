@@ -1,0 +1,27 @@
+{
+	"name": "w4devinc/w4-post-list-dev",
+	"description": "Dev-only tooling (tests, coding standards). Kept separate from composer.json because vendor/ is committed and shipped.",
+	"license": "GPL-3.0-or-later",
+	"config": {
+		"vendor-dir": "vendor-dev",
+		"platform": {
+			"php": "7.4.33"
+		},
+		"allow-plugins": {
+			"johnpbloch/wordpress-core-installer": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.6",
+		"wp-phpunit/wp-phpunit": "~7.0.0",
+		"yoast/phpunit-polyfills": "^2.0",
+		"johnpbloch/wordpress-core-installer": "^2.0",
+		"johnpbloch/wordpress-core": "~7.0.0",
+		"wp-coding-standards/wpcs": "^3.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+	},
+	"extra": {
+		"wordpress-install-dir": "wp"
+	}
+}
