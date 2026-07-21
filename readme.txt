@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.5.9
+Stable tag: 2.6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,14 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.6.0 =
+* New: Automated test suite now gates every release - characterization snapshots freeze the rendered output of all five list types (including grouped lists and pagination) so updates can no longer break existing lists unnoticed.
+* New: List options now carry a schema version with a lazy migration path, protecting saved lists during future upgrades.
+* New: Opt-in usage counters (lists created/published) added to the existing Appsero telemetry. Nothing is collected without your explicit consent.
+* Fix: PHP 8.2+ deprecation notices from the query classes (dynamic properties).
+* Fix: Unit-suffixed dimensions in template tags (e.g. [post_thumbnail width="50px"]) caused a PHP notice and broken output on PHP 7.x - dimensions are now parsed forgivingly (50px, 50 and "50" all work).
+* Dev: Docs-drift guard - documentation examples, default templates and presets are verified in CI against the registered template tags.
+* Dev: Coding-standards nonce exclusion scoped to legacy files only; new endpoints are always linted for nonce verification.
 = 2.5.9 =
 * New: Added a WordPress Playground blueprint that powers the Live Preview button on the wordpress.org plugin page.
 = 2.5.8 =
@@ -144,6 +152,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.6.0 =
+Adds automated release testing, options versioning and PHP 8.2 deprecation fixes. No changes to list output.
 = 2.5.9 =
 Adds a Live Preview blueprint for the wordpress.org plugin page. No functional changes.
 = 2.5.8 =

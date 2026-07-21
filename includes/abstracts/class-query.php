@@ -7,7 +7,12 @@
 
 /**
  * Query class
+ *
+ * Subclasses assign ad-hoc result properties at runtime; the attribute keeps
+ * that working without deprecation notices on PHP 8.2+ (it parses as a
+ * comment on PHP < 8.0).
  */
+#[AllowDynamicProperties]
 abstract class W4PL_Query {
 	/**
 	 * Query arguments

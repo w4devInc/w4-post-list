@@ -3,3 +3,7 @@
 /vendor/**/.github
 /vendor/**/.git
 /vendor/**/readme.md
+# Dev tooling (composer-dev.json)
+/vendor-dev
+/wp
+/.phpunit.result.cache

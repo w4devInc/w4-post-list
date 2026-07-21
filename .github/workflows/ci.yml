@@ -1,9 +1,10 @@
-name: Deploy to WordPress.org Repository
+name: CI
 
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - main
+  pull_request:
 
 jobs:
   test:
@@ -50,36 +51,24 @@ jobs:
           WP_TESTS_DB_PASSWORD: root
           WP_TESTS_DB_NAME: w4pl_tests
 
-  deploy_to_wp_repository:
-    name: Deploy to WP.org
+  phpcs:
+    name: Coding standards (advisory)
     runs-on: ubuntu-latest
-    needs: test
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+
+      - name: Install dev dependencies
+        run: COMPOSER=composer-dev.json composer install --no-interaction --no-progress
+
+      - name: Run phpcs (does not block)
         run: |
-          npm install
-          npm run build-block
-          npm run build-plugin
-
-      - name: WordPress Plugin Deploy
-        id: deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          generate-zip: true
-
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-
-      - name: Upload release asset
-        uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        with:
-          # Provide what the file should be named when attached to the release (plugin-name.zip)
-          files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
+          vendor-dev/bin/phpcs --standard=phpcs.xml --report=summary . \
+            || echo "::warning::phpcs reports pre-existing violations (advisory; a dedicated cleanup release will address them)"

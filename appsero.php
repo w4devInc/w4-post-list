@@ -145,6 +145,12 @@ function w4pl_insights_extra() {
 		$extra['VisualComposer'] = 'Active';
 	}
 
+	if ( class_exists( 'W4PL_Stats' ) ) {
+		foreach ( W4PL_Stats::all() as $key => $value ) {
+			$extra[ 'Stat_' . $key ] = (int) $value;
+		}
+	}
+
 	return $extra;
 }
 

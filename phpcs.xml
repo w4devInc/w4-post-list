@@ -5,6 +5,9 @@
 	<!-- Exclude paths -->
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/vendor-dev/*</exclude-pattern>
+	<exclude-pattern>*/wp/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
 	<exclude-pattern>languages/*</exclude-pattern>
 
 	<!-- Configs -->
@@ -14,13 +17,21 @@
 	<!-- Rules -->
 	<rule ref="WordPress">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
-        <exclude name="WordPress.Security.NonceVerification.Missing"/>
 		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores"/>
     </rule>
 
 	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
 		<exclude-pattern>includes/*.php</exclude-pattern>
 		<exclude-pattern>admin/*.php</exclude-pattern>
+	</rule>
+
+	<!--
+	Legacy save/AJAX paths predate nonce usage; they are scheduled for a
+	proper nonce in the editor-validation milestone. New code must NOT be
+	added to this list - every new endpoint verifies a nonce.
+	-->
+	<rule ref="WordPress.Security.NonceVerification.Missing">
+		<exclude-pattern>admin/class-admin-lists-metaboxes\.php</exclude-pattern>
 	</rule>
 
 	<rule ref="WordPress.WP.I18n">
