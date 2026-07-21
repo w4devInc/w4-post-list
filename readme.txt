@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,11 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.7.0 =
+* New: First-run onboarding - fresh installs get a draft "Example: Recent Posts" list, so there is always a working configuration to open and learn from.
+* New: A dismissible "Get started" notice after activation walks through the three steps: create a list, publish, place it with the block or shortcode.
+* New: Helpful empty state on the Lists screen and a contextual Help tab on the list screens summarizing the workflow.
+* Improved: The telemetry opt-in prompt now waits until after your first published list, so guidance comes first.
 = 2.6.0 =
 * New: Automated test suite now gates every release - characterization snapshots freeze the rendered output of all five list types (including grouped lists and pagination) so updates can no longer break existing lists unnoticed.
 * New: List options now carry a schema version with a lazy migration path, protecting saved lists during future upgrades.
@@ -152,6 +157,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.7.0 =
+First-run onboarding (example list, get-started guide), the post_thumbnail px-dimension fix, PHP 8.2 cleanups, and automated release testing.
 = 2.6.0 =
 Adds automated release testing, options versioning and PHP 8.2 deprecation fixes. No changes to list output.
 = 2.5.9 =

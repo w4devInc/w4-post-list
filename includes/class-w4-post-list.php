@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.6.0';
+	public $version = '2.7.0';
 
 	/**
 	 * This will hold current class instance
@@ -129,6 +129,7 @@ final class W4_Post_List {
 			include W4PL_DIR . '/admin/class-admin-lists-table-columns.php';
 			include W4PL_DIR . '/admin/class-admin-lists-metaboxes.php';
 			include W4PL_DIR . '/admin/class-admin-list-editor.php';
+			include W4PL_DIR . '/admin/class-admin-onboarding.php';
 
 			/* Admin pages */
 			foreach ( glob( W4PL_DIR . 'admin/pages/*.php' ) as $file ) {
@@ -169,6 +170,7 @@ final class W4_Post_List {
 			new W4PL_Admin_Main();
 			new W4PL_Admin_Lists_Table_Columns();
 			new W4PL_Admin_Lists_Metaboxes();
+			new W4PL_Admin_Onboarding();
 
 			new W4PL_Admin_Page_Docs();
 		}

@@ -22,6 +22,7 @@
 			'<a href="' . esc_url( admin_url( 'post-new.php?post_type=w4pl' ) ) . '">' . esc_html__( 'W4 Post List &rarr; Add New', 'w4-post-list' ) . '</a>'
 		);
 		?>
+		<?php esc_html_e( 'Fresh installs include a draft "Example: Recent Posts" list — open it to see a working configuration you can learn from or adapt.', 'w4-post-list' ); ?>
 	</p>
 
 	<h3>

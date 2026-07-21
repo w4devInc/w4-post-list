@@ -1,4 +1,9 @@
 == Changelog ==
+= 2.7.0 =
+* New: First-run onboarding - fresh installs get a draft "Example: Recent Posts" list, so there is always a working configuration to open and learn from.
+* New: A dismissible "Get started" notice after activation walks through the three steps: create a list, publish, place it with the block or shortcode.
+* New: Helpful empty state on the Lists screen and a contextual Help tab on the list screens summarizing the workflow.
+* Improved: The telemetry opt-in prompt now waits until after your first published list, so guidance comes first.
 = 2.6.0 =
 * New: Automated test suite now gates every release - characterization snapshots freeze the rendered output of all five list types (including grouped lists and pagination) so updates can no longer break existing lists unnoticed.
 * New: List options now carry a schema version with a lazy migration path, protecting saved lists during future upgrades.
