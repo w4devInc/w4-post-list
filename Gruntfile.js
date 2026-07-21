@@ -81,20 +81,6 @@ module.exports = function (grunt) {
         tasks: ["less:dist"],
       },
     },
-    cssmin: {
-      main: {
-        expand: true,
-        ext: ".min.css",
-        src: ["assets/css/*.css", "!assets/css/*.min.css"],
-      },
-    },
-    uglify: {
-      main: {
-        expand: true,
-        ext: ".min.js",
-        src: ["assets/js/*.js", "!assets/js/*.min.js"],
-      },
-    },
     "string-replace": {
       inline: {
         files: {
@@ -166,7 +152,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("update-version", ["string-replace"]);
   grunt.registerTask("css", ["clean:css", "less:dist", "postcss:dist"]);
-  grunt.registerTask("assets", ["css", "cssmin:main", "uglify:main"]);
+  grunt.registerTask("assets", ["css"]);
   grunt.registerTask("build", ["makepot", "update-version", "assets"]);
   grunt.registerTask("zip", ["compress:plugin"]);
   grunt.registerTask("deploy", ["clean:trunk", "build", "copy:svn"]);

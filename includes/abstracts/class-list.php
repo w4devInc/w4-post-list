@@ -460,7 +460,11 @@ abstract class W4PL_List {
 		$attr = shortcode_parse_atts( $m[3] );
 
 		$shortcodes = w4pl_get_shortcodes();
-		$callback   = $shortcodes[ $tag ]['callback'];
+
+		$callback = null;
+		if ( isset( $shortcodes[ $tag ]['callback'] ) ) {
+			$callback = $shortcodes[ $tag ]['callback'];
+		}
 
 		if ( isset( $m[5] ) ) {
 			$content = $m[5];

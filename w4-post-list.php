@@ -3,7 +3,7 @@
  * Plugin Name: W4 Post List
  * Plugin URI: https://w4dev.com/plugins/w4-post-list
  * Description: Create lists of posts, terms and users — grouped archives, taxonomy indexes and user directories — placed anywhere with the block, [postlist] shortcode or widget.
- * Version: 2.7.0
+ * Version: 2.8.0
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Shazzad Hossain Khan

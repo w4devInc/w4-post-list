@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,15 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.8.0 =
+* New: The Template, CSS and JavaScript fields are now real code editors with syntax highlighting and line numbers; template tags insert at the cursor.
+* Improved: Default templates rewritten in the plain tag dialect with a visible per-item wrapper (div.post-item / .term-item / .user-item) and the [nav] pagination tag, so the loop structure is obvious at a glance. Applies to newly created lists; saved lists keep their stored template.
+* New: "Display this list" box on the list editor with the copyable shortcode, a copy button and placement pointers.
+* New: A wrong or missing list ID, or a rendering error, now shows logged-in editors an inline explanation - visitors see nothing (previously raw error text could leak to visitors).
+* New: "No items text" is prefilled with "No items found." for new lists, so empty results are no longer an invisible blank. Existing lists are unchanged.
+* Improved: The editor form refresh is debounced, disables Publish properly, and recovers gracefully from failed requests instead of freezing the screen.
+* Fix: Editor layout no longer overflows when adding several Meta/Tax Query rows; height recalculates on window resize.
+* Dev: Removed dead JavaScript (broken external autocomplete lineage, IE-era caret handling).
 = 2.7.0 =
 * New: First-run onboarding - fresh installs get a draft "Example: Recent Posts" list, so there is always a working configuration to open and learn from.
 * New: A dismissible "Get started" notice after activation walks through the three steps: create a list, publish, place it with the block or shortcode.
@@ -157,6 +166,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.8.0 =
+Code editors for templates, copyable shortcode box, visible error notices for editors, editor stability fixes.
 = 2.7.0 =
 First-run onboarding (example list, get-started guide), the post_thumbnail px-dimension fix, PHP 8.2 cleanups, and automated release testing.
 = 2.6.0 =

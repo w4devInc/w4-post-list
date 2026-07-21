@@ -232,32 +232,6 @@
 
 
 		/* Limit number of tags, tags = words separated by comma or anything defined */
-		$("[data-term_suggest2]").each(function(i, item) {
-			var _this = $(item);
-			var _input = _this.find('input');
-			var _tax = _this.data('term_suggest');
-
-
-			var r = _input.suggest( UGC.ajaxurl + "?action=UGC_term_suggest&tax=" + _tax, {
-				delay: 500,
-				minchars: 2,
-				multiple: 1,
-				onSelect: function(s) {
-					if ( _this.hasClass('tags_limit') )
-					{
-						tags = _this.find("input[type=text]").val();
-						tags = tags.replace(/\s*,\s*/g, ',').replace(/,+/g, ',').replace(/[,\s]+$/, '').replace(/^[,\s]+/, '');
-						tags = tags.split(_this.data('sep') );
-						if ( tags.length >= _this.data('max') )
-						{
-							_input.val( tags.join( _this.data('sep') + ' ' ) );
-						}
-					}
-				}
-			});
-		});
-
-		/* Limit number of tags, tags = words separated by comma or anything defined */
 		$("[data-auc]").each(function(i, item) {
 			var _this = $(item);
 			var _input = _this.find('input');

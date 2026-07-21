@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.7.0';
+	public $version = '2.8.0';
 
 	/**
 	 * This will hold current class instance
@@ -203,44 +203,49 @@ final class W4_Post_List {
 
 	/**
 	 * Register stylesheets / javascripts
+	 *
+	 * All plugin assets are admin-only, so unminified sources are always
+	 * served; minification buys nothing there.
 	 */
 	public function register_scripts() {
-		$min = '.min';
+		$version = W4PL_VERSION;
+
+		// While debugging locally, bypass browser caches.
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$min = '';
+			$version = (string) time();
 		}
 
 		wp_register_style(
 			'w4pl_form',
-			W4PL_URL . 'assets/css/form' . $min . '.css',
+			W4PL_URL . 'assets/css/form.css',
 			[],
-			W4PL_VERSION
+			$version
 		);
 		wp_register_style(
 			'w4pl_list_editor',
-			W4PL_URL . 'assets/css/list-editor' . $min . '.css',
+			W4PL_URL . 'assets/css/list-editor.css',
 			[],
-			W4PL_VERSION
+			$version
 		);
 		wp_register_style(
 			'w4pl-admin-documentation',
-			W4PL_URL . 'assets/css/admin-documentation' . $min . '.css',
+			W4PL_URL . 'assets/css/admin-documentation.css',
 			[],
-			W4PL_VERSION
+			$version
 		);
 
 		wp_register_script(
 			'w4pl_form',
-			W4PL_URL . 'assets/js/form' . $min . '.js',
+			W4PL_URL . 'assets/js/form.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
-			W4PL_VERSION,
+			$version,
 			true
 		);
 		wp_register_script(
 			'w4pl_list_editor',
-			W4PL_URL . 'assets/js/list-editor' . $min . '.js',
+			W4PL_URL . 'assets/js/list-editor.js',
 			[ 'jquery', 'jquery-ui-sortable' ],
-			W4PL_VERSION,
+			$version,
 			true
 		);
 	}

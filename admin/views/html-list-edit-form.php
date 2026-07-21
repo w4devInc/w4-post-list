@@ -59,16 +59,36 @@ $fields['before_field_group_template'] = array(
 		<div class="w4pl_group_fields"><div class="w4pl_group_fields_wrap">',
 );
 
+// Example for the list type being edited, straight from the default
+// templates so the example can never drift from what actually works.
+$w4pl_example_type = 'posts';
+if ( isset( $options['list_type'] ) && ! empty( $options['list_type'] ) ) {
+	$w4pl_example_type = $options['list_type'];
+}
+
+$w4pl_templates_obj = new W4PL_List_Templates();
+$w4pl_type_example  = $w4pl_templates_obj->sanitize_template( '', array( 'list_type' => $w4pl_example_type ) );
+
+$w4pl_examples_html = '<p style="margin:0.5em 0 0;">' . esc_html__( 'A simple template for this list type:', 'w4-post-list' ) . '</p>'
+	. "<pre style='width:auto'>" . esc_html( $w4pl_type_example ) . '</pre>';
+
+if ( 'posts' === $w4pl_example_type ) {
+	$w4pl_grouped_example = "[groups]\n\t<div class=\"group-item\">\n\t\t<div class=\"group-title\">[group_title]</div>\n\t\t[posts]\n\t\t\t<div class=\"post-item\">[post_title]</div>\n\t\t[/posts]\n\t</div>\n[/groups]\n[nav]";
+
+	$w4pl_examples_html .= '<p style="margin:0.5em 0 0;">' . esc_html__( 'When using the "Group by" option, wrap the posts loop in a groups loop:', 'w4-post-list' ) . '</p>'
+		. "<pre style='width:auto'>" . esc_html( $w4pl_grouped_example ) . '</pre>';
+}
+
+$w4pl_examples_html .= '<p style="margin:0.5em 0 0;">' . esc_html__( 'Everything between an opening and closing loop tag (like [posts] and [/posts]) repeats once for every item — put your per-item markup there.', 'w4-post-list' ) . '</p>';
+
 $template_html = '
 <div class="wffw wffwi_w4pl_template wffwt_textarea">
 	<p style="margin-top:0px;">
 		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_examples">' . __( 'Template Example', 'w4-post-list' ) . '</a>
-		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Shortcodes', 'w4-post-list' ) . '</a>
+		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Template Tags', 'w4-post-list' ) . '</a>
 	</p>
 	<div id="w4pl_template_examples" class="csshide">'
-	. "<pre style='width:auto'>\n[groups]\n\t[group_title]\n\t[posts]\n\t\t[post_title]\n\t[/posts]\n[/groups]\n[nav]</pre>"
-	. '<br />without group, a simple template should be like -'
-	. "<pre style='width:auto'>[posts]\n\t[post_title]\n[/posts]\n[nav]</pre>"
+	. $w4pl_examples_html
 	. '</div>';
 
 
