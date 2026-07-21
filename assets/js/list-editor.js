@@ -56,10 +56,24 @@
 		});
 	}
 
+	/*
+	 * CodeMirror measures its container at init time; editors created inside a
+	 * hidden tab pane render garbled until re-measured. Call whenever a pane
+	 * becomes visible.
+	 */
+	function w4pl_refresh_code_editors() {
+		$.each(w4plEditors, function (id, cm) {
+			cm.refresh();
+		});
+	}
+
 	$(document).on('w4pl/form_loaded', function (el) {
 		w4pl_init_code_editors();
 		w4pl_adjust_height();
-		setTimeout(w4pl_adjust_height, 200);
+		setTimeout(function () {
+			w4pl_refresh_code_editors();
+			w4pl_adjust_height();
+		}, 200);
 		$('#w4pl_orderby').trigger('change');
 	});
 
@@ -143,6 +157,9 @@
 		$(this).parent('.w4pl_field_group').addClass('w4pl_active');
 
 		$('#w4pl_tab_id').val($(this).parent('.w4pl_field_group').attr('id'));
+
+		/* The revealed pane may hold editors initialized while hidden. */
+		w4pl_refresh_code_editors();
 		w4pl_adjust_height();
 
 		return false;
