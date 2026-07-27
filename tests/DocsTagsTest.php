@@ -56,6 +56,12 @@ class DocsTagsTest extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_starter_template_registry_uses_only_registered_tags() {
+		foreach ( W4PL_Starter_Templates::get_registry() as $id => $starter ) {
+			$this->assertTagsRegistered( $this->extract_tags( $starter['template'] ), "starter template $id" );
+		}
+	}
+
 	public function test_preset_templates_use_only_registered_tags() {
 		$presets = new W4PL_Helper_Presets();
 		$combos  = array(

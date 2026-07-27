@@ -1,0 +1,60 @@
+<!--W4PL_List_{ID}-->
+<style id="w4pl-css-{ID}" type="text/css">#w4pl-list-{ID} .w4pl-user-directory {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1.25em;
+}
+#w4pl-list-{ID} .user-item {
+	text-align: center;
+	padding: 1.5em 1em;
+	border: 1px solid #e5e5e5;
+	border-radius: 8px;
+}
+#w4pl-list-{ID} .user-avatar img {
+	border-radius: 50%;
+	max-width: 100%;
+	height: auto;
+}
+#w4pl-list-{ID} .user-name {
+	margin: 0.75em 0 0.25em;
+}
+#w4pl-list-{ID} .user-name a {
+	text-decoration: none;
+}
+#w4pl-list-{ID} .user-bio {
+	margin: 0;
+	font-size: 0.9em;
+	color: #666;
+}</style>
+<div id="w4pl-list-{ID}" class="w4pl">
+	<div id="w4pl-inner-{ID}" class="w4pl-inner">
+		<div class="w4pl-user-directory">
+
+	<div class="user-item">
+		<div class="user-avatar"><img alt='' src="{AVATAR_URL}" srcset="{AVATAR_URL}" class='avatar avatar-96 photo' height='96' width='96' loading='lazy' decoding='async'/></div>
+		<h3 class="user-name">
+			<a href="http://example.org/?author={ID}">admin</a>
+		</h3>
+		<p class="user-bio"></p>
+	</div>
+
+	<div class="user-item">
+		<div class="user-avatar"><img alt='' src="{AVATAR_URL}" srcset="{AVATAR_URL}" class='avatar avatar-96 photo' height='96' width='96' loading='lazy' decoding='async'/></div>
+		<h3 class="user-name">
+			<a href="http://example.org/?author={ID}">Ann Author</a>
+		</h3>
+		<p class="user-bio"></p>
+	</div>
+
+	<div class="user-item">
+		<div class="user-avatar"><img alt='' src="{AVATAR_URL}" srcset="{AVATAR_URL}" class='avatar avatar-96 photo' height='96' width='96' loading='lazy' decoding='async'/></div>
+		<h3 class="user-name">
+			<a href="http://example.org/?author={ID}">Bob Builder</a>
+		</h3>
+		<p class="user-bio"></p>
+	</div>
+
+</div>
+	</div><!--#w4pl-inner-{ID}-->
+</div><!--#w4pl-{ID}-->
+<!--END_W4PL_List_{ID}-->

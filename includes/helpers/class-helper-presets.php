@@ -34,18 +34,21 @@ class W4PL_Helper_Presets {
 	 * @return array          List editor fields.
 	 */
 	public function list_edit_form_fields( $fields, $options ) {
-		$fields['preset'] = array(
-			'position'    => '3.1',
-			'option_name' => 'preset',
-			'name'        => 'w4pl[preset]',
-			'label'       => __( 'Preset', 'w4-post-list' ),
-			'type'        => 'select',
-			'option'      => self::preset_options( $options['list_type'] ),
-			'input_class' => 'w4pl_onchange_lfr',
-			'desc'        => __( 'Presets are ready-made templates. When one is selected it controls the output, and the Template and Style sections are hidden.', 'w4-post-list' ),
-		);
-
+		// Lists that store a legacy preset keep the old field and its
+		// render-time override untouched. Everything else gets the modern
+		// copy-on-select starter picker.
 		if ( isset( $options['preset'] ) && ! empty( $options['preset'] ) ) {
+			$fields['preset'] = array(
+				'position'    => '3.1',
+				'option_name' => 'preset',
+				'name'        => 'w4pl[preset]',
+				'label'       => __( 'Preset (legacy)', 'w4-post-list' ),
+				'type'        => 'select',
+				'option'      => self::preset_options( $options['list_type'] ),
+				'input_class' => 'w4pl_onchange_lfr',
+				'desc'        => __( 'This list uses a legacy preset that controls its output; the Template and Style sections are hidden. Select "Custom" to take manual control.', 'w4-post-list' ),
+			);
+
 			unset(
 				$fields['before_field_group_style'],
 				$fields['js'],
@@ -56,7 +59,20 @@ class W4PL_Helper_Presets {
 				$fields['template1'],
 				$fields['after_field_group_template']
 			);
+
+			return $fields;
 		}
+
+		$fields['starter_template'] = array(
+			'position'    => '3.1',
+			'option_name' => 'starter_template',
+			'name'        => 'w4pl[starter_template]',
+			'label'       => __( 'Start from a template', 'w4-post-list' ),
+			'type'        => 'select',
+			'option'      => W4PL_Starter_Templates::options_for_select( $options['list_type'] ),
+			'input_class' => 'w4pl_onchange_lfr',
+			'desc'        => __( 'Copies a ready-made layout into the Template and Style sections below, replacing their current content — then edit freely. Some templates also set related options (like Group by).', 'w4-post-list' ),
+		);
 
 		return $fields;
 	}
@@ -70,6 +86,9 @@ class W4PL_Helper_Presets {
 		if ( ! isset( $options ) || ! is_array( $options ) ) {
 			$options = array();
 		}
+
+		// The starter picker is a one-shot editor action, never stored.
+		unset( $options['starter_template'] );
 
 		// Quick kill.
 		if ( empty( $options['preset'] ) ) {
