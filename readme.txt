@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.9.0
+Stable tag: 2.10.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,9 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.10.0 =
+* New: Live preview in the list editor - a Preview button renders your current, unsaved settings in an isolated pane, refreshing automatically after option changes. No more publish-and-reload loops while designing a list.
+* Improved: Getting Started guide mentions the preview workflow.
 = 2.9.0 =
 * New: "Start from a template" - pick from 8 ready-made layouts (simple list, thumbnail cards, title & date list, year archive, category index, category index with posts, user directory, authors with posts). Picking one copies editable markup and styles into the Template and Style fields and sets the options it needs, like Group by. Developers can add layouts via the w4pl/starter_templates filter.
 * Improved: Lists using a legacy preset keep working exactly as before; the legacy preset field only appears on those lists.
@@ -176,6 +179,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.10.0 =
+Live preview in the list editor.
 = 2.9.0 =
 Eight ready-made starter templates with copy-on-select editing. Legacy presets unchanged.
 = 2.8.0 =

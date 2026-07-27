@@ -97,6 +97,7 @@ abstract class W4PL_Snapshot_TestCase extends WP_UnitTestCase {
 	protected function normalize( $html ) {
 		$patterns = array(
 			'/W4PL_List_\d+/'                 => 'W4PL_List_{ID}',
+			'/W4PL_List \d+/'                 => 'W4PL_List {ID}',
 			'/w4pl-list-\d+/'                 => 'w4pl-list-{ID}',
 			'/w4pl-inner-\d+/'                => 'w4pl-inner-{ID}',
 			'/w4pl-css-\d+/'                  => 'w4pl-css-{ID}',

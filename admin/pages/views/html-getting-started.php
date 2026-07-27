@@ -38,6 +38,7 @@
 	</h3>
 	<p>
 		<?php esc_html_e( 'A default template is applied automatically, so you do not need to touch the Template section to get output. Click Publish.', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'Use the Preview button under the editor at any time to see the rendered list without saving.', 'w4-post-list' ); ?>
 	</p>
 
 	<h3>

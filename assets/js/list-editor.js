@@ -226,6 +226,65 @@
 		});
 	}
 
+	/* ----- Live preview ----- */
+
+	function w4pl_l10n(key, fallback) {
+		if (window.w4plListEditor && window.w4plListEditor[key]) {
+			return window.w4plListEditor[key];
+		}
+		return fallback;
+	}
+
+	function w4pl_refresh_preview() {
+		var pane = $('#w4pl_preview_pane');
+		var status = $('#w4pl_preview_status');
+
+		if (!pane.length || !pane.is(':visible')) {
+			return;
+		}
+
+		w4pl_sync_code_editors();
+		status.text(w4pl_l10n('previewLoading', 'Rendering preview…'));
+
+		var data = $('#w4pl_list_options :input').serialize()
+			+ '&action=w4pl_list_preview'
+			+ '&nonce=' + encodeURIComponent(w4pl_l10n('previewNonce', ''));
+
+		$.post(ajaxurl, data, function (r) {
+			if (r && r.success && r.data && typeof r.data.html === 'string') {
+				var frame = document.getElementById('w4pl_preview_frame');
+				frame.srcdoc = '<!doctype html><html><head><meta charset="utf-8">'
+					+ '<style>body{margin:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#1e1e1e;}img{max-width:100%;height:auto;}</style>'
+					+ '</head><body>' + r.data.html + '</body></html>';
+				status.text('');
+			} else {
+				status.text((r && r.data && r.data.message) ? r.data.message : w4pl_l10n('previewFailed', 'Preview failed.'));
+			}
+		}).fail(function () {
+			status.text(w4pl_l10n('previewFailed', 'Preview failed — check your connection and try again.'));
+		});
+	}
+
+	$(document.body).on('click', '#w4pl_preview_toggle', function () {
+		var pane = $('#w4pl_preview_pane');
+		var open = pane.is(':visible');
+
+		if (open) {
+			pane.hide();
+			$(this).attr('aria-expanded', 'false').text(w4pl_l10n('previewShow', 'Preview'));
+		} else {
+			pane.show();
+			$(this).attr('aria-expanded', 'true').text(w4pl_l10n('previewHide', 'Hide preview'));
+			w4pl_refresh_preview();
+		}
+		return false;
+	});
+
+	/* Keep an open preview in sync after each successful form refresh. */
+	$(document).on('w4pl/form_loaded', function () {
+		w4pl_refresh_preview();
+	});
+
 	/*
 	 * Insert a template tag at the cursor - into the CodeMirror instance when
 	 * one owns the field, or the plain textarea otherwise.

@@ -28,6 +28,13 @@ in ~5 minutes on the docker dev site.
 - [ ] "Display this list" box appears in the sidebar with the correct `[postlist id="N"]`
 - [ ] Copy button copies; "Copied!" confirmation shows; works on a draft (with publish reminder)
 
+## Live preview
+
+- [ ] Preview button under the editor toggles the pane; first open renders the current (unsaved) settings
+- [ ] Change list type or template, wait for the form refresh: an open preview refreshes itself
+- [ ] Starter template + preview: pick a starter, preview shows the new layout with its CSS
+- [ ] Preview of a list with an error (e.g. temporarily break the template) shows the error message in the status line, not a broken pane
+
 ## Error surfacing
 
 - [ ] `[postlist id="99999"]` on a page: logged-in as editor → inline notice; logged-out → nothing
