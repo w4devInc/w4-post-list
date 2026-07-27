@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'simple-list' => array(
+	'simple-list'          => array(
 		'label'       => __( 'Simple list', 'w4-post-list' ),
 		'description' => __( 'A plain bulleted list of post titles you can click, with page navigation at the bottom.', 'w4-post-list' ),
 		'list_type'   => 'posts',
@@ -34,15 +34,16 @@ return array(
 #w4pl-list-[listid] .post-item {
 	margin-bottom: 0.5em;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'posts_per_page' => 10,
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 		),
 	),
-	'thumbnail-cards' => array(
+	'thumbnail-cards'      => array(
 		'label'       => __( 'Thumbnail cards', 'w4-post-list' ),
-		'description' => __( 'A grid of cards showing each post\'s picture, title, and a short preview, with three cards per row on desktop and one per row on phones.', 'w4-post-list' ),
+		'description' => __( 'A grid of cards showing each post\'s picture, title, and a short preview, the grid adapts to the available width, one card per row on phones.', 'w4-post-list' ),
 		'list_type'   => 'posts',
 		'template'    => '<div class="w4pl-cards">
 	[posts]
@@ -92,11 +93,12 @@ return array(
 	font-size: 0.9em;
 	color: #666;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'posts_per_page' => 9,
 		),
 	),
-	'title-date-list' => array(
+	'title-date-list'      => array(
 		'label'       => __( 'Title & date list', 'w4-post-list' ),
 		'description' => __( 'A clean archive-style list where each post title sits on the left and its publish date on the right, separated by thin divider lines.', 'w4-post-list' ),
 		'list_type'   => 'posts',
@@ -107,8 +109,8 @@ return array(
 		<span class="post-date">[post_date format="M j, Y"]</span>
 	</div>
 	[/posts]
-	[nav]
-</div>',
+</div>
+[nav]',
 		'css'         => '#w4pl-list-[listid] .w4pl-title-date-list .post-item {
 	display: flex;
 	align-items: baseline;
@@ -131,13 +133,14 @@ return array(
 	color: #777;
 	font-size: 0.875em;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'posts_per_page' => 10,
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 		),
 	),
-	'year-archive' => array(
+	'year-archive'         => array(
 		'label'       => __( 'Year archive', 'w4-post-list' ),
 		'description' => __( 'A classic blog archive that groups your posts under big year headings, with each year showing a simple list of clickable post titles and dates.', 'w4-post-list' ),
 		'list_type'   => 'posts',
@@ -186,14 +189,15 @@ return array(
 	font-size: 0.875em;
 	white-space: nowrap;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
-			'groupby' => 'year',
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'groupby'        => 'year',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 			'posts_per_page' => 20,
 		),
 	),
-	'category-index' => array(
+	'category-index'       => array(
 		'label'       => __( 'Category index', 'w4-post-list' ),
 		'description' => __( 'A neat multi-column index of your categories, each shown as a clickable name with a small badge indicating how many posts it contains.', 'w4-post-list' ),
 		'list_type'   => 'terms',
@@ -234,8 +238,11 @@ return array(
 	border-radius: 999px;
 	padding: 0.1em 0.6em;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'terms_taxonomy' => 'category',
+			'terms_orderby'  => 'name',
+			'terms_order'    => 'ASC',
 		),
 	),
 	'category-posts-index' => array(
@@ -280,13 +287,17 @@ return array(
 #w4pl-list-[listid] .post-item {
 	margin: 0.25em 0;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'terms_taxonomy' => 'category',
-			'orderby' => 'title',
-			'order' => 'ASC',
+			'terms_orderby'  => 'name',
+			'terms_order'    => 'ASC',
+			'limit'          => 5,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
 		),
 	),
-	'user-directory' => array(
+	'user-directory'       => array(
 		'label'       => __( 'User directory cards', 'w4-post-list' ),
 		'description' => __( 'A member directory shown as a grid of centered cards, each with the person\'s photo, their name linked to their posts, and a short bio.', 'w4-post-list' ),
 		'list_type'   => 'users',
@@ -328,12 +339,13 @@ return array(
 	font-size: 0.9em;
 	color: #666;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
 			'users_orderby' => 'display_name',
-			'users_order' => 'ASC',
+			'users_order'   => 'ASC',
 		),
 	),
-	'authors-posts' => array(
+	'authors-posts'        => array(
 		'label'       => __( 'Author sections', 'w4-post-list' ),
 		'description' => __( 'Each author appears as a heading row with their photo and name, followed by a short list of their latest posts you can click to read.', 'w4-post-list' ),
 		'list_type'   => 'users.posts',
@@ -396,12 +408,13 @@ return array(
 	font-size: 0.875em;
 	white-space: nowrap;
 }',
+		'thumbnail'   => '',
 		'options'     => array(
-			'posts_per_page' => 5,
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'limit'         => 5,
+			'orderby'       => 'date',
+			'order'         => 'DESC',
 			'users_orderby' => 'display_name',
-			'users_order' => 'ASC',
+			'users_order'   => 'ASC',
 		),
 	),
 );

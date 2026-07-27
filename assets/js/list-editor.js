@@ -208,6 +208,13 @@
 			$('#w4pl_lo').remove();
 			publish.removeClass('disabled').prop('disabled', false);
 
+			/*
+			 * A picked starter template was never applied (the refresh died),
+			 * so clear the selection - otherwise a later save would apply it
+			 * over the user's manual edits, contradicting the message below.
+			 */
+			$('#w4pl_list_options select[name="w4pl[starter_template]"]').val('');
+
 			var message = (window.w4plListEditor && window.w4plListEditor.refreshFailed) ?
 				window.w4plListEditor.refreshFailed :
 				'Could not refresh the form. Your entries are unchanged - check your connection and try again.';

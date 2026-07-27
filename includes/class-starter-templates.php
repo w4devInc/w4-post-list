@@ -52,20 +52,61 @@ class W4PL_Starter_Templates {
 	private static $allowed_option_keys = array(
 		'groupby',
 		'posts_per_page',
+		'limit',
 		'orderby',
 		'order',
 		'terms_taxonomy',
+		'terms_orderby',
+		'terms_order',
 		'users_orderby',
 		'users_order',
 	);
 
 	/**
-	 * All registered starters.
+	 * All registered starters, shape-normalized.
 	 *
-	 * @return array id => { label, description, list_type, template, css, options }
+	 * Filter entries are parsed against a default shape; entries without a
+	 * usable list_type or template are dropped so a malformed third-party
+	 * starter can never emit warnings or write null into list options.
+	 *
+	 * @return array id => { label, description, list_type, template, css, options, thumbnail }
 	 */
 	public static function get_registry() {
-		return apply_filters( 'w4pl/starter_templates', self::core_starters() );
+		$raw = apply_filters( 'w4pl/starter_templates', self::core_starters() );
+
+		$registry = array();
+		$defaults = array(
+			'label'       => '',
+			'description' => '',
+			'list_type'   => '',
+			'template'    => '',
+			'css'         => '',
+			'options'     => array(),
+			'thumbnail'   => '',
+		);
+
+		foreach ( (array) $raw as $id => $starter ) {
+			if ( ! is_array( $starter ) ) {
+				continue;
+			}
+
+			$starter = wp_parse_args( $starter, $defaults );
+
+			if ( ! is_string( $starter['list_type'] ) || '' === $starter['list_type'] || ! is_string( $starter['template'] ) || '' === $starter['template'] ) {
+				continue;
+			}
+
+			if ( ! is_string( $starter['css'] ) ) {
+				$starter['css'] = '';
+			}
+			if ( ! is_array( $starter['options'] ) ) {
+				$starter['options'] = array();
+			}
+
+			$registry[ $id ] = $starter;
+		}
+
+		return $registry;
 	}
 
 	/**
@@ -124,7 +165,9 @@ class W4PL_Starter_Templates {
 		// Always consume the one-shot key, picked or not.
 		unset( $options['starter_template'] );
 
-		if ( empty( $starter_id ) ) {
+		// Only a plain non-empty string can name a starter; anything else
+		// (crafted array input, empty selection) is a no-op.
+		if ( ! is_string( $starter_id ) || '' === $starter_id ) {
 			return $options;
 		}
 
@@ -147,6 +190,10 @@ class W4PL_Starter_Templates {
 					$options[ $key ] = $value;
 				}
 			}
+		}
+
+		if ( class_exists( 'W4PL_Stats' ) ) {
+			W4PL_Stats::increment( 'starter_applied' );
 		}
 
 		return $options;

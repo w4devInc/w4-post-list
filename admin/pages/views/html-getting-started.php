@@ -30,6 +30,7 @@
 	</h3>
 	<p>
 		<?php esc_html_e( 'Open the section named after your list type (for example "Posts") and pick the post type, how many items to show, and the order. The other sections (Tax Query, Meta Query, Date Query) are optional filters — you can skip them entirely for your first list.', 'w4-post-list' ); ?>
+		<?php esc_html_e( 'For a ready-made design, pick a layout from "Start from a template" — it copies editable markup and styles into the Template and Style sections and sets any options it needs (like Group by).', 'w4-post-list' ); ?>
 	</p>
 
 	<h3>

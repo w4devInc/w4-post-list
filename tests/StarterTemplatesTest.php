@@ -29,13 +29,70 @@ class StarterTemplatesTest extends W4PL_Snapshot_TestCase {
 
 	public function test_registry_entries_are_well_formed() {
 		foreach ( W4PL_Starter_Templates::get_registry() as $id => $starter ) {
-			foreach ( array( 'label', 'description', 'list_type', 'template', 'css', 'options' ) as $key ) {
+			foreach ( array( 'label', 'description', 'list_type', 'template', 'css', 'options', 'thumbnail' ) as $key ) {
 				$this->assertArrayHasKey( $key, $starter, "$id missing $key" );
 			}
 			$this->assertNotEmpty( $starter['template'], "$id has empty template" );
 			$this->assertStringNotContainsString( '&lt;', $starter['template'], "$id template is entity-encoded" );
 			$this->assertIsArray( $starter['options'] );
 		}
+	}
+
+	public function test_malformed_filter_entries_are_dropped() {
+		add_filter(
+			'w4pl/starter_templates',
+			function ( $starters ) {
+				$starters['broken-no-template'] = array( 'list_type' => 'posts' );
+				$starters['broken-not-array']   = 'just a string';
+				$starters['minimal-valid']      = array(
+					'list_type' => 'posts',
+					'template'  => '[posts][post_title][/posts]',
+				);
+				return $starters;
+			}
+		);
+
+		$registry = W4PL_Starter_Templates::get_registry();
+
+		$this->assertArrayNotHasKey( 'broken-no-template', $registry );
+		$this->assertArrayNotHasKey( 'broken-not-array', $registry );
+		$this->assertArrayHasKey( 'minimal-valid', $registry );
+		$this->assertSame( '', $registry['minimal-valid']['css'], 'Missing keys normalized to defaults' );
+		$this->assertSame( array(), $registry['minimal-valid']['options'] );
+	}
+
+	public function test_crafted_array_selection_does_not_fatal() {
+		$options = W4PL_Starter_Templates::apply(
+			array(
+				'list_type'        => 'posts',
+				'template'         => '<p>keep me</p>',
+				'starter_template' => array( 'x' ),
+			)
+		);
+
+		$this->assertArrayNotHasKey( 'starter_template', $options );
+		$this->assertSame( '<p>keep me</p>', $options['template'] );
+	}
+
+	public function test_successful_apply_increments_usage_counter() {
+		delete_option( W4PL_Stats::OPTION );
+
+		W4PL_Starter_Templates::apply(
+			array(
+				'list_type'        => 'posts',
+				'starter_template' => 'simple-list',
+			)
+		);
+		$this->assertSame( 1, W4PL_Stats::get( 'starter_applied' ) );
+
+		// Consumed-but-not-applied selections do not count.
+		W4PL_Starter_Templates::apply(
+			array(
+				'list_type'        => 'posts',
+				'starter_template' => 'does-not-exist',
+			)
+		);
+		$this->assertSame( 1, W4PL_Stats::get( 'starter_applied' ) );
 	}
 
 	public function test_registry_templates_use_only_registered_tags() {

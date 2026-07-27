@@ -7,7 +7,7 @@
  * existing sites: a refactor that changes any snapshot is a breaking change
  * until proven otherwise. Regenerate deliberately with:
  *
- *   W4PL_UPDATE_SNAPSHOTS=1 vendor-dev/bin/phpunit --filter ListRenderingTest
+ *   W4PL_UPDATE_SNAPSHOTS=1 vendor-dev/bin/phpunit
  *
  * @package W4_Post_List
  */

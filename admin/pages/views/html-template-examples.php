@@ -16,6 +16,9 @@
 <h2>
 	<?php esc_html_e( 'Examples', 'w4-post-list' ); ?>
 </h2>
+<p>
+	<?php esc_html_e( 'Tip: the "Start from a template" picker in the list editor copies ready-made layouts like these (cards, archives, directories) straight into your Template and Style fields.', 'w4-post-list' ); ?>
+</p>
 <h3>
 	<?php esc_html_e( 'Post list', 'w4-post-list' ); ?>
 </h3>

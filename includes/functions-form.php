@@ -300,7 +300,7 @@ function w4pl_form_field_html( $args = array() ) {
 						$l     = $l['label'];
 					}
 
-					$html .= sprintf( '<option value="%1$s"%2$s%4$s>%3$s</option>', $k, $sel, $l, $_attr );
+					$html .= sprintf( '<option value="%1$s"%2$s%4$s>%3$s</option>', esc_attr( $k ), $sel, $l, $_attr );
 				}
 				$html .= '</select>';
 
