@@ -226,6 +226,32 @@
 		});
 	}
 
+	/* "Any" post status is exclusive of concrete statuses. */
+	$(document.body).on('change', 'input[name="w4pl[post_status][]"]', function () {
+		var boxes = $('input[name="w4pl[post_status][]"]');
+
+		if ('any' === $(this).val() && this.checked) {
+			boxes.not(this).prop('checked', false);
+		} else if (this.checked) {
+			boxes.filter('[value="any"]').prop('checked', false);
+		}
+	});
+
+	/* One-click recovery from a template/list-type mismatch. */
+	$(document.body).on('click', '#w4pl_use_default_template', function () {
+		var tpl = $(this).data('template') || '';
+
+		if (w4plEditors.w4pl_template) {
+			w4plEditors.w4pl_template.setValue(tpl);
+			w4plEditors.w4pl_template.save();
+		} else {
+			$('#w4pl_template').val(tpl);
+		}
+
+		$(this).closest('.notice').remove();
+		return false;
+	});
+
 	/* ----- Live preview ----- */
 
 	function w4pl_l10n(key, fallback) {

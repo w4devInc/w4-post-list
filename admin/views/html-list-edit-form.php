@@ -15,7 +15,7 @@ $fields = array();
 // Root wrapper.
 $fields['before_list_options'] = array(
 	'position' => '0',
-	'html'     => '<div id="w4pl_list_options" class="w4pl-list-editor">',
+	'html'     => '<div id="w4pl_list_options" class="w4pl-list-editor">' . wp_nonce_field( 'w4pl_save_options', 'w4pl_options_nonce', false, false ),
 );
 $fields['id']                  = array(
 	'position'    => '1.1',
@@ -81,8 +81,32 @@ if ( 'posts' === $w4pl_example_type ) {
 
 $w4pl_examples_html .= '<p style="margin:0.5em 0 0;">' . esc_html__( 'Everything between an opening and closing loop tag (like [posts] and [/posts]) repeats once for every item — put your per-item markup there.', 'w4-post-list' ) . '</p>';
 
+$w4pl_loop_map      = array(
+	'posts'       => 'posts',
+	'terms'       => 'terms',
+	'users'       => 'users',
+	'terms.posts' => 'terms',
+	'users.posts' => 'users',
+);
+$w4pl_type_mismatch = '';
+if ( ! empty( $options['template'] ) && isset( $options['list_type'], $w4pl_loop_map[ $options['list_type'] ] ) ) {
+	$w4pl_needed_loop = $w4pl_loop_map[ $options['list_type'] ];
+	if ( false === strpos( $options['template'], '[' . $w4pl_needed_loop . ']' ) ) {
+		$w4pl_type_mismatch = '<div class="notice notice-warning inline" style="margin:0 0 8px;"><p>'
+			. sprintf(
+				/* translators: %s: loop tag name */
+				esc_html__( 'This template has no [%1$s]…[/%1$s] loop, so this list type will render nothing.', 'w4-post-list' ),
+				esc_html( $w4pl_needed_loop )
+			)
+			. ' <button type="button" class="button button-small" id="w4pl_use_default_template" data-template="'
+			. esc_attr( $w4pl_type_example )
+			. '">' . esc_html__( 'Replace with the default template', 'w4-post-list' ) . '</button>'
+			. '</p></div>';
+	}
+}
+
 $template_html = '
-<div class="wffw wffwi_w4pl_template wffwt_textarea">
+<div class="wffw wffwi_w4pl_template wffwt_textarea">' . $w4pl_type_mismatch . '
 	<p style="margin-top:0px;">
 		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_examples">' . __( 'Template Example', 'w4-post-list' ) . '</a>
 		<a href="#" class="button w4pl_toggler" data-target="#w4pl_template_buttons">' . __( 'Template Tags', 'w4-post-list' ) . '</a>

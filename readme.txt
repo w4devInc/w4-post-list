@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.10.0
+Stable tag: 2.11.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,12 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 2.11.0 =
+* New: The editor now catches mistakes at save time - non-numeric values in numeric fields are coerced with a clear warning, unknown template tags get a "did you mean" suggestion, and a template missing its loop tag warns before rendering blank.
+* New: Switching list type with an incompatible template shows an inline warning with a one-click "Replace with the default template" fix.
+* New: The list editor form is protected by a nonce; quick edit, bulk edit and autosave can never touch list options.
+* Improved: "Any" post status now excludes the concrete statuses automatically.
+* New: A once-only review request appears a week after your first published list. One click dismisses it forever.
 = 2.10.0 =
 * New: Live preview in the list editor - a Preview button renders your current, unsaved settings in an isolated pane, refreshing automatically after option changes. No more publish-and-reload loops while designing a list.
 * Improved: Getting Started guide mentions the preview workflow.
@@ -179,6 +185,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 2.11.0 =
+Save-time validation with helpful warnings, editor nonce, list-type-switch protection.
 = 2.10.0 =
 Live preview in the list editor.
 = 2.9.0 =
