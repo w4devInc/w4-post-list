@@ -1,21 +1,61 @@
-# Copyright 2010-2025 W4 Post List.
+# Copyright 2010-2026 W4 Post List.
 msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2025-12-23 22:52:59+00:00\n"
+"POT-Creation-Date: 2026-07-27 21:28:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: W4 Post List <sajib1223@gmail.com>\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 1.0.4\n"
 
+#: admin/class-admin-list-editor.php:35
+msgid "No items found."
+msgstr ""
+
+#: admin/class-admin-list-editor.php:61
+msgid ""
+"Could not refresh the form. Your entries are unchanged — check your "
+"connection and try again."
+msgstr ""
+
 #: admin/class-admin-lists-metaboxes.php:53
 msgid "You do not have permission to edit this list."
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:80
+msgid "Display this list"
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:99
+msgid "Copy the shortcode into any post or page:"
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:101
+msgid "List shortcode"
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:105
+msgid "Copy shortcode"
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:106
+msgid "Copied!"
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:109
+msgid "Publish the list to make it appear on your site."
+msgstr ""
+
+#: admin/class-admin-lists-metaboxes.php:111
+msgid ""
+"You can also add the \"W4 Post List\" block in the editor, or the W4 Post "
+"List widget in a widget area."
 msgstr ""
 
 #: admin/class-admin-lists-table-columns.php:53
@@ -68,32 +108,242 @@ msgstr ""
 msgid "List scheduled. Shortcode %s"
 msgstr ""
 
+#: admin/class-admin-onboarding.php:79
+msgid "Example: Recent Posts"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:120
+msgid "Open the example list"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:123 admin/class-admin-onboarding.php:221
+msgid "Create your first list"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:131
+msgid "Welcome to W4 Post List — three steps to your first list:"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:134
+msgid "Create a list (or open the ready-made example) and choose what it shows."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:135
+msgid "Publish it."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:136
+msgid ""
+"Place it on any page with the W4 Post List block, or paste its [postlist] "
+"shortcode."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:140
+msgid "Read the guide"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:141
+msgid "Dismiss"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:217
+msgid "No lists yet."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:218
+msgid ""
+"A list is a saved query (posts, terms or users) plus a template that "
+"controls its HTML. Create one, publish it, then place it anywhere with the "
+"W4 Post List block or the [postlist] shortcode."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:222
+msgid "Getting started guide"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:240
+msgid "How W4 Post List works"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:242
+msgid "Create a list and pick a List Type (Posts, Terms, Users, or combined)."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:243
+msgid ""
+"Configure what to show in the section named after your list type. The "
+"advanced query sections are optional."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:244
+msgid ""
+"Publish. A default template is applied automatically; edit the Template "
+"section for full HTML control."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:245
+msgid ""
+"Place the list with the W4 Post List block, its [postlist] shortcode (see "
+"the Shortcode column), or the widget."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:247
+msgid ""
+"If a list renders nothing: check it is Published, the shortcode ID matches, "
+"and the template keeps its loop tags."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "W4 Post List"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:260
+msgid "More help"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:261
 #: admin/pages/class-admin-page-docs.php:32
 #: admin/pages/class-admin-page-docs.php:33
-#: admin/pages/class-admin-page-docs.php:55
+#: admin/pages/class-admin-page-docs.php:56
 msgid "Documentation"
 msgstr ""
 
 #: admin/pages/class-admin-page-docs.php:48
+msgid "Getting Started"
+msgstr ""
+
+#: admin/pages/class-admin-page-docs.php:49
+msgid "Usage"
+msgstr ""
+
+#: admin/pages/class-admin-page-docs.php:50
+#: admin/pages/views/html-getting-started.php:76
 #: admin/views/html-list-edit-form.php:58
 msgid "Template"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:49
+#: admin/pages/class-admin-page-docs.php:51
+#: admin/pages/views/html-getting-started.php:77
+#: admin/views/html-list-edit-form.php:88
 msgid "Template Tags"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:50
-msgid "Usage"
-msgstr ""
-
-#: admin/pages/class-admin-page-docs.php:61
+#: admin/pages/class-admin-page-docs.php:62
 #. translators: %s: current plugin version
 msgid "Plugin Version: %s"
 msgstr ""
 
-#: admin/pages/class-admin-page-docs.php:70
+#: admin/pages/class-admin-page-docs.php:71
 msgid "Secondary menu"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:11
+msgid "Your first list in four steps"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:15
+msgid "1. Create a list"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:21
+#. translators: %s: link to the new list screen
+msgid ""
+"Go to %s and give your list a title. Choose a List Type: Posts, Terms, "
+"Users, Terms + Posts or Users + Posts."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:22
+msgid "W4 Post List &rarr; Add New"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:25
+msgid ""
+"Fresh installs include a draft \"Example: Recent Posts\" list — open it to "
+"see a working configuration you can learn from or adapt."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:29
+msgid "2. Choose what to show"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:32
+msgid ""
+"Open the section named after your list type (for example \"Posts\") and "
+"pick the post type, how many items to show, and the order. The other "
+"sections (Tax Query, Meta Query, Date Query) are optional filters — you can "
+"skip them entirely for your first list."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:36
+msgid "3. Publish"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:39
+msgid ""
+"A default template is applied automatically, so you do not need to touch "
+"the Template section to get output. Click Publish."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:43
+msgid "4. Place it on your site"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:46
+msgid "Three ways to display your list:"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:50
+msgid "Block: add the \"W4 Post List\" block in the editor and pick your list."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:56
+#. translators: %s: example shortcode in code tag
+msgid ""
+"Shortcode: paste %s into any content. Every list's ready-made shortcode is "
+"shown in the Shortcode column on the All Lists screen."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:62
+msgid "Widget: add the W4 Post List widget to any widget area."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:67
+msgid "Customizing the output"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:73
+#. translators: 1: example template tag, 2: example template tag, 3: link to
+#. the Template tab, 4: link to the Template Tags tab
+msgid ""
+"Each list has an HTML template that controls its markup. Edit it in the "
+"Template section of the list editor using template tags like %1$s or %2$s — "
+"see the %3$s and %4$s tabs above for working examples and the full tag "
+"reference."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:83
+msgid "If your list shows nothing"
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:86
+msgid "Make sure the list is Published, not Draft."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:87
+msgid ""
+"Check the shortcode ID matches the list — copy it from the Shortcode column "
+"on the All Lists screen."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:92
+#. translators: 1: posts loop tag, 2: terms loop tag, 3: users loop tag
+msgid ""
+"If you edited the template, it must keep the loop tags for its list type: "
+"%1$s for posts, %2$s for terms, %3$s for users."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:99
+msgid "Re-check the query options — the list may simply have matched no items."
 msgstr ""
 
 #: admin/pages/views/html-plugin-links.php:43
@@ -125,15 +375,17 @@ msgid "Plugin Updates"
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:10
-msgid "What is Template?"
+msgid "What is a Template?"
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:13
 msgid ""
-"Template handles the html output of your list. It is designed with Templace "
-"Tags to display dynamic information and HTML to manage layout. Availability "
-"of Template structure & tags varies based on the type of list you have "
-"selected, and it's parent element."
+"The template controls the HTML output of your list. It is plain HTML mixed "
+"with Template Tags that are replaced with dynamic information. Everything "
+"between a loop tag pair (for example [posts] and [/posts]) is repeated once "
+"per item, so wrapper elements like <ul> belong outside the loop tags and "
+"the per-item markup goes inside. The available loop tags and template tags "
+"depend on the list type you have selected."
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:17
@@ -141,34 +393,40 @@ msgid "Examples"
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:20
-msgid "Post List"
+msgid "Post list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:30
+#: admin/pages/views/html-template-examples.php:23
 msgid ""
-"Post list (with excerpt limited to 20 words, post class on post wrapper "
+"Everything between [posts] and [/posts] repeats once for every post — the "
+"per-item wrapper makes that easy to see:"
+msgstr ""
+
+#: admin/pages/views/html-template-examples.php:36
+msgid ""
+"Post list (with excerpt limited to 20 words, post class on the post wrapper "
 "element)"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:40
+#: admin/pages/views/html-template-examples.php:46
 msgid ""
-"Post list (grouped by year - chose <code>Group By</code> option to Year "
-"while using this)."
+"Post list grouped by year (set the \"Group by\" option to Year while using "
+"this)"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:56
+#: admin/pages/views/html-template-examples.php:65
 msgid "Category list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:66
+#: admin/pages/views/html-template-examples.php:75
 msgid "Category + Post list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:82
+#: admin/pages/views/html-template-examples.php:91
 msgid "User list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:91
+#: admin/pages/views/html-template-examples.php:100
 msgid "User + Post list"
 msgstr ""
 
@@ -178,8 +436,8 @@ msgstr ""
 
 #: admin/pages/views/html-template-tags.php:13
 msgid ""
-"Template tags are like WordPress shortcode. It's a piece of code that gets "
-"replaced with a dyanamic value."
+"Template tags are like WordPress shortcodes: a piece of code that gets "
+"replaced with a dynamic value."
 msgstr ""
 
 #: admin/pages/views/html-template-tags.php:20
@@ -195,7 +453,7 @@ msgid "Parameters"
 msgstr ""
 
 #: admin/pages/views/html-usage.php:11
-msgid "Diplaying list with shortcode"
+msgid "Displaying a list with the shortcode"
 msgstr ""
 
 #: admin/pages/views/html-usage.php:17
@@ -232,22 +490,28 @@ msgstr ""
 msgid "Display list using %s function"
 msgstr ""
 
-#: admin/views/html-list-edit-form.php:65
+#: admin/views/html-list-edit-form.php:72
+msgid "A simple template for this list type:"
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:78
+msgid "When using the \"Group by\" option, wrap the posts loop in a groups loop:"
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:82
+msgid ""
+"Everything between an opening and closing loop tag (like [posts] and "
+"[/posts]) repeats once for every item — put your per-item markup there."
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:87
 msgid "Template Example"
 msgstr ""
 
-#: admin/views/html-list-edit-form.php:66
-msgid "Shortcodes"
-msgstr ""
-
-#: appsero.php:60
+#: appsero.php:67
 msgid ""
 "Allow us to understand how we can improve W4 Post List Plugin by collecting "
 "some diagnostic data and usage information."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "W4 Post List"
 msgstr ""
 
 #: blocks.php:34
@@ -270,17 +534,17 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: includes/abstracts/class-query.php:129
+#: includes/abstracts/class-query.php:134
 msgid "Table Not Defined"
 msgstr ""
 
-#: includes/abstracts/class-query.php:136
+#: includes/abstracts/class-query.php:141
 #. translators: %s: MySql table name
 msgid "Quering for table is not allowed.:%s"
 msgstr ""
 
-#: includes/class-config.php:28 includes/class-config.php:239
-#: includes/class-config.php:250
+#: includes/class-config.php:28 includes/class-config.php:262
+#: includes/class-config.php:273
 msgid "ID"
 msgstr ""
 
@@ -288,8 +552,8 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/class-config.php:30 includes/class-config.php:232
-#: includes/class-config.php:240
+#: includes/class-config.php:30 includes/class-config.php:255
+#: includes/class-config.php:263
 msgid "Name"
 msgstr ""
 
@@ -322,11 +586,11 @@ msgid "Random"
 msgstr ""
 
 #: includes/class-config.php:38 includes/class-config.php:53
-#: includes/helpers/class-helper-posts.php:270
+#: includes/helpers/class-helper-posts.php:265
 msgid "None"
 msgstr ""
 
-#: includes/class-config.php:39 includes/helpers/class-helper-posts.php:102
+#: includes/class-config.php:39 includes/helpers/class-helper-posts.php:97
 msgid "Include posts"
 msgstr ""
 
@@ -354,65 +618,73 @@ msgstr ""
 msgid "Custom field"
 msgstr ""
 
-#: includes/class-config.php:148 includes/helpers/class-helper-posts.php:46
+#: includes/class-config.php:109
+msgid "Any"
+msgstr ""
+
+#: includes/class-config.php:117
+msgid "Inherit"
+msgstr ""
+
+#: includes/class-config.php:171 includes/helpers/class-helper-posts.php:46
 msgid "Posts"
 msgstr ""
 
-#: includes/class-config.php:149
+#: includes/class-config.php:172
 #: includes/helpers/class-helper-posts-tax_query.php:67
 #: includes/helpers/class-helper-terms.php:45
 msgid "Terms"
 msgstr ""
 
-#: includes/class-config.php:150 includes/helpers/class-helper-users.php:45
+#: includes/class-config.php:173 includes/helpers/class-helper-users.php:45
 msgid "Users"
 msgstr ""
 
-#: includes/class-config.php:151
+#: includes/class-config.php:174
 msgid "Terms + Posts"
 msgstr ""
 
-#: includes/class-config.php:152
+#: includes/class-config.php:175
 msgid "Users + Posts"
 msgstr ""
 
-#: includes/class-config.php:231
+#: includes/class-config.php:254
 msgid "Term id"
 msgstr ""
 
-#: includes/class-config.php:233 includes/class-config.php:241
+#: includes/class-config.php:256 includes/class-config.php:264
 msgid "Slug"
 msgstr ""
 
-#: includes/class-config.php:242
+#: includes/class-config.php:265
 msgid "Count"
 msgstr ""
 
-#: includes/class-config.php:243
+#: includes/class-config.php:266
 msgid "Term order"
 msgstr ""
 
-#: includes/class-config.php:244 includes/helpers/class-helper-terms.php:61
+#: includes/class-config.php:267 includes/helpers/class-helper-terms.php:61
 msgid "Include terms"
 msgstr ""
 
-#: includes/class-config.php:251
+#: includes/class-config.php:274
 msgid "Username"
 msgstr ""
 
-#: includes/class-config.php:252
+#: includes/class-config.php:275
 msgid "Nicename"
 msgstr ""
 
-#: includes/class-config.php:253
+#: includes/class-config.php:276
 msgid "Email"
 msgstr ""
 
-#: includes/class-config.php:254
+#: includes/class-config.php:277
 msgid "Registration time"
 msgstr ""
 
-#: includes/class-config.php:255
+#: includes/class-config.php:278
 msgid "Display name"
 msgstr ""
 
@@ -641,8 +913,8 @@ msgstr ""
 
 #: includes/helpers/class-helper-posts.php:70
 msgid ""
-"if displaying attachment, choose mime type to restrcit result to specific "
-"file types."
+"If displaying attachments, choose a mime type to restrict results to "
+"specific file types."
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:78
@@ -651,134 +923,120 @@ msgid "Post status"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:81
-msgid "Any"
+msgid ""
+"Note: \"Any\" excludes statuses that are hidden from search. Check a status "
+"directly to include it."
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:82
-msgid "Publish"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:83
-msgid "Pending"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:84
-msgid "Future"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:85
-msgid "Inherit"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:93
+#: includes/helpers/class-helper-posts.php:88
 msgid "Search keywords"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:96
+#: includes/helpers/class-helper-posts.php:91
 msgid "search posts"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:105
-#: includes/helpers/class-helper-posts.php:114
+#: includes/helpers/class-helper-posts.php:100
+#: includes/helpers/class-helper-posts.php:109
 msgid "comma separated post id"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:111
+#: includes/helpers/class-helper-posts.php:106
 msgid "Exclude posts"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:120
+#: includes/helpers/class-helper-posts.php:115
 msgid "Post parent"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:123
+#: includes/helpers/class-helper-posts.php:118
 msgid "display child posts. comma separated parent post ids"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:129
+#: includes/helpers/class-helper-posts.php:124
 msgid "Post author"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:132
-#: includes/helpers/class-helper-posts.php:141
+#: includes/helpers/class-helper-posts.php:127
+#: includes/helpers/class-helper-posts.php:136
 msgid "comma separated user/author ids. use 0 to indicate current user."
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:138
+#: includes/helpers/class-helper-posts.php:133
 msgid "Exclude post author"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:148
+#: includes/helpers/class-helper-posts.php:143
 msgid "Exclude self"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:151
-#: includes/helpers/class-helper-posts.php:163
+#: includes/helpers/class-helper-posts.php:146
+#: includes/helpers/class-helper-posts.php:158
 msgid "No"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:152
-#: includes/helpers/class-helper-posts.php:164
+#: includes/helpers/class-helper-posts.php:147
+#: includes/helpers/class-helper-posts.php:159
 msgid "Yes"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:154
+#: includes/helpers/class-helper-posts.php:149
 msgid "exclude current post on single post/page pages"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:160
+#: includes/helpers/class-helper-posts.php:155
 msgid "Child of self"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:166
+#: includes/helpers/class-helper-posts.php:161
 msgid "display child posts of current post/page/custom post type"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:173
+#: includes/helpers/class-helper-posts.php:168
 #: includes/helpers/class-helper-terms.php:121
 #: includes/helpers/class-helper-users.php:88
 msgid "Orderby"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:183
+#: includes/helpers/class-helper-posts.php:178
 #: includes/helpers/class-helper-terms.php:129
 #: includes/helpers/class-helper-users.php:96
 msgid "Order"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:186
-#: includes/helpers/class-helper-posts.php:271
+#: includes/helpers/class-helper-posts.php:181
+#: includes/helpers/class-helper-posts.php:266
 #: includes/helpers/class-helper-terms.php:132
 #: includes/helpers/class-helper-users.php:99
 msgid "ASC"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:187
-#: includes/helpers/class-helper-posts.php:272
+#: includes/helpers/class-helper-posts.php:182
+#: includes/helpers/class-helper-posts.php:267
 #: includes/helpers/class-helper-terms.php:133
 #: includes/helpers/class-helper-users.php:100
 msgid "DESC"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:195
+#: includes/helpers/class-helper-posts.php:190
 #: includes/helpers/class-helper-terms.php:156
 #: includes/helpers/class-helper-users.php:123
 msgid "Maximum items"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:197
+#: includes/helpers/class-helper-posts.php:192
 msgid ""
 "maximum results to display in total, restrict number of items even while "
 "paginating"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:205
+#: includes/helpers/class-helper-posts.php:200
 #: includes/helpers/class-helper-terms.php:140
 #: includes/helpers/class-helper-users.php:107
 msgid "Offset"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:207
+#: includes/helpers/class-helper-posts.php:202
 msgid ""
 "skip given number of posts from beginning. while building lists \n"
 "\t\t\t\tusing the same filters but to display on separate places, use "
@@ -786,39 +1044,43 @@ msgid ""
 "\t\t\t\tto skip the previously displayed amount of posts"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:218
+#: includes/helpers/class-helper-posts.php:213
 #: includes/helpers/class-helper-terms.php:148
 #: includes/helpers/class-helper-users.php:115
 msgid "Items per page"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:221
+#: includes/helpers/class-helper-posts.php:216
 msgid ""
 "number of items to show per page\n"
 " \t\t\t\t<br />use <strong>-1</strong> to display all"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:234
+#: includes/helpers/class-helper-posts.php:229
 msgid "Group by"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:245
+#: includes/helpers/class-helper-posts.php:240
 msgid "Group by Date"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:248
+#: includes/helpers/class-helper-posts.php:243
 msgid "Publish date"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:249
+#: includes/helpers/class-helper-posts.php:244
 msgid "Modified date"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:258
+#: includes/helpers/class-helper-posts.php:246
+msgid "Which date to use when calculating the group."
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:253
 msgid "Group by \"Custom field\" name"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:267
+#: includes/helpers/class-helper-posts.php:262
 msgid "Group Order"
 msgstr ""
 
@@ -827,7 +1089,9 @@ msgid "Preset"
 msgstr ""
 
 #: includes/helpers/class-helper-presets.php:45
-msgid "preset is predefined templates"
+msgid ""
+"Presets are ready-made templates. When one is selected it controls the "
+"output, and the Template and Style sections are hidden."
 msgstr ""
 
 #: includes/helpers/class-helper-presets.php:183
@@ -846,11 +1110,11 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:49
+#: includes/helpers/class-helper-style.php:50
 msgid "CSS"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:53
+#: includes/helpers/class-helper-style.php:54
 msgid ""
 "this css rules is placed inline just before the list is place at front-end "
 "(not in the HEAD tag).\n"
@@ -860,30 +1124,28 @@ msgid ""
 "<code>#w4pl-list-[listid]</code> to dynamically this selector."
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:66
+#: includes/helpers/class-helper-style.php:68
 msgid "JavaScript"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:69
+#: includes/helpers/class-helper-style.php:71
 msgid ""
 "javascript loads right after template ends. don't use "
 "<code>&lt;script&gt;</code> tag"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:76
+#: includes/helpers/class-helper-style.php:78
 msgid "HTML class name"
 msgstr ""
 
-#: includes/helpers/class-helper-style.php:78
+#: includes/helpers/class-helper-style.php:80
 msgid "applied on the wrapper html DIV tag"
 msgstr ""
 
 #: includes/helpers/class-helper-terms.php:64
 #: includes/helpers/class-helper-terms.php:73
 #: includes/helpers/class-helper-terms.php:82
-#: includes/helpers/class-helper-users.php:55
-#: includes/helpers/class-helper-users.php:64
-msgid "comma separated term id"
+msgid "Comma-separated term IDs."
 msgstr ""
 
 #: includes/helpers/class-helper-terms.php:70
@@ -940,6 +1202,11 @@ msgstr ""
 msgid "Include users"
 msgstr ""
 
+#: includes/helpers/class-helper-users.php:55
+#: includes/helpers/class-helper-users.php:64
+msgid "Comma-separated user IDs."
+msgstr ""
+
 #: includes/helpers/class-helper-users.php:61
 msgid "Exclude users"
 msgstr ""
@@ -962,6 +1229,21 @@ msgstr ""
 
 #: includes/helpers/class-helper-users.php:109
 msgid "skip given number of users from beginning"
+msgstr ""
+
+#: includes/shortcodes/class-list-shortcode.php:36
+msgid ""
+"W4 Post List: no list matches this shortcode. Copy the exact shortcode from "
+"the Shortcode column on the All Lists screen."
+msgstr ""
+
+#: includes/shortcodes/class-list-shortcode.php:51
+#. translators: %s: error message
+msgid "W4 Post List error: %s"
+msgstr ""
+
+#: includes/shortcodes/class-list-shortcode.php:71
+msgid "(Only editors see this message; visitors see nothing.)"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:37
@@ -1075,7 +1357,7 @@ msgid "Post excerpt / short description"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:245
-msgid "Remove shortcodes from exceprt text. use strip_shortcode=\"1\" to enabled."
+msgid "Remove shortcodes from excerpt text. Use strip_shortcode=\"1\" to enable."
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:252
@@ -1085,7 +1367,7 @@ msgstr ""
 #: includes/template-tags/class-post-template-tags.php:258
 #: includes/template-tags/class-post-template-tags.php:289
 msgid ""
-"( text or number ) based on the rerurn attribute & only if the post has a "
+"( text or number ) based on the return attribute & only if the post has a "
 "featured image assigned"
 msgstr ""
 
@@ -1263,31 +1545,31 @@ msgstr ""
 msgid "group page link"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:944
+#: includes/template-tags/class-post-template-tags.php:939
 msgid "View %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:951
+#: includes/template-tags/class-post-template-tags.php:946
 msgid "Posted on"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:954
+#: includes/template-tags/class-post-template-tags.php:949
 msgid "by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:959
+#: includes/template-tags/class-post-template-tags.php:954
 msgid "Published"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:966
+#: includes/template-tags/class-post-template-tags.php:961
 msgid "Updated"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:975
+#: includes/template-tags/class-post-template-tags.php:970
 msgid "View all posts by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:992
+#: includes/template-tags/class-post-template-tags.php:987
 msgid "Continue reading &raquo;"
 msgstr ""
 
@@ -1359,19 +1641,15 @@ msgid ""
 "64, 128"
 msgstr ""
 
-#: vendor/appsero/client/src/Insights.php:725
-msgid "Once Weekly"
-msgstr ""
-
 #. Plugin URI of the plugin/theme
 msgid "https://w4dev.com/plugins/w4-post-list"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"This plugin lets you create a list of - Posts, Terms, Users, Terms + Posts "
-"and Users + Posts. Outputs are completely customizable using Shortcode, "
-"HTML & CSS. Read documentation plugin usage."
+"Create lists of posts, terms and users — grouped archives, taxonomy indexes "
+"and user directories — placed anywhere with the block, [postlist] shortcode "
+"or widget."
 msgstr ""
 
 #. Author of the plugin/theme
@@ -1382,7 +1660,7 @@ msgstr ""
 msgid "https://shazzad.me"
 msgstr ""
 
-#: includes/class-config.php:129
+#: includes/class-config.php:152
 msgctxt "Media Type"
 msgid "Any"
 msgstr ""
