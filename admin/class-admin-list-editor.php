@@ -35,6 +35,10 @@ class W4PL_List_Editor {
 			$options['no_items_text'] = __( 'No items found.', 'w4-post-list' );
 		}
 
+		// Copy-on-select: a starter template picked in the form is applied
+		// here, in the editor path only - never at render time.
+		$options = W4PL_Starter_Templates::apply( $options );
+
 		$this->options = apply_filters( 'w4pl/pre_get_options', $options );
 	}
 

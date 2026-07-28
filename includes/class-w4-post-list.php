@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.8.0';
+	public $version = '2.9.0';
 
 	/**
 	 * This will hold current class instance
@@ -87,6 +87,7 @@ final class W4_Post_List {
 		include W4PL_DIR . '/includes/class-post-types.php';
 		include W4PL_DIR . '/includes/class-options-migrator.php';
 		include W4PL_DIR . '/includes/class-stats.php';
+		include W4PL_DIR . '/includes/class-starter-templates.php';
 		include W4PL_DIR . '/includes/class-list-templates.php';
 		include W4PL_DIR . '/includes/class-list-helper.php';
 		include W4PL_DIR . '/includes/class-list-content.php';
@@ -151,6 +152,7 @@ final class W4_Post_List {
 
 		new W4PL_Options_Migrator();
 		new W4PL_Stats();
+		new W4PL_Starter_Templates();
 		new W4PL_List_Helper();
 		new W4PL_Helper_Posts();
 		new W4PL_Helper_Terms();

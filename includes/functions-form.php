@@ -43,7 +43,9 @@ function w4pl_form_fields( $fields = array(), $values = array(), $form_args = ar
 
 	if ( empty( $form_args['action'] ) ) {
 		$schema              = is_ssl() ? 'https://' : 'http://';
-		$form_args['action'] = $schema . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$host                = isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : '';
+		$uri                 = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+		$form_args['action'] = $schema . $host . $uri;
 	}
 
 	if ( ! empty( $form_args['qv'] ) ) {
@@ -298,7 +300,7 @@ function w4pl_form_field_html( $args = array() ) {
 						$l     = $l['label'];
 					}
 
-					$html .= sprintf( '<option value="%1$s"%2$s%4$s>%3$s</option>', $k, $sel, $l, $_attr );
+					$html .= sprintf( '<option value="%1$s"%2$s%4$s>%3$s</option>', esc_attr( $k ), $sel, $l, $_attr );
 				}
 				$html .= '</select>';
 

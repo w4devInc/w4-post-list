@@ -1,0 +1,53 @@
+<!--W4PL_List 39-->
+<style id="w4pl-css-{ID}" type="text/css">#w4pl-list-{ID} .w4pl-category-index {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 0.5em 1.5em;
+}
+#w4pl-list-{ID} .term-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5em;
+	padding: 0.35em 0;
+	border-bottom: 1px solid #eee;
+}
+#w4pl-list-{ID} .term-name {
+	text-decoration: none;
+}
+#w4pl-list-{ID} .term-name:hover {
+	text-decoration: underline;
+}
+#w4pl-list-{ID} .term-count {
+	font-size: 0.8em;
+	background: #f2f2f2;
+	color: #666;
+	border-radius: 999px;
+	padding: 0.1em 0.6em;
+}</style>
+<div id="w4pl-list-{ID}" class="w4pl">
+	<div id="w4pl-inner-{ID}" class="w4pl-inner">
+		<ul class="w4pl-category-index">
+
+	<li class="term-item">
+		<a class="term-name" href="http://example.org/?cat={ID}">Alpha</a>
+		<span class="term-count">3</span>
+	</li>
+
+	<li class="term-item">
+		<a class="term-name" href="http://example.org/?cat={ID}">Beta</a>
+		<span class="term-count">3</span>
+	</li>
+
+	<li class="term-item">
+		<a class="term-name" href="http://example.org/?cat={ID}">Uncategorized</a>
+		<span class="term-count">0</span>
+	</li>
+
+</ul>
+	</div><!--#w4pl-inner-{ID}-->
+</div><!--#w4pl-{ID}-->
+<!--end W4PL_List 39-->
