@@ -41,7 +41,13 @@ class W4PL_Starter_Templates {
 	 * @return array
 	 */
 	public function apply_on_save( $options ) {
-		return self::apply( $options );
+		$options = self::apply( $options );
+
+		if ( is_array( $options ) ) {
+			unset( $options['_starter_applied'] );
+		}
+
+		return $options;
 	}
 
 	/**
@@ -195,6 +201,10 @@ class W4PL_Starter_Templates {
 		if ( class_exists( 'W4PL_Stats' ) ) {
 			W4PL_Stats::increment( 'starter_applied' );
 		}
+
+		// Editor-only marker so the re-rendered form can confirm the apply
+		// and reveal the Template section; stripped before any save.
+		$options['_starter_applied'] = $starter_id;
 
 		return $options;
 	}

@@ -70,6 +70,23 @@
 	$(document).on('w4pl/form_loaded', function (el) {
 		w4pl_init_code_editors();
 		w4pl_adjust_height();
+
+		/*
+		 * A just-applied starter template renders a marker notice; open the
+		 * tab it points at (the Template section) so the copied markup is
+		 * immediately visible instead of hiding behind the tab the user
+		 * happened to be on.
+		 */
+		var marker = $('#w4pl_list_options .w4pl-starter-applied[data-show-tab]').first();
+		if (marker.length) {
+			var target = $('#' + marker.data('show-tab'));
+			if (target.length) {
+				$('.w4pl_field_group').removeClass('w4pl_active');
+				target.addClass('w4pl_active');
+				$('#w4pl_tab_id').val(marker.data('show-tab'));
+			}
+		}
+
 		setTimeout(function () {
 			w4pl_refresh_code_editors();
 			w4pl_adjust_height();
