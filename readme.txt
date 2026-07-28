@@ -119,8 +119,14 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 == Screenshots ==
 
-1. The list editor — choose a list type, then configure query, template and style options per section.
-2. Front-end output — an AJAX-paginated post list, an image/media grid, and a year/month grouped archive.
+1. Start from a template — pick from ready-made layouts per list type.
+2. The template editor — syntax highlighting, tag insertion, editable starter markup.
+3. Live preview — see your unsaved changes rendered without leaving the editor.
+4. Thumbnail cards starter on the front end.
+5. Year archive starter — posts grouped under year headings.
+6. User directory starter — avatars, names and bios in a card grid.
+7. Helpful save-time warnings — mistakes are explained and coerced, never rejected.
+8. Every list's shortcode is one click away.
 
 
 == Changelog ==
