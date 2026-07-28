@@ -67,12 +67,15 @@ class W4PL_Helper_Presets {
 			$applied = W4PL_Starter_Templates::get( $options['_starter_applied'] );
 
 			if ( $applied ) {
+				// Rendered inside the Template group (position 152 sits just
+				// after its opener at 150), because the apply flow lands the
+				// user on that tab.
 				$fields['starter_applied_notice'] = array(
-					'position' => '3.05',
+					'position' => '152',
 					'html'     => '<div class="notice notice-success inline w4pl-starter-applied" data-show-tab="w4pl_field_group_template" style="margin:0 0 10px;"><p>'
 						. sprintf(
 							/* translators: %s: starter template label */
-							esc_html__( '"%s" applied — its markup and styles are now in the Template and Style sections, ready to edit.', 'w4-post-list' ),
+							esc_html__( '"%s" applied — this is its markup, and its styles are in the Style section. Edit anything.', 'w4-post-list' ),
 							esc_html( $applied['label'] )
 						)
 						. '</p></div>',
