@@ -35,6 +35,15 @@ in ~5 minutes on the docker dev site.
 - [ ] Starter template + preview: pick a starter, preview shows the new layout with its CSS
 - [ ] Preview of a list with an error (e.g. temporarily break the template) shows the error message in the status line, not a broken pane
 
+## Validation & review prompt (M8)
+
+- [ ] Save a list with "ten" in Items per page: saves fine, warning notice explains the coercion
+- [ ] Save a template with a typo'd tag ([post_titel]): warning suggests [post_title]
+- [ ] Switch list type with an incompatible template: inline warning appears with a working "Replace with the default template" button (into CodeMirror)
+- [ ] Check "Any" post status: concrete statuses uncheck, and vice versa
+- [ ] Quick-edit a list title: list options survive untouched
+- [ ] (Time-gated) Review prompt appears on the Lists screen 7+ days after first publish; dismiss is permanent
+
 ## Error surfacing
 
 - [ ] `[postlist id="99999"]` on a page: logged-in as editor → inline notice; logged-out → nothing

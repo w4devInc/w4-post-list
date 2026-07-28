@@ -98,6 +98,10 @@ class W4PL_Stats {
 
 		if ( 'publish' === $new_status && 'publish' !== $old_status ) {
 			self::increment( 'lists_published' );
+
+			if ( ! get_option( 'w4pl_first_publish_time' ) ) {
+				update_option( 'w4pl_first_publish_time', time(), false );
+			}
 		}
 	}
 }

@@ -1,4 +1,10 @@
 == Changelog ==
+= 2.11.0 =
+* New: The editor now catches mistakes at save time - non-numeric values in numeric fields are coerced with a clear warning, unknown template tags get a "did you mean" suggestion, and a template missing its loop tag warns before rendering blank.
+* New: Switching list type with an incompatible template shows an inline warning with a one-click "Replace with the default template" fix.
+* New: The list editor form is protected by a nonce; quick edit, bulk edit and autosave can never touch list options.
+* Improved: "Any" post status now excludes the concrete statuses automatically.
+* New: A once-only review request appears a week after your first published list. One click dismisses it forever.
 = 2.10.0 =
 * New: Live preview in the list editor - a Preview button renders your current, unsaved settings in an isolated pane, refreshing automatically after option changes. No more publish-and-reload loops while designing a list.
 * Improved: Getting Started guide mentions the preview workflow.

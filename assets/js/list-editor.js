@@ -70,6 +70,23 @@
 	$(document).on('w4pl/form_loaded', function (el) {
 		w4pl_init_code_editors();
 		w4pl_adjust_height();
+
+		/*
+		 * A just-applied starter template renders a marker notice; open the
+		 * tab it points at (the Template section) so the copied markup is
+		 * immediately visible instead of hiding behind the tab the user
+		 * happened to be on.
+		 */
+		var marker = $('#w4pl_list_options .w4pl-starter-applied[data-show-tab]').first();
+		if (marker.length) {
+			var target = $('#' + marker.data('show-tab'));
+			if (target.length) {
+				$('.w4pl_field_group').removeClass('w4pl_active');
+				target.addClass('w4pl_active');
+				$('#w4pl_tab_id').val(marker.data('show-tab'));
+			}
+		}
+
 		setTimeout(function () {
 			w4pl_refresh_code_editors();
 			w4pl_adjust_height();
@@ -225,6 +242,32 @@
 			);
 		});
 	}
+
+	/* "Any" post status is exclusive of concrete statuses. */
+	$(document.body).on('change', 'input[name="w4pl[post_status][]"]', function () {
+		var boxes = $('input[name="w4pl[post_status][]"]');
+
+		if ('any' === $(this).val() && this.checked) {
+			boxes.not(this).prop('checked', false);
+		} else if (this.checked) {
+			boxes.filter('[value="any"]').prop('checked', false);
+		}
+	});
+
+	/* One-click recovery from a template/list-type mismatch. */
+	$(document.body).on('click', '#w4pl_use_default_template', function () {
+		var tpl = $(this).data('template') || '';
+
+		if (w4plEditors.w4pl_template) {
+			w4plEditors.w4pl_template.setValue(tpl);
+			w4plEditors.w4pl_template.save();
+		} else {
+			$('#w4pl_template').val(tpl);
+		}
+
+		$(this).closest('.notice').remove();
+		return false;
+	});
 
 	/* ----- Live preview ----- */
 

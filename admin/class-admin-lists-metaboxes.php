@@ -169,6 +169,14 @@ class W4PL_Admin_Lists_Metaboxes {
 		}
 
 		if ( ! isset( $_POST['w4pl'] ) ) {
+			// Quick-edit, bulk-edit and REST saves post no options; leave the
+			// stored options untouched.
+			return;
+		}
+
+		// The nonce is only demanded when list options are actually posted,
+		// and an invalid one bails without wiping anything.
+		if ( ! isset( $_POST['w4pl_options_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['w4pl_options_nonce'] ) ), 'w4pl_save_options' ) ) {
 			return;
 		}
 

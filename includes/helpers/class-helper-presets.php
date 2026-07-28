@@ -63,6 +63,26 @@ class W4PL_Helper_Presets {
 			return $fields;
 		}
 
+		if ( ! empty( $options['_starter_applied'] ) ) {
+			$applied = W4PL_Starter_Templates::get( $options['_starter_applied'] );
+
+			if ( $applied ) {
+				// Rendered inside the Template group (position 152 sits just
+				// after its opener at 150), because the apply flow lands the
+				// user on that tab.
+				$fields['starter_applied_notice'] = array(
+					'position' => '152',
+					'html'     => '<div class="notice notice-success inline w4pl-starter-applied" data-show-tab="w4pl_field_group_template" style="margin:0 0 10px;"><p>'
+						. sprintf(
+							/* translators: %s: starter template label */
+							esc_html__( '"%s" applied — this is its markup, and its styles are in the Style section. Edit anything.', 'w4-post-list' ),
+							esc_html( $applied['label'] )
+						)
+						. '</p></div>',
+				);
+			}
+		}
+
 		$fields['starter_template'] = array(
 			'position'    => '3.1',
 			'option_name' => 'starter_template',
@@ -87,7 +107,9 @@ class W4PL_Helper_Presets {
 			$options = array();
 		}
 
-		// The starter picker is a one-shot editor action, never stored.
+		// The starter picker is a one-shot editor action, never stored. The
+		// _starter_applied marker is left alone here: it must survive this
+		// filter for the editor view, and the save path strips it.
 		unset( $options['starter_template'] );
 
 		// Quick kill.

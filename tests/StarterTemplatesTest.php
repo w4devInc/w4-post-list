@@ -223,8 +223,27 @@ class StarterTemplatesTest extends W4PL_Snapshot_TestCase {
 		);
 
 		$this->assertArrayNotHasKey( 'starter_template', $options );
+		$this->assertArrayNotHasKey( '_starter_applied', $options, 'Editor-only marker must never be persisted' );
 		$this->assertStringContainsString( 'w4pl-simple-list', $options['template'] );
 		$this->assertSame( W4PL_Options_Migrator::OPTIONS_VERSION, $options['options_version'] );
+	}
+
+	public function test_editor_apply_sets_confirmation_marker_and_field_notice() {
+		$editor = new W4PL_List_Editor(
+			array(
+				'id'               => 1,
+				'list_type'        => 'posts',
+				'starter_template' => 'thumbnail-cards',
+			)
+		);
+
+		$this->assertSame( 'thumbnail-cards', $editor->options['_starter_applied'], 'Marker must survive the editor filter chain' );
+
+		$fields = apply_filters( 'w4pl/list_edit_form_fields', array(), $editor->options );
+
+		$this->assertArrayHasKey( 'starter_applied_notice', $fields );
+		$this->assertStringContainsString( 'data-show-tab="w4pl_field_group_template"', $fields['starter_applied_notice']['html'] );
+		$this->assertStringContainsString( 'Thumbnail cards', $fields['starter_applied_notice']['html'] );
 	}
 
 	public function test_editor_applies_starter_before_field_rendering() {
