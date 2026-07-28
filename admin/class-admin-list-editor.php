@@ -62,7 +62,12 @@ class W4PL_List_Editor {
 			'w4pl_list_editor',
 			'w4plListEditor',
 			array(
-				'refreshFailed' => __( 'Could not refresh the form. Your entries are unchanged — check your connection and try again.', 'w4-post-list' ),
+				'refreshFailed'  => __( 'Could not refresh the form. Your entries are unchanged — check your connection and try again.', 'w4-post-list' ),
+				'previewNonce'   => wp_create_nonce( 'w4pl_preview' ),
+				'previewLoading' => __( 'Rendering preview…', 'w4-post-list' ),
+				'previewFailed'  => __( 'Preview failed — check your connection and try again.', 'w4-post-list' ),
+				'previewHide'    => __( 'Hide preview', 'w4-post-list' ),
+				'previewShow'    => __( 'Preview', 'w4-post-list' ),
 			)
 		);
 		wp_enqueue_style( 'w4pl_form' );

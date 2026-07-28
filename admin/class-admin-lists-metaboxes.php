@@ -188,7 +188,7 @@ class W4PL_Admin_Lists_Metaboxes {
 	 * @param array $options List options.
 	 * @return array
 	 */
-	public function sanitize_options( $options ) {
+	public static function sanitize_options( $options ) {
 		// Sanitize options.
 		foreach ( array( 'no_items_text' ) as $key ) {
 			if ( array_key_exists( $key, $options ) ) {
