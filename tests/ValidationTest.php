@@ -17,6 +17,11 @@ class ValidationTest extends WP_UnitTestCase {
 		parent::set_up();
 		new W4PL_Admin_Validation();
 
+		if ( ! function_exists( 'set_current_screen' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/class-wp-screen.php';
+			require_once ABSPATH . 'wp-admin/includes/screen.php';
+		}
+
 		delete_option( 'w4pl_first_publish_time' );
 		delete_option( 'w4pl_review_dismissed' );
 	}
@@ -158,6 +163,21 @@ class ValidationTest extends WP_UnitTestCase {
 	}
 
 	// ----- Review prompt gate -----
+
+	public function test_review_cta_markup_carries_the_resolving_link() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		update_option( 'w4pl_first_publish_time', time() - 8 * DAY_IN_SECONDS );
+		set_current_screen( 'edit-w4pl' );
+
+		$onboarding = new W4PL_Admin_Onboarding();
+
+		ob_start();
+		$onboarding->review_prompt();
+		$html = ob_get_clean();
+
+		$this->assertStringContainsString( 'w4pl_review_go', $html, 'Review CTA must route through the dismissing redirect' );
+		$this->assertStringContainsString( 'w4pl_dismiss_review', $html );
+	}
 
 	public function test_review_prompt_waits_for_first_publish_plus_seven_days() {
 		$this->assertFalse( W4PL_Admin_Onboarding::review_prompt_due(), 'No publish yet' );
