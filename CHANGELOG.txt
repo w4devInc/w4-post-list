@@ -4,12 +4,13 @@
 * New: Switching list type with an incompatible template shows an inline warning with a one-click "Replace with the default template" fix.
 * New: The list editor form is protected by a nonce; quick edit, bulk edit and autosave can never touch list options.
 * Improved: "Any" post status now excludes the concrete statuses automatically.
-* New: A once-only review request appears a week after your first published list. One click dismisses it forever.
+* New: A once-only review request appears a week after your first published list. Clicking either button - including "Leave a review" itself - resolves it forever.
 = 2.10.0 =
 * New: Live preview in the list editor - a Preview button renders your current, unsaved settings in an isolated pane, refreshing automatically after option changes. No more publish-and-reload loops while designing a list.
 * Improved: Getting Started guide mentions the preview workflow.
 = 2.9.0 =
 * New: "Start from a template" - pick from 8 ready-made layouts (simple list, thumbnail cards, title & date list, year archive, category index, category index with posts, user directory, authors with posts). Picking one copies editable markup and styles into the Template and Style fields and sets the options it needs, like Group by. Developers can add layouts via the w4pl/starter_templates filter.
+* New: Applying a starter shows a confirmation and opens the Template section automatically, so you immediately see what you got.
 * Improved: Lists using a legacy preset keep working exactly as before; the legacy preset field only appears on those lists.
 * Improved: In-plugin docs updated for the new flow; new FAQ "Do I have to write the template myself?".
 * Fix: Guarded the editor form action URL against missing server variables (CLI contexts).
