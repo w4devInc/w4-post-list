@@ -21,6 +21,12 @@ abstract class W4PL_Snapshot_TestCase extends WP_UnitTestCase {
 	protected static $post_ids = array();
 
 	public static function wpSetUpBeforeClass( $factory ) {
+		// The statics are declared once on this abstract base, so every
+		// subclass shares them. Without this reset $post_ids accumulates
+		// across classes and index 0 points at a fixture the previous class's
+		// teardown already deleted.
+		self::$post_ids = array();
+
 		self::$cat_alpha = $factory->term->create(
 			array(
 				'taxonomy' => 'category',

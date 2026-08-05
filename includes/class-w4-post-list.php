@@ -29,7 +29,7 @@ final class W4_Post_List {
 	 *
 	 * @var string
 	 */
-	public $version = '2.11.0';
+	public $version = '3.0.0';
 
 	/**
 	 * This will hold current class instance
@@ -188,8 +188,30 @@ final class W4_Post_List {
 	public function init_hooks() {
 		add_action( 'init', array( $this, 'load_plugin_translations' ) );
 		add_action( 'widgets_init', array( $this, 'widget_init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 2 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_scripts' ), 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ), 2 );
+	}
+
+	/**
+	 * Register front-end javascripts.
+	 *
+	 * Registration only; W4PL_List::navigation() enqueues on demand when a
+	 * rendered list actually uses [nav ajax="1"]. Registering early lets site
+	 * owners point the handle at their own file (wp_deregister_script() then
+	 * wp_register_script()) or attach script data to it; those changes stick,
+	 * because the render-time wp_enqueue_script() in
+	 * w4pl_enqueue_ajax_nav_script() no-ops for an already-registered handle.
+	 * A bare wp_deregister_script() does not suppress the script - that same
+	 * call re-registers it; suppressing it means not rendering [nav ajax="1"].
+	 */
+	public function register_frontend_scripts() {
+		wp_register_script(
+			'w4pl-ajax-nav',
+			W4PL_URL . 'assets/js/list-ajax-nav.js',
+			array(),
+			w4pl_asset_version(),
+			true
+		);
 	}
 
 	/**
@@ -208,18 +230,22 @@ final class W4_Post_List {
 	}
 
 	/**
-	 * Register stylesheets / javascripts
+	 * Register admin stylesheets / javascripts.
 	 *
-	 * All plugin assets are admin-only, so unminified sources are always
-	 * served; minification buys nothing there.
+	 * Every handle below is enqueued only from the list editor
+	 * (admin/class-admin-list-editor.php) and the documentation page
+	 * (admin/pages/class-admin-page-docs.php), so this runs on
+	 * `admin_enqueue_scripts` alone. Through 2.x it also ran on
+	 * `wp_enqueue_scripts`, registering five unused - and jQuery-dependent -
+	 * handles on every front-end request.
+	 *
+	 * These are admin assets, so unminified sources are always served;
+	 * minification buys nothing there.
+	 *
+	 * @since 3.0.0 Renamed from register_scripts(); no longer runs on the front end.
 	 */
-	public function register_scripts() {
-		$version = W4PL_VERSION;
-
-		// While debugging locally, bypass browser caches.
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$version = (string) time();
-		}
+	public function register_admin_scripts() {
+		$version = w4pl_asset_version();
 
 		wp_register_style(
 			'w4pl_form',
@@ -254,5 +280,16 @@ final class W4_Post_List {
 			$version,
 			true
 		);
+	}
+
+	/**
+	 * Register admin stylesheets / javascripts.
+	 *
+	 * Back-compat shim for code calling w4pl()->register_scripts() directly.
+	 *
+	 * @deprecated 3.0.0 Use register_admin_scripts().
+	 */
+	public function register_scripts() {
+		$this->register_admin_scripts();
 	}
 }

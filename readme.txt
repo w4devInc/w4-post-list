@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.11.0
+Stable tag: 3.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,14 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.0 =
+* Fix: AJAX pagination now works on block themes. It was built on jQuery, which block themes - Twenty Twenty-Four, Twenty Twenty-Five and most modern themes - do not load on the front end, so clicking a page number silently did nothing. Pagination is now plain JavaScript with no dependencies.
+* Improved: Lists no longer print a script tag inside your page. One small shared script loads in the footer, and only on pages where a list actually uses AJAX pagination.
+* Improved: Ctrl-click, Cmd-click and middle-click on a page number now open a new tab, as they should. The old handler hijacked them.
+* Improved: If a page request fails, the list clears its loading state and falls back to a normal page load instead of getting stuck.
+* Fix: Three admin stylesheets and two admin scripts were being registered on every front-end request. They are admin-only now - the plugin adds nothing to your front end unless a list on the page needs it.
+* Dev: register_scripts() is deprecated in favour of register_admin_scripts(); front-end assets are registered by register_frontend_scripts(). The w4pl-ajax-nav handle can be pointed at your own file with wp_deregister_script() + wp_register_script().
+* Note: this is a major version number because the front end no longer depends on jQuery. Your saved lists, templates, styles and settings are untouched, and no template changes are needed.
 = 2.11.0 =
 * New: The editor now catches mistakes at save time - non-numeric values in numeric fields are coerced with a clear warning, unknown template tags get a "did you mean" suggestion, and a template missing its loop tag warns before rendering blank.
 * New: Switching list type with an incompatible template shows an inline warning with a one-click "Replace with the default template" fix.
@@ -196,6 +204,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 3.0.0 =
+AJAX pagination now works on block themes and no longer needs jQuery. Despite the major version number, nothing about your saved lists, templates or settings changes.
 = 2.11.0 =
 Biggest update yet: 8 starter templates with one-click apply, live preview in the editor, and save-time validation with helpful warnings.
 = 2.10.0 =
