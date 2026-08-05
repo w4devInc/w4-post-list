@@ -1,8 +1,69 @@
-# Manual QA checklist — list editor JS
+# Manual QA checklist — browser JS
 
-Run before every release that touches `assets/js/list-editor.js` or the editor
-form. The automated suite cannot cover browser behavior; this list can be done
-in ~5 minutes on the docker dev site.
+Run before every release that touches `assets/js/list-editor.js`, the editor
+form, or `assets/js/list-ajax-nav.js`. The automated suite cannot cover browser
+behavior; this list can be done in ~10 minutes on the docker dev site.
+
+## Front-end AJAX pagination (M12)
+
+PHPUnit covers the server side only — that no inline jQuery is emitted, that the
+`w4pl-ajax-nav` handle registers and enqueues exactly when a rendered list uses
+`[nav ajax="1"]`, and that the wrapper markup carries the hooks the script keys
+off. **Everything below is browser-only and is not covered by any test.**
+
+Fixture: a posts list, Items per page 2 (so 3+ pages), template
+`<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav type="plain" ajax="1"]`.
+
+Test on a **block theme (Twenty Twenty-Five)** first — block themes do not
+enqueue jQuery on the front end, which is the bug this replaces — then repeat
+the first three items on a classic theme (Twenty Twenty-One).
+
+- [ ] Click "2": the items swap in place, no full page reload, no console errors
+- [ ] View source: **no inline `<script>` inside the list**, and `list-ajax-nav.js`
+      is present in the footer (not 404ing)
+- [ ] Load a page with **no** ajax list on it: `list-ajax-nav.js` is absent entirely
+      (also covered by PHPUnit — `AjaxNavTest::test_a_front_end_page_with_no_ajax_list_registers_but_does_not_enqueue_the_script`)
+- [ ] List rendered **late**, after `wp_footer` priority 20 (e.g. a snippet plugin doing
+      `add_action('wp_footer', fn() => echo do_shortcode('[postlist id="N"]'), 30)`):
+      `list-ajax-nav.js` still ships, because the enqueue prints the tag directly once
+      `wp_print_footer_scripts` has already run
+- [ ] Loading state: `.w4pl-loading` is on `#w4pl-list-<ID>` during the fetch and
+      cleared afterwards (add a temporary CSS rule to see it)
+- [ ] Paginate twice in a row: the nav inside the swapped-in markup still works
+      (the listener is delegated, so it survives the swap)
+- [ ] **Two ajax lists on one page**: paging one leaves the other untouched, and
+      `list-ajax-nav.js` is loaded exactly once
+- [ ] Non-ajax list (`[nav type="plain"]`) still does a normal full-page navigation
+- [ ] JS disabled: page links still work as plain hrefs (progressive enhancement)
+- [ ] Ctrl/Cmd-click and middle-click a page link: opens in a new tab as normal
+      (a deliberate improvement over the 2.x jQuery handler, which hijacked these)
+- [ ] Network failure mid-fetch (devtools → offline, then click "2"): the loading
+      class clears and the browser falls through to a normal page load — no dead
+      end, no unhandled promise rejection
+- [ ] Reload / deep-link `?page<ID>=2` in a fresh tab: the server renders page 2
+- [ ] Page served from a full-page cache / CDN: first click still works (no nonce
+      in the URL, so cached HTML is fine)
+- [ ] Admin **Live preview** pane with an ajax-nav list: renders with no
+      `jQuery is not defined` error in the console (the 2.x snippet threw there)
+
+## Front-end asset footprint (M12)
+
+Through 2.x, three admin stylesheets and two admin scripts were registered on
+every front-end request. They were never enqueued there, so nothing should
+change visually — but the admin side must be re-checked, because the same
+method now runs on `admin_enqueue_scripts` only.
+
+- [ ] View source on any front-end page: no `form.css`, `list-editor.css`,
+      `admin-documentation.css`, `form.js` or `list-editor.js` tags
+- [ ] Same page: **no `jquery.min.js` loaded on the plugin's account** on a block
+      theme (a classic theme may still load it for its own reasons)
+- [ ] Front end with an ajax list still looks and behaves exactly as before
+- [ ] List editor screen (`w4pl` → edit): CSS/JS still load — form styling intact,
+      CodeMirror, sortable rows, tag inserter and preview all still work
+- [ ] Documentation page (Lists → Documentation): stylesheet still loads, page is
+      not unstyled
+- [ ] Block editor: insert/edit the W4 Post List block, list picker works and the
+      server-side render preview shows the list
 
 ## CodeMirror
 

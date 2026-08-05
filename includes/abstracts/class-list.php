@@ -140,19 +140,16 @@ abstract class W4PL_List {
 			$use_ajax = isset( $attr['ajax'] ) ? (bool) $attr['ajax'] : false;
 
 			if ( $use_ajax ) {
+				/*
+				 * The `ajax-navigation` class is the whole contract: the
+				 * front-end script finds the owning `#w4pl-list-{id}` wrapper
+				 * from the clicked link and swaps its `.w4pl-inner` subtree.
+				 * One shared script handles every list on the page, so no
+				 * per-list inline JS is emitted any more.
+				 */
 				$class .= ' ajax-navigation';
-				$this->js .= ';(function($){
-					$(document).ready(function(){
-						$(document.body).on("click", "#w4pl-list-' . $this->id . ' .navigation a.page-numbers", function(){
-							var that = $(this), parent = $("#w4pl-list-' . $this->id . '");
-							parent.addClass("w4pl-loading");
-							parent.load( that.attr("href") + " #" + parent.attr("id") + " .w4pl-inner", function(e){
-								parent.removeClass("w4pl-loading");
-							});
-							return false;
-						});
-					});
-				})(jQuery);';
+
+				w4pl_enqueue_ajax_nav_script();
 			}
 
 			$return = '<div class="' . $class . '">' . $return . '</div>';
