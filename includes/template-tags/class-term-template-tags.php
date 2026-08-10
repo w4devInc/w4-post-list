@@ -28,32 +28,32 @@ class W4PL_Term_Template_Tags {
 			'term_id'      => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_id' ),
-				'desc'     => __( '<strong>Output</strong>: term id', 'w4-post-list' ),
+				'output'   => __( 'Term id', 'w4-post-list' ),
 			),
 			'term_name'    => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_name' ),
-				'desc'     => __( '<strong>Output</strong>: term name', 'w4-post-list' ),
+				'output'   => __( 'Term name', 'w4-post-list' ),
 			),
 			'term_slug'    => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_slug' ),
-				'desc'     => __( '<strong>Output</strong>: term slug', 'w4-post-list' ),
+				'output'   => __( 'Term slug', 'w4-post-list' ),
 			),
 			'term_link'    => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_link' ),
-				'desc'     => __( '<strong>Output</strong>: term page link', 'w4-post-list' ),
+				'output'   => __( 'Term archive permalink', 'w4-post-list' ),
 			),
 			'term_count'   => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_count' ),
-				'desc'     => __( '<strong>Output</strong>: term posts count', 'w4-post-list' ),
+				'output'   => __( 'Number of posts in the term', 'w4-post-list' ),
 			),
 			'term_content' => array(
 				'group'    => 'Term',
 				'callback' => array( 'W4PL_Term_Template_Tags', 'term_content' ),
-				'desc'     => __( '<strong>Output</strong>: term description', 'w4-post-list' ),
+				'output'   => __( 'Term description', 'w4-post-list' ),
 			),
 		);
 
