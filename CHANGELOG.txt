@@ -1,4 +1,10 @@
 == Changelog ==
+= 3.0.2 =
+* Tested up to WordPress 7.0.4.
+= 3.0.1 =
+* Improved: The template tag reference (Post List - Docs - Template tags) now shows the Output column for every tag. All Term and User tags and seven Post tags were missing it, with their details buried as prose in the Parameters column.
+* Improved: Tags with multiple parameters (e.g. [user_meta], [user_avatar], [post_image]) now list each parameter separately with its own description and accepted values.
+* Tested up to WordPress 7.0.3.
 = 3.0.0 =
 * Fix: AJAX pagination now works on block themes. It was built on jQuery, which block themes - Twenty Twenty-Four, Twenty Twenty-Five and most modern themes - do not load on the front end, so clicking a page number silently did nothing. Pagination is now plain JavaScript with no dependencies.
 * Improved: Lists no longer print a script tag inside your page. One small shared script loads in the footer, and only on pages where a list actually uses AJAX pagination.
