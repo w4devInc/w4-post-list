@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
-Tested up to: 7.0.3
+Tested up to: 7.0.4
 Requires PHP: 7.4
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.2 =
+* Tested up to WordPress 7.0.4.
 = 3.0.1 =
 * Improved: The template tag reference (Post List - Docs - Template tags) now shows the Output column for every tag. All Term and User tags and seven Post tags were missing it, with their details buried as prose in the Parameters column.
 * Improved: Tags with multiple parameters (e.g. [user_meta], [user_avatar], [post_image]) now list each parameter separately with its own description and accepted values.
