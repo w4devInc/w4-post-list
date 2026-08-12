@@ -84,6 +84,7 @@ class W4PL_Post_Template_Tags {
 			'post_title'           => array(
 				'group'      => 'Post',
 				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_title' ),
+				'output'     => __( 'Post title', 'w4-post-list' ),
 				'parameters' => array(
 					'wordlimit' => array(
 						'desc' => __( 'Limit number of words to display', 'w4-post-list' ),
@@ -314,79 +315,113 @@ class W4PL_Post_Template_Tags {
 				),
 			),
 			'post_image'           => array(
-				'group'    => 'Post',
-				'code'     => '[post_image use_fallback="1"]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'post_image' ),
-				'desc'     => __(
-					'<strong>Output</strong>: <strong>first</strong> or <strong>last</strong> image source ( src="" ) from post content
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>position</strong> = ( first|last )
-				<br /><strong>output</strong> = ( text|number ),
-				<br />----"src" - will return src of the image,
-				<br />----by default it will return image html
-				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
-				<br /><strong>width</strong> = ( number ), set image width attr ( image scaling, not resizing )
-				<br /><strong>height</strong> = ( number ), set image height attr ( image scaling, not resizing )
-				<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use <code>[featured_image]</code> shortcode as fallback while post content dont have any images.',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[post_image use_fallback="1"]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_image' ),
+				'output'     => __( 'The first or last image found in the post content', 'w4-post-list' ),
+				'parameters' => array(
+					'position'     => array(
+						'desc'    => __( 'Which image in the content to use', 'w4-post-list' ),
+						'choices' => array( 'first', 'last' ),
+					),
+					'output'       => array(
+						'desc'    => __( 'Return the image src instead of the full img tag', 'w4-post-list' ),
+						'choices' => array( 'src' ),
+					),
+					'class'        => array(
+						'desc' => __( 'Class name for the img tag', 'w4-post-list' ),
+					),
+					'width'        => array(
+						'desc' => __( 'Sets the width attribute — scales the image, does not resize it', 'w4-post-list' ),
+					),
+					'height'       => array(
+						'desc' => __( 'Sets the height attribute — scales the image, does not resize it', 'w4-post-list' ),
+					),
+					'use_fallback' => array(
+						'desc'    => __( 'Fall back to [featured_image] when the content has no images', 'w4-post-list' ),
+						'choices' => array( '0', '1' ),
+					),
 				),
 			),
 			'post_meta'            => array(
-				'group'    => 'Post',
-				'code'     => '[post_meta key="" multiple="0"]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'post_meta' ),
-				'desc'     => __(
-					'<strong>Output</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>key</strong> = ( text|number ), meta key name
-				<br /><strong>sub_key</strong> = ( text|number ), if meta value is array|object, display a specific value by it\'s key
-				<br /><strong>multiple</strong> = ( 0|1 ), display meta value at multiple occurence
-				<br /><strong>sep</strong> = ( text ), separate array meta value into string',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[post_meta key="" multiple="0"]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_meta' ),
+				'output'     => __( 'Post meta value. An array value is joined into a string.', 'w4-post-list' ),
+				'parameters' => array(
+					'key'      => array(
+						'desc' => __( 'Meta key name', 'w4-post-list' ),
+					),
+					'sub_key'  => array(
+						'desc' => __( 'When the meta value is an array or object, display one value by its key', 'w4-post-list' ),
+					),
+					'multiple' => array(
+						'desc'    => __( 'Display every occurrence of the meta value rather than the first', 'w4-post-list' ),
+						'choices' => array( '0', '1' ),
+					),
+					'sep'      => array(
+						'desc' => __( 'Separator used when joining an array meta value into a string', 'w4-post-list' ),
+					),
 				),
 			),
 			'post_meta_date'       => array(
-				'group'    => 'Post',
-				'code'     => '[post_meta_date key=""]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'post_meta_date' ),
-				'desc'     => __(
-					'<strong>Output</strong>: post meta value. if return value is an array, it will be migrated to string by using explode function
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>key</strong> = ( text|number ), meta key name',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[post_meta_date key=""]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_meta_date' ),
+				'output'     => __( 'Post meta value read as a date', 'w4-post-list' ),
+				'parameters' => array(
+					'key' => array(
+						'desc' => __( 'Meta key name', 'w4-post-list' ),
+					),
 				),
 			),
 			'post_terms'           => array(
-				'group'    => 'Post',
-				'code'     => '[post_terms tax="category" sep=", "]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'post_terms' ),
-				'desc'     => __(
-					'<strong>Output</strong>: post type terms. if return value is an array, it will be migrated to string by using explode function
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>tax</strong> = ( string ), taxonomy name
-				<br /><strong>sep</strong> = ( string ), separate array meta value into string
-				<br /><strong>return</strong> = ( name|slug ), return plain name or slug',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[post_terms tax="category" sep=", "]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'post_terms' ),
+				'output'     => __( 'The post\'s terms in a taxonomy, joined into a string', 'w4-post-list' ),
+				'parameters' => array(
+					'tax'    => array(
+						'desc' => __( 'Taxonomy name', 'w4-post-list' ),
+					),
+					'sep'    => array(
+						'desc' => __( 'Separator placed between terms', 'w4-post-list' ),
+					),
+					'return' => array(
+						'desc'    => __( 'Return the plain term name or its slug', 'w4-post-list' ),
+						'choices' => array( 'name', 'slug' ),
+					),
 				),
 			),
 			'attachment_thumbnail' => array(
-				'group'    => 'Post',
-				'code'     => '[attachment_thumbnail size=""]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'attachment_thumbnail' ),
-				'desc'     => __(
-					'<strong>Output</strong>: if the post type is attachment, the attached file thumb is displayed.
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>id</strong> = ( string ), attachment id
-				<br /><strong>meta_key</strong> = ( string ), retrieve attachment id from meta value
-				<br /><strong>size</strong> = ( string ), image size
-				<br /><strong>class</strong> = ( string ), class name for the image ( &lt;img /&gt; ) tag
-				<br /><strong>width</strong> = ( number ), image width
-				<br /><strong>height</strong> = ( number ), image height
-				<br /><strong>return</strong> = ( text|number ),
-				<br />----"src" - will return src of the attachment,
-				<br />----"id" - will return id of the attachment,
-				<br />----by default it will return image html',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[attachment_thumbnail size=""]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'attachment_thumbnail' ),
+				'output'     => __( 'Thumbnail of the attached file, when the post type is attachment', 'w4-post-list' ),
+				'parameters' => array(
+					'id'       => array(
+						'desc' => __( 'Attachment id', 'w4-post-list' ),
+					),
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- the name of a documented shortcode attribute, not a query argument.
+					'meta_key' => array(
+						'desc' => __( 'Read the attachment id out of this meta value instead', 'w4-post-list' ),
+					),
+					'size'     => array(
+						'desc' => __( 'Image size', 'w4-post-list' ),
+					),
+					'class'    => array(
+						'desc' => __( 'Class name for the img tag', 'w4-post-list' ),
+					),
+					'width'    => array(
+						'desc' => __( 'Image width', 'w4-post-list' ),
+					),
+					'height'   => array(
+						'desc' => __( 'Image height', 'w4-post-list' ),
+					),
+					'return'   => array(
+						'desc'    => __( 'Return the attachment src or its id instead of the full img tag', 'w4-post-list' ),
+						'choices' => array( 'src', 'id' ),
+					),
 				),
 			),
 			'attachment_url'       => array(
@@ -449,14 +484,14 @@ class W4PL_Post_Template_Tags {
 				'output'   => __( 'content template', 'w4-post-list' ),
 			),
 			'more'                 => array(
-				'group'    => 'Post',
-				'code'     => '[more text="Continue Reading"]',
-				'callback' => array( 'W4PL_Post_Template_Tags', 'template_more' ),
-				'desc'     => __(
-					'<strong>Output</strong>: more link template
-				<br /><br /><strong>Attributes:</strong>
-				<br /><strong>text</strong> = ( string ), text to be displayed',
-					'w4-post-list'
+				'group'      => 'Post',
+				'code'       => '[more text="Continue Reading"]',
+				'callback'   => array( 'W4PL_Post_Template_Tags', 'template_more' ),
+				'output'     => __( 'More link template', 'w4-post-list' ),
+				'parameters' => array(
+					'text' => array(
+						'desc' => __( 'Text to display in the link', 'w4-post-list' ),
+					),
 				),
 			),
 
