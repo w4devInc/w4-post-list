@@ -1,4 +1,8 @@
 == Changelog ==
+= 3.0.4 =
+* Fix: Choosing "Term order" as a term list's Orderby caused a database error (Unknown column 'term_order') and an empty list. WordPress core has no such column — only term-ordering plugins add one — so the option has been removed. Existing lists saved with it now order by name instead.
+= 3.0.3 =
+* Tested up to WordPress 7.1.
 = 3.0.2 =
 * Tested up to WordPress 7.0.4.
 = 3.0.1 =
