@@ -115,6 +115,30 @@ class ListRenderingTest extends W4PL_Snapshot_TestCase {
 	}
 
 	/**
+	 * Regression guard: 'term_order' relied on a wp_terms column core does not
+	 * have (only ordering plugins add it), producing "Unknown column
+	 * 'TB.term_order'" and an empty list. Saved lists that still carry the
+	 * value must fall back to name ordering and render.
+	 */
+	public function test_terms_list_with_legacy_term_order_orderby_renders() {
+		$html = $this->render_list(
+			array(
+				'list_type'      => 'terms',
+				'terms_taxonomy' => 'category',
+				'terms_orderby'  => 'term_order',
+				'terms_order'    => 'DESC',
+			)
+		);
+
+		$this->assertStringContainsString( 'Alpha', $html );
+		$this->assertStringContainsString( 'Beta', $html );
+	}
+
+	public function test_term_order_is_not_offered_as_terms_orderby_option() {
+		$this->assertArrayNotHasKey( 'term_order', W4PL_Config::terms_orderby_options() );
+	}
+
+	/**
 	 * Regression guard for the reported crash class: unit suffixes in
 	 * template tag attributes (post_thumbnail width="50px") must never fatal.
 	 */

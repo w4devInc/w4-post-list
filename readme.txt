@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.4 =
+* Fix: Choosing "Term order" as a term list's Orderby caused a database error (Unknown column 'term_order') and an empty list. WordPress core has no such column — only term-ordering plugins add one — so the option has been removed. Existing lists saved with it now order by name instead.
 = 3.0.3 =
 * Tested up to WordPress 7.1.
 = 3.0.2 =
