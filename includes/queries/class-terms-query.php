@@ -97,7 +97,12 @@ class W4PL_Terms_Query extends W4PL_Query {
 				$term_id__in   = implode( ',', array_map( 'absint', $this->get( 'term_id__in' ) ) );
 				$this->_order .= " ORDER BY FIELD( TB.term_id, $term_id__in )";
 			} else {
-				if ( in_array( $orderby, array( 'term_id', 'name', 'slug', 'term_group', 'term_order' ) ) ) {
+				// Legacy saved lists: wp_terms has no term_order column in core.
+				if ( 'term_order' === $orderby ) {
+					$orderby = 'name';
+				}
+
+				if ( in_array( $orderby, array( 'term_id', 'name', 'slug', 'term_group' ) ) ) {
 					$orderby = "TB.{$orderby}";
 				} elseif ( in_array( $orderby, array( 'parent', 'count' ) ) ) {
 					$orderby = "TT1.{$orderby}";

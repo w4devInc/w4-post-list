@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2026-07-27 21:28:30+00:00\n"
+"POT-Creation-Date: 2026-08-24 10:04:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,10 +18,26 @@ msgstr ""
 msgid "No items found."
 msgstr ""
 
-#: admin/class-admin-list-editor.php:61
+#: admin/class-admin-list-editor.php:65
 msgid ""
 "Could not refresh the form. Your entries are unchanged — check your "
 "connection and try again."
+msgstr ""
+
+#: admin/class-admin-list-editor.php:67
+msgid "Rendering preview…"
+msgstr ""
+
+#: admin/class-admin-list-editor.php:68
+msgid "Preview failed — check your connection and try again."
+msgstr ""
+
+#: admin/class-admin-list-editor.php:69
+msgid "Hide preview"
+msgstr ""
+
+#: admin/class-admin-list-editor.php:70 admin/class-admin-preview.php:91
+msgid "Preview"
 msgstr ""
 
 #: admin/class-admin-lists-metaboxes.php:53
@@ -108,86 +124,101 @@ msgstr ""
 msgid "List scheduled. Shortcode %s"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:79
+#: admin/class-admin-onboarding.php:67
+msgid ""
+"You have been building lists with W4 Post List for a while — a short review "
+"on wordpress.org helps other people find the plugin, and helps us keep "
+"improving it."
+msgstr ""
+
+#: admin/class-admin-onboarding.php:70
+msgid "Leave a review"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:71
+msgid "No thanks / already did"
+msgstr ""
+
+#: admin/class-admin-onboarding.php:187
 msgid "Example: Recent Posts"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:120
+#: admin/class-admin-onboarding.php:228
 msgid "Open the example list"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:123 admin/class-admin-onboarding.php:221
+#: admin/class-admin-onboarding.php:231 admin/class-admin-onboarding.php:329
 msgid "Create your first list"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:131
+#: admin/class-admin-onboarding.php:239
 msgid "Welcome to W4 Post List — three steps to your first list:"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:134
+#: admin/class-admin-onboarding.php:242
 msgid "Create a list (or open the ready-made example) and choose what it shows."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:135
+#: admin/class-admin-onboarding.php:243
 msgid "Publish it."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:136
+#: admin/class-admin-onboarding.php:244
 msgid ""
 "Place it on any page with the W4 Post List block, or paste its [postlist] "
 "shortcode."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:140
+#: admin/class-admin-onboarding.php:248
 msgid "Read the guide"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:141
+#: admin/class-admin-onboarding.php:249
 msgid "Dismiss"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:217
+#: admin/class-admin-onboarding.php:325
 msgid "No lists yet."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:218
+#: admin/class-admin-onboarding.php:326
 msgid ""
 "A list is a saved query (posts, terms or users) plus a template that "
 "controls its HTML. Create one, publish it, then place it anywhere with the "
 "W4 Post List block or the [postlist] shortcode."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:222
+#: admin/class-admin-onboarding.php:330
 msgid "Getting started guide"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:240
+#: admin/class-admin-onboarding.php:348
 msgid "How W4 Post List works"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:242
+#: admin/class-admin-onboarding.php:350
 msgid "Create a list and pick a List Type (Posts, Terms, Users, or combined)."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:243
+#: admin/class-admin-onboarding.php:351
 msgid ""
 "Configure what to show in the section named after your list type. The "
 "advanced query sections are optional."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:244
+#: admin/class-admin-onboarding.php:352
 msgid ""
 "Publish. A default template is applied automatically; edit the Template "
 "section for full HTML control."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:245
+#: admin/class-admin-onboarding.php:353
 msgid ""
 "Place the list with the W4 Post List block, its [postlist] shortcode (see "
 "the Shortcode column), or the widget."
 msgstr ""
 
-#: admin/class-admin-onboarding.php:247
+#: admin/class-admin-onboarding.php:355
 msgid ""
 "If a list renders nothing: check it is Published, the shortcode ID matches, "
 "and the template keeps its loop tags."
@@ -197,15 +228,61 @@ msgstr ""
 msgid "W4 Post List"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:260
+#: admin/class-admin-onboarding.php:368
 msgid "More help"
 msgstr ""
 
-#: admin/class-admin-onboarding.php:261
+#: admin/class-admin-onboarding.php:369
 #: admin/pages/class-admin-page-docs.php:32
 #: admin/pages/class-admin-page-docs.php:33
 #: admin/pages/class-admin-page-docs.php:56
 msgid "Documentation"
+msgstr ""
+
+#: admin/class-admin-preview.php:61
+msgid "You do not have permission to preview this list."
+msgstr ""
+
+#: admin/class-admin-preview.php:96
+msgid "List preview"
+msgstr ""
+
+#: admin/class-admin-preview.php:99
+msgid ""
+"The preview renders your unsaved settings without your theme's styles, so "
+"spacing and fonts will differ on the real page."
+msgstr ""
+
+#: admin/class-admin-validation.php:63
+#. translators: 1: field name, 2: entered value, 3: value used instead
+msgid "\"%1$s\" expects a number; \"%2$s\" was read as %3$s."
+msgstr ""
+
+#: admin/class-admin-validation.php:66
+msgid "empty"
+msgstr ""
+
+#: admin/class-admin-validation.php:131
+#. translators: 1: unknown tag, 2: suggested tag
+msgid ""
+"Template tag [%1$s] is not registered and will print as plain text — did "
+"you mean [%2$s]?"
+msgstr ""
+
+#: admin/class-admin-validation.php:138
+#. translators: %s: unknown tag
+msgid "Template tag [%s] is not registered and will print as plain text."
+msgstr ""
+
+#: admin/class-admin-validation.php:150
+#. translators: 1: loop tag, 2: list type label
+msgid ""
+"The template has no [%1$s]…[/%1$s] loop, so a \"%2$s\" list will render "
+"nothing. Add the loop or pick a starter template."
+msgstr ""
+
+#: admin/class-admin-validation.php:202
+msgid "Your list was saved, with warnings:"
 msgstr ""
 
 #: admin/pages/class-admin-page-docs.php:48
@@ -217,14 +294,14 @@ msgid "Usage"
 msgstr ""
 
 #: admin/pages/class-admin-page-docs.php:50
-#: admin/pages/views/html-getting-started.php:76
+#: admin/pages/views/html-getting-started.php:78
 #: admin/views/html-list-edit-form.php:58
 msgid "Template"
 msgstr ""
 
 #: admin/pages/class-admin-page-docs.php:51
-#: admin/pages/views/html-getting-started.php:77
-#: admin/views/html-list-edit-form.php:88
+#: admin/pages/views/html-getting-started.php:79
+#: admin/views/html-list-edit-form.php:112
 msgid "Template Tags"
 msgstr ""
 
@@ -274,44 +351,57 @@ msgid ""
 "skip them entirely for your first list."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:36
+#: admin/pages/views/html-getting-started.php:33
+msgid ""
+"For a ready-made design, pick a layout from \"Start from a template\" — it "
+"copies editable markup and styles into the Template and Style sections and "
+"sets any options it needs (like Group by)."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:37
 msgid "3. Publish"
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:39
+#: admin/pages/views/html-getting-started.php:40
 msgid ""
 "A default template is applied automatically, so you do not need to touch "
 "the Template section to get output. Click Publish."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:43
+#: admin/pages/views/html-getting-started.php:41
+msgid ""
+"Use the Preview button under the editor at any time to see the rendered "
+"list without saving."
+msgstr ""
+
+#: admin/pages/views/html-getting-started.php:45
 msgid "4. Place it on your site"
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:46
+#: admin/pages/views/html-getting-started.php:48
 msgid "Three ways to display your list:"
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:50
+#: admin/pages/views/html-getting-started.php:52
 msgid "Block: add the \"W4 Post List\" block in the editor and pick your list."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:56
+#: admin/pages/views/html-getting-started.php:58
 #. translators: %s: example shortcode in code tag
 msgid ""
 "Shortcode: paste %s into any content. Every list's ready-made shortcode is "
 "shown in the Shortcode column on the All Lists screen."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:62
+#: admin/pages/views/html-getting-started.php:64
 msgid "Widget: add the W4 Post List widget to any widget area."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:67
+#: admin/pages/views/html-getting-started.php:69
 msgid "Customizing the output"
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:73
+#: admin/pages/views/html-getting-started.php:75
 #. translators: 1: example template tag, 2: example template tag, 3: link to
 #. the Template tab, 4: link to the Template Tags tab
 msgid ""
@@ -321,28 +411,28 @@ msgid ""
 "reference."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:83
+#: admin/pages/views/html-getting-started.php:85
 msgid "If your list shows nothing"
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:86
+#: admin/pages/views/html-getting-started.php:88
 msgid "Make sure the list is Published, not Draft."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:87
+#: admin/pages/views/html-getting-started.php:89
 msgid ""
 "Check the shortcode ID matches the list — copy it from the Shortcode column "
 "on the All Lists screen."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:92
+#: admin/pages/views/html-getting-started.php:94
 #. translators: 1: posts loop tag, 2: terms loop tag, 3: users loop tag
 msgid ""
 "If you edited the template, it must keep the loop tags for its list type: "
 "%1$s for posts, %2$s for terms, %3$s for users."
 msgstr ""
 
-#: admin/pages/views/html-getting-started.php:99
+#: admin/pages/views/html-getting-started.php:101
 msgid "Re-check the query options — the list may simply have matched no items."
 msgstr ""
 
@@ -393,40 +483,47 @@ msgid "Examples"
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:20
-msgid "Post list"
+msgid ""
+"Tip: the \"Start from a template\" picker in the list editor copies "
+"ready-made layouts like these (cards, archives, directories) straight into "
+"your Template and Style fields."
 msgstr ""
 
 #: admin/pages/views/html-template-examples.php:23
+msgid "Post list"
+msgstr ""
+
+#: admin/pages/views/html-template-examples.php:26
 msgid ""
 "Everything between [posts] and [/posts] repeats once for every post — the "
 "per-item wrapper makes that easy to see:"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:36
+#: admin/pages/views/html-template-examples.php:39
 msgid ""
 "Post list (with excerpt limited to 20 words, post class on the post wrapper "
 "element)"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:46
+#: admin/pages/views/html-template-examples.php:49
 msgid ""
 "Post list grouped by year (set the \"Group by\" option to Year while using "
 "this)"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:65
+#: admin/pages/views/html-template-examples.php:68
 msgid "Category list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:75
+#: admin/pages/views/html-template-examples.php:78
 msgid "Category + Post list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:91
+#: admin/pages/views/html-template-examples.php:94
 msgid "User list"
 msgstr ""
 
-#: admin/pages/views/html-template-examples.php:100
+#: admin/pages/views/html-template-examples.php:103
 msgid "User + Post list"
 msgstr ""
 
@@ -504,7 +601,18 @@ msgid ""
 "[/posts]) repeats once for every item — put your per-item markup there."
 msgstr ""
 
-#: admin/views/html-list-edit-form.php:87
+#: admin/views/html-list-edit-form.php:98
+#. translators: %s: loop tag name
+msgid ""
+"This template has no [%1$s]…[/%1$s] loop, so this list type will render "
+"nothing."
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:103
+msgid "Replace with the default template"
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:111
 msgid "Template Example"
 msgstr ""
 
@@ -530,7 +638,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: includes/abstracts/class-list.php:200 includes/abstracts/class-list.php:231
+#: includes/abstracts/class-list.php:197 includes/abstracts/class-list.php:228
 msgid "Unknown"
 msgstr ""
 
@@ -544,7 +652,7 @@ msgid "Quering for table is not allowed.:%s"
 msgstr ""
 
 #: includes/class-config.php:28 includes/class-config.php:262
-#: includes/class-config.php:273
+#: includes/class-config.php:272
 msgid "ID"
 msgstr ""
 
@@ -649,6 +757,7 @@ msgid "Users + Posts"
 msgstr ""
 
 #: includes/class-config.php:254
+#: includes/template-tags/class-term-template-tags.php:31
 msgid "Term id"
 msgstr ""
 
@@ -660,31 +769,27 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#: includes/class-config.php:266
-msgid "Term order"
-msgstr ""
-
-#: includes/class-config.php:267 includes/helpers/class-helper-terms.php:61
+#: includes/class-config.php:266 includes/helpers/class-helper-terms.php:61
 msgid "Include terms"
 msgstr ""
 
-#: includes/class-config.php:274
+#: includes/class-config.php:273
 msgid "Username"
 msgstr ""
 
-#: includes/class-config.php:275
+#: includes/class-config.php:274
 msgid "Nicename"
 msgstr ""
 
-#: includes/class-config.php:276
+#: includes/class-config.php:275
 msgid "Email"
 msgstr ""
 
-#: includes/class-config.php:277
+#: includes/class-config.php:276
 msgid "Registration time"
 msgstr ""
 
-#: includes/class-config.php:278
+#: includes/class-config.php:277
 msgid "Display name"
 msgstr ""
 
@@ -716,6 +821,10 @@ msgstr ""
 msgid "No lists found in Trash"
 msgstr ""
 
+#: includes/class-starter-templates.php:142
+msgid "&mdash; Start from a template &mdash;"
+msgstr ""
+
 #: includes/class-widget-postlist.php:25
 msgid "Display lists created with W4 Post List"
 msgstr ""
@@ -734,6 +843,87 @@ msgstr ""
 msgid "Create a new one"
 msgstr ""
 
+#: includes/data/starter-templates.php:17
+#: includes/helpers/class-helper-presets.php:225
+msgid "Simple list"
+msgstr ""
+
+#: includes/data/starter-templates.php:18
+msgid ""
+"A plain bulleted list of post titles you can click, with page navigation at "
+"the bottom."
+msgstr ""
+
+#: includes/data/starter-templates.php:45
+msgid "Thumbnail cards"
+msgstr ""
+
+#: includes/data/starter-templates.php:46
+msgid ""
+"A grid of cards showing each post's picture, title, and a short preview, "
+"the grid adapts to the available width, one card per row on phones."
+msgstr ""
+
+#: includes/data/starter-templates.php:102
+msgid "Title & date list"
+msgstr ""
+
+#: includes/data/starter-templates.php:103
+msgid ""
+"A clean archive-style list where each post title sits on the left and its "
+"publish date on the right, separated by thin divider lines."
+msgstr ""
+
+#: includes/data/starter-templates.php:144
+msgid "Year archive"
+msgstr ""
+
+#: includes/data/starter-templates.php:145
+msgid ""
+"A classic blog archive that groups your posts under big year headings, with "
+"each year showing a simple list of clickable post titles and dates."
+msgstr ""
+
+#: includes/data/starter-templates.php:201
+msgid "Category index"
+msgstr ""
+
+#: includes/data/starter-templates.php:202
+msgid ""
+"A neat multi-column index of your categories, each shown as a clickable "
+"name with a small badge indicating how many posts it contains."
+msgstr ""
+
+#: includes/data/starter-templates.php:249
+msgid "Category index with posts"
+msgstr ""
+
+#: includes/data/starter-templates.php:250
+msgid ""
+"An organized index where each category appears as a bold heading with its "
+"posts listed underneath as clickable links."
+msgstr ""
+
+#: includes/data/starter-templates.php:301
+msgid "User directory cards"
+msgstr ""
+
+#: includes/data/starter-templates.php:302
+msgid ""
+"A member directory shown as a grid of centered cards, each with the "
+"person's photo, their name linked to their posts, and a short bio."
+msgstr ""
+
+#: includes/data/starter-templates.php:349
+msgid "Author sections"
+msgstr ""
+
+#: includes/data/starter-templates.php:350
+msgid ""
+"Each author appears as a heading row with their photo and name, followed by "
+"a short list of their latest posts you can click to read."
+msgstr ""
+
 #: includes/factories/class-list-factory.php:22
 msgid "Invalid list id"
 msgstr ""
@@ -743,7 +933,7 @@ msgstr ""
 msgid "Invalid list type"
 msgstr ""
 
-#: includes/functions-form.php:63
+#: includes/functions-form.php:65
 msgid "Update"
 msgstr ""
 
@@ -1084,25 +1274,39 @@ msgstr ""
 msgid "Group Order"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:41
-msgid "Preset"
-msgstr ""
-
 #: includes/helpers/class-helper-presets.php:45
-msgid ""
-"Presets are ready-made templates. When one is selected it controls the "
-"output, and the Template and Style sections are hidden."
+msgid "Preset (legacy)"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:183
+#: includes/helpers/class-helper-presets.php:49
+msgid ""
+"This list uses a legacy preset that controls its output; the Template and "
+"Style sections are hidden. Select \"Custom\" to take manual control."
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:78
+#. translators: %s: starter template label
+msgid ""
+"\"%s\" applied — this is its markup, and its styles are in the Style "
+"section. Edit anything."
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:90
+msgid "Start from a template"
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:94
+msgid ""
+"Copies a ready-made layout into the Template and Style sections below, "
+"replacing their current content — then edit freely. Some templates also set "
+"related options (like Group by)."
+msgstr ""
+
+#: includes/helpers/class-helper-presets.php:224
 msgid "Custom"
 msgstr ""
 
-#: includes/helpers/class-helper-presets.php:184
-msgid "Simple list"
-msgstr ""
-
-#: includes/helpers/class-helper-presets.php:188
+#: includes/helpers/class-helper-presets.php:229
 msgid "Posts with Thumbnail"
 msgstr ""
 
@@ -1272,373 +1476,394 @@ msgstr ""
 msgid "HTML classes of post"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:89
-#: includes/template-tags/class-post-template-tags.php:242
+#: includes/template-tags/class-post-template-tags.php:87
+msgid "Post title"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:90
+#: includes/template-tags/class-post-template-tags.php:243
 msgid "Limit number of words to display"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:92
+#: includes/template-tags/class-post-template-tags.php:93
 msgid "Limit number of characters to display"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:99
+#: includes/template-tags/class-post-template-tags.php:100
 msgid "Post name"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:104
+#: includes/template-tags/class-post-template-tags.php:105
 msgid "Post comment form permalink"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:109
+#: includes/template-tags/class-post-template-tags.php:110
 msgid "Number of approved comments"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:115
+#: includes/template-tags/class-post-template-tags.php:116
 msgid ""
 "Unique post date. Ignored on current item if previous post date and curent "
 "post date is same ( date formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:118
-#: includes/template-tags/class-post-template-tags.php:121
-#: includes/template-tags/class-post-template-tags.php:132
-#: includes/template-tags/class-post-template-tags.php:143
-#: includes/template-tags/class-post-template-tags.php:154
-#: includes/template-tags/class-post-template-tags.php:165
+#: includes/template-tags/class-post-template-tags.php:119
+#: includes/template-tags/class-post-template-tags.php:122
+#: includes/template-tags/class-post-template-tags.php:133
+#: includes/template-tags/class-post-template-tags.php:144
+#: includes/template-tags/class-post-template-tags.php:155
+#: includes/template-tags/class-post-template-tags.php:166
 msgid "php datetime format"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:129
+#: includes/template-tags/class-post-template-tags.php:130
 msgid "Post date ( date formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:140
+#: includes/template-tags/class-post-template-tags.php:141
 msgid "Post date ( time formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:151
+#: includes/template-tags/class-post-template-tags.php:152
 msgid "Post modified date ( date formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:162
+#: includes/template-tags/class-post-template-tags.php:163
 msgid "Post modified date ( time formatted )"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:173
+#: includes/template-tags/class-post-template-tags.php:174
 msgid "Post author's meta"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:176
+#: includes/template-tags/class-post-template-tags.php:177
 msgid "name of the meta information"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:212
+#: includes/template-tags/class-post-template-tags.php:213
 msgid "Post author's name"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:217
+#: includes/template-tags/class-post-template-tags.php:218
 msgid "Post author's link"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:222
+#: includes/template-tags/class-post-template-tags.php:223
 msgid "Post author's email address"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:228
+#: includes/template-tags/class-post-template-tags.php:229
 msgid "Post author's avatar"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:231
+#: includes/template-tags/class-post-template-tags.php:232
 msgid "avatar image size"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:239
+#: includes/template-tags/class-post-template-tags.php:240
 msgid "Post excerpt / short description"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:245
+#: includes/template-tags/class-post-template-tags.php:246
 msgid "Remove shortcodes from excerpt text. Use strip_shortcode=\"1\" to enable."
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:252
+#: includes/template-tags/class-post-template-tags.php:253
 msgid "Post content"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:258
-#: includes/template-tags/class-post-template-tags.php:289
+#: includes/template-tags/class-post-template-tags.php:259
+#: includes/template-tags/class-post-template-tags.php:290
 msgid ""
 "( text or number ) based on the return attribute & only if the post has a "
 "featured image assigned"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:261
-#: includes/template-tags/class-post-template-tags.php:292
+#: includes/template-tags/class-post-template-tags.php:262
+#: includes/template-tags/class-post-template-tags.php:293
 msgid ""
 "\"src\" - will return src of the image, \"id\" - will return id of the "
 "image, by default it will return image html"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:269
-#: includes/template-tags/class-post-template-tags.php:300
+#: includes/template-tags/class-post-template-tags.php:270
+#: includes/template-tags/class-post-template-tags.php:301
 msgid "( string ), class name for the image ( &lt;img /&gt; ) tag"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:272
+#: includes/template-tags/class-post-template-tags.php:273
 msgid "( string ), image size"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:275
+#: includes/template-tags/class-post-template-tags.php:276
 msgid "( number ), image width"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:278
+#: includes/template-tags/class-post-template-tags.php:279
 msgid "( number ), image height"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:281
+#: includes/template-tags/class-post-template-tags.php:282
 msgid "( text ), default placeholder text if post doesnt have featured image"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:303
+#: includes/template-tags/class-post-template-tags.php:304
 msgid "( string ), thumbnail size"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:306
+#: includes/template-tags/class-post-template-tags.php:307
 msgid "( number ), thumbnail width"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:309
+#: includes/template-tags/class-post-template-tags.php:310
 msgid "( number ), thumbnail height"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:312
+#: includes/template-tags/class-post-template-tags.php:313
 msgid "( text ), default placeholder text if post doesnt have thumbnail"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:320
-msgid ""
-"<strong>Output</strong>: <strong>first</strong> or <strong>last</strong> "
-"image source ( src=\"\" ) from post content\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>position</strong> = ( first|last )\n"
-"\t\t\t\t<br /><strong>output</strong> = ( text|number ),\n"
-"\t\t\t\t<br />----\"src\" - will return src of the image,\n"
-"\t\t\t\t<br />----by default it will return image html\n"
-"\t\t\t\t<br /><strong>class</strong> = ( string ), class name for the image "
-"( &lt;img /&gt; ) tag\n"
-"\t\t\t\t<br /><strong>width</strong> = ( number ), set image width attr ( "
-"image scaling, not resizing )\n"
-"\t\t\t\t<br /><strong>height</strong> = ( number ), set image height attr ( "
-"image scaling, not resizing )\n"
-"\t\t\t\t<br /><strong>use_fallback</strong> = ( true|false ), set 1 to use "
-"<code>[featured_image]</code> shortcode as fallback while post content dont "
-"have any images."
+#: includes/template-tags/class-post-template-tags.php:321
+msgid "The first or last image found in the post content"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:324
+msgid "Which image in the content to use"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:328
+msgid "Return the image src instead of the full img tag"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:332
+#: includes/template-tags/class-post-template-tags.php:413
+msgid "Class name for the img tag"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:335
+msgid "Sets the width attribute — scales the image, does not resize it"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:338
-msgid ""
-"<strong>Output</strong>: post meta value. if return value is an array, it "
-"will be migrated to string by using explode function\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>key</strong> = ( text|number ), meta key name\n"
-"\t\t\t\t<br /><strong>sub_key</strong> = ( text|number ), if meta value is "
-"array|object, display a specific value by it's key\n"
-"\t\t\t\t<br /><strong>multiple</strong> = ( 0|1 ), display meta value at "
-"multiple occurence\n"
-"\t\t\t\t<br /><strong>sep</strong> = ( text ), separate array meta value "
-"into string"
+msgid "Sets the height attribute — scales the image, does not resize it"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:352
-msgid ""
-"<strong>Output</strong>: post meta value. if return value is an array, it "
-"will be migrated to string by using explode function\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>key</strong> = ( text|number ), meta key name"
+#: includes/template-tags/class-post-template-tags.php:341
+msgid "Fall back to [featured_image] when the content has no images"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:350
+msgid "Post meta value. An array value is joined into a string."
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:353
+#: includes/template-tags/class-post-template-tags.php:374
+#: includes/template-tags/class-user-template-tags.php:68
+msgid "Meta key name"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:356
+msgid "When the meta value is an array or object, display one value by its key"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:359
+#: includes/template-tags/class-user-template-tags.php:71
+msgid "Display every occurrence of the meta value rather than the first"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:363
-msgid ""
-"<strong>Output</strong>: post type terms. if return value is an array, it "
-"will be migrated to string by using explode function\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>tax</strong> = ( string ), taxonomy name\n"
-"\t\t\t\t<br /><strong>sep</strong> = ( string ), separate array meta value "
-"into string\n"
-"\t\t\t\t<br /><strong>return</strong> = ( name|slug ), return plain name or "
-"slug"
+#: includes/template-tags/class-user-template-tags.php:75
+msgid "Separator used when joining an array meta value into a string"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:376
-msgid ""
-"<strong>Output</strong>: if the post type is attachment, the attached file "
-"thumb is displayed.\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>id</strong> = ( string ), attachment id\n"
-"\t\t\t\t<br /><strong>meta_key</strong> = ( string ), retrieve attachment "
-"id from meta value\n"
-"\t\t\t\t<br /><strong>size</strong> = ( string ), image size\n"
-"\t\t\t\t<br /><strong>class</strong> = ( string ), class name for the image "
-"( &lt;img /&gt; ) tag\n"
-"\t\t\t\t<br /><strong>width</strong> = ( number ), image width\n"
-"\t\t\t\t<br /><strong>height</strong> = ( number ), image height\n"
-"\t\t\t\t<br /><strong>return</strong> = ( text|number ),\n"
-"\t\t\t\t<br />----\"src\" - will return src of the attachment,\n"
-"\t\t\t\t<br />----\"id\" - will return id of the attachment,\n"
-"\t\t\t\t<br />----by default it will return image html"
+#: includes/template-tags/class-post-template-tags.php:371
+msgid "Post meta value read as a date"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:395
-msgid " if the post is an attachment, the attached image source is returned"
+#: includes/template-tags/class-post-template-tags.php:382
+msgid "The post's terms in a taxonomy, joined into a string"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:402
-msgid "if the post type is hierarchical, it's parent post permalink is returned"
+#: includes/template-tags/class-post-template-tags.php:385
+msgid "Taxonomy name"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:405
-msgid "if no parent item exist, return the self permalink"
+#: includes/template-tags/class-post-template-tags.php:388
+msgid "Separator placed between terms"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:414
-msgid "title template"
+#: includes/template-tags/class-post-template-tags.php:391
+msgid "Return the plain term name or its slug"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:400
+msgid "Thumbnail of the attached file, when the post type is attachment"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:403
+msgid "Attachment id"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:407
+msgid "Read the attachment id out of this meta value instead"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:410
+msgid "Image size"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:416
+msgid "Image width"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:419
-msgid "meta template"
+msgid "Image height"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:424
-#: includes/template-tags/class-post-template-tags.php:429
-msgid "publish time template"
+#: includes/template-tags/class-post-template-tags.php:422
+msgid "Return the attachment src or its id instead of the full img tag"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:434
-msgid "modified time template"
+#: includes/template-tags/class-post-template-tags.php:430
+msgid " if the post is an attachment, the attached image source is returned"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:439
-msgid "author template"
+#: includes/template-tags/class-post-template-tags.php:437
+msgid "if the post type is hierarchical, it's parent post permalink is returned"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:444
-msgid "excerpt template"
+#: includes/template-tags/class-post-template-tags.php:440
+msgid "if no parent item exist, return the self permalink"
 msgstr ""
 
 #: includes/template-tags/class-post-template-tags.php:449
+msgid "title template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:454
+msgid "meta template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:459
+#: includes/template-tags/class-post-template-tags.php:464
+msgid "publish time template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:469
+msgid "modified time template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:474
+msgid "author template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:479
+msgid "excerpt template"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:484
 msgid "content template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:455
-msgid ""
-"<strong>Output</strong>: more link template\n"
-"\t\t\t\t<br /><br /><strong>Attributes:</strong>\n"
-"\t\t\t\t<br /><strong>text</strong> = ( string ), text to be displayed"
+#: includes/template-tags/class-post-template-tags.php:490
+msgid "More link template"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:466
-#: includes/template-tags/class-post-template-tags.php:471
+#: includes/template-tags/class-post-template-tags.php:493
+msgid "Text to display in the link"
+msgstr ""
+
+#: includes/template-tags/class-post-template-tags.php:501
+#: includes/template-tags/class-post-template-tags.php:506
 msgid "group name / title"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:476
+#: includes/template-tags/class-post-template-tags.php:511
 msgid "group page link"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:939
+#: includes/template-tags/class-post-template-tags.php:974
 msgid "View %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:946
+#: includes/template-tags/class-post-template-tags.php:981
 msgid "Posted on"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:949
+#: includes/template-tags/class-post-template-tags.php:984
 msgid "by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:954
+#: includes/template-tags/class-post-template-tags.php:989
 msgid "Published"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:961
+#: includes/template-tags/class-post-template-tags.php:996
 msgid "Updated"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:970
+#: includes/template-tags/class-post-template-tags.php:1005
 msgid "View all posts by %s"
 msgstr ""
 
-#: includes/template-tags/class-post-template-tags.php:987
+#: includes/template-tags/class-post-template-tags.php:1022
 msgid "Continue reading &raquo;"
 msgstr ""
 
-#: includes/template-tags/class-term-template-tags.php:31
-msgid "<strong>Output</strong>: term id"
-msgstr ""
-
 #: includes/template-tags/class-term-template-tags.php:36
-msgid "<strong>Output</strong>: term name"
+msgid "Term name"
 msgstr ""
 
 #: includes/template-tags/class-term-template-tags.php:41
-msgid "<strong>Output</strong>: term slug"
+msgid "Term slug"
 msgstr ""
 
 #: includes/template-tags/class-term-template-tags.php:46
-msgid "<strong>Output</strong>: term page link"
+msgid "Term archive permalink"
 msgstr ""
 
 #: includes/template-tags/class-term-template-tags.php:51
-msgid "<strong>Output</strong>: term posts count"
+msgid "Number of posts in the term"
 msgstr ""
 
 #: includes/template-tags/class-term-template-tags.php:56
-msgid "<strong>Output</strong>: term description"
+msgid "Term description"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:33
-msgid "<strong>Output</strong>: user id"
+msgid "User id"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:38
-msgid "<strong>Output</strong>: user name"
+msgid "User display name"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:43
-msgid "<strong>Output</strong>: user email"
+msgid "User email address"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:49
-msgid "<strong>Output</strong>: user post page link"
+msgid "Author archive permalink"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:54
-msgid "<strong>Output</strong>: user posts count"
+msgid "Number of posts by the user"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:59
-msgid "<strong>Output</strong>: user description / biography"
+msgid "User biography"
 msgstr ""
 
 #: includes/template-tags/class-user-template-tags.php:65
-msgid ""
-"<strong>Output</strong>: user meta value. if return value is an array, it "
-"will be migrated to string by using explode function\n"
-"\t\t\t\t<br /><br /><strong>Attributes</strong>:\n"
-"\t\t\t\t<br /><strong>key</strong> = (text|number), meta key name\n"
-"\t\t\t\t<br /><strong>multiple</strong> = (0|1), display meta value at "
-"multiple occurence\n"
-"\t\t\t\t<br /><strong>sep</strong> = (text), separate array meta value into "
-"string"
+msgid "User meta value. An array value is joined into a string."
 msgstr ""
 
-#: includes/template-tags/class-user-template-tags.php:77
-msgid ""
-"<strong>Output</strong>: user avatar\n"
-"\t\t\t\t<br /><br /><strong>Attributes</strong>:\n"
-"\t\t\t\t<br /><strong>size</strong> = (number), avatar image size, ex: 32, "
-"64, 128"
+#: includes/template-tags/class-user-template-tags.php:82
+msgid "User avatar image tag"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:85
+msgid "Avatar image size in pixels, for example 32, 64 or 128"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

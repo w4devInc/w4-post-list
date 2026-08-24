@@ -263,7 +263,6 @@ class W4PL_Config {
 			'name'       => __( 'Name', 'w4-post-list' ),
 			'slug'       => __( 'Slug', 'w4-post-list' ),
 			'count'      => __( 'Count', 'w4-post-list' ),
-			'term_order' => __( 'Term order', 'w4-post-list' ),
 			'custom'     => __( 'Include terms', 'w4-post-list' ),
 		);
 	}
