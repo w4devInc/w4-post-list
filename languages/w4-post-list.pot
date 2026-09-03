@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2026-08-24 10:04:59+00:00\n"
+"POT-Creation-Date: 2026-09-03 16:56:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -652,7 +652,7 @@ msgid "Quering for table is not allowed.:%s"
 msgstr ""
 
 #: includes/class-config.php:28 includes/class-config.php:262
-#: includes/class-config.php:272
+#: includes/class-config.php:286
 msgid "ID"
 msgstr ""
 
@@ -773,23 +773,23 @@ msgstr ""
 msgid "Include terms"
 msgstr ""
 
-#: includes/class-config.php:273
+#: includes/class-config.php:287
 msgid "Username"
 msgstr ""
 
-#: includes/class-config.php:274
+#: includes/class-config.php:288
 msgid "Nicename"
 msgstr ""
 
-#: includes/class-config.php:275
+#: includes/class-config.php:289
 msgid "Email"
 msgstr ""
 
-#: includes/class-config.php:276
+#: includes/class-config.php:290
 msgid "Registration time"
 msgstr ""
 
-#: includes/class-config.php:277
+#: includes/class-config.php:291
 msgid "Display name"
 msgstr ""
 
@@ -1184,33 +1184,33 @@ msgstr ""
 
 #: includes/helpers/class-helper-posts.php:168
 #: includes/helpers/class-helper-terms.php:121
-#: includes/helpers/class-helper-users.php:88
+#: includes/helpers/class-helper-users.php:98
 msgid "Orderby"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:178
 #: includes/helpers/class-helper-terms.php:129
-#: includes/helpers/class-helper-users.php:96
+#: includes/helpers/class-helper-users.php:106
 msgid "Order"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:181
 #: includes/helpers/class-helper-posts.php:266
 #: includes/helpers/class-helper-terms.php:132
-#: includes/helpers/class-helper-users.php:99
+#: includes/helpers/class-helper-users.php:109
 msgid "ASC"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:182
 #: includes/helpers/class-helper-posts.php:267
 #: includes/helpers/class-helper-terms.php:133
-#: includes/helpers/class-helper-users.php:100
+#: includes/helpers/class-helper-users.php:110
 msgid "DESC"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:190
 #: includes/helpers/class-helper-terms.php:156
-#: includes/helpers/class-helper-users.php:123
+#: includes/helpers/class-helper-users.php:133
 msgid "Maximum items"
 msgstr ""
 
@@ -1222,7 +1222,7 @@ msgstr ""
 
 #: includes/helpers/class-helper-posts.php:200
 #: includes/helpers/class-helper-terms.php:140
-#: includes/helpers/class-helper-users.php:107
+#: includes/helpers/class-helper-users.php:117
 msgid "Offset"
 msgstr ""
 
@@ -1236,7 +1236,7 @@ msgstr ""
 
 #: includes/helpers/class-helper-posts.php:213
 #: includes/helpers/class-helper-terms.php:148
-#: includes/helpers/class-helper-users.php:115
+#: includes/helpers/class-helper-users.php:125
 msgid "Items per page"
 msgstr ""
 
@@ -1393,12 +1393,12 @@ msgid "skip given number of terms from beginning"
 msgstr ""
 
 #: includes/helpers/class-helper-terms.php:150
-#: includes/helpers/class-helper-users.php:117
+#: includes/helpers/class-helper-users.php:127
 msgid "number of items to show per page"
 msgstr ""
 
 #: includes/helpers/class-helper-terms.php:158
-#: includes/helpers/class-helper-users.php:125
+#: includes/helpers/class-helper-users.php:135
 msgid "maximum results to display in total, default all found"
 msgstr ""
 
@@ -1416,22 +1416,32 @@ msgid "Exclude users"
 msgstr ""
 
 #: includes/helpers/class-helper-users.php:71
-msgid "Display Name search"
+msgid "Role"
 msgstr ""
 
-#: includes/helpers/class-helper-users.php:73
-msgid "enter text that will be used to search users by name"
-msgstr ""
-
-#: includes/helpers/class-helper-users.php:79
-msgid "Email search"
+#: includes/helpers/class-helper-users.php:74
+msgid ""
+"Show only users in the checked roles. Leave all unchecked to include every "
+"user."
 msgstr ""
 
 #: includes/helpers/class-helper-users.php:81
+msgid "Display Name search"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:83
+msgid "enter text that will be used to search users by name"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:89
+msgid "Email search"
+msgstr ""
+
+#: includes/helpers/class-helper-users.php:91
 msgid "enter text that will be used to search users by email"
 msgstr ""
 
-#: includes/helpers/class-helper-users.php:109
+#: includes/helpers/class-helper-users.php:119
 msgid "skip given number of users from beginning"
 msgstr ""
 
@@ -1858,11 +1868,25 @@ msgstr ""
 msgid "User meta value. An array value is joined into a string."
 msgstr ""
 
-#: includes/template-tags/class-user-template-tags.php:82
+#: includes/template-tags/class-user-template-tags.php:83
+msgid ""
+"The user's role name, for example Editor. Users with more than one role are "
+"joined into a string."
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:86
+msgid "Output the translated role name, or the raw slug for use in a CSS class"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:90
+msgid "Separator used when a user holds more than one role"
+msgstr ""
+
+#: includes/template-tags/class-user-template-tags.php:97
 msgid "User avatar image tag"
 msgstr ""
 
-#: includes/template-tags/class-user-template-tags.php:85
+#: includes/template-tags/class-user-template-tags.php:100
 msgid "Avatar image size in pixels, for example 32, 64 or 128"
 msgstr ""
 

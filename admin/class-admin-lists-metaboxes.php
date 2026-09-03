@@ -228,6 +228,13 @@ class W4PL_Admin_Lists_Metaboxes {
 			}
 		}
 
+		// Role slugs arrive as an array of checkbox values; sanitize_key's
+		// alphabet is also what the users query relies on.
+		if ( array_key_exists( 'users_role', $options ) ) {
+			$roles                 = array_map( 'sanitize_key', (array) $options['users_role'] );
+			$options['users_role'] = array_values( array_filter( $roles ) );
+		}
+
 		foreach ( array( 'class' ) as $key ) {
 			if ( array_key_exists( $key, $options ) ) {
 				$options[ $key ] = sanitize_html_class( $options[ $key ] );

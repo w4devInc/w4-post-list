@@ -71,10 +71,17 @@ class W4PL_Users_Query extends W4PL_Query {
 			)
 		);
 
+		$this->parse_role_field();
+
 		if ( '' != $this->get( 'orderby' ) ) {
-			$order         = $this->get( 'order' );
-			$orderby       = $this->get( 'orderby' );
-			$this->_order .= " ORDER BY $orderby $order";
+			$order   = $this->get( 'order' );
+			$orderby = $this->get( 'orderby' );
+
+			// This class interpolates rather than prepares, so an orderby that
+			// is not a known column never reaches the SQL.
+			if ( array_key_exists( $orderby, W4PL_Config::users_orderby_options() ) ) {
+				$this->_order .= " ORDER BY $orderby $order";
+			}
 		}
 
 		if ( '' != $this->limit ) {
@@ -96,6 +103,40 @@ class W4PL_Users_Query extends W4PL_Query {
 		$this->request = apply_filters( 'w4pl_query_request', $this->request, $this->query_args );
 
 		$this->results();
+	}
+
+	/**
+	 * Restrict the query to the requested roles.
+	 *
+	 * Roles are not a column on wp_users: they live in the serialized
+	 * {prefix}capabilities row in wp_usermeta, keyed per site so the same
+	 * user can hold different roles across a multisite network. An EXISTS
+	 * subquery keeps the row count intact, which matters because pagination
+	 * here is driven by SQL_CALC_FOUND_ROWS.
+	 *
+	 * Slugs are reduced to sanitize_key's alphabet before use, so nothing a
+	 * saved option carries can escape the LIKE. A slug that no longer maps to
+	 * a role simply matches no rows, which fails closed: a users list whose
+	 * role was deleted shows nobody rather than everybody.
+	 */
+	protected function parse_role_field() {
+		global $wpdb;
+
+		$roles = array_filter( array_map( 'sanitize_key', (array) $this->get( 'role__in', array() ) ) );
+
+		if ( empty( $roles ) ) {
+			return;
+		}
+
+		$likes = array();
+		foreach ( $roles as $role ) {
+			$likes[] = $wpdb->prepare( 'UM.meta_value LIKE %s', '%"' . $wpdb->esc_like( $role ) . '"%' );
+		}
+
+		$meta_key = $wpdb->prepare( 'UM.meta_key = %s', $wpdb->get_blog_prefix() . 'capabilities' );
+
+		$this->_where .= " AND EXISTS ( SELECT 1 FROM $wpdb->usermeta AS UM"
+			. " WHERE UM.user_id = TB.ID AND $meta_key AND ( " . implode( ' OR ', $likes ) . ' ) )';
 	}
 
 	/**

@@ -64,6 +64,16 @@ class W4PL_Helper_Users {
 			'desc'        => __( 'Comma-separated user IDs.', 'w4-post-list' ),
 		);
 
+		$fields['users_role'] = array(
+			'position'    => '13',
+			'option_name' => 'users_role',
+			'name'        => 'w4pl[users_role]',
+			'label'       => __( 'Role', 'w4-post-list' ),
+			'type'        => 'checkbox',
+			'option'      => W4PL_Config::user_role_options(),
+			'desc'        => __( 'Show only users in the checked roles. Leave all unchecked to include every user.', 'w4-post-list' ),
+		);
+
 		$fields['users_display_name__like'] = array(
 			'position'    => '15',
 			'option_name' => 'users_display_name__like',
@@ -148,6 +158,7 @@ class W4PL_Helper_Users {
 			array(
 				'users__in'                => '',
 				'users__not_in'            => '',
+				'users_role'               => array(),
 				'users_display_name__like' => '',
 				'users_user_email__like'   => '',
 				'users_offset'             => '',
@@ -172,6 +183,14 @@ class W4PL_Helper_Users {
 			foreach ( array( 'users_display_name__like' => 'display_name__like', 'users_user_email__like' => 'user_email__like', 'users_offset' => 'offset', 'users_limit' => 'limit', 'users_orderby' => 'orderby', 'users_order' => 'order', ) as $option => $name ) {
 				if ( ! empty( $list->options[ $option ] ) ) {
 					$list->users_args[ $name ] = $list->options[ $option ];
+				}
+			}
+
+			// role slugs, stored as an array of checkbox values.
+			if ( ! empty( $list->options['users_role'] ) ) {
+				$roles = array_filter( array_map( 'sanitize_key', (array) $list->options['users_role'] ) );
+				if ( ! empty( $roles ) ) {
+					$list->users_args['role__in'] = array_values( $roles );
 				}
 			}
 

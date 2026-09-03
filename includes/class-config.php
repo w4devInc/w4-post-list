@@ -267,6 +267,20 @@ class W4PL_Config {
 		);
 	}
 
+	/**
+	 * Roles registered on this site, as slug => translated name.
+	 *
+	 * Mirrors the WordPress role registry, so a role added by a theme or
+	 * plugin appears in the list editor without any extra wiring.
+	 *
+	 * @return array
+	 */
+	public static function user_role_options() {
+		$roles = wp_roles()->get_names();
+
+		return array_map( 'translate_user_role', $roles );
+	}
+
 	public static function users_orderby_options() {
 		return array(
 			'ID'              => __( 'ID', 'w4-post-list' ),
