@@ -76,6 +76,21 @@ class W4PL_User_Template_Tags {
 					),
 				),
 			),
+			'user_role'   => array(
+				'group'      => 'User',
+				'code'       => '[user_role]',
+				'callback'   => array( 'W4PL_User_Template_Tags', 'user_role' ),
+				'output'     => __( 'The user\'s role name, for example Editor. Users with more than one role are joined into a string.', 'w4-post-list' ),
+				'parameters' => array(
+					'format' => array(
+						'desc'    => __( 'Output the translated role name, or the raw slug for use in a CSS class', 'w4-post-list' ),
+						'choices' => array( 'name', 'slug' ),
+					),
+					'sep'    => array(
+						'desc' => __( 'Separator used when a user holds more than one role', 'w4-post-list' ),
+					),
+				),
+			),
 			'user_avatar' => array(
 				'group'      => 'User',
 				'callback'   => array( 'W4PL_User_Template_Tags', 'user_avatar' ),
@@ -150,6 +165,41 @@ class W4PL_User_Template_Tags {
 		}
 
 		return $return;
+	}
+
+	/**
+	 * Role names for the current user in the loop.
+	 *
+	 * @param  array  $attr Tag attributes.
+	 * @param  string $cont Tag content.
+	 * @param  object $list Instance of W4PL_List.
+	 * @return string
+	 */
+	public static function user_role( $attr, $cont, $list ) {
+		if ( ! isset( $list->current_user ) ) {
+			return '';
+		}
+
+		// current_user is a raw wp_users row, so roles have to be looked up.
+		$user = get_userdata( $list->current_user->ID );
+		if ( ! $user || empty( $user->roles ) ) {
+			return '';
+		}
+
+		$sep    = isset( $attr['sep'] ) ? $attr['sep'] : ', ';
+		$format = isset( $attr['format'] ) ? $attr['format'] : 'name';
+
+		if ( 'slug' === $format ) {
+			return implode( $sep, $user->roles );
+		}
+
+		$names = wp_roles()->get_names();
+		$out   = array();
+		foreach ( $user->roles as $role ) {
+			$out[] = isset( $names[ $role ] ) ? translate_user_role( $names[ $role ] ) : $role;
+		}
+
+		return implode( $sep, $out );
 	}
 
 	public static function user_avatar( $attr, $cont, $list ) {

@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,9 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.5 =
+* New: User lists can be filtered by role. Check one or more roles in the list editor to build a team page, an editors-only directory or an author index; leave them all unchecked to include every user, which is what existing lists do.
+* New: [user_role] template tag prints a user's role name, or the raw slug with [user_role format="slug"] for use in a CSS class. A user with more than one role gets them joined together, and the separator is set with the sep parameter.
 = 3.0.4 =
 * Fix: Choosing "Term order" as a term list's Orderby caused a database error (Unknown column 'term_order') and an empty list. WordPress core has no such column — only term-ordering plugins add one — so the option has been removed. Existing lists saved with it now order by name instead.
 = 3.0.3 =
