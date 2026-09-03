@@ -17,6 +17,8 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 	protected static $editor_id;
 	protected static $contributor_id;
 	protected static $no_role_id;
+	protected static $shop_id;
+	protected static $dual_id;
 
 	public static function wpSetUpBeforeClass( $factory ) {
 		parent::wpSetUpBeforeClass( $factory );
@@ -45,6 +47,32 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 				'display_name' => 'Nora Norole',
 			)
 		);
+
+		// An underscore in the slug is what pins esc_like's ordering: without
+		// it, LIKE would treat the _ as a single-character wildcard.
+		add_role( 'shop_manager', 'Shop Manager', array( 'read' => true ) );
+		self::$shop_id = $factory->user->create(
+			array(
+				'role'         => 'shop_manager',
+				'user_login'   => 'sam',
+				'display_name' => 'Sam Shop',
+			)
+		);
+
+		// One user holding two of the filtered roles: the case EXISTS exists for.
+		self::$dual_id = $factory->user->create(
+			array(
+				'role'         => 'editor',
+				'user_login'   => 'dana',
+				'display_name' => 'Dana Dual',
+			)
+		);
+		$dual = new WP_User( self::$dual_id );
+		$dual->add_role( 'contributor' );
+	}
+
+	public static function wpTearDownAfterClass() {
+		remove_role( 'shop_manager' );
 	}
 
 	/**
@@ -118,12 +146,80 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 	}
 
 	public function test_role_slug_cannot_break_out_of_the_query() {
+		global $wpdb;
+
 		$ids = $this->query_ids( array( 'role__in' => array( 'editor" OR 1=1 -- ' ) ) );
 
 		$this->assertSame( array(), $ids, 'A crafted role slug must not widen the result set.' );
+		$this->assertEmpty( $wpdb->last_error, 'It must be neutralized, not a broken query.' );
+
+		// An empty result from a syntax error would look identical, so prove
+		// the very next query still works.
+		$this->assertContains( self::$editor_id, $this->query_ids( array( 'role__in' => array( 'editor' ) ) ) );
 	}
 
-	public function test_orderby_falls_back_when_not_whitelisted() {
+	public function test_a_role_slug_that_is_not_registered_matches_nobody() {
+		$ids = $this->query_ids( array( 'role__in' => array( 'was-removed-with-its-plugin' ) ) );
+
+		$this->assertSame( array(), $ids );
+	}
+
+	public function test_a_non_ascii_role_slug_does_not_drop_the_filter() {
+		// sanitize_key() flattens this to an empty string. If the filter were
+		// built on it, the list would quietly widen to every user on the site.
+		$ids = $this->query_ids( array( 'role__in' => array( '編集者' ) ) );
+
+		$this->assertSame( array(), $ids, 'An unregistered slug must fail closed, not open.' );
+		$this->assertNotContains( self::$editor_id, $ids );
+	}
+
+	public function test_a_registered_non_ascii_role_still_filters() {
+		add_role( '編集者', 'Editor JA', array( 'read' => true ) );
+		$ja = self::factory()->user->create( array( 'role' => '編集者', 'display_name' => 'Jun Ja' ) );
+
+		$ids = $this->query_ids( array( 'role__in' => array( '編集者' ) ) );
+
+		remove_role( '編集者' );
+
+		$this->assertSame( array( $ja ), $ids );
+	}
+
+	public function test_underscore_in_a_role_slug_is_escaped() {
+		$ids = $this->query_ids( array( 'role__in' => array( 'shop_manager' ) ) );
+
+		$this->assertSame( array( self::$shop_id ), $ids );
+	}
+
+	public function test_a_user_with_two_matching_roles_is_one_row() {
+		$query = new W4PL_Users_Query( array( 'role__in' => array( 'editor', 'contributor' ) ) );
+		$query->query();
+
+		$ids = array_map(
+			function ( $row ) {
+				return (int) $row->ID;
+			},
+			(array) $query->get_results()
+		);
+
+		$this->assertSame( 1, count( array_keys( $ids, self::$dual_id ) ), 'A dual-role user must not be duplicated.' );
+	}
+
+	public function test_pagination_counts_are_correct_with_a_role_filter() {
+		$query = new W4PL_Users_Query(
+			array(
+				'role__in' => array( 'editor' ),
+				'limit'    => 1,
+			)
+		);
+		$query->query();
+
+		// Edna and Dana both hold editor.
+		$this->assertSame( 1, count( (array) $query->get_results() ) );
+		$this->assertSame( 2, (int) $query->found_item );
+		$this->assertSame( 2, (int) $query->max_num_pages );
+	}
+
+	public function test_orderby_falls_back_to_id_when_not_whitelisted() {
 		$query = new W4PL_Users_Query(
 			array(
 				'orderby' => 'ID, (SELECT 1)',
@@ -132,6 +228,10 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 		$query->query();
 
 		$this->assertStringNotContainsString( 'SELECT 1', $query->request );
+
+		// Dropping ORDER BY entirely would leave a LIMIT query with no stable
+		// row order, so pagination could repeat and skip users.
+		$this->assertStringContainsString( 'ORDER BY ID', $query->request );
 		$this->assertNotEmpty( $query->get_results(), 'A rejected orderby must not break the query.' );
 	}
 
@@ -171,8 +271,13 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 
 		$this->assertArrayHasKey( 'users_role', $fields );
 		$this->assertSame( 'checkbox', $fields['users_role']['type'] );
-		$this->assertSame( W4PL_Config::user_role_options(), $fields['users_role']['option'] );
-		$this->assertArrayHasKey( 'editor', $fields['users_role']['option'] );
+		$this->assertSame( 'w4pl[users_role][]', $fields['users_role']['name'] . '[]' );
+
+		// Every registered role is offered, including one added at runtime.
+		foreach ( array_keys( wp_roles()->get_names() ) as $slug ) {
+			$this->assertArrayHasKey( $slug, $fields['users_role']['option'] );
+		}
+		$this->assertArrayHasKey( 'shop_manager', $fields['users_role']['option'] );
 	}
 
 	public function test_role_field_is_absent_for_non_user_lists() {
@@ -182,20 +287,85 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 		$this->assertArrayNotHasKey( 'users_role', $fields );
 	}
 
-	public function test_role_option_is_sanitized_on_save() {
+	public function test_role_option_drops_blanks_and_keeps_slugs_intact() {
 		$options = W4PL_Admin_Lists_Metaboxes::sanitize_options(
 			array(
-				'users_role' => array( 'Editor', 'contri butor"', '' ),
+				'users_role' => array( 'editor', '', 'shop_manager', '編集者' ),
 			)
 		);
 
-		$this->assertSame( array( 'editor', 'contributor' ), array_values( $options['users_role'] ) );
+		$this->assertSame(
+			array( 'editor', 'shop_manager', '編集者' ),
+			array_values( $options['users_role'] ),
+			'A slug must survive saving byte for byte, or it will match no role.'
+		);
+	}
+
+	public function test_role_option_strips_markup() {
+		$options = W4PL_Admin_Lists_Metaboxes::sanitize_options(
+			array(
+				'users_role' => array( '<b>editor</b>' ),
+			)
+		);
+
+		$this->assertSame( array( 'editor' ), array_values( $options['users_role'] ) );
+	}
+
+	public function test_clearing_every_checkbox_removes_the_filter() {
+		// Unchecking every box posts no users_role key at all.
+		$saved = W4PL_Admin_Lists_Metaboxes::sanitize_options(
+			array(
+				'list_type'  => 'users',
+				'users_role' => array( 'editor' ),
+			)
+		);
+		$this->assertSame( array( 'editor' ), $saved['users_role'] );
+
+		$cleared = W4PL_Admin_Lists_Metaboxes::sanitize_options( array( 'list_type' => 'users' ) );
+		$this->assertArrayNotHasKey( 'users_role', $cleared );
+
+		// The list must then render unfiltered, the way the meta rewrite leaves it.
+		$options = apply_filters( 'w4pl/pre_get_options', $cleared );
+		$this->assertSame( array(), $options['users_role'] );
+
+		$list             = new stdClass();
+		$list->id         = 1;
+		$list->options    = $options;
+		$list->users_args = array();
+
+		$helper = new W4PL_Helper_Users();
+		$helper->parse_query_args( $list );
+
+		$this->assertArrayNotHasKey( 'role__in', $list->users_args );
 	}
 
 	public function test_role_option_survives_a_non_array_value() {
 		$options = W4PL_Admin_Lists_Metaboxes::sanitize_options( array( 'users_role' => 'editor' ) );
 
 		$this->assertSame( array( 'editor' ), array_values( $options['users_role'] ) );
+	}
+
+	public function test_a_saved_list_without_the_key_is_unaffected() {
+		// Every list saved before 3.0.5 looks like this.
+		$options = apply_filters(
+			'w4pl/pre_get_options',
+			array(
+				'list_type'     => 'users',
+				'users_orderby' => 'display_name',
+			)
+		);
+
+		$this->assertSame( array(), $options['users_role'] );
+
+		$list             = new stdClass();
+		$list->id         = 1;
+		$list->options    = $options;
+		$list->users_args = array();
+
+		$helper = new W4PL_Helper_Users();
+		$helper->parse_query_args( $list );
+
+		$this->assertArrayNotHasKey( 'role__in', $list->users_args );
 	}
 
 	public function test_rendered_list_is_filtered_by_role() {
@@ -225,8 +395,7 @@ class UsersRoleFilterTest extends W4PL_Snapshot_TestCase {
 			)
 		);
 
-		$this->assertStringContainsString( 'Edna Editor', $html );
-		$this->assertStringContainsString( 'Editor', $html );
+		$this->assertStringContainsString( 'Edna Editor &mdash; Editor', $html );
 	}
 
 	public function test_user_role_tag_can_output_slugs() {

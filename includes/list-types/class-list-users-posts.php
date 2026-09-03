@@ -110,6 +110,14 @@ class W4PL_List_Users_Posts extends W4PL_List implements W4PL_List_Interface {
 		$this->users_query = new W4PL_Users_Query( $this->users_args );
 		$this->users_query->query();
 
+		// Rows come straight from $wpdb, so nothing is in the user caches yet.
+		// Priming them here turns the per-row lookups that tags like
+		// [user_role] and [user_meta] make into two queries for the page.
+		$user_rows = $this->users_query->get_results();
+		if ( ! empty( $user_rows ) && is_array( $user_rows ) ) {
+			cache_users( wp_list_pluck( $user_rows, 'ID' ) );
+		}
+
 		// echo '<pre>'; print_r($this->users_query); echo '</pre>';
 		// $this->users_query = get_users( $this->options['users_taxonomy'], $this->users_args );
 

@@ -186,9 +186,12 @@ class W4PL_Helper_Users {
 				}
 			}
 
-			// role slugs, stored as an array of checkbox values.
+			// Role slugs, stored as an array of checkbox values. They are passed
+			// through as saved: sanitize_key would flatten a non-ASCII slug to
+			// an empty string and silently drop the filter. The query validates
+			// them against the role registry instead.
 			if ( ! empty( $list->options['users_role'] ) ) {
-				$roles = array_filter( array_map( 'sanitize_key', (array) $list->options['users_role'] ) );
+				$roles = array_filter( array_map( 'strval', (array) $list->options['users_role'] ), 'strlen' );
 				if ( ! empty( $roles ) ) {
 					$list->users_args['role__in'] = array_values( $roles );
 				}
