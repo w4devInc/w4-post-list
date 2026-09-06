@@ -41,15 +41,17 @@ Full [template tag reference](https://w4dev.com/docs/w4-post-list/faqs/what-are-
 ## Development
 
 ```bash
-npm install && composer install   # install dependencies
+npm install && composer install              # runtime dependencies (vendor/ ships with the plugin)
+COMPOSER=composer-dev.json composer install  # dev tooling → vendor-dev/ (PHPUnit, WPCS, WP test core)
 
 npm run start-block               # block editor dev (hot reload)
 npm run build-block               # build block assets
 
-npm run build-plugin              # full build: i18n → version sync → LESS → minify
+npm run build-plugin              # full build: i18n → version sync → LESS → PostCSS
 npm run zip-plugin                # distribution zip
 
-./vendor/bin/phpcs                # WordPress Coding Standards check
+vendor-dev/bin/phpunit            # test suite (snapshot diffs are the back-compat contract)
+vendor-dev/bin/phpcs              # WordPress Coding Standards check
 ```
 
 Version is managed in `package.json` (source of truth) and synced into PHP files by `npm run build-plugin`.
