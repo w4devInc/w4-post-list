@@ -187,7 +187,12 @@ class W4PL_Admin_Lists_Metaboxes {
 
 		$options = apply_filters( 'w4pl/pre_save_options', $options );
 
-		update_post_meta( $post_ID, '_w4pl', $options );
+		// update_post_meta() unslashes its value internally, so it must be handed
+		// slashed data. Without wp_slash() here the stripslashes_deep() above
+		// becomes a second unslash and every backslash in the template, CSS and JS
+		// is destroyed — `content:"\f101"` stored as `content:"f101"`, `/\d+/` as
+		// `/d+/`. See #137.
+		update_post_meta( $post_ID, '_w4pl', wp_slash( $options ) );
 	}
 
 	/**

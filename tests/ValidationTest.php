@@ -162,6 +162,72 @@ class ValidationTest extends WP_UnitTestCase {
 		$this->assertSame( W4PL_Options_Migrator::OPTIONS_VERSION, $stored['options_version'] );
 	}
 
+	// ----- Slash preservation (#137) -----
+
+	/**
+	 * WordPress slashes $_POST before any handler runs (wp_magic_quotes()), so a
+	 * save-path test only reproduces real request conditions if it slashes too.
+	 *
+	 * @param array $options Raw, unslashed option values as the browser sent them.
+	 * @param int   $id      List post ID.
+	 */
+	protected function save_posted_options( $id, array $options ) {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+
+		$_POST['w4pl']               = wp_slash( $options );
+		$_POST['w4pl_options_nonce'] = wp_create_nonce( 'w4pl_save_options' );
+
+		$metaboxes = new W4PL_Admin_Lists_Metaboxes();
+		$metaboxes->save_post( $id );
+
+		return get_post_meta( $id, '_w4pl', true );
+	}
+
+	public function test_backslash_escapes_in_template_css_and_js_survive_a_save() {
+		$id = $this->make_list_with_options();
+
+		// Ordinary real-world content: an icon-font glyph, a typographic quote,
+		// and a regex. All of these are destroyed by a double unslash.
+		$template = '<ul>[posts]<li>[post_title]</li>[/posts]</ul>';
+		$css      = '.icon:before{content:"\f101"}' . "\n" . '.q:before{content:"\201C"}';
+		$js       = 'var re = /\d+\s\w/g;';
+
+		$stored = $this->save_posted_options(
+			$id,
+			array(
+				'list_type' => 'posts',
+				'template'  => $template,
+				'css'       => $css,
+				'js'        => $js,
+			)
+		);
+
+		$this->assertSame( $css, $stored['css'], 'CSS escape sequences must survive the save' );
+		$this->assertSame( $js, $stored['js'], 'JS regex escapes must survive the save' );
+		$this->assertSame( $template, $stored['template'], 'Template must survive the save unchanged' );
+	}
+
+	public function test_a_literal_backslash_pair_is_neither_collapsed_nor_doubled() {
+		$id = $this->make_list_with_options();
+
+		// Guards the opposite failure: a fix that over-slashes instead of under-slashing.
+		$css = '.a:after{content:"a\\\\b"}';
+
+		$stored = $this->save_posted_options( $id, array( 'list_type' => 'posts', 'css' => $css ) );
+
+		$this->assertSame( $css, $stored['css'], 'A literal backslash pair must round-trip byte-for-byte' );
+	}
+
+	public function test_resaving_stored_options_does_not_degrade_them() {
+		$id  = $this->make_list_with_options();
+		$css = '.icon:before{content:"\f101"}';
+
+		$first  = $this->save_posted_options( $id, array( 'list_type' => 'posts', 'css' => $css ) );
+		$second = $this->save_posted_options( $id, array( 'list_type' => 'posts', 'css' => $first['css'] ) );
+
+		$this->assertSame( $css, $second['css'], 'Saving twice must be idempotent' );
+	}
+
 	// ----- Review prompt gate -----
 
 	public function test_review_cta_markup_carries_the_resolving_link() {
