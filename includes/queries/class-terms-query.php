@@ -54,7 +54,7 @@ class W4PL_Terms_Query extends W4PL_Query {
 
 		if ( '' != $this->get( 'taxonomy' ) ) {
 			$this->_fields .= ', TT1.*';
-			$this->_join   .= " INNER JOIN {$wpdb->term_taxonomy} TT1 ON (TT1.term_id = TB.term_id AND TT1.taxonomy = '" . $this->get( 'taxonomy' ) . "')";
+			$this->_join   .= $wpdb->prepare( " INNER JOIN {$wpdb->term_taxonomy} TT1 ON (TT1.term_id = TB.term_id AND TT1.taxonomy = %s)", $this->get( 'taxonomy' ) );
 		}
 
 		$count__min = (int) $this->get( 'count__min' );
@@ -90,8 +90,14 @@ class W4PL_Terms_Query extends W4PL_Query {
 		);
 
 		if ( '' != $this->get( 'orderby' ) ) {
+			// parse_query_vars() already normalizes the direction; checked again
+			// here so the ORDER BY clause does not depend on that call order.
 			$order   = $this->get( 'order' );
 			$orderby = $this->get( 'orderby' );
+
+			if ( 'DESC' !== $order ) {
+				$order = 'ASC';
+			}
 
 			if ( 'term_id__in' == $orderby ) {
 				$term_id__in   = implode( ',', array_map( 'absint', $this->get( 'term_id__in' ) ) );
@@ -102,10 +108,15 @@ class W4PL_Terms_Query extends W4PL_Query {
 					$orderby = 'name';
 				}
 
-				if ( in_array( $orderby, array( 'term_id', 'name', 'slug', 'term_group' ) ) ) {
+				// Only known columns are used. Anything else falls back to the
+				// term ID rather than dropping the clause, which would leave
+				// paginated lists without a stable row order.
+				if ( in_array( $orderby, array( 'term_id', 'name', 'slug', 'term_group' ), true ) ) {
 					$orderby = "TB.{$orderby}";
-				} elseif ( in_array( $orderby, array( 'parent', 'count' ) ) ) {
+				} elseif ( in_array( $orderby, array( 'parent', 'count' ), true ) ) {
 					$orderby = "TT1.{$orderby}";
+				} else {
+					$orderby = 'TB.term_id';
 				}
 
 				$this->_order .= " ORDER BY {$orderby} $order";

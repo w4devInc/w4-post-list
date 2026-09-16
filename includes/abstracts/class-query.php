@@ -224,7 +224,8 @@ abstract class W4PL_Query {
 			$search    = '';
 
 			foreach ( (array) $search_terms as $term ) {
-				$term      = $wpdb->esc_like( $term );
+				// esc_like() only escapes the LIKE wildcards, not quotes.
+				$term      = esc_sql( $wpdb->esc_like( $term ) );
 				$search   .= "{$searchand}($column LIKE '{$n}{$term}{$n}')";
 				$searchand = ' OR ';
 			}
