@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.6
+Stable tag: 3.0.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.7 =
+* Improved: Stricter validation of the ordering, taxonomy and search options in term and user lists. Values the list editor does not offer are no longer saved, and lists saved with one fall back to their defaults.
 = 3.0.6 =
 * Fix: backslashes are no longer stripped from a list's Template, CSS and JS when it is saved. Icon-font rules like content: "\f101", typographic escapes like "\201C" and any JavaScript regex using \d, \s or \w were being silently corrupted the first time a list was saved. Existing lists are unaffected going forward, but a list saved before this release may need its escapes retyped.
 = 3.0.5 =

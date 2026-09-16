@@ -74,8 +74,14 @@ class W4PL_Users_Query extends W4PL_Query {
 		$this->parse_role_field();
 
 		if ( '' != $this->get( 'orderby' ) ) {
+			// parse_query_vars() already normalizes the direction; checked again
+			// here so the ORDER BY clause does not depend on that call order.
 			$order   = $this->get( 'order' );
 			$orderby = $this->get( 'orderby' );
+
+			if ( 'DESC' !== $order ) {
+				$order = 'ASC';
+			}
 
 			// This class interpolates rather than prepares, so an orderby that
 			// is not a known column never reaches the SQL. Fall back to ID

@@ -233,6 +233,27 @@ class W4PL_Admin_Lists_Metaboxes {
 			}
 		}
 
+		// Only ordering values the editor offers are stored. Anything else is
+		// dropped and the list falls back to its defaults. The queries check
+		// these again for lists saved before this check existed.
+		$allowed = array(
+			'terms_orderby' => array_keys( W4PL_Config::terms_orderby_options() ),
+			'terms_order'   => array( 'ASC', 'DESC' ),
+			'users_orderby' => array_keys( W4PL_Config::users_orderby_options() ),
+			'users_order'   => array( 'ASC', 'DESC' ),
+		);
+		foreach ( $allowed as $key => $values ) {
+			if ( array_key_exists( $key, $options ) && ! in_array( $options[ $key ], $values, true ) ) {
+				unset( $options[ $key ] );
+			}
+		}
+
+		// Checked against the registry, not rewritten with sanitize_key: a
+		// rewritten slug would silently point the list at a different taxonomy.
+		if ( array_key_exists( 'terms_taxonomy', $options ) && ( ! is_string( $options['terms_taxonomy'] ) || ! taxonomy_exists( $options['terms_taxonomy'] ) ) ) {
+			unset( $options['terms_taxonomy'] );
+		}
+
 		// Role slugs arrive as an array of checkbox values. Blanks are dropped
 		// and the rest kept verbatim -- sanitize_key would rewrite a non-ASCII
 		// slug into something that matches no role, and a slug is only ever
