@@ -34,9 +34,18 @@ tests_add_filter(
 			return $preempt;
 		}
 
+		// Each update check reads specific keys from the body.
+		$body = array(
+			'offers'       => array(),
+			'plugins'      => array(),
+			'themes'       => array(),
+			'no_update'    => array(),
+			'translations' => array(),
+		);
+
 		return array(
 			'headers'  => array(),
-			'body'     => '{}',
+			'body'     => wp_json_encode( $body ),
 			'response' => array(
 				'code'    => 200,
 				'message' => 'OK',
