@@ -1,4 +1,9 @@
 == Changelog ==
+= 3.0.8 =
+* New: Groups can be ordered by name. A new "Group Order by" option (ID or Name) sits next to Group Order, so a category, year, author or custom-field grouping can sort alphabetically instead of by the order the terms were created. Existing lists keep ordering by ID.
+* Improved: A "Group by" list whose template has no [groups]…[/groups] loop now gets a warning in the editor and on save, with a one-click grouped template, instead of silently rendering nothing. The Group by field also explains what the template needs and links to the grouping guide.
+* Fix: Changing Group by, Post type or any other option that reloads the editor no longer scrolls the page back to the top.
+* Improved: The Documentation page's sidebar now points to Adminkeep's Custom CSS screen for styling lists without editing the theme; the long-dead Soccer Engine link is gone.
 = 3.0.7 =
 * Improved: Stricter validation of the ordering, taxonomy and search options in term and user lists. Values the list editor does not offer are no longer saved, and lists saved with one fall back to their defaults.
 = 3.0.6 =

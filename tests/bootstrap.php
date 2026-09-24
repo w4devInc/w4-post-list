@@ -23,4 +23,30 @@ tests_add_filter(
 	}
 );
 
+// The fresh test database has no update cache, so admin_init would ask
+// api.wordpress.org for core/plugin/theme updates on every run, and a
+// network hiccup fails whichever AJAX test happens to fire it. Answer those
+// requests locally with an empty, successful response.
+tests_add_filter(
+	'pre_http_request',
+	function ( $preempt, $args, $url ) {
+		if ( false === strpos( $url, 'api.wordpress.org' ) ) {
+			return $preempt;
+		}
+
+		return array(
+			'headers'  => array(),
+			'body'     => '{}',
+			'response' => array(
+				'code'    => 200,
+				'message' => 'OK',
+			),
+			'cookies'  => array(),
+			'filename' => null,
+		);
+	},
+	10,
+	3
+);
+
 require $w4pl_tests_dir . '/includes/bootstrap.php';

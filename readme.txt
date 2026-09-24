@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,6 +66,10 @@ See the [full template tag reference](https://w4dev.com/docs/w4-post-list/faqs/w
 
 [WP Hive](https://wphive.com/plugins/w4-post-list/) independently measures W4 Post List at **19 KB memory usage and +0.05 s page-speed impact — better than 99% of the plugins they test**. No bundled frameworks, no frontend bloat.
 
+= Style it without touching your theme =
+
+A list never quite matches the theme, and the fix is usually three lines of CSS you have nowhere to put. [Adminkeep](https://wordpress.org/plugins/adminkeep/) (free, by the same author) adds a Custom CSS screen to WordPress: write the rule, save, done. No child theme, no theme editor, and it survives theme updates.
+
 
 == Installation ==
 
@@ -102,7 +106,7 @@ Yes. Use `[post_meta key="your_field_key"]` inside the posts loop. Fields stored
 
 = Can I group posts by year, category or author? =
 
-Yes — that's this plugin's specialty. Set **Group by** to year, month, month + year, any taxonomy, author or parent, and the list renders grouped sections with headings. The core Query Loop block can't do this.
+Yes — that's this plugin's specialty. Set **Group by** to year, month, month + year, any taxonomy, author or parent, and the list renders grouped sections with headings. The core Query Loop block can't do this. Groups follow their ID order unless you set **Group Order by** to Name, which sorts the headings alphabetically.
 
 = Can I list users or build an author directory? =
 
@@ -130,6 +134,11 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.8 =
+* New: Groups can be ordered by name. A new "Group Order by" option (ID or Name) sits next to Group Order, so a category, year, author or custom-field grouping can sort alphabetically instead of by the order the terms were created. Existing lists keep ordering by ID.
+* Improved: A "Group by" list whose template has no [groups]…[/groups] loop now gets a warning in the editor and on save, with a one-click grouped template, instead of silently rendering nothing. The Group by field also explains what the template needs and links to the grouping guide.
+* Fix: Changing Group by, Post type or any other option that reloads the editor no longer scrolls the page back to the top.
+* Improved: The Documentation page's sidebar now points to Adminkeep's Custom CSS screen for styling lists without editing the theme; the long-dead Soccer Engine link is gone.
 = 3.0.7 =
 * Improved: Stricter validation of the ordering, taxonomy and search options in term and user lists. Values the list editor does not offer are no longer saved, and lists saved with one fall back to their defaults.
 = 3.0.6 =

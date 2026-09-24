@@ -213,9 +213,17 @@
 		$('#w4pl_list_options').append('<div id="w4pl_lo"></div>');
 
 		$.post(ajaxurl, data, function (r) {
+			/*
+			 * Swapping the form out leaves the page briefly shorter (no active
+			 * tab, no min-height yet), so the browser clamps the scroll to the
+			 * top. Remember where the user was and put them back.
+			 */
+			var scrollY = window.pageYOffset;
+
 			$('#w4pl_list_options').replaceWith(r);
 
 			$('#' + showTab).addClass('w4pl_active');
+			window.scrollTo(0, scrollY);
 
 			$(document).trigger('w4pl/form_loaded', $('#w4pl_list_options'));
 

@@ -105,6 +105,15 @@ if ( ! empty( $options['template'] ) && isset( $options['list_type'], $w4pl_loop
 	}
 }
 
+if ( '' === $w4pl_type_mismatch && 'posts' === $w4pl_example_type && W4PL_Admin_Validation::grouped_template_missing_loop( $options ) ) {
+	$w4pl_type_mismatch = '<div class="notice notice-warning inline" style="margin:0 0 8px;"><p>'
+		. esc_html__( '"Group by" is set but this template has no [groups]…[/groups] loop, so the list will render nothing. Wrap the posts loop in [groups]…[/groups] and use [group_title] for each heading.', 'w4-post-list' )
+		. ' <button type="button" class="button button-small" id="w4pl_use_default_template" data-template="'
+		. esc_attr( $w4pl_grouped_example )
+		. '">' . esc_html__( 'Replace with the grouped template', 'w4-post-list' ) . '</button>'
+		. '</p></div>';
+}
+
 $template_html = '
 <div class="wffw wffwi_w4pl_template wffwt_textarea">' . $w4pl_type_mismatch . '
 	<p style="margin-top:0px;">

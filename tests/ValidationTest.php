@@ -102,6 +102,43 @@ class ValidationTest extends WP_UnitTestCase {
 		$this->assertTrue( $found, 'Missing-loop warning expected for terms list with posts-only template' );
 	}
 
+	public function test_grouped_list_without_groups_loop_warns() {
+		$warnings = W4PL_Admin_Validation::template_warnings(
+			array(
+				'list_type' => 'posts',
+				'groupby'   => 'tax_category',
+				'template'  => '[posts][post_title][/posts]',
+			)
+		);
+
+		$this->assertCount( 1, $warnings );
+		$this->assertStringContainsString( '[groups]', $warnings[0] );
+	}
+
+	public function test_grouped_list_with_groups_loop_does_not_warn() {
+		$warnings = W4PL_Admin_Validation::template_warnings(
+			array(
+				'list_type' => 'posts',
+				'groupby'   => 'year',
+				'template'  => '[groups][group_title][posts][post_title][/posts][/groups]',
+			)
+		);
+
+		$this->assertSame( array(), $warnings );
+	}
+
+	public function test_ungrouped_list_without_groups_loop_does_not_warn() {
+		$warnings = W4PL_Admin_Validation::template_warnings(
+			array(
+				'list_type' => 'posts',
+				'groupby'   => '',
+				'template'  => '[posts][post_title][/posts]',
+			)
+		);
+
+		$this->assertSame( array(), $warnings );
+	}
+
 	public function test_clean_template_produces_no_warnings() {
 		$warnings = W4PL_Admin_Validation::template_warnings(
 			array(
