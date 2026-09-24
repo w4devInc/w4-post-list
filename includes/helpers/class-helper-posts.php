@@ -230,6 +230,12 @@ class W4PL_Helper_Posts {
 				'type'        => 'select',
 				'option'      => W4PL_Config::post_groupby_options( $options['post_type'] ),
 				'input_class' => 'w4pl_onchange_lfr',
+				'desc2'       => sprintf(
+					/* translators: 1: opening link tag to the grouping guide, 2: closing link tag */
+					esc_html__( 'A grouped list only renders when the template wraps its posts loop in [groups]…[/groups], with [group_title] for the heading. %1$sHow grouping works%2$s.', 'w4-post-list' ),
+					'<a href="https://w4dev.com/docs/w4-post-list/how-to-display-posts-grouped-by-category-or-term/?utm_source=wp-admin&utm_medium=plugin&utm_campaign=w4-post-list" target="_blank" rel="noopener noreferrer">',
+					'</a>'
+				),
 			);
 
 			if ( in_array( $options['groupby'], array( 'year', 'month', 'yearmonth' ) ) ) {
@@ -252,6 +258,22 @@ class W4PL_Helper_Posts {
 					'name'        => 'w4pl[groupby_meta_key]',
 					'label'       => __( 'Group by "Custom field" name', 'w4-post-list' ),
 					'type'        => 'text',
+				);
+			}
+
+			// Date groupings are always chronological, so no "Name" choice.
+			if ( ! in_array( $options['groupby'], array( 'year', 'month', 'yearmonth' ), true ) ) {
+				$fields['group_orderby'] = array(
+					'position'    => '95.8',
+					'option_name' => 'group_orderby',
+					'name'        => 'w4pl[group_orderby]',
+					'label'       => __( 'Group Order by', 'w4-post-list' ),
+					'type'        => 'radio',
+					'option'      => array(
+						''      => __( 'ID', 'w4-post-list' ),
+						'title' => __( 'Name', 'w4-post-list' ),
+					),
+					'desc2'       => __( 'Name sorts groups alphabetically by their heading (a term, an author, a parent page, a custom field value). ID keeps the original order. Year and month groupings are always chronological.', 'w4-post-list' ),
 				);
 			}
 
@@ -312,6 +334,7 @@ class W4PL_Helper_Posts {
 					'groupby'          => '',
 					'groupby_time'     => '',
 					'groupby_meta_key' => '',
+					'group_orderby'    => '',
 					'group_order'      => '',
 				)
 			);

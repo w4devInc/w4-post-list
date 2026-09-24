@@ -241,6 +241,7 @@ class W4PL_Admin_Lists_Metaboxes {
 			'terms_order'   => array( 'ASC', 'DESC' ),
 			'users_orderby' => array_keys( W4PL_Config::users_orderby_options() ),
 			'users_order'   => array( 'ASC', 'DESC' ),
+			'group_orderby' => array( '', 'title' ),
 		);
 		foreach ( $allowed as $key => $values ) {
 			if ( array_key_exists( $key, $options ) && ! in_array( $options[ $key ], $values, true ) ) {

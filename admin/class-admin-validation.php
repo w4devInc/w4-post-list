@@ -154,7 +154,30 @@ class W4PL_Admin_Validation {
 			}
 		}
 
+		if ( self::grouped_template_missing_loop( $options ) ) {
+			$warnings[] = __( '"Group by" is set but the template has no [groups]…[/groups] loop, so the list will render nothing. Wrap the posts loop in [groups]…[/groups] and use [group_title] for each heading.', 'w4-post-list' );
+		}
+
 		return $warnings;
+	}
+
+	/**
+	 * A "Group by" list whose template never opens a [groups] loop renders
+	 * nothing, because the posts loop only runs inside a group.
+	 *
+	 * @param  array $options List options.
+	 * @return bool
+	 */
+	public static function grouped_template_missing_loop( $options ) {
+		if ( empty( $options['groupby'] ) || empty( $options['template'] ) || ! is_string( $options['template'] ) ) {
+			return false;
+		}
+
+		if ( isset( $options['list_type'] ) && 'posts' !== $options['list_type'] ) {
+			return false;
+		}
+
+		return false === strpos( $options['template'], '[groups]' );
 	}
 
 	/**

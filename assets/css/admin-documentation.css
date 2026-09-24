@@ -27,6 +27,21 @@
 .w4pl-documentation-sidebar {
   width: 30%;
 }
+.w4pl-also-free {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid #c3c4c7;
+  border-left: 4px solid #2271b1;
+  background: #fff;
+}
+.w4pl-documentation-wrap .w4pl-also-free h2 {
+  margin: 0 0 0.5em;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+.w4pl-also-free p {
+  margin: 0 0 0.8em;
+}
 #wpbody code {
   background: none;
   font-size: 12px;

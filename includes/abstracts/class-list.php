@@ -397,12 +397,39 @@ abstract class W4PL_List {
 			}
 		}
 
-		if ( isset( $this->options['group_order'] ) && ! empty( $this->options['group_order'] ) ) {
-			if ( 'ASC' === $this->options['group_order'] ) {
-				uasort( $this->groups, array( $this, 'cmp_asc' ) );
-			} elseif ( 'DESC' === $this->options['group_order'] ) {
-				uasort( $this->groups, array( $this, 'cmp_desc' ) );
-			}
+		$group_order = '';
+		if ( isset( $this->options['group_order'] ) ) {
+			$group_order = $this->options['group_order'];
+		}
+
+		if ( ! in_array( $group_order, array( 'ASC', 'DESC' ), true ) ) {
+			return;
+		}
+
+		// By title: natural, case-insensitive, so "2" sorts before "10" and
+		// "apple" next to "Apple". By ID (the default, and the only behaviour
+		// before 3.0.8): the group key, which is a term/user/post ID, a year or
+		// a meta value depending on the grouping.
+		// Date groupings ignore "Name": their keys are already chronological
+		// (2024, 05, 2024-05) while their titles are words ("May"), which
+		// would sort alphabetically and scramble the months.
+		$date_grouping = in_array( $groupby, array( 'year', 'month', 'yearmonth' ), true );
+
+		if ( ! $date_grouping && isset( $this->options['group_orderby'] ) && 'title' === $this->options['group_orderby'] ) {
+			uasort(
+				$this->groups,
+				function ( $a, $b ) use ( $group_order ) {
+					$cmp = strnatcasecmp( (string) $a['title'], (string) $b['title'] );
+					if ( 'DESC' === $group_order ) {
+						return -$cmp;
+					}
+					return $cmp;
+				}
+			);
+		} elseif ( 'ASC' === $group_order ) {
+			uasort( $this->groups, array( $this, 'cmp_asc' ) );
+		} else {
+			uasort( $this->groups, array( $this, 'cmp_desc' ) );
 		}
 	}
 
