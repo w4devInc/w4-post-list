@@ -15,7 +15,7 @@
 	'use strict';
 
 	// Browsers without these keep plain, full-page-reload pagination, and a
-	// sort form with a visible submit button.
+	// sort form applied with its button.
 	if (!window.fetch || !window.DOMParser || !Element.prototype.closest) {
 		return;
 	}
@@ -44,17 +44,6 @@
 	}
 
 	/**
-	 * The sort form applies itself on change, so its submit button is only
-	 * for visitors without JavaScript.
-	 */
-	function hideSortButtons(root) {
-		var buttons = root.querySelectorAll('form.w4pl-sort .w4pl-sort-submit');
-		for (var i = 0; i < buttons.length; i++) {
-			buttons[i].style.display = 'none';
-		}
-	}
-
-	/**
 	 * The URL a GET submit of `form` would load. The action is read as an
 	 * attribute: a field named "action" would shadow the form.action property.
 	 */
@@ -71,7 +60,6 @@
 	 */
 	function applySort(form) {
 		var wrapper = form.closest('[id^="w4pl-list-"]');
-
 		var canSerialize = window.URL && window.URLSearchParams && window.FormData;
 
 		if (form.getAttribute('data-ajax') !== '1' || !wrapper || !canSerialize) {
@@ -126,7 +114,6 @@
 			}
 
 			wrapper.innerHTML = fresh.outerHTML;
-			hideSortButtons(wrapper);
 			clearLoading();
 
 			if (focusId) {
@@ -176,19 +163,55 @@
 		swapPage(wrapper, link.href);
 	});
 
-	document.addEventListener('change', function (event) {
-		var target = event.target;
+	/**
+	 * The sort select of a W4 Post List sort form, or null.
+	 */
+	function getSortSelect(target) {
 		if (!target || target.tagName !== 'SELECT' || !target.closest) {
-			return;
+			return null;
 		}
 
-		var form = target.closest('form.w4pl-sort');
-		if (form) {
-			applySort(form);
+		return target.closest('form.w4pl-sort') ? target : null;
+	}
+
+	/*
+	 * Apply the sort as soon as an option is picked with a pointer (mouse,
+	 * touch, pen). Keyboard users keep the Sort button: on Windows a closed
+	 * select fires "change" on every arrow key, so applying on change would
+	 * reload the list before they reach the option they want. Enter in the
+	 * select applies it as a shortcut.
+	 */
+	var pointerEvent = window.PointerEvent ? 'pointerdown' : 'mousedown';
+
+	document.addEventListener(pointerEvent, function (event) {
+		var select = getSortSelect(event.target);
+		if (select) {
+			select.w4plPointer = true;
 		}
 	});
 
-	// Enter on a focused control, or a button a theme made visible again.
+	document.addEventListener('keydown', function (event) {
+		var select = getSortSelect(event.target);
+		if (!select) {
+			return;
+		}
+
+		select.w4plPointer = false;
+
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			applySort(select.form);
+		}
+	});
+
+	document.addEventListener('change', function (event) {
+		var select = getSortSelect(event.target);
+		if (select && select.w4plPointer) {
+			applySort(select.form);
+		}
+	});
+
+	// The Sort button: over AJAX when the form asks for it, else a normal GET.
 	document.addEventListener('submit', function (event) {
 		var form = event.target;
 		if (!form || !form.matches || !form.matches('form.w4pl-sort') || form.getAttribute('data-ajax') !== '1') {
@@ -202,14 +225,4 @@
 		event.preventDefault();
 		applySort(form);
 	});
-
-	hideSortButtons(document);
-
-	// A list rendered after the footer scripts prints this file before its
-	// own markup, so look again once the whole document is in.
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', function () {
-			hideSortButtons(document);
-		});
-	}
 })();

@@ -68,21 +68,27 @@ list B in a shortcode block with
 > on the page, headless Chromium via the Playwright docker image). Boxes record
 > that run.
 
-- [x] With JS on, the "Sort" buttons are hidden and each list shows its dropdown
-- [x] List A: picking "Title: A to Z" swaps the list in place (no navigation), the
-      dropdown keeps focus and shows the new choice, list B is untouched
+- [x] With JS on, each list shows its dropdown **and** its "Sort" button (the button
+      is the keyboard path, so it is never hidden)
+- [x] List A: picking "Title: A to Z" with the mouse swaps the list in place (no
+      navigation), the dropdown keeps focus and shows the new choice, list B is untouched
+- [x] Keyboard on list A: an arrow key plus the `change` Windows fires with it does
+      **not** reload the list; Enter in the dropdown applies it over AJAX, focus kept
 - [x] List A, then click "2": still no navigation, page 2 continues A to Z, and it
       matches a fresh load of `?w4pl_sort_<A>=title-asc&page<A>=2`
-- [x] List B: picking an order does a normal GET to `?w4pl_sort_<B>=…`, the list is
-      re-sorted, and its page links carry the sort
+- [x] List B: picking an order with the mouse does a normal GET to
+      `?w4pl_sort_<B>=…`, the list is re-sorted, and its page links carry the sort
+- [x] List B by keyboard: Tab to "Sort", Enter: normal GET with the new order
 - [x] `[sort label="Order"]` places the dropdown where the tag is, with that label
-- [x] JS off: the "Sort" button is visible; choosing an order and pressing it loads
-      the sorted list and keeps unrelated query parameters (`utm_source`)
+- [x] JS off: choosing an order and pressing "Sort" loads the sorted list and keeps
+      unrelated query parameters (`utm_source`)
 - [x] No console errors
 - [x] Editor: the "Visitor sorting" checkboxes show the saved state, and changing
       them survives Update
-- [ ] Classic theme (Twenty Twenty-One): repeat the first two items
-- [ ] Late-rendered list (after `wp_footer` priority 20): the button is still hidden
+- [ ] Real Windows keyboard (not a replayed event): arrowing through a closed
+      dropdown does not reload; Enter applies
+- [ ] Classic theme (Twenty Twenty-One): repeat the two list A mouse items
+- [ ] Live preview pane: the dropdown shows, disabled
 
 ## Front-end asset footprint (M12)
 

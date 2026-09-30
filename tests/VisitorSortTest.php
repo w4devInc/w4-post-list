@@ -355,6 +355,23 @@ class VisitorSortTest extends W4PL_Snapshot_TestCase {
 		$this->assertSame( self::TITLES_NEWEST, $this->titles( $this->render( $id_b ) ) );
 	}
 
+	public function test_two_lists_on_one_page_each_get_their_own_form() {
+		$options = $this->options( array( 'visitor_sort' => array( 'title-asc', 'date-asc' ) ) );
+		$id_a    = $this->make_list( $options );
+		$id_b    = $this->make_list( $options );
+
+		$this->request( array( 'w4pl_sort_' . $id_b => 'date-asc' ) );
+
+		$html = $this->render( $id_a ) . $this->render( $id_b );
+
+		$this->assertSame( 2, substr_count( $html, '<form class="w4pl-sort"' ) );
+		$this->assertStringContainsString( '<select id="w4pl-sort-' . $id_a . '" name="w4pl_sort_' . $id_a . '">', $html );
+		$this->assertStringContainsString( '<select id="w4pl-sort-' . $id_b . '" name="w4pl_sort_' . $id_b . '">', $html );
+		// A's form carries B's sort along, so sorting A keeps B sorted.
+		$this->assertStringContainsString( '<input type="hidden" name="w4pl_sort_' . $id_b . '" value="date-asc" />', $html );
+		$this->assertCount( 1, wp_scripts()->queue, 'One shared script for both.' );
+	}
+
 	/* ---------------------------------------------------------------------
 	 * The control.
 	 * ------------------------------------------------------------------ */
@@ -523,7 +540,55 @@ class VisitorSortTest extends W4PL_Snapshot_TestCase {
 
 		$this->assertStringNotContainsString( '<script', $html );
 		$this->assertStringNotContainsString( '<img', $html );
-		$this->assertStringContainsString( 'value="&quot;&gt;&lt;img src=x onerror=alert(1)&gt;"', $html );
+		$this->assertStringContainsString( 'name="x&quot;&gt;&lt;script&gt;" value="&quot;&gt;&lt;img src=x onerror=alert(1)&gt;"', $html );
+	}
+
+	/**
+	 * The form submits to the URL as requested: the page's own /page/N/ is
+	 * kept (sorting a sidebar list must not leave archive page 3), and keys
+	 * reach the hidden fields verbatim - parse_str() would turn "foo.bar"
+	 * into "foo_bar" and "a[]" into "a[0]".
+	 */
+	public function test_form_submits_to_the_requested_path_with_keys_verbatim() {
+		$list_id = $this->make_list( $this->options( array( 'visitor_sort' => array( 'title-asc' ) ) ) );
+
+		$_SERVER['REQUEST_URI'] = '/category/news/page/3/?foo.bar=1&a%5B%5D=1&a%5B%5D=2&w4pl_sort_' . $list_id . '=title-asc#frag';
+
+		$html = $this->render( $list_id );
+
+		$this->assertStringContainsString( 'action="/category/news/page/3/"', $html );
+		$this->assertStringContainsString( '<input type="hidden" name="foo.bar" value="1" />', $html );
+		$this->assertSame( 2, substr_count( $html, '<input type="hidden" name="a[]"' ) );
+		$this->assertStringNotContainsString( 'frag', $html );
+	}
+
+	public function test_protocol_relative_path_cannot_point_the_form_elsewhere() {
+		$list_id = $this->make_list( $this->options( array( 'visitor_sort' => array( 'title-asc' ) ) ) );
+
+		$_SERVER['REQUEST_URI'] = '//evil.example/x?y=1';
+
+		$html = $this->render( $list_id );
+
+		$this->assertStringContainsString( 'action="/evil.example/x"', $html );
+		$this->assertStringNotContainsString( 'action="//', $html );
+	}
+
+	/**
+	 * The list editor's live preview renders through admin-ajax.php, where a
+	 * submit would navigate the editor away. The control shows, disabled.
+	 */
+	public function test_control_is_disabled_in_admin_previews() {
+		$list_id = $this->make_list( $this->options( array( 'visitor_sort' => array( 'title-asc' ) ) ) );
+
+		set_current_screen( 'edit.php' );
+		$html = $this->render( $list_id );
+		set_current_screen( 'front' );
+
+		$this->assertMatchesRegularExpression( '/<select id="w4pl-sort-\d+" name="w4pl_sort_\d+" disabled="disabled">/', $html );
+		$this->assertStringContainsString( '<button type="submit" class="w4pl-sort-submit" disabled="disabled">', $html );
+
+		$html = $this->render( $list_id );
+		$this->assertStringNotContainsString( 'disabled', $html );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -605,5 +670,24 @@ class VisitorSortTest extends W4PL_Snapshot_TestCase {
 			)
 		);
 		$this->assertStringNotContainsString( $warning, implode( "\n", $warnings ) );
+	}
+
+	public function test_save_warns_when_limit_or_offset_meet_visitor_sorting() {
+		$warning = 'may see different posts';
+
+		foreach ( array( 'limit', 'offset' ) as $field ) {
+			$warnings = W4PL_Admin_Validation::template_warnings(
+				$this->options(
+					array(
+						$field         => '5',
+						'visitor_sort' => array( 'title-asc' ),
+					)
+				)
+			);
+			$this->assertStringContainsString( $warning, implode( "\n", $warnings ), $field );
+		}
+
+		$warnings = W4PL_Admin_Validation::template_warnings( $this->options( array( 'limit' => '5' ) ) );
+		$this->assertStringNotContainsString( $warning, implode( "\n", $warnings ), 'No warning without visitor sorting.' );
 	}
 }

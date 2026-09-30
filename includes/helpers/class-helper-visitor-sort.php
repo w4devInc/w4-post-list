@@ -37,7 +37,9 @@ class W4PL_Helper_Visitor_Sort {
 	const PLACEHOLDER = '<!--w4pl-sort-control-->';
 
 	/**
-	 * [sort] tag attributes of the list being rendered, keyed by list id.
+	 * Sort state of the lists being rendered, keyed by spl_object_id() of the
+	 * list object, so a list nested inside another render of the same list id
+	 * cannot take the outer one's state.
 	 *
 	 * @var array
 	 */
@@ -200,7 +202,7 @@ class W4PL_Helper_Visitor_Sort {
 	public function get_shortcodes( $shortcodes ) {
 		$shortcodes['sort'] = array(
 			'group'      => 'Main',
-			'code'       => '[sort label="" ajax="1"]',
+			'code'       => '[sort label=""]',
 			// Only reached in a list with visitor sorting off: an enabled list
 			// swaps the tag out before the template is parsed.
 			'callback'   => '__return_empty_string',
@@ -226,13 +228,16 @@ class W4PL_Helper_Visitor_Sort {
 	 * Apply the visitor's order and set aside the [sort] tag.
 	 *
 	 * Runs after W4PL_Helper_Posts has copied the list's own orderby/order
-	 * into the query. Only orderby and order change: a meta_key the list's
-	 * own ordering added stays, so the visitor re-orders the same posts.
+	 * into the query. Only orderby and order change; every filter stays,
+	 * including a meta_key the list's own ordering added. The visitor's order
+	 * applies to everything the list matches, and "Maximum items" and
+	 * "Offset" then count in that order (the editor warns about this).
 	 *
 	 * @param object $list W4PL_List instance.
 	 */
 	public function parse_query_args( $list ) {
-		unset( $this->pending[ $list->id ] );
+		$key = spl_object_id( $list );
+		unset( $this->pending[ $key ] );
 
 		$offered = self::offered( $list->options );
 		if ( empty( $offered ) ) {
@@ -266,7 +271,7 @@ class W4PL_Helper_Visitor_Sort {
 			}
 		}
 
-		$this->pending[ $list->id ] = array(
+		$this->pending[ $key ] = array(
 			'attr'    => $attr,
 			'offered' => $offered,
 			'current' => $token,
@@ -280,12 +285,13 @@ class W4PL_Helper_Visitor_Sort {
 	 * @param object $list W4PL_List instance.
 	 */
 	public function parse_html( $list ) {
-		if ( ! isset( $this->pending[ $list->id ] ) ) {
+		$key = spl_object_id( $list );
+		if ( ! isset( $this->pending[ $key ] ) ) {
 			return;
 		}
 
-		$pending = $this->pending[ $list->id ];
-		unset( $this->pending[ $list->id ] );
+		$pending = $this->pending[ $key ];
+		unset( $this->pending[ $key ] );
 
 		// Nothing to sort: the template renders empty and so does the tag.
 		$has_items = $list->posts_query instanceof WP_Query && $list->posts_query->post_count > 0;
@@ -304,7 +310,9 @@ class W4PL_Helper_Visitor_Sort {
 
 	/**
 	 * The sort form. A plain GET form, so it works without JavaScript; the
-	 * front-end script submits it on change, over AJAX when ajax="1".
+	 * front-end script also applies it when a pointer picks an option, over
+	 * AJAX when ajax="1". The button stays visible for keyboard users, for
+	 * whom a select fires "change" on every arrow key.
 	 *
 	 * @param  object $list    W4PL_List instance.
 	 * @param  array  $pending Offered choices, current token, tag attributes.
@@ -331,20 +339,29 @@ class W4PL_Helper_Visitor_Sort {
 
 		$current = '' !== $pending['current'] ? $pending['current'] : $own_token;
 
-		// A new order starts from page one; other lists' parameters are kept.
-		$url = remove_query_arg( array( $paged, $var ), get_pagenum_link( 1, false ) );
-		$url = current( explode( '#', $url, 2 ) );
+		// Submit to the current URL, as it was requested: get_pagenum_link()
+		// would drop the page's own /page/N/, and add_query_arg() and friends
+		// run the query through parse_str(), which rewrites "." and " " in
+		// keys and would change parameters that belong to someone else.
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- split below, every piece escaped on output.
+		$uri   = isset( $_SERVER['REQUEST_URI'] ) && is_string( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+		$uri   = current( explode( '#', $uri, 2 ) );
+		$parts = explode( '?', $uri, 2 );
+		$query = isset( $parts[1] ) ? $parts[1] : '';
 
-		$query = '';
-		if ( false !== strpos( $url, '?' ) ) {
-			list( $url, $query ) = explode( '?', $url, 2 );
-		}
+		// A path of "//host/..." would make the action point at another site.
+		$path = '/' . ltrim( $parts[0], '/' );
+
+		// Previews (list editor, block editor) render through admin-ajax.php
+		// or the REST API, where submitting would leave the editor.
+		$preview  = is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST );
+		$disabled = $preview ? ' disabled="disabled"' : '';
 
 		$id   = 'w4pl-sort-' . $list->id;
-		$html = '<form class="w4pl-sort" method="get" action="' . esc_url( $url ) . '"' . ( $ajax ? ' data-ajax="1"' : '' ) . '>';
+		$html = '<form class="w4pl-sort" method="get" action="' . esc_url( $path ) . '"' . ( $ajax ? ' data-ajax="1"' : '' ) . '>';
 
 		$html .= '<label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label> ';
-		$html .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $var ) . '">';
+		$html .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $var ) . '"' . $disabled . '>';
 
 		if ( '' === $own_token ) {
 			$html .= '<option value=""' . selected( $current, '', false ) . '>' . esc_html__( 'Default order', 'w4-post-list' ) . '</option>';
@@ -357,8 +374,7 @@ class W4PL_Helper_Visitor_Sort {
 		$html .= '</select>';
 
 		// A GET form drops the action's query string, so carry it as fields.
-		// Split by hand rather than parse_str(), which rewrites "." and " "
-		// in keys and would change parameters that belong to someone else.
+		// A new order starts from page one; other lists' parameters are kept.
 		foreach ( explode( '&', $query ) as $pair ) {
 			if ( '' === $pair ) {
 				continue;
@@ -375,7 +391,7 @@ class W4PL_Helper_Visitor_Sort {
 			$html .= '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
 		}
 
-		$html .= ' <button type="submit" class="w4pl-sort-submit">' . esc_html__( 'Sort', 'w4-post-list' ) . '</button>';
+		$html .= ' <button type="submit" class="w4pl-sort-submit"' . $disabled . '>' . esc_html__( 'Sort', 'w4-post-list' ) . '</button>';
 		$html .= '</form>';
 
 		w4pl_enqueue_ajax_nav_script();
