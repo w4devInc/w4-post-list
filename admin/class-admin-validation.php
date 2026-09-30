@@ -154,6 +154,10 @@ class W4PL_Admin_Validation {
 			}
 		}
 
+		if ( self::sort_tag_without_choices( $options ) ) {
+			$warnings[] = __( 'The template has the [sort] tag but no "Visitor sorting" order is ticked, so it will print as plain text. Tick at least one order or remove the tag.', 'w4-post-list' );
+		}
+
 		if ( self::grouped_template_missing_loop( $options ) ) {
 			$warnings[] = __( '"Group by" is set but the template has no [groups]…[/groups] loop, so the list will render nothing. Wrap the posts loop in [groups]…[/groups] and use [group_title] for each heading.', 'w4-post-list' );
 		}
@@ -178,6 +182,29 @@ class W4PL_Admin_Validation {
 		}
 
 		return false === strpos( $options['template'], '[groups]' );
+	}
+
+	/**
+	 * A [sort] tag in a posts list that offers no sort choices is never
+	 * replaced, so outside the loops it prints as text.
+	 *
+	 * @param  array $options List options.
+	 * @return bool
+	 */
+	public static function sort_tag_without_choices( $options ) {
+		if ( empty( $options['template'] ) || ! is_string( $options['template'] ) ) {
+			return false;
+		}
+
+		if ( ! isset( $options['list_type'] ) || 'posts' !== $options['list_type'] ) {
+			return false;
+		}
+
+		if ( ! preg_match( '/\[sort(?![\w-])/', $options['template'] ) ) {
+			return false;
+		}
+
+		return empty( W4PL_Helper_Visitor_Sort::offered( $options ) );
 	}
 
 	/**

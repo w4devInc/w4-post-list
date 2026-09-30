@@ -291,4 +291,51 @@ class W4PL_Config {
 			'display_name'    => __( 'Display name', 'w4-post-list' ),
 		);
 	}
+
+	/**
+	 * Orders a visitor can pick from a posts list's sort dropdown.
+	 *
+	 * The key is the value the dropdown submits (w4pl_sort_{list id}=title-asc),
+	 * so a visitor can only ever reach an orderby/order pair listed here.
+	 * Random is left out on purpose: it reshuffles on every page, so paging
+	 * through a randomly sorted list repeats and skips posts.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return array Token => array( orderby, order, label ).
+	 */
+	public static function visitor_sort_options() {
+		return array(
+			'date-desc'          => array(
+				'orderby' => 'date',
+				'order'   => 'DESC',
+				'label'   => __( 'Newest first', 'w4-post-list' ),
+			),
+			'date-asc'           => array(
+				'orderby' => 'date',
+				'order'   => 'ASC',
+				'label'   => __( 'Oldest first', 'w4-post-list' ),
+			),
+			'title-asc'          => array(
+				'orderby' => 'title',
+				'order'   => 'ASC',
+				'label'   => __( 'Title: A to Z', 'w4-post-list' ),
+			),
+			'title-desc'         => array(
+				'orderby' => 'title',
+				'order'   => 'DESC',
+				'label'   => __( 'Title: Z to A', 'w4-post-list' ),
+			),
+			'modified-desc'      => array(
+				'orderby' => 'modified',
+				'order'   => 'DESC',
+				'label'   => __( 'Recently updated', 'w4-post-list' ),
+			),
+			'comment_count-desc' => array(
+				'orderby' => 'comment_count',
+				'order'   => 'DESC',
+				'label'   => __( 'Most commented', 'w4-post-list' ),
+			),
+		);
+	}
 }

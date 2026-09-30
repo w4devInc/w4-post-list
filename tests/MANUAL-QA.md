@@ -51,6 +51,39 @@ the first three items on a classic theme (Twenty Twenty-One).
 - [x] Admin **Live preview** pane with an ajax-nav list: renders with no
       `jQuery is not defined` error in the console (the 2.x snippet threw there)
 
+## Visitor sorting (#17)
+
+PHPUnit (`VisitorSortTest`) covers the server side: opt-in, the token
+whitelist, the per-list `w4pl_sort_<ID>` parameter, the form markup and hidden
+fields, and that pagination links carry the sort. The items below are the
+browser half.
+
+Fixture: two posts lists on one page, Items per page 3, four "Visitor sorting"
+orders ticked. List A in a W4 Post List **block** with
+`<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav type="plain" ajax="1"]`;
+list B in a shortcode block with
+`[sort label="Order"]<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav type="plain"]`.
+
+> Executed 2026-10-01 on the feature branch (pimi-canvas block theme, no jQuery
+> on the page, headless Chromium via the Playwright docker image). Boxes record
+> that run.
+
+- [x] With JS on, the "Sort" buttons are hidden and each list shows its dropdown
+- [x] List A: picking "Title: A to Z" swaps the list in place (no navigation), the
+      dropdown keeps focus and shows the new choice, list B is untouched
+- [x] List A, then click "2": still no navigation, page 2 continues A to Z, and it
+      matches a fresh load of `?w4pl_sort_<A>=title-asc&page<A>=2`
+- [x] List B: picking an order does a normal GET to `?w4pl_sort_<B>=…`, the list is
+      re-sorted, and its page links carry the sort
+- [x] `[sort label="Order"]` places the dropdown where the tag is, with that label
+- [x] JS off: the "Sort" button is visible; choosing an order and pressing it loads
+      the sorted list and keeps unrelated query parameters (`utm_source`)
+- [x] No console errors
+- [x] Editor: the "Visitor sorting" checkboxes show the saved state, and changing
+      them survives Update
+- [ ] Classic theme (Twenty Twenty-One): repeat the first two items
+- [ ] Late-rendered list (after `wp_footer` priority 20): the button is still hidden
+
 ## Front-end asset footprint (M12)
 
 Through 2.x, three admin stylesheets and two admin scripts were registered on

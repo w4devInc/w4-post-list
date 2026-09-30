@@ -249,6 +249,11 @@ class W4PL_Admin_Lists_Metaboxes {
 			}
 		}
 
+		// Visitor sort choices: known tokens only, compared as-is.
+		if ( array_key_exists( 'visitor_sort', $options ) ) {
+			$options['visitor_sort'] = W4PL_Helper_Visitor_Sort::filter_tokens( $options['visitor_sort'] );
+		}
+
 		// Checked against the registry, not rewritten with sanitize_key: a
 		// rewritten slug would silently point the list at a different taxonomy.
 		if ( array_key_exists( 'terms_taxonomy', $options ) && ( ! is_string( $options['terms_taxonomy'] ) || ! taxonomy_exists( $options['terms_taxonomy'] ) ) ) {

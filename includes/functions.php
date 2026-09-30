@@ -86,8 +86,9 @@ function w4pl_asset_version() {
 /**
  * Enqueue the front-end AJAX pagination script.
  *
- * Called from W4PL_List::navigation() at render time, so the script only
- * reaches pages where a list actually rendered [nav ajax="1"] links. Passing
+ * Called from W4PL_List::navigation() and the visitor sort control at render
+ * time, so the script only reaches pages where a list actually rendered
+ * [nav ajax="1"] links or a sort dropdown. Passing
  * the full arguments means the handle self-registers in contexts where
  * `wp_enqueue_scripts` never fires (REST block renderer, the editor preview),
  * instead of being silently dropped.
