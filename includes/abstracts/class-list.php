@@ -106,7 +106,9 @@ abstract class W4PL_List {
 				'add_args'  => false, // stop wp to add query arguments.
 			);
 
-			$return = paginate_links( $pag_args );
+			// paginate_links() returns null when there is a single page; keep
+			// the documented string return so callers can str_replace() it.
+			$return = (string) paginate_links( $pag_args );
 
 		} else {
 			$paged = (int) $paged;
