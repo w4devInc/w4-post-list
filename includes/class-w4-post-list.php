@@ -165,6 +165,7 @@ final class W4_Post_List {
 		new W4PL_Helper_Tax_Query();
 		new W4PL_Helper_Presets();
 		new W4PL_Helper_Style();
+		new W4PL_Helper_Visitor_Sort();
 
 		new W4PL_Post_Template_Tags();
 		new W4PL_Term_Template_Tags();
@@ -196,7 +197,8 @@ final class W4_Post_List {
 	 * Register front-end javascripts.
 	 *
 	 * Registration only; W4PL_List::navigation() enqueues on demand when a
-	 * rendered list actually uses [nav ajax="1"]. Registering early lets site
+	 * rendered list actually uses [nav ajax="1"], and so does a list that
+	 * renders a visitor sort dropdown. Registering early lets site
 	 * owners point the handle at their own file (wp_deregister_script() then
 	 * wp_register_script()) or attach script data to it; those changes stick,
 	 * because the render-time wp_enqueue_script() in

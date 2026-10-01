@@ -51,6 +51,67 @@ the first three items on a classic theme (Twenty Twenty-One).
 - [x] Admin **Live preview** pane with an ajax-nav list: renders with no
       `jQuery is not defined` error in the console (the 2.x snippet threw there)
 
+## Visitor sorting (#17)
+
+PHPUnit (`VisitorSortTest`) covers the server side: opt-in, the token
+whitelist, the per-list `w4pl_sort_<ID>` parameter, the form markup and hidden
+fields, and that pagination links carry the sort. The items below are the
+browser half.
+
+Fixture: two posts lists on one page, Items per page 3, four "Visitor sorting"
+orders ticked. List A in a W4 Post List **block** with
+`<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav type="plain" ajax="1"]`;
+list B in a shortcode block with
+`[sort label="Order"]<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav type="plain"]`.
+
+> Executed 2026-10-01 on the feature branch (pimi-canvas block theme, no jQuery
+> on the page, headless Chromium via the Playwright docker image). Boxes record
+> that run.
+
+- [x] With JS on, each list shows its dropdown **and** its "Sort" button (the button
+      is the keyboard path, so it is never hidden)
+- [x] List A: picking "Title: A to Z" with the mouse swaps the list in place (no
+      navigation), the dropdown keeps focus and shows the new choice, list B is untouched
+- [x] Keyboard on list A: an arrow key plus the `change` Windows fires with it does
+      **not** reload the list; Enter in the dropdown applies it over AJAX, focus kept
+- [x] List A, then click "2": still no navigation, page 2 continues A to Z, and it
+      matches a fresh load of `?w4pl_sort_<A>=title-asc&page<A>=2`
+- [x] List B: picking an order with the mouse does a normal GET to
+      `?w4pl_sort_<B>=…`, the list is re-sorted, and its page links carry the sort
+- [x] List B by keyboard: Tab to "Sort", Enter: normal GET with the new order
+- [x] `[sort label="Order"]` places the dropdown where the tag is, with that label
+- [x] JS off: choosing an order and pressing "Sort" loads the sorted list and keeps
+      unrelated query parameters (`utm_source`)
+- [x] No console errors
+- [x] Editor: the "Visitor sorting" checkboxes show the saved state, and changing
+      them survives Update
+
+**Lists with "Maximum items" or "Offset"** never offer sorting, ticked or not.
+Add list C (four orders ticked, Maximum items 5, Items per page 2, template
+`[sort label="Order"]<ul>…</ul>[nav type="plain" ajax="1"]`) and list D (four
+orders ticked, Offset 2) to the same page. Executed 2026-10-01, same setup.
+
+- [x] Lists C and D show no dropdown, no "Sort" button and no `[sort]` text; view
+      source has nothing sort-related inside either list
+- [x] `?w4pl_sort_<C>=title-asc&w4pl_sort_<D>=title-asc`: both lists keep their
+      configured order and still show no dropdown
+- [x] From that URL, click "2" on list C: AJAX swap, same items as a fresh
+      `?page<C>=2`, still no dropdown
+- [x] Lists A and B on the same page still sort (AJAX and plain GET) and leave
+      C and D untouched
+- [x] JS off: list C has no form and keeps its order
+- [x] Editor, list C: a note beside the "Visitor sorting" checkboxes says sorting is
+      off because Maximum items or Offset is set; the boxes stay ticked and enabled,
+      survive Update, and Update shows no sort warning
+- [x] Editor, list C: clear Maximum items and Update: the note goes, and the
+      front end shows the dropdown again without re-ticking anything
+- [x] Editor, list A: no note
+
+- [ ] Real Windows keyboard (not a replayed event): arrowing through a closed
+      dropdown does not reload; Enter applies
+- [ ] Classic theme (Twenty Twenty-One): repeat the two list A mouse items
+- [ ] Live preview pane: the dropdown shows, disabled
+
 ## Front-end asset footprint (M12)
 
 Through 2.x, three admin stylesheets and two admin scripts were registered on
