@@ -306,6 +306,210 @@ class AjaxNavTest extends W4PL_Snapshot_TestCase {
 	}
 
 	/* ---------------------------------------------------------------------
+	 * What the script's history handling relies on from the server.
+	 *
+	 * The script keeps a list's page in the address bar as page{list id}, so
+	 * Back / Forward / reload re-request that URL. These pin the server half:
+	 * the URL alone decides the page, each list reads only its own parameter,
+	 * and a link to page one carries no parameter (the script removes it from
+	 * the address bar rather than leaving page{id}=1 behind).
+	 * ------------------------------------------------------------------ */
+
+	/**
+	 * Render with the request simulated as `/?{query}`.
+	 *
+	 * @param int    $list_id List id.
+	 * @param string $query   Query string, without the leading "?".
+	 * @return string
+	 */
+	private function render_at( $list_id, $query ) {
+		$saved_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : null;
+		$saved_req = $_REQUEST;
+
+		parse_str( $query, $params );
+		$_REQUEST               = array_merge( $_REQUEST, $params );
+		$_SERVER['REQUEST_URI'] = '/' . ( '' === $query ? '' : '?' . $query );
+
+		try {
+			return do_shortcode( '[postlist id="' . $list_id . '"]' );
+		} finally {
+			$_REQUEST = $saved_req;
+			if ( null === $saved_uri ) {
+				unset( $_SERVER['REQUEST_URI'] );
+			} else {
+				$_SERVER['REQUEST_URI'] = $saved_uri;
+			}
+		}
+	}
+
+	/**
+	 * Hrefs of the pagination links in `$html`, keyed by link text.
+	 *
+	 * @param string $html Rendered list.
+	 * @return array
+	 */
+	private function nav_hrefs( $html ) {
+		preg_match_all( '/<a[^>]*class="[^"]*page-numbers[^"]*"[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>|<a[^>]*href="([^"]*)"[^>]*class="[^"]*page-numbers[^"]*"[^>]*>(.*?)<\/a>/', $html, $m, PREG_SET_ORDER );
+
+		$hrefs = array();
+		foreach ( $m as $match ) {
+			$href = '' !== $match[1] ? $match[1] : $match[3];
+			$text = '' !== $match[1] ? $match[2] : $match[4];
+
+			$hrefs[ wp_strip_all_tags( $text ) ] = html_entity_decode( $href );
+		}
+
+		return $hrefs;
+	}
+
+	public function test_reload_on_page_three_renders_page_three() {
+		$list_id = $this->make_list( $this->paginated_options( self::AJAX_TEMPLATE ) );
+
+		$html = $this->render_at( $list_id, 'page' . $list_id . '=3' );
+
+		$this->assertStringContainsString( 'Ten tips for faster sites', $html );
+		$this->assertStringContainsString( 'Hello from the archive', $html );
+		$this->assertStringNotContainsString( 'Spring cleaning tips', $html );
+	}
+
+	public function test_link_back_to_page_one_carries_no_page_parameter() {
+		$list_id = $this->make_list( $this->paginated_options( self::AJAX_TEMPLATE ) );
+
+		$hrefs = $this->nav_hrefs( $this->render_at( $list_id, 'utm_source=news&page' . $list_id . '=2' ) );
+
+		$this->assertArrayHasKey( '1', $hrefs, 'Sanity: page two links back to page one.' );
+		$this->assertStringNotContainsString( 'page' . $list_id, $hrefs['1'] );
+		$this->assertStringContainsString( 'utm_source=news', $hrefs['1'], 'Other parameters stay.' );
+		$this->assertStringContainsString( 'page' . $list_id . '=3', $hrefs['3'] );
+	}
+
+	public function test_default_nav_previous_link_from_page_two_carries_no_page_parameter() {
+		$template = '<ul>[posts]<li>[post_title]</li>[/posts]</ul>[nav ajax="1"]';
+		$list_id  = $this->make_list( $this->paginated_options( $template ) );
+
+		$hrefs = $this->nav_hrefs( $this->render_at( $list_id, 'page' . $list_id . '=2' ) );
+
+		$this->assertStringNotContainsString( 'page' . $list_id, $hrefs['Previous'] );
+		$this->assertStringContainsString( 'page' . $list_id . '=3', $hrefs['Next'] );
+	}
+
+	/**
+	 * One URL holds both lists' pages; each list renders its own and its
+	 * links keep the other's.
+	 */
+	public function test_two_lists_restore_their_own_pages_from_one_url() {
+		$id_a = $this->make_list( $this->paginated_options( self::AJAX_TEMPLATE ) );
+		$id_b = $this->make_list( $this->paginated_options( self::AJAX_TEMPLATE ) );
+
+		$query  = 'page' . $id_a . '=3&page' . $id_b . '=2';
+		$html_a = $this->render_at( $id_a, $query );
+		$html_b = $this->render_at( $id_b, $query );
+
+		$this->assertStringContainsString( 'Hello from the archive', $html_a, 'List A: page 3.' );
+		$this->assertStringContainsString( 'Year in review', $html_b, 'List B: page 2.' );
+		$this->assertStringNotContainsString( 'Hello from the archive', $html_b );
+
+		// A's link to its page 2: B's page kept, A's own page replaced, and
+		// nothing else in the query.
+		$hrefs_a = $this->nav_hrefs( $html_a );
+		parse_str( (string) wp_parse_url( $hrefs_a['2'], PHP_URL_QUERY ), $query_a );
+
+		$this->assertSame(
+			array(
+				'page' . $id_b => '2',
+				'page' . $id_a => '2',
+			),
+			$query_a
+		);
+		$this->assertSame( '/', wp_parse_url( $hrefs_a['2'], PHP_URL_PATH ) );
+
+		// And the same with this list's parameter second in the URL.
+		$hrefs_b = $this->nav_hrefs( $html_b );
+		parse_str( (string) wp_parse_url( $hrefs_b['3'], PHP_URL_QUERY ), $query_b );
+
+		$this->assertSame(
+			array(
+				'page' . $id_a => '3',
+				'page' . $id_b => '3',
+			),
+			$query_b
+		);
+		$this->assertArrayHasKey( '1', $hrefs_b );
+		$this->assertSame( 'page' . $id_a . '=3', wp_parse_url( $hrefs_b['1'], PHP_URL_QUERY ), "B's link to page one drops only B's page." );
+	}
+
+	/**
+	 * A value that is not a page number renders page one, with and without
+	 * "Maximum items".
+	 *
+	 * @dataProvider provide_junk_page_values
+	 *
+	 * @param string $query_value Raw `page{id}` part of the query string, from "=" on (or "[]=…").
+	 * @param string $limit       "Maximum items" option.
+	 */
+	public function test_junk_page_value_renders_page_one( $query_value, $limit ) {
+		$options          = $this->paginated_options( self::AJAX_TEMPLATE );
+		$options['limit'] = $limit;
+		$list_id          = $this->make_list( $options );
+
+		$html = $this->render_at( $list_id, 'page' . $list_id . $query_value );
+
+		$this->assertStringContainsString( 'Spring cleaning tips', $html );
+		$this->assertStringNotContainsString( 'Year in review', $html );
+	}
+
+	public function provide_junk_page_values() {
+		$values = array(
+			'word'  => '=abc',
+			'zero'  => '=0',
+			'empty' => '=',
+			'array' => '[]=2',
+		);
+
+		$cases = array();
+		foreach ( $values as $name => $value ) {
+			$cases[ $name ]                 = array( $value, '' );
+			$cases[ $name . ', limited' ] = array( $value, '5' );
+		}
+
+		return $cases;
+	}
+
+	/**
+	 * @dataProvider provide_page_values
+	 *
+	 * @param mixed $value    Request value, or null for "not in the request".
+	 * @param int   $expected Page number.
+	 */
+	public function test_list_page_is_always_a_positive_integer( $value, $expected ) {
+		if ( null !== $value ) {
+			$_REQUEST['page987'] = $value;
+		}
+
+		$paged = w4pl_get_list_page( 987 );
+
+		unset( $_REQUEST['page987'] );
+
+		$this->assertSame( $expected, $paged );
+	}
+
+	public function provide_page_values() {
+		return array(
+			'absent'         => array( null, 1 ),
+			'string number'  => array( '3', 3 ),
+			'integer'        => array( 3, 3 ),
+			'one'            => array( '1', 1 ),
+			'zero'           => array( '0', 1 ),
+			'word'           => array( 'abc', 1 ),
+			'empty'          => array( '', 1 ),
+			'array'          => array( array( '2' ), 1 ),
+			// As WP_Query has always read it, through absint().
+			'leading digits' => array( '2abc', 2 ),
+			'negative'       => array( '-3', 3 ),
+		);
+	}
+
+	/* ---------------------------------------------------------------------
 	 * Characterization snapshot.
 	 * ------------------------------------------------------------------ */
 

@@ -207,7 +207,7 @@ class W4PL_Helper_Users {
 				}
 			}
 
-			$paged = isset( $_REQUEST[ 'page' . $list->id ] ) ? $_REQUEST[ 'page' . $list->id ] : 1;
+			$paged = w4pl_get_list_page( $list->id );
 
 			if ( ! empty( $list->options['users_limit'] ) ) {
 				$list->users_args['offset'] = (int) $list->options['users_offset'] + ( $paged - 1 ) * $list->options['users_limit'];

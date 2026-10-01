@@ -434,7 +434,7 @@ class W4PL_Helper_Posts {
 			}
 
 			// We handle paged query using an unique query parameter.
-			$paged = isset( $_REQUEST[ 'page' . $list->id ] ) ? wp_unslash( $_REQUEST[ 'page' . $list->id ] ) : 1;
+			$paged = w4pl_get_list_page( $list->id );
 
 			$defaults = array(
 				'post_status' => 'publish',
