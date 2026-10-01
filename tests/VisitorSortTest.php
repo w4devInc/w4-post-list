@@ -672,22 +672,228 @@ class VisitorSortTest extends W4PL_Snapshot_TestCase {
 		$this->assertStringNotContainsString( $warning, implode( "\n", $warnings ) );
 	}
 
-	public function test_save_warns_when_limit_or_offset_meet_visitor_sorting() {
-		$warning = 'may see different posts';
+	/* ---------------------------------------------------------------------
+	 * "Maximum items" / "Offset": no visitor sorting at all.
+	 *
+	 * Both count posts in the query's order, so a visitor's order would
+	 * change which posts are shown ("5 latest" sorted A to Z becoming the
+	 * first 5 by title). Such a list renders in its configured order, with
+	 * no dropdown, whatever is ticked and whatever the URL says.
+	 * ------------------------------------------------------------------ */
+
+	/**
+	 * @dataProvider provide_limit_and_offset_values
+	 *
+	 * @param mixed $value    Stored option value.
+	 * @param bool  $expected Whether it counts as set.
+	 */
+	public function test_set_means_what_it_means_to_the_query( $value, $expected ) {
+		$this->assertSame( $expected, W4PL_Helper_Visitor_Sort::is_limited( array( 'limit' => $value ) ), 'limit' );
+		$this->assertSame( $expected, W4PL_Helper_Visitor_Sort::is_limited( array( 'offset' => $value ) ), 'offset' );
+	}
+
+	public function provide_limit_and_offset_values() {
+		return array(
+			'empty string'  => array( '', false ),
+			'string zero'   => array( '0', false ),
+			'integer zero'  => array( 0, false ),
+			'null'          => array( null, false ),
+			'string number' => array( '5', true ),
+			'integer'       => array( 5, true ),
+			'negative'      => array( '-1', true ),
+		);
+	}
+
+	public function test_missing_limit_and_offset_are_not_set() {
+		$this->assertFalse( W4PL_Helper_Visitor_Sort::is_limited( array() ) );
+	}
+
+	public function test_list_with_maximum_items_ignores_the_parameter_and_renders_no_dropdown() {
+		$list_id = $this->make_list(
+			$this->options(
+				array(
+					'limit'        => '4',
+					'visitor_sort' => array( 'title-asc', 'date-asc' ),
+				)
+			)
+		);
+		$before  = $this->render( $list_id );
+
+		$this->request( array( 'w4pl_sort_' . $list_id => 'title-asc' ) );
+		$after = $this->render( $list_id );
+
+		$this->assertSame( $before, $after, 'The parameter must change nothing.' );
+		$this->assertSame( array_slice( self::TITLES_NEWEST, 0, 4 ), $this->titles( $after ) );
+		$this->assertStringNotContainsString( '<form', $after );
+		$this->assertStringNotContainsString( 'w4pl-sort', $after );
+		$this->assertStringNotContainsString( 'w4pl_sort_', $after );
+		$this->assertFalse( wp_script_is( 'w4pl-ajax-nav', 'enqueued' ) );
+	}
+
+	public function test_list_with_offset_ignores_the_parameter_and_renders_no_dropdown() {
+		$list_id = $this->make_list(
+			$this->options(
+				array(
+					'offset'       => '2',
+					'visitor_sort' => array( 'title-asc', 'date-asc' ),
+				)
+			)
+		);
+		$before  = $this->render( $list_id );
+
+		$this->request( array( 'w4pl_sort_' . $list_id => 'title-asc' ) );
+		$after = $this->render( $list_id );
+
+		$this->assertSame( $before, $after, 'The parameter must change nothing.' );
+		$this->assertSame( array_slice( self::TITLES_NEWEST, 2 ), $this->titles( $after ) );
+		$this->assertStringNotContainsString( '<form', $after );
+		$this->assertStringNotContainsString( 'w4pl-sort', $after );
+		$this->assertFalse( wp_script_is( 'w4pl-ajax-nav', 'enqueued' ) );
+	}
+
+	public function test_limited_list_never_hands_the_visitors_order_to_the_query() {
+		$options = $this->options(
+			array(
+				'limit'        => '4',
+				'visitor_sort' => array( 'title-asc' ),
+			)
+		);
+
+		$options['id'] = $this->make_list( $options );
+		$this->request( array( 'w4pl_sort_' . $options['id'] => 'title-asc' ) );
+
+		$list = W4PL_List_Factory::get_list( apply_filters( 'w4pl/pre_get_options', $options ) );
+		$list->get_html();
+
+		$this->assertSame( 'date', $list->posts_args['orderby'] );
+		$this->assertSame( 'DESC', $list->posts_args['order'] );
+		$this->assertSame( array(), W4PL_Helper_Visitor_Sort::offered( $options ) );
+		$this->assertArrayHasKey( 'title-asc', W4PL_Helper_Visitor_Sort::configured( $options ), 'The ticks themselves are untouched.' );
+	}
+
+	/**
+	 * The owner ticked orders and placed the tag, then set a limit: the tag
+	 * must render nothing, not print as "[sort]".
+	 */
+	public function test_limited_list_renders_nothing_for_the_sort_tag() {
+		$list_id = $this->make_list(
+			$this->options(
+				array(
+					'limit'        => '4',
+					'visitor_sort' => array( 'title-asc' ),
+					'template'     => '[sort label="Order"]<ul>[posts]<li>[post_title]</li>[sort][/posts]</ul>',
+				)
+			)
+		);
+
+		$html = $this->render( $list_id );
+
+		$this->assertCount( 4, $this->titles( $html ) );
+		$this->assertStringNotContainsString( '[sort', $html );
+		$this->assertStringNotContainsString( '<form', $html );
+		$this->assertStringNotContainsString( 'w4pl-sort', $html, 'No control, no placeholder.' );
+	}
+
+	/**
+	 * The AJAX path is the same server render fetched by the script, so a
+	 * sorted deep link to page 2 must come back in the configured order.
+	 */
+	public function test_limited_list_keeps_its_order_on_a_paged_ajax_request() {
+		$list_id = $this->make_list(
+			$this->options(
+				array(
+					'limit'          => '5',
+					'posts_per_page' => 2,
+					'visitor_sort'   => array( 'title-asc' ),
+					'template'       => self::LOOP . '[nav type="plain" ajax="1"]',
+				)
+			)
+		);
+
+		$this->request(
+			array(
+				'w4pl_sort_' . $list_id => 'title-asc',
+				'page' . $list_id       => '2',
+			)
+		);
+		$html = $this->render( $list_id );
+
+		$this->assertSame( array_slice( self::TITLES_NEWEST, 2, 2 ), $this->titles( $html ) );
+		$this->assertStringNotContainsString( '<form', $html );
+		$this->assertStringContainsString( 'ajax-navigation', $html, 'Pagination itself still works.' );
+	}
+
+	/**
+	 * '0' is "no limit" / "no offset" to the query, so it must not switch
+	 * sorting off either.
+	 */
+	public function test_zero_limit_and_offset_leave_sorting_on() {
+		$list_id = $this->make_list(
+			$this->options(
+				array(
+					'limit'        => '0',
+					'offset'       => '0',
+					'visitor_sort' => array( 'title-asc' ),
+				)
+			)
+		);
+
+		$this->request( array( 'w4pl_sort_' . $list_id => 'title-asc' ) );
+		$html = $this->render( $list_id );
+
+		$this->assertSame( self::TITLES_AZ, $this->titles( $html ) );
+		$this->assertStringContainsString( '<form class="w4pl-sort"', $html );
+	}
+
+	public function test_editor_says_sorting_is_unavailable_on_a_limited_list() {
+		$note = 'Visitor sorting is off for this list';
 
 		foreach ( array( 'limit', 'offset' ) as $field ) {
-			$warnings = W4PL_Admin_Validation::template_warnings(
-				$this->options(
-					array(
-						$field         => '5',
-						'visitor_sort' => array( 'title-asc' ),
-					)
+			$options = apply_filters(
+				'w4pl/pre_get_options',
+				array(
+					'list_type'    => 'posts',
+					$field         => '5',
+					'visitor_sort' => array( 'title-asc' ),
 				)
 			);
-			$this->assertStringContainsString( $warning, implode( "\n", $warnings ), $field );
+			$fields  = apply_filters( 'w4pl/list_edit_form_fields', array(), $options );
+
+			$this->assertStringContainsString( $note, $fields['visitor_sort']['input_before'], $field );
+			$this->assertCount( 6, $fields['visitor_sort']['option'], 'The checkboxes stay, so the ticks are posted and kept.' );
 		}
 
-		$warnings = W4PL_Admin_Validation::template_warnings( $this->options( array( 'limit' => '5' ) ) );
-		$this->assertStringNotContainsString( $warning, implode( "\n", $warnings ), 'No warning without visitor sorting.' );
+		$fields = apply_filters( 'w4pl/list_edit_form_fields', array(), apply_filters( 'w4pl/pre_get_options', array( 'list_type' => 'posts' ) ) );
+		$this->assertArrayNotHasKey( 'input_before', $fields['visitor_sort'], 'No note on a list without a limit or offset.' );
+	}
+
+	public function test_saving_a_limited_list_keeps_the_ticked_orders() {
+		$options = W4PL_Admin_Lists_Metaboxes::sanitize_options(
+			array(
+				'list_type'    => 'posts',
+				'limit'        => '5',
+				'visitor_sort' => array( 'title-asc', 'date-asc' ),
+			)
+		);
+
+		$this->assertSame( array( 'date-asc', 'title-asc' ), $options['visitor_sort'], 'Clearing the limit later brings sorting back.' );
+	}
+
+	/**
+	 * The note next to the checkboxes replaces a save-time warning; and a
+	 * [sort] tag on a limited list with ticked orders is not "nothing ticked".
+	 */
+	public function test_limited_list_saves_without_sort_warnings() {
+		$warnings = W4PL_Admin_Validation::template_warnings(
+			$this->options(
+				array(
+					'limit'        => '5',
+					'template'     => '[sort]' . self::LOOP,
+					'visitor_sort' => array( 'title-asc' ),
+				)
+			)
+		);
+
+		$this->assertSame( array(), $warnings );
 	}
 }

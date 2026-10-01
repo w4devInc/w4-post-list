@@ -158,10 +158,6 @@ class W4PL_Admin_Validation {
 			$warnings[] = __( 'The template has the [sort] tag but no "Visitor sorting" order is ticked, so it will print as plain text. Tick at least one order or remove the tag.', 'w4-post-list' );
 		}
 
-		if ( self::visitor_sort_with_limit( $options ) ) {
-			$warnings[] = __( 'Visitor sorting re-orders every post the list matches, and "Maximum items" and "Offset" then count in the visitor\'s order. A visitor who re-sorts may see different posts, not the same posts in a new order.', 'w4-post-list' );
-		}
-
 		if ( self::grouped_template_missing_loop( $options ) ) {
 			$warnings[] = __( '"Group by" is set but the template has no [groups]…[/groups] loop, so the list will render nothing. Wrap the posts loop in [groups]…[/groups] and use [group_title] for each heading.', 'w4-post-list' );
 		}
@@ -208,22 +204,10 @@ class W4PL_Admin_Validation {
 			return false;
 		}
 
-		return empty( W4PL_Helper_Visitor_Sort::offered( $options ) );
-	}
-
-	/**
-	 * Visitor sorting on a list capped by "Maximum items" or shifted by
-	 * "Offset", where a re-sort changes which posts are shown.
-	 *
-	 * @param  array $options List options.
-	 * @return bool
-	 */
-	public static function visitor_sort_with_limit( $options ) {
-		if ( empty( $options['limit'] ) && empty( $options['offset'] ) ) {
-			return false;
-		}
-
-		return ! empty( W4PL_Helper_Visitor_Sort::offered( $options ) );
+		// Ticked orders on a list with "Maximum items" or "Offset" do not
+		// count as missing: there the tag renders nothing, and the editor
+		// says why next to the checkboxes.
+		return empty( W4PL_Helper_Visitor_Sort::configured( $options ) );
 	}
 
 	/**

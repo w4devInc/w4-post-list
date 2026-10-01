@@ -85,6 +85,28 @@ list B in a shortcode block with
 - [x] No console errors
 - [x] Editor: the "Visitor sorting" checkboxes show the saved state, and changing
       them survives Update
+
+**Lists with "Maximum items" or "Offset"** never offer sorting, ticked or not.
+Add list C (four orders ticked, Maximum items 5, Items per page 2, template
+`[sort label="Order"]<ul>…</ul>[nav type="plain" ajax="1"]`) and list D (four
+orders ticked, Offset 2) to the same page. Executed 2026-10-01, same setup.
+
+- [x] Lists C and D show no dropdown, no "Sort" button and no `[sort]` text; view
+      source has nothing sort-related inside either list
+- [x] `?w4pl_sort_<C>=title-asc&w4pl_sort_<D>=title-asc`: both lists keep their
+      configured order and still show no dropdown
+- [x] From that URL, click "2" on list C: AJAX swap, same items as a fresh
+      `?page<C>=2`, still no dropdown
+- [x] Lists A and B on the same page still sort (AJAX and plain GET) and leave
+      C and D untouched
+- [x] JS off: list C has no form and keeps its order
+- [x] Editor, list C: a note beside the "Visitor sorting" checkboxes says sorting is
+      off because Maximum items or Offset is set; the boxes stay ticked and enabled,
+      survive Update, and Update shows no sort warning
+- [x] Editor, list C: clear Maximum items and Update: the note goes, and the
+      front end shows the dropdown again without re-ticking anything
+- [x] Editor, list A: no note
+
 - [ ] Real Windows keyboard (not a replayed event): arrowing through a closed
       dropdown does not reload; Enter applies
 - [ ] Classic theme (Twenty Twenty-One): repeat the two list A mouse items

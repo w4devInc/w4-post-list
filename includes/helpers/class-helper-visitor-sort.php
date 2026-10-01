@@ -17,6 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * option). A list with none ticked ignores the URL parameter and renders
  * exactly as before.
  *
+ * A list that sets "Maximum items" or "Offset" never offers sorting, ticked
+ * or not: those count posts in the query's order, so a visitor's order would
+ * change which posts are shown instead of re-ordering the same ones.
+ *
  * The chosen order travels in w4pl_sort_{list id}, next to the existing
  * page{list id} pagination parameter. Its value is a token from
  * W4PL_Config::visitor_sort_options() that the list offers, or it is ignored;
@@ -130,6 +134,20 @@ class W4PL_Helper_Visitor_Sort {
 	 * @return array Token => choice.
 	 */
 	public static function offered( $options ) {
+		if ( self::is_limited( $options ) ) {
+			return array();
+		}
+
+		return self::configured( $options );
+	}
+
+	/**
+	 * Choices the list owner ticked, whether or not the list can offer them.
+	 *
+	 * @param  array $options List options.
+	 * @return array Token => choice.
+	 */
+	public static function configured( $options ) {
 		if ( ! isset( $options['list_type'], $options['visitor_sort'] ) || 'posts' !== $options['list_type'] ) {
 			return array();
 		}
@@ -137,6 +155,20 @@ class W4PL_Helper_Visitor_Sort {
 		$tokens = self::filter_tokens( $options['visitor_sort'] );
 
 		return array_intersect_key( self::registry(), array_flip( $tokens ) );
+	}
+
+	/**
+	 * Whether the list sets "Maximum items" or "Offset".
+	 *
+	 * "Set" means what it means to the query: W4PL_Helper_Posts applies each
+	 * of them when the option is not empty(), so '' and '0' are unset and
+	 * anything else, a negative number included, is set.
+	 *
+	 * @param  array $options List options.
+	 * @return bool
+	 */
+	public static function is_limited( $options ) {
+		return ! empty( $options['limit'] ) || ! empty( $options['offset'] );
 	}
 
 	/**
@@ -187,8 +219,16 @@ class W4PL_Helper_Visitor_Sort {
 			'label'       => __( 'Visitor sorting', 'w4-post-list' ),
 			'type'        => 'checkbox',
 			'option'      => $choices,
-			'desc2'       => esc_html__( 'Tick the orders visitors may choose from a "Sort by" dropdown. Leave all unticked to keep the order above fixed. The dropdown appears above the list, or wherever the template has the [sort] tag.', 'w4-post-list' ),
+			'desc2'       => esc_html__( 'Tick the orders visitors may choose from a "Sort by" dropdown. Leave all unticked to keep the order above fixed. The dropdown appears above the list, or wherever the template has the [sort] tag. Not available on a list that sets "Maximum items" or "Offset".', 'w4-post-list' ),
 		);
+
+		// The boxes stay live and their ticks stay saved, so clearing the two
+		// fields brings sorting back without ticking everything again.
+		if ( self::is_limited( $options ) ) {
+			$fields['visitor_sort']['input_before'] = '<div class="w4pl-visitor-sort-unavailable" style="margin-bottom:8px;padding:8px 12px;border-left:4px solid #dba617;background:#fcf9e8;">'
+				. esc_html__( 'Visitor sorting is off for this list because "Maximum items" or "Offset" is set: visitors get no dropdown and the list keeps the order above. Clear both fields to turn it on. The orders ticked here are kept.', 'w4-post-list' )
+				. '</div>';
+		}
 
 		return $fields;
 	}
@@ -229,9 +269,8 @@ class W4PL_Helper_Visitor_Sort {
 	 *
 	 * Runs after W4PL_Helper_Posts has copied the list's own orderby/order
 	 * into the query. Only orderby and order change; every filter stays,
-	 * including a meta_key the list's own ordering added. The visitor's order
-	 * applies to everything the list matches, and "Maximum items" and
-	 * "Offset" then count in that order (the editor warns about this).
+	 * including a meta_key the list's own ordering added, so the visitor
+	 * re-orders the same posts.
 	 *
 	 * @param object $list W4PL_List instance.
 	 */
@@ -241,6 +280,12 @@ class W4PL_Helper_Visitor_Sort {
 
 		$offered = self::offered( $list->options );
 		if ( empty( $offered ) ) {
+			// Orders are ticked but "Maximum items" or "Offset" rules sorting
+			// out: the owner's [sort] tag renders nothing rather than as text.
+			if ( ! empty( self::configured( $list->options ) ) && isset( $list->options['template'] ) && is_string( $list->options['template'] ) ) {
+				$list->options['template'] = preg_replace( '/\[sort(?![\w-])[^\]]*\]/', '', $list->options['template'] );
+			}
+
 			return;
 		}
 
