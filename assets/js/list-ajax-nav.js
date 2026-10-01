@@ -129,9 +129,9 @@
 	}
 
 	/**
-	 * This document's URL without query string or hash. Built from protocol
-	 * and host rather than used as a bare path: a path starting with "//"
-	 * would otherwise be read as another site.
+	 * This document's URL without query string or hash, to fetch from. Built
+	 * from protocol and host rather than used as a bare path: a path starting
+	 * with "//" would otherwise be read as another site.
 	 */
 	function baseUrl() {
 		var loc = window.location;
@@ -194,11 +194,15 @@
 		wrapper.classList.add(LOADING_CLASS);
 		wrapper.setAttribute('aria-busy', 'true');
 
+		// Set when the server answered but the answer is unusable.
+		var unusable = false;
+
 		window.fetch(url, {
 			credentials: 'same-origin',
 			headers: { 'X-Requested-With': 'XMLHttpRequest' }
 		}).then(function (response) {
 			if (!response.ok) {
+				unusable = true;
 				throw new Error('HTTP ' + response.status);
 			}
 			return response.text();
@@ -212,6 +216,7 @@
 			var fresh = doc.querySelector('[id="' + wrapper.id + '"] .w4pl-inner');
 
 			if (!fresh) {
+				unusable = true;
 				throw new Error('missing fragment');
 			}
 
@@ -236,7 +241,21 @@
 			wrapper.w4plPopTarget = null;
 			clearLoading(wrapper);
 
-			// Never dead-end the visitor: fall back to a normal page load.
+			/*
+			 * No answer at all: the visitor is offline, or is already on
+			 * the way to another page - Firefox and Safari reject pending
+			 * requests the moment a navigation starts, and loading a URL
+			 * from here would cancel it and drag them back. Do nothing
+			 * now, and let this list's links be ordinary links from here
+			 * on, so a request that can never succeed is no dead end.
+			 */
+			if (!unusable) {
+				wrapper.w4plNative = true;
+				return;
+			}
+
+			// The server answered without the list: a normal page load
+			// shows the visitor whatever it has to say.
 			if (state && !state.push) {
 				window.location.reload();
 			} else {
@@ -261,7 +280,9 @@
 		}
 
 		try {
-			window.history.pushState(null, '', baseUrl() + search + loc.hash);
+			// The document's own URL up to the query string, so a URL with
+			// credentials in it (user:pass@host) stays same-origin.
+			window.history.pushState(null, '', document.URL.split(/[?#]/)[0] + search + loc.hash);
 		} catch (e) {
 			// Browsers cap pushState calls; the list still paged, only the
 			// address bar is behind.
@@ -289,7 +310,7 @@
 		}
 
 		var wrapper = getWrapper(link);
-		if (!wrapper) {
+		if (!wrapper || wrapper.w4plNative) {
 			return;
 		}
 
@@ -314,6 +335,20 @@
 			page: page,
 			push: true
 		});
+	});
+
+	// A page restored from the back/forward cache gets a clean start: a
+	// request cut off by leaving it says nothing about the network now.
+	window.addEventListener('pageshow', function (event) {
+		if (!event.persisted) {
+			return;
+		}
+
+		var wrappers = document.querySelectorAll('[id^="' + WRAPPER_PREFIX + '"]');
+		for (var i = 0; i < wrappers.length; i++) {
+			wrappers[i].w4plNative = false;
+			clearLoading(wrappers[i]);
+		}
 	});
 
 	/*

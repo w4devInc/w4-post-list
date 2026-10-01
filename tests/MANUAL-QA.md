@@ -43,8 +43,10 @@ the first three items on a classic theme (Twenty Twenty-One).
 - [x] Ctrl/Cmd-click and middle-click a page link: opens in a new tab as normal
       (a deliberate improvement over the 2.x jQuery handler, which hijacked these)
 - [x] Network failure mid-fetch (devtools → offline, then click "2"): the loading
-      class clears and the browser falls through to a normal page load — no dead
-      end, no unhandled promise rejection
+      class clears and nothing navigates; the next click on that list is a normal
+      page load — no dead end, no unhandled promise rejection. (Changed 2026-10-01:
+      it used to load the URL at once, which in Firefox and Safari also fired when
+      the visitor was merely leaving the page, and pulled them back.)
 - [x] Reload / deep-link `?page<ID>=2` in a fresh tab: the server renders page 2
 - [x] Page served from a full-page cache / CDN: first click still works (no nonce
       in the URL, so cached HTML is fine)
@@ -97,14 +99,24 @@ Items per page 3, each item linking to its post
       the page with A still on 3. Before A pages, C's links are untouched
 - [x] After list A pages to 3, Ctrl/Cmd-click "Next" on list B: the new tab has
       A on 3 and B on 2
-- [x] Network failure on a page click: the browser loads `?page<A>=2` normally
+- [x] The server answers a page click with an error (HTTP 500): the browser loads
+      `?page<A>=2` normally
+- [x] No answer at all (offline): nothing navigates, the loading state clears, the
+      address bar is untouched; the next click on that list is a normal page load
+- [x] Click "2" and, before the response, click a post link (throttle the network):
+      the post opens; the visitor is not pulled back to the list
+- [x] Back, then Back again out of the page while the first is still loading: the
+      previous page opens
 - [x] Ctrl/Cmd-click a page link: new tab on that page, this tab untouched
 - [x] JS disabled: page links and the "1" link work as plain hrefs
 - [x] No console errors
+- [x] Firefox and WebKit (the Playwright builds, not real Safari): page to 3, open
+      a post, Back; Back/Forward between pages; reload; and the two "leaving while
+      a request is pending" items above
 - [ ] Return from a post restored from the **back/forward cache** (a real desktop
       or mobile browser; headless Chromium never used it in the run above): the
-      list is on the page it was left on
-- [ ] Safari and Firefox: the first three items
+      list is on the page it was left on, and its page links still swap in place
+- [ ] Real Safari (macOS / iOS): the first three items
 - [ ] Classic theme (Twenty Twenty-One): the first three items; every Back and
       Forward step should swap in place there
 
