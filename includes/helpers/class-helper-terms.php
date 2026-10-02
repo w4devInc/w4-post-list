@@ -250,7 +250,7 @@ class W4PL_Helper_Terms {
 
 			$list->terms_args['taxonomy'] = $list->options['terms_taxonomy'];
 
-			$paged = isset( $_REQUEST[ 'page' . $list->id ] ) ? $_REQUEST[ 'page' . $list->id ] : 1;
+			$paged = w4pl_get_list_page( $list->id );
 
 			if ( ! empty( $list->options['terms_limit'] ) ) {
 				$list->terms_args['offset'] = (int) $list->options['terms_offset'] + ( $paged - 1 ) * $list->options['terms_limit'];

@@ -76,7 +76,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 	 * Posts template
 	 */
 	function list_type_posts_template() {
-		$paged = isset( $_REQUEST[ 'page' . $this->id ] ) ? wp_unslash( $_REQUEST[ 'page' . $this->id ] ) : 1;
+		$paged = w4pl_get_list_page( $this->id );
 
 		// create attern based on available tags.
 		$pattern = $this->get_shortcode_regex();

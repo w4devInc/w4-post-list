@@ -77,7 +77,7 @@ class W4PL_List_Users extends W4PL_List implements W4PL_List_Interface {
 	 * Users template
 	 */
 	public function list_type_users_template() {
-		$paged = isset( $_REQUEST[ 'page' . $this->id ] ) ? $_REQUEST[ 'page' . $this->id ] : 1;
+		$paged = w4pl_get_list_page( $this->id );
 
 		// create attern based on available tags.
 		$pattern = $this->get_shortcode_regex();

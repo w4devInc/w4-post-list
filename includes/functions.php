@@ -116,6 +116,27 @@ function w4pl_enqueue_ajax_nav_script() {
 	}
 }
 
+/**
+ * The page of a list the request asks for, from page{list id}.
+ *
+ * Normalised to a whole number of one or more; anything that is not a page
+ * number is page one.
+ *
+ * @param  int|string $list_id List id.
+ * @return int
+ */
+function w4pl_get_list_page( $list_id ) {
+	$key = 'page' . $list_id;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only pagination, cast to int.
+	if ( ! isset( $_REQUEST[ $key ] ) || ! is_scalar( $_REQUEST[ $key ] ) ) {
+		return 1;
+	}
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only pagination, cast to int.
+	return max( 1, absint( wp_unslash( $_REQUEST[ $key ] ) ) );
+}
+
 function w4pl_debug( $var, $exit = false ) {
 	echo '<pre>';
 	print_r( $var );
