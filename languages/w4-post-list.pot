@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: W4 Post List\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/w4-post-list/\n"
-"POT-Creation-Date: 2026-09-10 18:32:30+00:00\n"
+"POT-Creation-Date: 2026-10-02 02:45:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -281,7 +281,14 @@ msgid ""
 "nothing. Add the loop or pick a starter template."
 msgstr ""
 
-#: admin/class-admin-validation.php:202
+#: admin/class-admin-validation.php:158
+msgid ""
+"\"Group by\" is set but the template has no [groups]…[/groups] loop, so the "
+"list will render nothing. Wrap the posts loop in [groups]…[/groups] and use "
+"[group_title] for each heading."
+msgstr ""
+
+#: admin/class-admin-validation.php:225
 msgid "Your list was saved, with warnings:"
 msgstr ""
 
@@ -301,7 +308,7 @@ msgstr ""
 
 #: admin/pages/class-admin-page-docs.php:51
 #: admin/pages/views/html-getting-started.php:79
-#: admin/views/html-list-edit-form.php:112
+#: admin/views/html-list-edit-form.php:121
 msgid "Template Tags"
 msgstr ""
 
@@ -456,8 +463,18 @@ msgstr ""
 msgid "Post a review"
 msgstr ""
 
-#: admin/pages/views/html-plugin-links.php:59
-msgid "Do you need a Soccer / Football Plugin ?"
+#: admin/pages/views/html-plugin-links.php:66
+msgid "Your list, styled. Your theme, untouched."
+msgstr ""
+
+#: admin/pages/views/html-plugin-links.php:70
+msgid ""
+"Adminkeep gives WordPress a Custom CSS screen: write a rule for your list, "
+"save, done. No child theme, no theme editor, and it survives theme updates."
+msgstr ""
+
+#: admin/pages/views/html-plugin-links.php:74
+msgid "Get Adminkeep, free"
 msgstr ""
 
 #: admin/pages/views/html-plugin-updates.php:11
@@ -612,7 +629,18 @@ msgstr ""
 msgid "Replace with the default template"
 msgstr ""
 
-#: admin/views/html-list-edit-form.php:111
+#: admin/views/html-list-edit-form.php:110
+msgid ""
+"\"Group by\" is set but this template has no [groups]…[/groups] loop, so "
+"the list will render nothing. Wrap the posts loop in [groups]…[/groups] and "
+"use [group_title] for each heading."
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:113
+msgid "Replace with the grouped template"
+msgstr ""
+
+#: admin/views/html-list-edit-form.php:120
 msgid "Template Example"
 msgstr ""
 
@@ -638,7 +666,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: includes/abstracts/class-list.php:197 includes/abstracts/class-list.php:228
+#: includes/abstracts/class-list.php:201 includes/abstracts/class-list.php:232
 msgid "Unknown"
 msgstr ""
 
@@ -652,7 +680,7 @@ msgid "Quering for table is not allowed.:%s"
 msgstr ""
 
 #: includes/class-config.php:28 includes/class-config.php:262
-#: includes/class-config.php:286
+#: includes/class-config.php:286 includes/helpers/class-helper-posts.php:273
 msgid "ID"
 msgstr ""
 
@@ -661,7 +689,7 @@ msgid "Title"
 msgstr ""
 
 #: includes/class-config.php:30 includes/class-config.php:255
-#: includes/class-config.php:263
+#: includes/class-config.php:263 includes/helpers/class-helper-posts.php:274
 msgid "Name"
 msgstr ""
 
@@ -694,7 +722,7 @@ msgid "Random"
 msgstr ""
 
 #: includes/class-config.php:38 includes/class-config.php:53
-#: includes/helpers/class-helper-posts.php:265
+#: includes/helpers/class-helper-posts.php:287
 msgid "None"
 msgstr ""
 
@@ -1195,14 +1223,14 @@ msgid "Order"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:181
-#: includes/helpers/class-helper-posts.php:266
+#: includes/helpers/class-helper-posts.php:288
 #: includes/helpers/class-helper-terms.php:132
 #: includes/helpers/class-helper-users.php:109
 msgid "ASC"
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:182
-#: includes/helpers/class-helper-posts.php:267
+#: includes/helpers/class-helper-posts.php:289
 #: includes/helpers/class-helper-terms.php:133
 #: includes/helpers/class-helper-users.php:110
 msgid "DESC"
@@ -1250,27 +1278,46 @@ msgstr ""
 msgid "Group by"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:240
-msgid "Group by Date"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:243
-msgid "Publish date"
-msgstr ""
-
-#: includes/helpers/class-helper-posts.php:244
-msgid "Modified date"
+#: includes/helpers/class-helper-posts.php:235
+#. translators: 1: opening link tag to the grouping guide, 2: closing link tag
+msgid ""
+"A grouped list only renders when the template wraps its posts loop in "
+"[groups]…[/groups], with [group_title] for the heading. %1$sHow grouping "
+"works%2$s."
 msgstr ""
 
 #: includes/helpers/class-helper-posts.php:246
+msgid "Group by Date"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:249
+msgid "Publish date"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:250
+msgid "Modified date"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:252
 msgid "Which date to use when calculating the group."
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:253
+#: includes/helpers/class-helper-posts.php:259
 msgid "Group by \"Custom field\" name"
 msgstr ""
 
-#: includes/helpers/class-helper-posts.php:262
+#: includes/helpers/class-helper-posts.php:270
+msgid "Group Order by"
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:276
+msgid ""
+"Name sorts groups alphabetically by their heading (a term, an author, a "
+"parent page, a custom field value). ID keeps the original order. Year and "
+"month groupings are always chronological."
+msgstr ""
+
+#: includes/helpers/class-helper-posts.php:284
 msgid "Group Order"
 msgstr ""
 
