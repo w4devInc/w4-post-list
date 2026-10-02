@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
-Tested up to: 7.1
+Tested up to: 7.1.2
 Requires PHP: 7.4
-Stable tag: 3.0.8
+Stable tag: 3.0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,12 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.9 =
+* Fix: AJAX pagination keeps the list's page when visitors go Back, Forward or reload. Each page is recorded in the address bar, so a visitor who opens a post and comes back lands on the page they were reading.
+* Fix: Page-one and "Previous" links work when the URL carries other parameters before the list's page parameter.
+* Improved: Page parameter values are validated, so an invalid page number in the URL falls back to the first page.
+* Fix: A PHP 8.1+ deprecation notice from [nav] on a list that fits on one page.
+* Tested up to WordPress 7.1.2.
 = 3.0.8 =
 * New: Groups can be ordered by name. A new "Group Order by" option (ID or Name) sits next to Group Order, so a category, year, author or custom-field grouping can sort alphabetically instead of by the order the terms were created. Existing lists keep ordering by ID.
 * Improved: A "Group by" list whose template has no [groups]…[/groups] loop now gets a warning in the editor and on save, with a one-click grouped template, instead of silently rendering nothing. The Group by field also explains what the template needs and links to the grouping guide.
