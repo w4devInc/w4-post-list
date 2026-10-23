@@ -25,6 +25,12 @@ class InlineAssetsTest extends W4PL_Snapshot_TestCase {
 		$GLOBALS['wp_scripts'] = null;
 		$GLOBALS['wp_styles']  = null;
 
+		// The excerpt test go_to()s a list page; the base test case does not
+		// undo that for plugin suites, and pagination links in later tests
+		// are built from the request URI.
+		$this->go_to( '/' );
+		$_SERVER['REQUEST_URI'] = '';
+
 		parent::tear_down();
 	}
 
