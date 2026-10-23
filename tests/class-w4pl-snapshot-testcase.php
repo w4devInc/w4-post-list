@@ -106,8 +106,6 @@ abstract class W4PL_Snapshot_TestCase extends WP_UnitTestCase {
 			'/W4PL_List \d+/'                 => 'W4PL_List {ID}',
 			'/w4pl-list-\d+/'                 => 'w4pl-list-{ID}',
 			'/w4pl-inner-\d+/'                => 'w4pl-inner-{ID}',
-			'/w4pl-css-\d+/'                  => 'w4pl-css-{ID}',
-			'/w4pl-js-\d+/'                   => 'w4pl-js-{ID}',
 			'/w4pl-\d+/'                      => 'w4pl-{ID}',
 			'/\?p=\d+/'                       => '?p={ID}',
 			'/\?page_id=\d+/'                 => '?page_id={ID}',

@@ -124,15 +124,15 @@ Items per page 3, each item linking to its post
 
 A list's own CSS and JS print through the style/script API under the handle
 `w4pl-list-<ID>` (tags `#w4pl-list-<ID>-inline-css` and `#w4pl-list-<ID>-js-after`),
-in place, once per request. PHPUnit (`InlineAssetsTest`) covers placement, dedupe,
-the registries and the admin-ajax path. **Browser-only:**
+in place, with every render as before. PHPUnit (`InlineAssetsTest`) covers placement,
+the registries, the thrown-away-render case and the admin-ajax path. **Browser-only:**
 
 Fixture: a posts list with CSS `#w4pl-list-[listid] li { color: red; }` and JS
 `console.log('w4pl [listid]');`, placed twice on one page.
 
-- [ ] Front end: the items are red, the console shows the log line **once**, view source
-      shows one `<style id="w4pl-list-<ID>-inline-css">` before the first copy of the list
-      and one `<script id="w4pl-list-<ID>-js-after">` after it, none around the second copy
+- [ ] Front end: the items are red in both copies, the console shows the log line twice
+      (one per copy, as in 3.0.9), view source shows `<style id="w4pl-list-<ID>-inline-css">`
+      before each copy and `<script id="w4pl-list-<ID>-js-after">` after each
 - [ ] Admin Live preview of that list: the items are red in the preview iframe
 - [ ] Block editor (ServerSideRender): the block preview shows the items red
 - [ ] AJAX pagination on a list with CSS: after paging, the items are still red (the

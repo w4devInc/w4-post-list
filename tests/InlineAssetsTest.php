@@ -81,14 +81,67 @@ class InlineAssetsTest extends W4PL_Snapshot_TestCase {
 		$this->assertSame( array( 'window.w4plList' . $list_id . ' = true;' ), array_values( array_filter( wp_scripts()->get_data( $handle, 'after' ) ) ) );
 	}
 
-	public function test_a_list_rendered_twice_prints_its_css_and_js_once() {
+	/**
+	 * Every render is self-contained, as through 3.0.9. A render whose output
+	 * is thrown away (an excerpt built from `the_content`, an Open Graph
+	 * scanner reading the page early) must not use up the tag the visible
+	 * render needs.
+	 */
+	public function test_a_render_that_is_thrown_away_does_not_cost_the_next_render_its_css_and_js() {
+		$list_id = $this->make_styled_list();
+
+		$discarded = do_shortcode( '[postlist id="' . $list_id . '"]' );
+		$this->assertStringContainsString( 'color: red', $discarded, 'Sanity: the first render had the CSS.' );
+
+		$html = do_shortcode( '[postlist id="' . $list_id . '"]' );
+
+		$this->assertStringContainsString( '<style id="w4pl-list-' . $list_id . '-inline-css">', $html );
+		$this->assertStringContainsString( '#w4pl-list-' . $list_id . ' li { color: red; }', $html );
+		$this->assertStringContainsString( '<script id="w4pl-list-' . $list_id . '-js-after"', $html );
+		$this->assertStringContainsString( 'window.w4plList' . $list_id . ' = true;', $html );
+	}
+
+	public function test_a_list_rendered_twice_on_one_page_prints_its_css_and_js_with_each_copy_as_before() {
 		$list_id = $this->make_styled_list();
 		$html    = do_shortcode( '[postlist id="' . $list_id . '"] [postlist id="' . $list_id . '"]' );
 
 		$this->assertSame( 2, substr_count( $html, '<div id="w4pl-list-' . $list_id . '"' ), 'Sanity: the list rendered twice.' );
-		$this->assertSame( 1, substr_count( $html, '<style' ), 'One style tag for two renders of the same list.' );
-		$this->assertSame( 1, substr_count( $html, '<script' ), 'One script tag for two renders of the same list.' );
-		$this->assertSame( 1, substr_count( $html, 'color: red' ) );
+		$this->assertSame( 2, substr_count( $html, '<style' ) );
+		$this->assertSame( 2, substr_count( $html, '<script' ) );
+	}
+
+	public function test_the_list_excerpt_pass_does_not_strip_the_css_from_the_visible_list() {
+		$list_id = $this->make_styled_list();
+
+		// A list's own single page: W4PL_List_Content injects the list into
+		// the_content; an SEO plugin reading the excerpt runs that pass first.
+		$this->go_to( get_permalink( $list_id ) );
+		$this->assertTrue( is_singular( 'w4pl' ), 'Sanity: on the list page.' );
+
+		$excerpt = get_the_excerpt( $list_id );
+		$this->assertNotEmpty( $excerpt, 'Sanity: the excerpt pass rendered something.' );
+
+		$html = apply_filters( 'the_content', get_post( $list_id )->post_content );
+
+		$this->assertStringContainsString( '#w4pl-list-' . $list_id . ' li { color: red; }', $html );
+		$this->assertStringContainsString( 'window.w4plList' . $list_id . ' = true;', $html );
+	}
+
+	public function test_printing_does_not_fire_the_page_level_print_actions() {
+		$fired = 0;
+		$count = function () use ( &$fired ) {
+			++$fired;
+		};
+		add_action( 'wp_print_scripts', $count );
+		add_action( 'wp_print_styles', $count );
+
+		$list_id = $this->make_styled_list();
+		do_shortcode( '[postlist id="' . $list_id . '"]' );
+
+		remove_action( 'wp_print_scripts', $count );
+		remove_action( 'wp_print_styles', $count );
+
+		$this->assertSame( 0, $fired );
 	}
 
 	public function test_two_different_lists_each_print_their_own_css_and_js() {
