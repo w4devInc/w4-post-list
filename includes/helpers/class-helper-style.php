@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Meta query implementor class
+ * Per-list CSS / JavaScript: editor fields, defaults and output.
  *
  * @class W4PL_Helper_Style
  */
@@ -30,9 +30,9 @@ class W4PL_Helper_Style {
 	/**
 	 * Style control field on list editor
 	 *
-	 * @param  array $fields  List editor fields.
-	 * @param  array $options List options.
-	 * @return array          List editor fields.
+	 * @param  array $fields    List editor fields.
+	 * @param  array $post_data List post data.
+	 * @return array            List editor fields.
 	 */
 	public function list_edit_form_fields( $fields, $post_data ) {
 		/* Style */
@@ -51,10 +51,11 @@ class W4PL_Helper_Style {
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
 			'desc2'       => sprintf(
+				/* translators: %s: list ID */
 				__(
-					'this css rules is placed inline just before the list is place at front-end (not in the HEAD tag).
-								<br />to apply css just for current list, use <code>#w4pl-list-%s</code> as parent selector.
-								<br />Alternatively, you can use <code>#w4pl-list-[listid]</code> to dynamically this selector.',
+					'Printed once per page, right before the list (not in the HEAD tag), even when the list appears more than once.
+								<br />To style just this list, use <code>#w4pl-list-%s</code> as the parent selector.
+								<br />Alternatively, use <code>#w4pl-list-[listid]</code> and the ID is filled in for you.',
 					'w4-post-list'
 				),
 				$post_data['id']
@@ -68,7 +69,7 @@ class W4PL_Helper_Style {
 			'label'       => __( 'JavaScript', 'w4-post-list' ),
 			'type'        => 'textarea',
 			'input_class' => 'widefat',
-			'desc2'       => __( 'javascript loads right after template ends. don\'t use <code>&lt;script&gt;</code> tag', 'w4-post-list' ),
+			'desc2'       => __( 'Runs once per page, right after the list. Don\'t use a <code>&lt;script&gt;</code> tag.', 'w4-post-list' ),
 			'after'       => '</div><!--.w4pl_group_fields--></div><!--#w4pl_field_group_style-->',
 		);
 		$fields['class']                    = array(
@@ -94,7 +95,7 @@ class W4PL_Helper_Style {
 	 * @param  array $options List options.
 	 */
 	public function pre_save_options( $options ) {
-		foreach ( array( 'class' => '', 'js' => '', 'css' => '', ) as $k => $v ) {
+		foreach ( array( 'class', 'js', 'css' ) as $k ) {
 			if ( array_key_exists( $k, $options ) && empty( $options[ $k ] ) ) {
 				unset( $options[ $k ] );
 			}
@@ -128,10 +129,24 @@ class W4PL_Helper_Style {
 	/**
 	 * Parse list render html to include css/js.
 	 *
-	 * @param  object $obj Instance of W4PL_List
+	 * The list's CSS and JavaScript go through the WordPress style and script
+	 * API under a per-list handle (`w4pl-list-{id}`) and are printed in place,
+	 * where the raw `<style>` / `<script>` tags used to be: the CSS right
+	 * before the list, the JavaScript right after it. Going through the API
+	 * means a list that appears twice on a page prints its CSS and JavaScript
+	 * once, the inline script tag carries whatever `wp_inline_script_attributes`
+	 * adds (CSP nonces, for instance), and site owners can read or replace the
+	 * data through `wp_styles()` / `wp_scripts()`.
+	 *
+	 * Printing in place rather than from the footer keeps every consumer of
+	 * the returned HTML working unchanged: the admin live preview and the
+	 * block editor's server-side render have no `wp_footer`, and a list
+	 * rendered after `wp_print_footer_scripts` would otherwise lose its CSS.
+	 *
+	 * @param  object $obj Instance of W4PL_List.
 	 */
 	public function parse_html( $obj ) {
-		// unique list class
+		// Unique list class.
 		$class     = trim( 'w4pl ' . $obj->options['class'] );
 		$obj->html = str_replace( 'id="w4pl-list-' . $obj->id . '"', 'id="w4pl-list-' . $obj->id . '" class="' . $class . '"', $obj->html );
 
@@ -145,12 +160,12 @@ class W4PL_Helper_Style {
 
 		// Css push.
 		if ( ! empty( $obj->css ) ) {
-			$obj->html = '<style id="w4pl-css-' . $obj->id . '" type="text/css">' . $obj->css . '</style>' . "\n" . $obj->html;
+			$obj->html = w4pl_get_list_inline_style( $obj->id, $obj->css ) . $obj->html;
 		}
 
 		// Js push.
 		if ( ! empty( $obj->js ) ) {
-			$obj->html .= "\n" . '<script id="w4pl-js-' . $obj->id . '" type="text/javascript">' . $obj->js . '</script>' . "\n";
+			$obj->html .= "\n" . w4pl_get_list_inline_script( $obj->id, $obj->js );
 		}
 	}
 }

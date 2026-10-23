@@ -133,7 +133,7 @@ class AjaxNavTest extends W4PL_Snapshot_TestCase {
 		$html = $this->render_list( $options );
 
 		$this->assertStringContainsString( 'window.w4plCustomHook = 1;', $html );
-		$this->assertMatchesRegularExpression( '/<script id="w4pl-js-\d+"/', $html );
+		$this->assertMatchesRegularExpression( '/<script id="w4pl-list-\d+-js-after"/', $html );
 	}
 
 	/* ---------------------------------------------------------------------
