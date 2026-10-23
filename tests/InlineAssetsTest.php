@@ -123,6 +123,9 @@ class InlineAssetsTest extends W4PL_Snapshot_TestCase {
 	 * must be in the HTML there too.
 	 */
 	public function test_css_and_js_are_in_the_returned_html_during_an_ajax_request() {
+		require_once dirname( __DIR__ ) . '/admin/class-admin-lists-metaboxes.php';
+		require_once dirname( __DIR__ ) . '/admin/class-admin-preview.php';
+
 		add_filter( 'wp_doing_ajax', '__return_true' );
 
 		$list_id = $this->make_styled_list();
