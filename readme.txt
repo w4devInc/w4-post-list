@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
-Tested up to: 7.1.2
+Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 3.0.9
+Stable tag: 3.0.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,10 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.0.10 =
+* Improved: A list's CSS and JavaScript print in the same place as before but through WordPress's own style and script API, so on WordPress 6.3+ a CSP plugin's nonce covers the list's script and developers can read a list's CSS and JavaScript from `wp_styles()` / `wp_scripts()` under the handle `w4pl-list-{id}`.
+* Improved: The classic widget has a "— Select a list —" placeholder, lists sorted by title, escaped output and a description that points block editors to the W4 Post List block.
+* Tested up to WordPress 7.1.3.
 = 3.0.9 =
 * Fix: AJAX pagination keeps the list's page when visitors go Back, Forward or reload. Each page is recorded in the address bar, so a visitor who opens a post and comes back lands on the page they were reading.
 * Fix: Page-one and "Previous" links work when the URL carries other parameters before the list's page parameter.

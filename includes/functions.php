@@ -117,6 +117,85 @@ function w4pl_enqueue_ajax_nav_script() {
 }
 
 /**
+ * The style and script handle a list's own CSS and JavaScript print under.
+ *
+ * @since 3.0.10
+ *
+ * @param int $list_id List ID.
+ * @return string
+ */
+function w4pl_list_asset_handle( $list_id ) {
+	return 'w4pl-list-' . (int) $list_id;
+}
+
+/**
+ * The list's CSS as a style tag, through the WordPress style API.
+ *
+ * The CSS is attached to a src-less per-list handle and printed in place,
+ * where the raw tag used to be. Every render prints its own tag, as every
+ * render did through 3.0.9: a render whose output is thrown away (an excerpt
+ * built from `the_content`, an Open Graph scanner) must not use up the tag
+ * the visible render needs, so the handle is taken off the printed list
+ * first. The data stays readable through `wp_styles()->get_data()`.
+ *
+ * @since 3.0.10
+ *
+ * @param int    $list_id List ID.
+ * @param string $css     The list's CSS, `[listid]` already replaced.
+ * @return string Style tag.
+ */
+function w4pl_get_list_inline_style( $list_id, $css ) {
+	$handle = w4pl_list_asset_handle( $list_id );
+	$styles = wp_styles();
+
+	if ( ! wp_style_is( $handle, 'registered' ) ) {
+		wp_register_style( $handle, false, array(), W4PL_VERSION );
+		wp_add_inline_style( $handle, $css );
+	}
+
+	$styles->done = array_diff( $styles->done, array( $handle ) );
+
+	// Not wp_print_styles(): that would also run the once-per-page
+	// `wp_print_styles` action from inside the content.
+	ob_start();
+	$styles->do_items( array( $handle ) );
+
+	return (string) ob_get_clean();
+}
+
+/**
+ * The list's JavaScript as a script tag, through the WordPress script API.
+ *
+ * Same contract as w4pl_get_list_inline_style(): printed in place, once per
+ * render. On WordPress 6.3+ the tag carries whatever the
+ * `wp_inline_script_attributes` filter adds, so a CSP plugin's nonce covers it.
+ *
+ * @since 3.0.10
+ *
+ * @param int    $list_id List ID.
+ * @param string $js      The list's JavaScript, `[listid]` already replaced.
+ * @return string Script tag.
+ */
+function w4pl_get_list_inline_script( $list_id, $js ) {
+	$handle  = w4pl_list_asset_handle( $list_id );
+	$scripts = wp_scripts();
+
+	if ( ! wp_script_is( $handle, 'registered' ) ) {
+		wp_register_script( $handle, false, array(), W4PL_VERSION, false );
+		wp_add_inline_script( $handle, $js );
+	}
+
+	$scripts->done = array_diff( $scripts->done, array( $handle ) );
+
+	// Not wp_print_scripts(): that fires the once-per-page `wp_print_scripts`
+	// action every time it is called.
+	ob_start();
+	$scripts->do_items( array( $handle ) );
+
+	return (string) ob_get_clean();
+}
+
+/**
  * The page of a list the request asks for, from page{list id}.
  *
  * Normalised to a whole number of one or more; anything that is not a page
