@@ -120,6 +120,45 @@ Items per page 3, each item linking to its post
 - [ ] Classic theme (Twenty Twenty-One): the first three items; every Back and
       Forward step should swap in place there
 
+## Per-list CSS and JavaScript (M12, 3.0.10)
+
+A list's own CSS and JS print through the style/script API under the handle
+`w4pl-list-<ID>` (tags `#w4pl-list-<ID>-inline-css` and `#w4pl-list-<ID>-js-after`),
+in place, with every render as before. PHPUnit (`InlineAssetsTest`) covers placement,
+the registries, the thrown-away-render case and the admin-ajax path. **Browser-only:**
+
+> Executed 2026-10-30 on `maint/3.0.10-m12-cleanup` (WP 7.1.3, Twenty Twenty-Five, docker dev
+> site, headless Chromium): fixture list #189 placed twice on page #190 as a shortcode block
+> and a W4 Post List block. 4 of 4 passed; evidence (computed colours, tag order, console)
+> and screenshots in PR #155.
+
+Fixture: a posts list with CSS `#w4pl-list-[listid] li { color: red; }` and JS
+`console.log('w4pl [listid]');`, placed twice on one page.
+
+- [x] Front end: the items are red in both copies, the console shows the log line twice
+      (one per copy, as in 3.0.9), view source shows `<style id="w4pl-list-<ID>-inline-css">`
+      before each copy and `<script id="w4pl-list-<ID>-js-after">` after each
+- [x] Admin Live preview of that list: the items are red in the preview iframe
+- [x] Block editor (ServerSideRender): the block preview shows the items red
+- [x] AJAX pagination on a list with CSS: after paging, the items are still red (the
+      style tag sits outside the swapped `.w4pl-inner`)
+
+## Widget (3.0.10)
+
+Needs a classic theme with a widget area (`wp theme install twentytwentyone --activate`;
+switch back afterwards).
+
+> Executed 2026-10-30 on the same install with Twenty Twenty-One and the classic widgets screen
+> (`use_widgets_block_editor` → false); saves went through the real widget form. 4 of 4 passed;
+> evidence in PR #155.
+
+- [x] Appearance → Widgets: the W4 Post List widget's description mentions the block;
+      a fresh widget shows "— Select a list —" selected; lists are listed by title
+- [x] Save with a title and a list: the sidebar shows the theme's widget wrapper, the
+      title in the theme's title tag, and the list below it
+- [x] Save with "— Select a list —": the widget prints nothing on the front end
+- [x] Title `Tom & <b>Jerry</b>`: saved as plain text, shown escaped in the form
+
 ## Front-end asset footprint (M12)
 
 Through 2.x, three admin stylesheets and two admin scripts were registered on
