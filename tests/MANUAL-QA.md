@@ -120,7 +120,7 @@ Items per page 3, each item linking to its post
 - [ ] Classic theme (Twenty Twenty-One): the first three items; every Back and
       Forward step should swap in place there
 
-## Per-list CSS and JavaScript (M12, 3.0.10)
+## Per-list CSS and JavaScript (M12, 3.1.0)
 
 A list's own CSS and JS print through the style/script API under the handle
 `w4pl-list-<ID>` (tags `#w4pl-list-<ID>-inline-css` and `#w4pl-list-<ID>-js-after`),
@@ -143,7 +143,7 @@ Fixture: a posts list with CSS `#w4pl-list-[listid] li { color: red; }` and JS
 - [x] AJAX pagination on a list with CSS: after paging, the items are still red (the
       style tag sits outside the swapped `.w4pl-inner`)
 
-## Widget (3.0.10)
+## Widget (3.1.0)
 
 Needs a classic theme with a widget area (`wp theme install twentytwentyone --activate`;
 switch back afterwards).
