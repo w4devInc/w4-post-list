@@ -24,7 +24,7 @@
 		"@wordpress/scripts": "^30.0.2",
 		"autoprefixer": "^10.4.7",
 		"css-mqpacker": "^7.0.0",
-		"grunt": "^1.5.3",
+		"grunt": "^1.6.3",
 		"grunt-contrib-clean": "^2.0.1",
 		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-copy": "^1.0.0",
