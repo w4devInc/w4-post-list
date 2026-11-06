@@ -119,7 +119,7 @@ function w4pl_enqueue_ajax_nav_script() {
 /**
  * The style and script handle a list's own CSS and JavaScript print under.
  *
- * @since 3.0.10
+ * @since 3.1.0
  *
  * @param int $list_id List ID.
  * @return string
@@ -138,7 +138,7 @@ function w4pl_list_asset_handle( $list_id ) {
  * the visible render needs, so the handle is taken off the printed list
  * first. The data stays readable through `wp_styles()->get_data()`.
  *
- * @since 3.0.10
+ * @since 3.1.0
  *
  * @param int    $list_id List ID.
  * @param string $css     The list's CSS, `[listid]` already replaced.
@@ -170,7 +170,7 @@ function w4pl_get_list_inline_style( $list_id, $css ) {
  * render. On WordPress 6.3+ the tag carries whatever the
  * `wp_inline_script_attributes` filter adds, so a CSP plugin's nonce covers it.
  *
- * @since 3.0.10
+ * @since 3.1.0
  *
  * @param int    $list_id List ID.
  * @param string $js      The list's JavaScript, `[listid]` already replaced.
