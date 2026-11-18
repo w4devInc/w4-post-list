@@ -1,7 +1,7 @@
 === W4 Post List ===
 Contributors: sajib1223
 Tags: post list, user list, post grid, category list, shortcode
-Requires at least: 5.8
+Requires at least: 6.6
 Tested up to: 7.1.4
 Requires PHP: 7.4
 Stable tag: 3.1.0
