@@ -11,7 +11,7 @@
 	<exclude-pattern>languages/*</exclude-pattern>
 
 	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="4.7" />
+	<config name="minimum_supported_wp_version" value="6.6" />
 	<config name="testVersion" value="6.1.1-" />
 
 	<!-- Rules -->
