@@ -269,4 +269,132 @@ class TemplateTagOutputTest extends W4PL_Snapshot_TestCase {
 		$this->assertStringNotContainsString( '<b>x</b>', $html );
 		$this->assertStringContainsString( '<i class="att">' . $attachment_id . '</i>', $html );
 	}
+
+	private function render_meta( $value ) {
+		update_post_meta( $this->first_post_id(), 'embed', $value );
+
+		$html = $this->render_posts( '[posts]<div class="sub" data-post="[post_id]">[post_meta key="embed"]</div>[/posts]' );
+		preg_match( '/<div class="sub" data-post="' . $this->first_post_id() . '">(.*?)<\/div>/s', $html, $m );
+
+		return isset( $m[1] ) ? $m[1] : '';
+	}
+
+	public function embed_sources() {
+		return array(
+			'youtube'          => array( 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc&amp;start=10' ),
+			'youtube-nocookie' => array( 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ' ),
+			'vimeo'            => array( 'https://player.vimeo.com/video/76979871?h=8272103f6e' ),
+			'google-maps'      => array( 'https://www.google.com/maps/embed?pb=!1m18!1m12' ),
+			'spotify'          => array( 'https://open.spotify.com/embed/track/4uLU6hMCjMI75M1A2tKUQC' ),
+			'protocol-relative' => array( '//www.youtube.com/embed/dQw4w9WgXcQ' ),
+			'google-my-maps'   => array( 'https://www.google.com/maps/d/embed?mid=1abc' ),
+			'spotify-podcast'  => array( 'https://open.spotify.com/embed-podcast/show/abc' ),
+		);
+	}
+
+	/**
+	 * @dataProvider embed_sources
+	 */
+	public function test_post_meta_keeps_embed_iframe_from_known_source( $src ) {
+		$iframe = '<iframe width="560" height="315" src="' . $src . '" title="Player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+
+		$out = $this->render_meta( '<p>Watch</p>' . $iframe );
+
+		$this->assertStringContainsString( '<iframe', $out );
+		$this->assertStringContainsString( 'src="' . $src . '"', $out );
+		$this->assertStringContainsString( 'allowfullscreen', $out );
+		$this->assertStringContainsString( '<p>Watch</p>', $out );
+	}
+
+	public function test_post_meta_drops_unsafe_attributes_from_an_embed_iframe() {
+		$out = $this->render_meta( '<iframe src="https://www.youtube.com/embed/x" onload="window.w4plMarker=1" srcdoc="&lt;b&gt;x&lt;/b&gt;" name="top"></iframe>' );
+
+		$this->assertStringContainsString( '<iframe src="https://www.youtube.com/embed/x"', $out );
+		$this->assertStringNotContainsString( 'onload', $out );
+		$this->assertStringNotContainsString( 'srcdoc', $out );
+		$this->assertStringNotContainsString( 'name=', $out );
+	}
+
+	public function unknown_sources() {
+		return array(
+			'other-host'       => array( 'https://example.com/embed/x' ),
+			'lookalike-host'   => array( 'https://www.youtube.com.example.com/embed/x' ),
+			'userinfo'         => array( 'https://www.youtube.com@example.com/embed/x' ),
+			'not-an-embed'     => array( 'https://www.youtube.com/redirect?q=https://example.com' ),
+			'dot-segments'     => array( 'https://www.youtube.com/embed/../redirect?q=https://example.com' ),
+			'script-url'       => array( 'javascript:alert(1)' ),
+			'data-url'         => array( 'data:text/html,hello' ),
+			'encoded-dots'     => array( 'https://www.youtube.com/embed/%2E%2E/redirect?q=https://example.com' ),
+			'entity-dots'      => array( 'https://www.youtube.com/embed/&#46;&#46;/redirect?q=https://example.com' ),
+			'entity-host'      => array( 'https://www.youtube.com&#46;example.com/embed/x' ),
+			'maps-path-suffix' => array( 'https://www.google.com/maps/embedXYZ/a' ),
+		);
+	}
+
+	/**
+	 * @dataProvider unknown_sources
+	 */
+	public function test_post_meta_drops_iframe_from_other_sources( $src ) {
+		$out = $this->render_meta( 'Before <iframe src="' . $src . '"></iframe> after' );
+
+		$this->assertStringNotContainsString( '<iframe', $out );
+		$this->assertStringContainsString( 'Before', $out );
+	}
+
+	public function test_embed_iframe_allow_attribute_keeps_only_player_permissions() {
+		$out = $this->render_meta( '<iframe src="https://www.youtube.com/embed/x" allow="autoplay; camera; microphone \'self\'; encrypted-media; geolocation; display-capture; picture-in-picture"></iframe>' );
+
+		$this->assertStringContainsString( 'allow="autoplay; encrypted-media; picture-in-picture"', $out );
+	}
+
+	public function test_post_meta_drops_every_iframe_when_one_is_from_another_source() {
+		$out = $this->render_meta( '<iframe src="https://www.youtube.com/embed/x"></iframe><iframe src="https://example.com/x"></iframe>' );
+
+		$this->assertStringNotContainsString( '<iframe', $out );
+	}
+
+	public function test_post_meta_embed_still_drops_disallowed_markup_around_it() {
+		$out = $this->render_meta( self::DISALLOWED_SCRIPT . '<iframe src="https://www.youtube.com/embed/x"></iframe>' . self::DISALLOWED_IMG );
+
+		$this->assertStringContainsString( '<iframe src="https://www.youtube.com/embed/x"></iframe>', $out );
+		$this->assertStringNotContainsString( '<script', $out );
+		$this->assertStringNotContainsString( 'onerror="', $out );
+	}
+
+	public function test_embed_source_list_is_filterable() {
+		$filter = function ( $prefixes ) {
+			$prefixes[] = 'https://embed.example.com/';
+			return $prefixes;
+		};
+		add_filter( 'w4pl/meta_iframe_src_prefixes', $filter );
+		$out = $this->render_meta( '<iframe src="https://embed.example.com/v/1"></iframe>' );
+		remove_filter( 'w4pl/meta_iframe_src_prefixes', $filter );
+
+		$this->assertStringContainsString( '<iframe src="https://embed.example.com/v/1"></iframe>', $out );
+	}
+
+	public function test_embed_prefix_without_a_slash_after_the_host_is_ignored() {
+		$filter = function ( $prefixes ) {
+			$prefixes[] = 'https://embed.example.com';
+			return $prefixes;
+		};
+		add_filter( 'w4pl/meta_iframe_src_prefixes', $filter );
+		$out = $this->render_meta( '<iframe src="https://embed.example.com.attacker.test/v/1"></iframe>' );
+		remove_filter( 'w4pl/meta_iframe_src_prefixes', $filter );
+
+		$this->assertStringNotContainsString( '<iframe', $out );
+	}
+
+	public function test_user_meta_keeps_embed_iframe() {
+		update_user_meta( self::$user_ann, 'w4pl_profile_video', '<iframe src="https://player.vimeo.com/video/1"></iframe>' );
+
+		$html = $this->render_list(
+			array(
+				'list_type' => 'users',
+				'template'  => '<ul>[users]<li>[user_meta key="w4pl_profile_video"]</li>[/users]</ul>',
+			)
+		);
+
+		$this->assertStringContainsString( '<iframe src="https://player.vimeo.com/video/1"></iframe>', $html );
+	}
 }
