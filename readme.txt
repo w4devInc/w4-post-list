@@ -4,7 +4,7 @@ Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 5.8
 Tested up to: 7.1.5
 Requires PHP: 7.4
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.1.2 =
+* Fix: Video, audio and map embeds stored in a custom field show again in [post_meta], [user_meta] and [post_author_meta]. 3.1.1 removed every iframe; iframes from YouTube, Vimeo, Dailymotion, Wistia, Loom, Spotify, SoundCloud and Google Maps are kept now. Developers can add embed sources with the `w4pl/meta_iframe_src_prefixes` filter.
 = 3.1.1 =
 * Improved: Custom field values printed by [post_meta], [user_meta] and [post_author_meta], and custom-field group titles, follow the same HTML rules as post content. Developers can adjust this with the `w4pl/meta_display_value` filter.
 * Fix: In grouped, term and user lists, a post whose title or custom fields contain square-bracket tags shows them as written, and an escaped tag such as [[post_title]] in the [posts] block prints as text.
@@ -245,6 +247,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 3.1.2 =
+Video and map embeds stored in custom fields show again in lists.
 = 3.1.1 =
 Recommended for all sites: custom field values in lists follow the same HTML rules as post content.
 = 3.0.0 =
