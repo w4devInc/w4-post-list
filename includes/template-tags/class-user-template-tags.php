@@ -164,7 +164,7 @@ class W4PL_User_Template_Tags {
 			}
 		}
 
-		return $return;
+		return W4PL_Utils::meta_display_value( $return, $meta_key, 'user_meta' );
 	}
 
 	/**

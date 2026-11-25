@@ -151,11 +151,7 @@ class W4PL_List_Terms extends W4PL_List implements W4PL_List_Interface {
 				} // end term posts
 
 				// replace [posts]
-				if ( isset( $posts_match ) && isset( $posts_match['0'] ) ) {
-					$terms_template_clone = str_replace( $posts_match['0'], $term_posts_loop, $terms_template_clone );
-				}
-
-				$terms_loop .= preg_replace_callback( "/$pattern/s", array( &$this, 'do_shortcode_tag' ), $terms_template_clone );
+				$terms_loop .= $this->render_outer_item( $terms_template_clone, $posts_match ?? array(), $term_posts_loop, $pattern );
 			}
 
 			// replace [terms]

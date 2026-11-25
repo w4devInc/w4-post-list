@@ -2,9 +2,9 @@
 Contributors: sajib1223
 Tags: post list, user list, post grid, category list, shortcode
 Requires at least: 6.6
-Tested up to: 7.1.4
+Tested up to: 7.1.5
 Requires PHP: 7.4
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,11 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 
 
 == Changelog ==
+= 3.1.1 =
+* Improved: Custom field values printed by [post_meta], [user_meta] and [post_author_meta], and custom-field group titles, follow the same HTML rules as post content. Developers can adjust this with the `w4pl/meta_display_value` filter.
+* Fix: In grouped, term and user lists, a post whose title or custom fields contain square-bracket tags shows them as written, and an escaped tag such as [[post_title]] in the [posts] block prints as text.
+* Fix: The [more] and [author] link titles are plain text.
+* Tested up to WordPress 7.1.5.
 = 3.1.0 =
 * Improved: A list's CSS and JavaScript print in the same place as before but through WordPress's own style and script API, so on WordPress 6.3+ a CSP plugin's nonce covers the list's script and developers can read a list's CSS and JavaScript from `wp_styles()` / `wp_scripts()` under the handle `w4pl-list-{id}`.
 * Improved: The classic widget has a "— Select a list —" placeholder, lists sorted by title, escaped output and a description that points block editors to the W4 Post List block.
@@ -240,6 +245,8 @@ In your admin: **W4 Post List → Documentation** (template tags reference, exam
 [See changelog of all versions](https://raw.githubusercontent.com/w4devInc/w4-post-list/master/CHANGELOG.txt).
 
 == Upgrade Notice ==
+= 3.1.1 =
+Recommended for all sites: custom field values in lists follow the same HTML rules as post content.
 = 3.0.0 =
 AJAX pagination now works on block themes and no longer needs jQuery. Despite the major version number, nothing about your saved lists, templates or settings changes.
 = 2.11.0 =
