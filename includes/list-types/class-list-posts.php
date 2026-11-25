@@ -137,9 +137,7 @@ class W4PL_List_Posts extends W4PL_List implements W4PL_List_Interface {
 					}
 
 					// replace [posts]
-					$groups_template_clone = str_replace( $posts_match['0'], $group_posts_loop, $groups_template_clone );
-
-					$groups_loop .= preg_replace_callback( "/$pattern/s", array(&$this, 'do_shortcode_tag' ), $groups_template_clone );
+					$groups_loop .= $this->render_outer_item( $groups_template_clone, $posts_match, $group_posts_loop, $pattern );
 				}
 
 				// replace [groups]

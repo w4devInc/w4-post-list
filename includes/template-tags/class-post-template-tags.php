@@ -619,7 +619,7 @@ class W4PL_Post_Template_Tags {
 			return;
 		}
 
-		return get_the_author_meta( $name, get_the_author_meta( 'ID' ) );
+		return W4PL_Utils::meta_display_value( get_the_author_meta( $name, get_the_author_meta( 'ID' ) ), $name, 'post_author_meta' );
 	}
 
 	public static function post_author_name( $attr, $cont ) {
@@ -808,12 +808,23 @@ class W4PL_Post_Template_Tags {
 
 		$meta_value = get_post_meta( get_the_ID(), $meta_key, $single );
 
+		return W4PL_Utils::meta_display_value( self::post_meta_string( $meta_value, $attr, $sep ), $meta_key, 'post_meta' );
+	}
+
+	/**
+	 * Reduce a post meta value to the one string [post_meta] prints.
+	 *
+	 * @param  mixed  $meta_value Value from get_post_meta().
+	 * @param  mixed  $attr       Tag attributes.
+	 * @param  string $sep        Separator for joined array values.
+	 * @return mixed  A scalar, or an array/object when nothing printable was found.
+	 */
+	private static function post_meta_string( $meta_value, $attr, $sep ) {
 		// end the game here if the value is string
 		if ( ! is_object( $meta_value ) && ! is_array( $meta_value ) ) {
 			return $meta_value;
 		}
 
-		$return = '';
 		if ( is_object( $meta_value ) ) {
 			$meta_value = get_object_vars( $meta_value );
 		}
@@ -906,7 +917,10 @@ class W4PL_Post_Template_Tags {
 		if ( isset( $attr['id'] ) ) {
 			$attachment_id = (int) $attr['id'];
 		} elseif ( isset( $attr['meta_key'] ) ) {
-			$attachment_id = get_post_meta( get_the_ID(), $attr['meta_key'], true );
+			$attachment_id = absint( get_post_meta( get_the_ID(), $attr['meta_key'], true ) );
+			if ( ! $attachment_id ) {
+				$attachment_id = '';
+			}
 		} else {
 			$attachment_id = get_the_ID();
 		}
@@ -1002,7 +1016,7 @@ class W4PL_Post_Template_Tags {
 		return sprintf(
 			'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			sprintf( esc_attr__( 'View all posts by %s', 'w4-post-list' ), get_the_author() ),
+			esc_attr( sprintf( __( 'View all posts by %s', 'w4-post-list' ), get_the_author() ) ),
 			get_the_author()
 		);
 	}
@@ -1023,14 +1037,14 @@ class W4PL_Post_Template_Tags {
 		return sprintf(
 			'<a class="read_more" href="%1$s" title="%3$s %2$s">%3$s</a>',
 			get_permalink(),
-			get_the_title(),
+			the_title_attribute( 'echo=0' ),
 			esc_attr( $read_more )
 		);
 	}
 
 
 	public static function post_group_id( $attr, $cont, $list ) {
-		return isset( $list->current_group ) ? $list->current_group['id'] : 0;
+		return isset( $list->current_group ) ? esc_attr( $list->current_group['id'] ) : 0;
 	}
 	public static function post_group_title( $attr, $cont, $list ) {
 		return isset( $list->current_group ) ? $list->current_group['title'] : '';
