@@ -154,11 +154,7 @@ class W4PL_List_Users_Posts extends W4PL_List implements W4PL_List_Interface {
 				} // end term posts
 
 				// replace [posts]
-				if ( isset( $posts_match ) && isset( $posts_match['0'] ) ) {
-					$users_template_clone = str_replace( $posts_match['0'], $user_posts_loop, $users_template_clone );
-				}
-
-				$users_loop .= preg_replace_callback( "/$pattern/s", array( &$this, 'do_shortcode_tag' ), $users_template_clone );
+				$users_loop .= $this->render_outer_item( $users_template_clone, $posts_match ?? array(), $user_posts_loop, $pattern );
 			}
 
 			// replace [users]

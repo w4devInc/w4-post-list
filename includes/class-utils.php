@@ -26,6 +26,38 @@ class W4PL_Utils {
 		do_action( 'w4pl/log', $str );
 	}
 
+	/**
+	 * Prepare a stored meta value for display in a list template.
+	 *
+	 * Meta values are free-form, so they get the markup rules WordPress
+	 * applies to post content. Arrays and objects have no single display
+	 * value and print nothing.
+	 *
+	 * @param  mixed  $value    Meta value.
+	 * @param  string $meta_key Meta key the value was read from.
+	 * @param  string $tag      Template tag printing it, e.g. "post_meta".
+	 * @return string
+	 */
+	public static function meta_display_value( $value, $meta_key = '', $tag = '' ) {
+		$display = '';
+		if ( is_scalar( $value ) ) {
+			$display = wp_kses_post( (string) $value );
+		}
+
+		/**
+		 * Filters a meta value as the meta template tags print it.
+		 *
+		 * @since 3.1.1
+		 *
+		 * @param string $display  Value after WordPress's post content markup rules.
+		 * @param mixed  $value    Value as stored.
+		 * @param string $meta_key Meta key the value was read from.
+		 * @param string $tag      Template tag printing it: post_meta, user_meta,
+		 *                         post_author_meta or group_title.
+		 */
+		return apply_filters( 'w4pl/meta_display_value', $display, $value, $meta_key, $tag );
+	}
+
 	public static function order_by_position( $a, $b ) {
 		if ( ! isset( $a['position'] ) || ! isset( $b['position'] ) ) {
 			return -1;

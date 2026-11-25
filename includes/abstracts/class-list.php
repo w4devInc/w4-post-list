@@ -378,7 +378,7 @@ abstract class W4PL_List {
 					if ( ! isset( $this->groups[ $group_id ] ) ) {
 						$this->groups[ $group_id ] = array(
 							'id'    => $group_id,
-							'title' => $value,
+							'title' => W4PL_Utils::meta_display_value( $value, $groupby_meta_key, 'group_title' ),
 							'url'   => '',
 						);
 					}
@@ -472,6 +472,32 @@ abstract class W4PL_List {
 			. ')?'
 			. ')'
 			. '(\\]?)'; // 6: Optional second closing brocket for escaping shortcodes: [[tag]].
+	}
+
+	/**
+	 * Parse one item of an outer loop ([groups], [terms] or [users]) and put
+	 * its already rendered [posts] block in afterwards.
+	 *
+	 * The rendered posts are added after the outer template's tags are
+	 * parsed, so any text they contain is printed as it is instead of being
+	 * read as template tags a second time.
+	 *
+	 * @param  string $template    Outer loop template for the current item.
+	 * @param  array  $posts_match preg_match() result for the [posts] block, or an empty array.
+	 * @param  string $posts_html  The rendered [posts] block.
+	 * @param  string $pattern     Template tag regex from get_shortcode_regex().
+	 * @return string
+	 */
+	protected function render_outer_item( $template, $posts_match, $posts_html, $pattern ) {
+		if ( empty( $posts_match[0] ) ) {
+			return preg_replace_callback( "/$pattern/s", array( $this, 'do_shortcode_tag' ), $template );
+		}
+
+		$placeholder = '<!--w4pl-posts-' . wp_generate_uuid4() . '-->';
+		$template    = str_replace( $posts_match[0], $placeholder, $template );
+		$template    = preg_replace_callback( "/$pattern/s", array( $this, 'do_shortcode_tag' ), $template );
+
+		return str_replace( $placeholder, $posts_html, $template );
 	}
 
 	/**
